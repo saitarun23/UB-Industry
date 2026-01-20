@@ -1,6 +1,6 @@
 import React from "react";
-import "../styles/products.css";
-import assets from "../images";
+import "../../styles/products.css";
+import assets from "../../assets/images";
 import { FiLink, FiSearch } from "react-icons/fi";
 
 const products = [

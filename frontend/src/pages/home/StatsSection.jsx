@@ -1,4 +1,4 @@
-import "../styles/statssection.css";
+import "../../styles/statssection.css";
 import {
   FaUserTie,
   FaChartBar,

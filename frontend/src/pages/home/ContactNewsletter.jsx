@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/contactnewsletter.css";
+import "../../styles/contactnewsletter.css";
 import { FiMail, FiArrowRight } from "react-icons/fi";
 
 export default function ContactNewsletter() {

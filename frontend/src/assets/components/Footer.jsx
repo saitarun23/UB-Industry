@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/footer.css";
+import "../../styles/footer.css";
 import { FiArrowRight, FiMapPin, FiFacebook, FiInstagram } from "react-icons/fi";
 import { FaWhatsapp, FaRegSquare } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";

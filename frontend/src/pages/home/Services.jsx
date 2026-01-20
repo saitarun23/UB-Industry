@@ -1,6 +1,6 @@
 import React from "react";
-import "../styles/services.css";
-import assets from "../images";
+import "../../styles/services.css";
+import assets from "../../assets/images";
 
 const services = [
   {

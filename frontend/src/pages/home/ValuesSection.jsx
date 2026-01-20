@@ -1,4 +1,4 @@
-import "../styles/valuessection.css";
+import "../../styles/valuessection.css";
 import { FiEye, FiTarget, FiAward } from "react-icons/fi";
 
 const values = [

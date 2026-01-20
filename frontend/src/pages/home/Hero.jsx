@@ -5,7 +5,7 @@ import { Autoplay, EffectFade } from "swiper/modules";
 // Essential Swiper Styles
 import "swiper/css";
 import "swiper/css/effect-fade";
-import "../styles/hero.css";
+import "../../styles/hero.css";
 
 export default function Hero() {
   const heroData = [

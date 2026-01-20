@@ -1,5 +1,5 @@
-import infraVideo from "../images/vid1.mp4";
-import "../styles/aboutHighlights.css";
+import infraVideo from "../../assets/images/vid1.mp4";
+import "../../styles/abouthighlights.css";
 
 import {
   FiStar,

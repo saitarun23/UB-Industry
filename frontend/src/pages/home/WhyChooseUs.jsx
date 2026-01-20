@@ -1,5 +1,5 @@
-import "../styles/whychooseus.css";
-import assets from "../images"; 
+import "../../styles/whychooseus.css";
+import assets from "../../assets/images"; 
 
 import {
   FiShield,
