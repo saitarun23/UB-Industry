@@ -1,0 +1,128 @@
+/* SECTION */
+.products-section {
+  background: #000;
+  padding: 90px 60px;
+  color: #fff;
+}
+
+/* HEADING */
+.products-heading {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.products-heading span {
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #aaa;
+}
+
+.products-heading h2 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-top: 12px;
+}
+
+/* GRID */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+/* CARD */
+.product-card {
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+}
+
+/* IMAGE */
+.product-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+  background: #fff;
+  transition: transform 0.6s ease;
+}
+
+/* IMAGE HOVER MOVE */
+.product-card:hover img {
+  transform: scale(1.05);
+}
+
+/* OVERLAY */
+.product-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.5s ease;
+}
+
+/* SHOW OVERLAY ONLY ON IMAGE HOVER */
+.product-card:hover .product-overlay {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* OVERLAY TEXT */
+.overlay-sub {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 8px;
+}
+
+.product-overlay h3 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+/* ICONS */
+.overlay-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.overlay-icons span {
+  width: 44px;
+  height: 44px;
+  border: 1px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.overlay-icons span svg {
+  font-size: 18px;
+}
+
+.overlay-icons span:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .products-section {
+    padding: 60px 20px;
+  }
+
+  .products-heading h2 {
+    font-size: 22px;
+  }
+
+  .product-card img {
+    height: 240px;
+  }
+}

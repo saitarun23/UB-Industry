@@ -1,0 +1,144 @@
+.values-section {
+  padding: 100px 40px;
+  background: linear-gradient(180deg, #ffffff, #f6f6f6);
+}
+
+/* HEADER */
+.values-header {
+  text-align: center;
+  margin-bottom: 70px;
+  position: relative;
+}
+
+/* SUB TITLE */
+.values-header span {
+  display: inline-block;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: #666;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+/* LINE UNDER SUB TITLE */
+.values-header span::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 48px;
+  height: 2px;
+  background: #111;
+  transform: translateX(-50%);
+}
+
+/* MAIN TITLE */
+.values-header h2 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-top: 18px;
+  color: #0f172a;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+
+/* GRID */
+.values-grid {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+/* CARD */
+.value-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 52px 42px;
+  overflow: hidden;
+  transition: color 0.45s ease;
+}
+
+/* SOLID FILL OVERLAY */
+.value-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #0f172a; /* premium dark */
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+  z-index: 0;
+}
+
+.value-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* CONTENT ABOVE OVERLAY */
+.value-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ICON */
+.icon-wrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-bottom: 26px;
+  transition: all 0.45s ease;
+}
+
+/* TEXT */
+.value-card h3 {
+  font-size: 24px;
+  margin-bottom: 14px;
+  color: #111;
+  transition: color 0.45s ease;
+}
+
+.value-card p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #555;
+  transition: color 0.45s ease;
+}
+
+/* HOVER TEXT + ICON CHANGE */
+.value-card:hover h3,
+.value-card:hover p {
+  color: #ffffff;
+}
+
+.value-card:hover .icon-wrapper {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .values-header h2 {
+    font-size: 32px;
+  }
+}

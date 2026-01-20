@@ -1,0 +1,97 @@
+/* Navbar wrapper */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #000;
+  z-index: 70;
+}
+
+/* Container */
+.navbar-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Brand (logo + text) */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Logo */
+.navbar-brand img {
+  height: 56px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Text wrapper (2 lines) */
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+/* First line */
+.brand-name {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+}
+
+/* Second line */
+.brand-industry {
+  color: #757c89;
+  font-size: 15px;
+  font-weight: 500;
+  margin-left: 2px; /* creates the shifted/indented look */
+}
+
+/* Navigation menu */
+.navbar-menu {
+  display: flex;
+  gap: 32px;
+}
+
+/* Menu links */
+.navbar-menu a {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+/* Hover effect */
+.navbar-menu a:hover {
+  color: #9ca3af;
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+  .navbar-menu {
+    display: none;
+  }
+
+  .navbar-container {
+    padding: 20px 24px;
+  }
+
+  .brand-name {
+    font-size: 16px;
+  }
+
+  .brand-industry {
+    font-size: 14px;
+    margin-left: 12px;
+  }
+}

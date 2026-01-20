@@ -1,34 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react'
+import useScrollEffect from './assets/hooks/useScrollEffect.js'
+import Navbar from './assets/components/Navbar.jsx'
+import Hero from './assets/components/Hero'
+import WhyChooseUs from './assets/components/WhyChooseUs.jsx'
+import StatsSection from './assets/components/STatsSection.jsx'
+import ValuesSection from './assets/components/ValuesSection.jsx'
+import Services from './assets/components/Services.jsx'
+import Products from './assets/components/Products.jsx'
+import AboutHighlights from './assets/components/AboutHighlights.jsx'
+import ContactNewsletter from './assets/components/ContactNewsletter.jsx'
+import Footer from './assets/components/Footer.jsx'
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+
+    useScrollEffect();
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <Navbar />
+      <Hero />
+      <Services />
+      <WhyChooseUs />
+      <Products />
+      <AboutHighlights /> 
+      <StatsSection />
+      <ContactNewsletter />
+      <ValuesSection />
+      <Footer />
+
+    </div>
   )
 }
 

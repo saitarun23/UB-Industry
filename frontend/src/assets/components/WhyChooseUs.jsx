@@ -1,0 +1,58 @@
+import "../styles/whychooseus.css";
+import assets from "../images"; 
+
+import {
+  FiShield,
+  FiAward,
+  FiUsers,
+  FiCheckCircle,
+  FiPackage,
+  FiThumbsUp,
+} from "react-icons/fi";
+
+const features = [
+  { icon: <FiPackage />, title: "Quality Material" },
+  { icon: <FiShield />, title: "Fully Insured" },
+  { icon: <FiAward />, title: "Certified Excellence" },
+  { icon: <FiThumbsUp />, title: "Trusted Process" },
+  { icon: <FiUsers />, title: "Trained Workers" },
+  { icon: <FiCheckCircle />, title: "Guaranteed Output" },
+];
+
+export default function WhyChooseUs() {
+  return (
+    <section
+      className="why-section scroll-effect"
+      style={{ backgroundImage: `url(${assets.hero1})` }} // ✅ background image
+    >
+      <div className="why-overlay"></div>
+
+      <div className="why-container">
+        {/* LEFT CONTENT */}
+        <div className="why-left">
+          <span className="why-tag">Why Choose</span>
+
+          <h2>
+            Urmila Bhupathiraju Industry<br />
+            Built on <strong>Quality</strong>. Driven by <strong>Precision</strong>.
+          </h2>
+
+          <p>
+            We combine advanced technology, skilled professionals, and strict
+            quality control to deliver world-class flexible packaging solutions.
+          </p>
+        </div>
+
+        {/* RIGHT GRID */}
+        <div className="why-grid">
+          {features.map((item, i) => (
+            <div className="why-card" key={i}>
+              <div className="why-icon">{item.icon}</div>
+              <h4>{item.title}</h4>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
