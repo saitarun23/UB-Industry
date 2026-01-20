@@ -1,6 +1,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
+import assets from "../../assets/images";
 
 // Essential Swiper Styles
 import "swiper/css";
@@ -9,9 +10,9 @@ import "../../styles/hero.css";
 
 export default function Hero() {
   const heroData = [
-    { id: 1, img: "https://i.ibb.co/v4mS8vL/carton.png", label: "Cartons" },
-    { id: 2, img: "https://i.ibb.co/vjXG9mF/labels.png", label: "Labels" },
-    { id: 3, img: "https://i.ibb.co/L6vN8P9/rigid-box.png", label: "Rigid Boxes" },
+    { id: 1, img: assets.hero1, label: "Cartons" },
+    { id: 2, img: assets.hero2, label: "Labels" },
+    { id: 3, img: assets.hero1, label: "Rigid Boxes" },
   ];
 
   return (
