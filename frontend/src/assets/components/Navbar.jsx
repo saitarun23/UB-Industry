@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import assets from "../images";
 import "../../styles/navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ onChangePage, activePage }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleToggle = () => setMenuOpen((prev) => !prev);
-  const handleLinkClick = () => setMenuOpen(false);
+
+  const handleLinkClick = (page) => () => {
+    onChangePage(page);      // update state in App
+    setMenuOpen(false);      // close mobile menu
+    // no preventDefault -> URL hash will update (#home, #about, etc.)
+  };
 
   return (
     <header className="navbar">
@@ -23,12 +28,53 @@ const Navbar = () => {
 
         {/* Desktop / Tablet Navigation */}
         <nav className="navbar-menu">
-          <a href="#home">HOME</a>
-          <a href="#about">ABOUT US</a>
-          <a href="#services">SERVICES</a>
-          <a href="#infrastructure">INFRASTRUCTURE</a>
-          <a href="#whatsnew">WHAT'S NEW</a>
-          <a href="#contact">CONTACT US</a>
+          <a
+            href="#home"
+            className={activePage === "home" ? "active" : ""}
+            onClick={handleLinkClick("home")}
+          >
+            HOME
+          </a>
+
+          <a
+            href="#about"
+            className={activePage === "about" ? "active" : ""}
+            onClick={handleLinkClick("about")}
+          >
+            ABOUT US
+          </a>
+
+          <a
+            href="#services"
+            className={activePage === "services" ? "active" : ""}
+            onClick={handleLinkClick("services")}
+          >
+            SERVICES
+          </a>
+
+          <a
+            href="#infrastructure"
+            className={activePage === "infrastructure" ? "active" : ""}
+            onClick={handleLinkClick("infrastructure")}
+          >
+            INFRASTRUCTURE
+          </a>
+
+          <a
+            href="#whatsnew"
+            className={activePage === "whatsnew" ? "active" : ""}
+            onClick={handleLinkClick("whatsnew")}
+          >
+            WHAT'S NEW
+          </a>
+
+          <a
+            href="#contact"
+            className={activePage === "contact" ? "active" : ""}
+            onClick={handleLinkClick("contact")}
+          >
+            CONTACT US
+          </a>
         </nav>
 
         {/* Mobile Toggle Button */}
@@ -45,12 +91,53 @@ const Navbar = () => {
 
       {/* Mobile Menu (Dropdown) */}
       <nav className={`navbar-menu-mobile ${menuOpen ? "is-open" : ""}`}>
-        <a href="#home" onClick={handleLinkClick}>HOME</a>
-        <a href="#about" onClick={handleLinkClick}>ABOUT US</a>
-        <a href="#services" onClick={handleLinkClick}>SERVICES</a>
-        <a href="#infrastructure" onClick={handleLinkClick}>INFRASTRUCTURE</a>
-        <a href="#whatsnew" onClick={handleLinkClick}>WHAT'S NEW</a>
-        <a href="#contact" onClick={handleLinkClick}>CONTACT US</a>
+        <a
+          href="#home"
+          className={activePage === "home" ? "active" : ""}
+          onClick={handleLinkClick("home")}
+        >
+          HOME
+        </a>
+
+        <a
+          href="#about"
+          className={activePage === "about" ? "active" : ""}
+          onClick={handleLinkClick("about")}
+        >
+          ABOUT US
+        </a>
+
+        <a
+          href="#services"
+          className={activePage === "services" ? "active" : ""}
+          onClick={handleLinkClick("services")}
+        >
+          SERVICES
+        </a>
+
+        <a
+          href="#infrastructure"
+          className={activePage === "infrastructure" ? "active" : ""}
+          onClick={handleLinkClick("infrastructure")}
+        >
+          INFRASTRUCTURE
+        </a>
+
+        <a
+          href="#whatsnew"
+          className={activePage === "whatsnew" ? "active" : ""}
+          onClick={handleLinkClick("whatsnew")}
+        >
+          WHAT'S NEW
+        </a>
+
+        <a
+          href="#contact"
+          className={activePage === "contact" ? "active" : ""}
+          onClick={handleLinkClick("contact")}
+        >
+          CONTACT US
+        </a>
       </nav>
     </header>
   );

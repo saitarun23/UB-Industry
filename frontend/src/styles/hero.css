@@ -1,69 +1,124 @@
+/* ROOT SECTION */
+
 .hero-section {
+  position: relative;
   width: 100%;
-  height: 100vh;
-  background: linear-gradient(135deg, #a7e2d0 0%, #87d6f7 100%);
-  background-image: url('https://www.transparenttextures.com/patterns/topography.png');
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  position: relative;
+  background: #ffffff;
+  color: #000000;
 }
 
+/* subtle grey contour / noise style background */
+.hero-bg-pattern {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 0 0, rgba(0, 0, 0, 0.08), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(0, 0, 0, 0.05), transparent 55%);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* MAIN LAYOUT */
+
 .hero-container {
+  position: relative;
+  z-index: 1;
   max-width: 1300px;
   width: 100%;
-  display: flex; 
+  padding: 0 60px;
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 0 60px;
+  gap: 40px;
 }
+
+/* LEFT */
 
 .hero-left {
   width: 55%;
-  z-index: 10;
+}
+
+.hero-kicker {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #555555;
+  margin-bottom: 18px;
 }
 
 .hero-title {
-  font-size: 60px; /* Increased to match Pragati bold style */
+  font-size: 60px;
   font-weight: 800;
-  color: #000;
-  line-height: 1.05;
-  margin: 0 0 25px 0;
   letter-spacing: -2px;
+  line-height: 1.05;
+  margin: 0 0 22px 0;
+  color: #000000;
 }
 
 .hero-subtitle {
-  font-size: 22px;
-  color: #333;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 400;
+  color: #444444;
 }
+
+/* RIGHT / SWIPER */
 
 .hero-right {
   width: 45%;
-  height: 650px; /* Taller area for better product display */
+  height: 520px;
+  display: flex;
+  align-items: center;
 }
 
-/* Slide isolation logic */
+.hero-swiper {
+  width: 100%;
+  height: 100%;
+}
+
+/* Slides */
+
 .slide-box {
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  width: 100%;
   opacity: 0;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.4s ease-in-out;
 }
 
-/* Swiper specific class to show only active label */
 .swiper-slide-active .slide-box {
   opacity: 1;
 }
 
+.slide-card {
+  width: 100%;
+  max-width: 420px;
+  height: 420px;
+  border-radius: 28px;
+  background: #ffffff;
+  border: 1px solid #e2e2e2;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.16);
+  padding: 40px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: rotate(-8deg);
+  transform-origin: center;
+}
+
+/* image zone */
+
 .img-wrapper {
-  height: 480px;
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -71,17 +126,94 @@
 
 .slide-image {
   max-height: 100%;
-  width: auto;
+  max-width: 100%;
   object-fit: contain;
-  filter: drop-shadow(0px 30px 60px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 24px 60px rgba(0, 0, 0, 0.25));
 }
 
-.slide-text {
+/* label zone */
+
+.slide-footer {
   margin-top: 30px;
-  font-size: 32px;
-  font-weight: 600;
-  color: #1a3c34;
-  /* Ensures label doesn't move or attach to others */
-  text-align: center;
-  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.slide-label {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #111111;
+}
+
+/* ---------- RESPONSIVE VIEWS ---------- */
+
+@media (max-width: 1024px) {
+  .hero-container {
+    flex-direction: column;
+    padding: 80px 32px 60px;
+    text-align: center;
+  }
+
+  .hero-left,
+  .hero-right {
+    width: 100%;
+  }
+
+  .hero-left {
+    order: 1;
+  }
+
+  .hero-right {
+    order: 2;
+    height: 420px;
+    justify-content: center;
+  }
+
+  .hero-title {
+    font-size: 46px;
+    letter-spacing: -1.5px;
+  }
+
+  .hero-subtitle {
+    font-size: 18px;
+  }
+
+  .slide-card {
+    transform: rotate(-5deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-container {
+    padding: 70px 18px 40px;
+    gap: 32px;
+  }
+
+  .hero-title {
+    font-size: 34px;
+    letter-spacing: -1px;
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+  }
+
+  .hero-right {
+    height: 340px;
+  }
+
+  .slide-card {
+    max-width: 320px;
+    height: 320px;
+    padding: 28px 20px 22px;
+  }
+
+  .slide-label {
+    font-size: 16px;
+    letter-spacing: 0.12em;
+  }
+}
+  

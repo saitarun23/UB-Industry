@@ -3,7 +3,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
 import assets from "../../assets/images";
 
-// Essential Swiper Styles
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "../../styles/hero.css";
@@ -16,26 +15,31 @@ export default function Hero() {
   ];
 
   return (
-    <section className="hero-section scroll-effect">
+    <section className="hero-section">
+      <div className="hero-bg-pattern" />
+
       <div className="hero-container">
-        
-        {/* LEFT COLUMN: STATIC TEXT (Stays put) */}
+        {/* LEFT COLUMN */}
         <div className="hero-left">
+          <span className="hero-kicker">PRINT • PACKAGING • PRODUCTION</span>
+
           <h1 className="hero-title">
-            Every print project, <br /> 
-            handled with precision.
+            We cover the entire gamut
+            <br />
+            of print needs.
           </h1>
+
           <p className="hero-subtitle">
-            Serving clients across India and around the globe.
+            Serving customers across India and worldwide.
           </p>
         </div>
 
-        {/* RIGHT COLUMN: SWIPER (Images and Labels change together) */}
+        {/* RIGHT COLUMN */}
         <div className="hero-right">
           <Swiper
             modules={[Autoplay, EffectFade]}
             effect="fade"
-            fadeEffect={{ crossFade: true }} // Ensures clean label transitions
+            fadeEffect={{ crossFade: true }}
             loop={true}
             autoplay={{ delay: 3000, disableOnInteraction: false }}
             className="hero-swiper"
@@ -43,17 +47,23 @@ export default function Hero() {
             {heroData.map((item) => (
               <SwiperSlide key={item.id}>
                 <div className="slide-box">
-                  <div className="img-wrapper">
-                    <img src={item.img} alt={item.label} className="slide-image" />
+                  <div className="slide-card">
+                    <div className="img-wrapper">
+                      <img
+                        src={item.img}
+                        alt={item.label}
+                        className="slide-image"
+                      />
+                    </div>
+                    <div className="slide-footer">
+                      <span className="slide-label">{item.label}</span>
+                    </div>
                   </div>
-                  {/* Label is inside the slide so it changes WITH the image */}
-                  <p className="slide-text">{item.label}</p>
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
-
       </div>
     </section>
   );

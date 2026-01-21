@@ -68,9 +68,6 @@
 }
 
 /* Menu links */
-/* =====================================
-   ULTRA MODERN NAVIGATION HOVER EFFECT
-   ===================================== */
 .navbar-menu a {
   position: relative;
   color: #ffffff;
@@ -79,8 +76,6 @@
   letter-spacing: 0.8px;
   text-decoration: none;
   padding: 4px 0;
-
-  /* smooth modern transitions */
   transition: color 0.35s ease, opacity 0.35s ease, transform 0.35s ease;
 }
 
@@ -95,33 +90,30 @@
   height: 2px;
   background: linear-gradient(90deg, #ffffff, #ffffff);
   border-radius: 50px;
-
   transition: width 0.35s ease;
 }
 
-/* Hover — Text slightly lifts & fades */
+/* Hover — Text slightly lifts */
 .navbar-menu a:hover {
   color: #ffffff;
   transform: translateY(-5px);
-  /* text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.6); */
-  
 }
 
-
-/* Hover — White Glow Bar expands from center */
+/* Hover — Glow bar expands from center */
 .navbar-menu a:hover::before {
   width: 100%;
 }
 
-/* Active state (if you want to style when clicked) */
+/* Active state desktop */
 .navbar-menu a.active {
   opacity: 1;
+  color: #ffffff;
+  transform: translateY(-2px);
 }
 
 .navbar-menu a.active::before {
   width: 100%;
 }
-
 
 /* =========================
    MOBILE TOGGLE BUTTON
@@ -179,6 +171,13 @@
 
 .navbar-menu-mobile a:hover {
   color: #9ca3af;
+}
+
+/* Active state mobile */
+.navbar-menu-mobile a.active {
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: underline;
 }
 
 .navbar-menu-mobile.is-open {
@@ -265,7 +264,6 @@
     display: block;
   }
 
-  /* Mobile dropdown width full */
   .navbar-menu-mobile {
     padding: 8px 16px 16px;
   }

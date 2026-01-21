@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export default function useScrollEffect() {
+export default function useScrollEffect(trigger) {
   useEffect(() => {
     const sections = document.querySelectorAll(".scroll-effect");
 
@@ -20,5 +20,5 @@ export default function useScrollEffect() {
     sections.forEach((section) => observer.observe(section));
 
     return () => observer.disconnect();
-  }, []);
+  }, [trigger]); // 👈 rerun when trigger changes
 }
