@@ -1,6 +1,6 @@
 /* GENERAL PAGE STYLING */
 .infra-page {
-  background-color: #ffffff;
+  background-color: #000000;
   color: #000000;
   overflow-x: hidden;
 }
@@ -12,7 +12,6 @@
 .infra-hero {
   position: relative;
   width: 100%;
-  /* take full viewport height minus approx header height */
   min-height: calc(100vh - 80px);
   display: flex;
   align-items: center;          /* vertically center content */
@@ -99,110 +98,234 @@
 }
 
 /* =========================
-   MAIN SECTIONS
+   MAIN SECTIONS - TAB BASED
    ========================= */
 
 .infra-main {
-  max-width: 1300px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 80px 40px 100px;   /* slightly tighter top spacing */
+  padding: 100px 40px 120px;
 }
 
-.infra-block {
+/* TABS HEADER */
+
+.infra-tabs-container {
+  margin-bottom: 60px;
+}
+
+.infra-tabs-header {
   display: flex;
   align-items: center;
-  gap: 48px;                  /* ↓ reduced gap between image & text */
-  margin-bottom: 80px;        /* ↓ less vertical gap between sections */
+  justify-content: space-between;
+  margin-bottom: 32px;
 }
 
-.infra-block--reverse {
-  flex-direction: row-reverse;
+.infra-tabs-title {
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.5px;
 }
 
-.infra-image-wrap {
-  flex: 1;
+.infra-tabs-count {
+  font-size: 0.95rem;
+  color: #999999;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* IMAGE CARD – rounded corners, subtle shadow */
+/* TAB NAVIGATION */
+
+.infra-tabs-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.infra-tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  color: #aaaaaa;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.infra-tab-btn:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.infra-tab-btn--active {
+  background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+  border-color: #ffffff;
+  color: #000000;
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+}
+
+.infra-tab-icon {
+  font-size: 1.3rem;
+  display: inline-block;
+}
+
+.infra-tab-label {
+  display: block;
+}
+
+/* CONTENT WRAPPER */
+
+.infra-content-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* LEFT - IMAGE */
+
+.infra-content-left {
+  position: sticky;
+  top: 100px;
+}
 
 .infra-image-card {
   position: relative;
-  background-color: #f7f7f7;
   overflow: hidden;
-  border: 1px solid #eeeeee;
-  border-radius: 24px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+  border-radius: 20px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  aspect-ratio: 4/3;
 }
 
 .infra-image {
   width: 100%;
-  height: 320px;
+  height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+  transition: transform 1s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 .infra-image:hover {
-  transform: scale(1.04);
+  transform: scale(1.05);
 }
 
-/* TEXT SIDE */
+/* RIGHT - SPECIFICATIONS */
 
-.infra-text {
-  flex: 1;
-}
-
-/* section title – compact, no underline */
-
-.infra-section-title {
-  font-size: 1.9rem;
-  font-weight: 800;
-  margin: 0 0 10px 0;        /* tighter space above list */
-  padding: 0;                /* no extra underline gap */
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-/* remove dark underline */
-.infra-section-title::after {
-  content: none;
-}
-
-/* CLEAN LIST (No underline lines) */
-
-.infra-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  border: none;
-}
-
-.infra-list li {
-  font-size: 1rem;
-  padding: 8px 0;            /* ↓ reduced vertical padding */
-  color: #000000;
-  position: relative;
-  padding-left: 22px;        /* a bit closer to arrow */
+.infra-content-right {
   display: flex;
-  align-items: center;
-  gap: 6px;
-  border: none;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  flex-direction: column;
 }
 
-.infra-list li::before {
-  content: "→";
+.infra-spec-header {
+  margin-bottom: 40px;
+}
+
+.infra-spec-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #ffffff;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.5px;
+}
+
+.infra-spec-description {
+  font-size: 1.05rem;
+  color: #cccccc;
+  margin: 0;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* SPECS GRID */
+
+.infra-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.infra-spec-item {
+  padding: 20px;
+  background: #1a1a1a;
+  border: 1px solid #333333;
+  border-radius: 12px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.infra-spec-item::before {
+  content: '';
   position: absolute;
-  left: 0;
-  font-size: 0.9rem;
-  color: #000000;
-  font-weight: 600;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transition: left 0.5s ease;
 }
 
-/* Optional hover – keeps it clean */
-.infra-list li:hover {
-  background-color: #f9f9f9;
-  color: #111;
+.infra-spec-item:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+  transform: scaleX(1.05);
+  box-shadow: 0 12px 32px rgba(255, 255, 255, 0.2);
+}
+
+.infra-spec-item:hover::before {
+  left: 100%;
+}
+
+.infra-spec-label {
+  font-size: 0.85rem;
+  color: #666666;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 8px;
+  transition: color 0.4s ease;
+}
+
+.infra-spec-value {
+  font-size: 1.1rem;
+  color: #ffffff;
+  font-weight: 600;
+  line-height: 1.4;
+  transition: color 0.4s ease;
+}
+
+.infra-spec-item:hover .infra-spec-label {
+  color: #555555;
+}
+
+.infra-spec-item:hover .infra-spec-value {
+  color: #000000;
 }
 
 /* =========================
@@ -271,21 +394,30 @@
     padding: 70px 32px 90px;
   }
 
-  .infra-block,
-  .infra-block--reverse {
-    flex-direction: column;
-    gap: 32px;
+  .infra-tabs-nav {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   }
 
-  .infra-text,
-  .infra-image-wrap {
-    flex: 1 1 auto;
-    width: 100%;
+  .infra-content-wrapper {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
 
-  .infra-block--reverse .infra-text,
-  .infra-block--reverse .infra-image-wrap {
-    text-align: left;
+  .infra-content-left {
+    position: relative;
+    top: 0;
+  }
+
+  .infra-specs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .infra-tabs-title {
+    font-size: 1.8rem;
+  }
+
+  .infra-spec-title {
+    font-size: 1.8rem;
   }
 }
 
@@ -294,11 +426,44 @@
     padding: 60px 20px 80px;
   }
 
-  .infra-section-title {
+  .infra-tabs-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .infra-tabs-nav {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .infra-tab-btn {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .infra-tabs-title {
     font-size: 1.5rem;
   }
 
-  .infra-image {
-    height: 260px;
+  .infra-spec-title {
+    font-size: 1.4rem;
+  }
+
+  .infra-specs-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .infra-spec-item {
+    padding: 16px;
+  }
+
+  .infra-spec-label {
+    font-size: 0.75rem;
+  }
+
+  .infra-spec-value {
+    font-size: 1rem;
   }
 }

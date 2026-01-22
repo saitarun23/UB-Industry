@@ -9,7 +9,7 @@ export default function Contact() {
       <header className="contact-hero">
         <div className="contact-hero-bg">
           <img
-            src={assets.contactHero || assets.infraHero || assets.hero1}
+            src={ assets.contacthero }
             alt="Customer support"
           />
         </div>

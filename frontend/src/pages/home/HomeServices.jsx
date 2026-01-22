@@ -1,8 +1,8 @@
 import React from "react";
-import "../../styles/services.css";
+import "../../styles/homeservices.css";
 import assets from "../../assets/images";
 
-const services = [
+const homeservices = [
   {
     title: "Printing",
     desc:
@@ -29,28 +29,35 @@ const services = [
   },
 ];
 
-export default function Services() {
+export default function HomeServices() {
   return (
-    <section className="services-section scroll-effect">
-      <div className="services-heading scroll-effect">
+    <section className="homeservices-section scroll-effect">
+      <div className="homeservices-heading scroll-effect">
         <span>Our Services</span>
         <h2>We collaborate with brands of every scale, delivering excellence without volume constraints.</h2>
         </div>
 
-      <div className="services-grid scroll-effect">
-        {services.map((service, index) => (
-          <div className="service-card" key={index}>
+      <div className="homeservices-grid scroll-effect">
+        {homeservices.map((service, index) => (
+          <div className="homeservice-card" key={index}>
             
-            <div className="service-img">
+            <div className="homeservice-img">
               <img src={service.image} alt={service.title} />
             </div>
 
-            <div className="service-content">
+            <div className="homeservice-content">
               <h3>{service.title}</h3>
               <p>{service.desc}</p>
             </div>
 
-            <div className="read-more">
+            <div 
+              className="read-more" 
+              onClick={() => {
+                window.location.hash = "#services";
+                window.scrollTo(0, 0);
+              }}
+              style={{ cursor: "pointer" }}
+            >
               <span>Explore More →</span>
               <div className="readmore-bg"></div>
             </div>

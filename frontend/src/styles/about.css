@@ -1,0 +1,458 @@
+/* ================
+   PAGE BASE
+   ================ */
+
+.about-page {
+  background: #ffffff;
+  color: #000000;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  overflow-x: hidden;
+}
+
+/* ================
+   HERO
+   ================ */
+
+.about-hero {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 90px 8% 70px;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #000000;
+  color: #ffffff;
+}
+
+.about-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.about-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.1) brightness(0.9);
+}
+
+.about-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.8) 35%,
+    rgba(0, 0, 0, 0.4) 70%,
+    transparent 100%
+  );
+}
+
+.about-hero-content {
+  position: relative;
+  z-index: 3;
+}
+
+.about-hero-title {
+  font-size: 2.6rem;
+  font-weight: 800;
+  margin: 0 0 10px;
+  margin-left: 150px;
+}
+
+/* ================
+   WELCOME HEADING
+   ================ */
+
+.about-welcome {
+  text-align: center;
+  margin-top: 90px;
+  margin-bottom: -25px;
+}
+
+.about-welcome-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #111;
+  letter-spacing: -0.5px;
+}
+
+/* ================
+   MAIN WRAPPER
+   ================ */
+
+.about-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 40px 100px;
+}
+
+/* generic card wrapper */
+
+.about-card {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.08);
+  margin-bottom: 60px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 80px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================
+   COMPANY CARD (IMAGE + TEXT)
+   ========================= */
+
+.about-company-card {
+  padding: 28px 28px 32px;
+}
+
+/* image */
+
+.about-company-image-wrap {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #f0f0f0;
+  background: #fdfdfd;
+  max-height: 450px;
+  max-width: 70%;
+  margin: 40px auto 0;
+}
+
+.about-company-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.about-company-card:hover .about-company-image {
+  transform: scale(1.03);
+}
+
+/* text area */
+
+.about-company-text {
+  max-width: 70%;
+  margin: 24px auto 4px;
+  padding: 0;
+}
+
+.about-section-heading {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 18px;
+  color: #222;
+}
+
+.about-text-block p {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: #000;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* mission + vision */
+
+.about-mission-vision {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 40px;
+  row-gap: 24px;
+  margin-top: 25px;
+}
+
+.about-mission-vision h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #111;
+  text-align: center;
+}
+
+.about-mission-vision p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #000;
+  text-align: center;
+}
+
+/* ================
+   DIRECTOR CARD
+   ================ */
+
+.about-director-card {
+  padding: 40px 36px 34px;
+}
+
+.about-director-inner {
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-director-avatar-wrap {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 18px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.16);
+}
+
+.about-director-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.about-director-card:hover .about-director-avatar {
+  transform: scale(1.05);
+}
+
+.about-director-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.about-director-role {
+  font-size: 0.95rem;
+  color: #777;
+  margin-bottom: 12px;
+}
+
+.about-director-divider {
+  width: 60px;
+  height: 3px;
+  background: #000;
+  margin: 0 auto 18px;
+  border-radius: 999px;
+}
+
+.about-director-text {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: #000;
+  margin-bottom: 16px;
+}
+
+/* ================
+   HISTORY – SPLIT LAYOUT
+   ================ */
+
+.about-history {
+  padding: 90px 0 100px;
+  background: linear-gradient(
+    135deg,
+    #f3f7ff 0%,
+    #e3f0ff 45%,
+    #f7fbff 100%
+  );
+}
+
+.about-history-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.about-history-heading {
+  margin-bottom: 32px;
+}
+
+.about-history-title {
+  font-size: 2.3rem;
+  font-weight: 800;
+  color: #1b1b1b;
+  margin: 0 0 6px;
+}
+
+.about-history-intro {
+  max-width: 520px;
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.7;
+}
+
+.about-history-layout {
+  display: flex;
+  gap: 40px;
+  align-items: stretch;
+}
+
+/* left image */
+
+.about-history-image-wrap {
+  flex: 1;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+.about-history-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transform: scale(1.02);
+  transition: transform 0.6s ease;
+}
+
+.about-history:hover .about-history-image {
+  transform: scale(1.05);
+}
+
+/* right text card */
+
+.about-history-card {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 30px 32px;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-history-subtitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 12px;
+  color: #1b1b1b;
+}
+
+.about-history-body {
+  font-size: 1.02rem;
+  line-height: 1.8;
+  color: #333;
+  margin: 0 0 14px;
+}
+
+/* bullet list inside the card */
+
+.about-history-list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+}
+
+.about-history-list li {
+  position: relative;
+  padding-left: 26px;
+  margin-bottom: 10px;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: #444;
+}
+
+.about-history-list li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  font-size: 0.85rem;
+}
+
+/* ================
+   CTA STRIP
+   ================ */
+
+.about-cta {
+  background-color: #585555;
+  color: #ffffff;
+  padding: 100px 0;
+}
+
+.about-cta-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px;
+  text-align: left;
+}
+
+.about-cta-title {
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1.3;
+  margin: 0 0 16px 0;
+  max-width: 780px;
+  margin-left: 2px;
+}
+
+.about-cta-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 550px;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* ================
+   RESPONSIVE
+   ================ */
+
+@media (max-width: 1024px) {
+  .about-main {
+    padding: 60px 24px 80px;
+  }
+
+  .about-mission-vision {
+    grid-template-columns: 1fr;
+  }
+
+  .about-company-text,
+  .about-company-image-wrap {
+    max-width: 90%;
+  }
+
+  .about-history-inner {
+    padding: 0 24px;
+  }
+
+  .about-history-layout {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-hero {
+    padding: 80px 18px 60px;
+  }
+
+  .about-hero-title {
+    font-size: 2.2rem;
+    margin-left: 0;
+  }
+
+  .about-main {
+    padding: 48px 18px 70px;
+  }
+
+  .about-history-title {
+    font-size: 1.9rem;
+  }
+
+  .about-company-text,
+  .about-company-image-wrap {
+    max-width: 100%;
+  }
+
+  .about-history-inner {
+    padding: 0 18px;
+  }
+}

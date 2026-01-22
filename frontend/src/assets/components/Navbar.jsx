@@ -37,14 +37,6 @@ const Navbar = ({ onChangePage, activePage }) => {
           </a>
 
           <a
-            href="#about"
-            className={activePage === "about" ? "active" : ""}
-            onClick={handleLinkClick("about")}
-          >
-            ABOUT US
-          </a>
-
-          <a
             href="#services"
             className={activePage === "services" ? "active" : ""}
             onClick={handleLinkClick("services")}
@@ -53,19 +45,28 @@ const Navbar = ({ onChangePage, activePage }) => {
           </a>
 
           <a
+            href="#whatsnew"
+            className={activePage === "whatsnew" ? "active" : ""}
+            onClick={handleLinkClick("whatsnew")}
+          >
+            PRODUCTS
+          </a>
+
+        
+          <a
+            href="#about"
+            className={activePage === "about" ? "active" : ""}
+            onClick={handleLinkClick("about")}
+          >
+            ABOUT US
+          </a>
+
+          <a
             href="#infrastructure"
             className={activePage === "infrastructure" ? "active" : ""}
             onClick={handleLinkClick("infrastructure")}
           >
             INFRASTRUCTURE
-          </a>
-
-          <a
-            href="#whatsnew"
-            className={activePage === "whatsnew" ? "active" : ""}
-            onClick={handleLinkClick("whatsnew")}
-          >
-            WHAT'S NEW
           </a>
 
           <a
@@ -100,14 +101,6 @@ const Navbar = ({ onChangePage, activePage }) => {
         </a>
 
         <a
-          href="#about"
-          className={activePage === "about" ? "active" : ""}
-          onClick={handleLinkClick("about")}
-        >
-          ABOUT US
-        </a>
-
-        <a
           href="#services"
           className={activePage === "services" ? "active" : ""}
           onClick={handleLinkClick("services")}
@@ -116,19 +109,27 @@ const Navbar = ({ onChangePage, activePage }) => {
         </a>
 
         <a
+          href="#whatsnew"
+          className={activePage === "whatsnew" ? "active" : ""}
+          onClick={handleLinkClick("whatsnew")}
+        >
+          PRODUCTS
+        </a>
+
+        <a
+          href="#about"
+          className={activePage === "about" ? "active" : ""}
+          onClick={handleLinkClick("about")}
+        >
+          ABOUT US
+        </a>
+
+        <a
           href="#infrastructure"
           className={activePage === "infrastructure" ? "active" : ""}
           onClick={handleLinkClick("infrastructure")}
         >
           INFRASTRUCTURE
-        </a>
-
-        <a
-          href="#whatsnew"
-          className={activePage === "whatsnew" ? "active" : ""}
-          onClick={handleLinkClick("whatsnew")}
-        >
-          WHAT'S NEW
         </a>
 
         <a

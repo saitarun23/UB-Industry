@@ -11,6 +11,10 @@ import infra2 from './infra2.png';
 import infra3 from './infra3.png';
 import infra4 from './infra4.png';
 import infra5 from './infra5.png';
+import contacthero from './contacthero.png';
+import aboutHero from './aboutHero.png';
+import aboutDirector from './aboutDirector.png';
+import servicesHero from './servicesHero.png';
 
 
 export default {
@@ -26,5 +30,9 @@ export default {
   infra2,
   infra3,
   infra4,
-  infra5
+  infra5,
+  contacthero,
+  aboutHero,
+  aboutDirector,
+  servicesHero
 }

@@ -65,6 +65,7 @@
 .navbar-menu {
   display: flex;
   gap: 32px;
+  margin-right: 21px;
 }
 
 /* Menu links */

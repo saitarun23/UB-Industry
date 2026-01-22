@@ -1,74 +1,90 @@
-import React from "react";
-import assets from "../../assets/images"; // make sure these images exist
+import React, { useState } from "react";
+import { FaCog, FaPalette, FaLink, FaFilm, FaMicroscope } from "react-icons/fa";
+import assets from "../../assets/images";
 import "../../styles/infrastructure.css";
 
 const sections = [
   {
     id: 1,
     title: "Rotogravure Printing",
-    bullets: [
-      "7 Rotomec presses from Italy",
-      "Printing up to 9 colours",
-      "Auto registration control",
-      "On-line video & defect detection",
-      "Printing width up to 1200 mm",
+    icon: FaCog,
+    specs: [
+      { label: "Equipment", value: "7 Rotomec presses from Italy" },
+      { label: "Color Capability", value: "Up to 9 colours" },
+      { label: "Control System", value: "Auto registration control" },
+      { label: "Quality", value: "On-line video & defect detection" },
+      { label: "Max Width", value: "1200 mm" },
     ],
-    img: assets.infraRotogravure || assets.infra1, // use your own keys
+    description: "Advanced rotogravure technology for premium packaging solutions",
+    img: assets.infraRotogravure || assets.infra1,
   },
   {
     id: 2,
     title: "CI Flexo Printing",
-    bullets: [
-      "3 printing machines from F&K Germany",
-      "Options up to 10 colours",
-      "Defect detection system",
-      "Widths up to 1250 mm",
-      "Speeds up to 600 m/min",
+    icon: FaPalette,
+    specs: [
+      { label: "Machines", value: "3 machines from F&K Germany" },
+      { label: "Color Options", value: "Up to 10 colours" },
+      { label: "Detection", value: "Defect detection system" },
+      { label: "Width Range", value: "Up to 1250 mm" },
+      { label: "Speed", value: "600 m/min" },
     ],
+    description: "High-speed flexographic printing for diverse substrates",
     img: assets.infraFlexo || assets.infra2,
   },
   {
     id: 3,
     title: "Adhesive Lamination",
-    bullets: [
-      "10 lamination machines",
-      "Solvent & solvent-free options",
-      "Up to 1320 mm web width",
-      "Optimised for high-barrier laminates",
+    icon: FaLink,
+    specs: [
+      { label: "Lamination Lines", value: "10 machines" },
+      { label: "Technology", value: "Solvent & solvent-free options" },
+      { label: "Web Width", value: "Up to 1320 mm" },
+      { label: "Specialization", value: "High-barrier laminates" },
+      { label: "Capacity", value: "High-volume production" },
     ],
+    description: "Multi-layer adhesive bonding for enhanced barrier properties",
     img: assets.infraLamination || assets.infra3,
   },
   {
     id: 4,
     title: "Polyethylene Film",
-    bullets: [
-      "11 blown film lines",
-      "Up to 9-layer structures",
-      "Capacity over 3000 MT per month",
-      "Thickness range 18–280 microns",
+    icon: FaFilm,
+    specs: [
+      { label: "Film Lines", value: "11 blown film lines" },
+      { label: "Layer Structure", value: "Up to 9-layer structures" },
+      { label: "Monthly Capacity", value: "3000+ MT" },
+      { label: "Thickness Range", value: "18–280 microns" },
+      { label: "Production", value: "Multi-layer complexity" },
     ],
+    description: "Custom polyethylene film production with advanced layering",
     img: assets.infraPolyFilm || assets.infra4,
   },
   {
     id: 5,
     title: "Cylinder Engraving",
-    bullets: [
-      "In-house cylinder engraving facility",
-      "15000 cylinders per annum",
-      "Ready for future capacity expansion",
-      "Tight process control for consistency",
+    icon: FaMicroscope,
+    specs: [
+      { label: "Facility", value: "In-house engraving capability" },
+      { label: "Annual Output", value: "15000 cylinders per annum" },
+      { label: "Expansion", value: "Ready for future capacity" },
+      { label: "Process Control", value: "Tight consistency standards" },
+      { label: "Quality", value: "Premium precision engraving" },
     ],
+    description: "Precision cylinder engraving for rotogravure applications",
     img: assets.infraCylinder || assets.infra5,
   },
 ];
 
 export default function Infrastructure() {
+  const [activeTab, setActiveTab] = useState(0);
+  const activeSection = sections[activeTab];
+
   return (
     <main className="infra-page">
       {/* HERO */}
       <header className="infra-hero">
         <div className="infra-hero-bg">
-          {/* Use a wide infrastructure shot here */}
           <img
             src={assets.infraHero || assets.infraRotogravure || assets.infra1}
             alt="Infrastructure overview"
@@ -87,35 +103,64 @@ export default function Infrastructure() {
         </div>
       </header>
 
-      {/* SECTIONS */}
+      {/* ADVANCED TAB-BASED SECTION */}
       <section className="infra-main">
-        {sections.map((section, index) => (
-          <div
-            key={section.id}
-            className={`infra-block ${
-              index % 2 === 1 ? "infra-block--reverse" : ""
-            }`}
-          >
-            <div className="infra-image-wrap scroll-effect">
-              <div className="infra-image-card">
-                <img
-                  src={section.img}
-                  alt={section.title}
-                  className="infra-image"
-                />
-              </div>
-            </div>
-
-            <div className="infra-text">
-              <h2 className="infra-section-title">{section.title}</h2>
-              <ul className="infra-list">
-                {section.bullets.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
+        {/* NAVIGATION TABS */}
+        <div className="infra-tabs-container">
+          <div className="infra-tabs-header">
+            <h2 className="infra-tabs-title">Equipment & Capabilities</h2>
+            <div className="infra-tabs-count">
+              {activeTab + 1} / {sections.length}
             </div>
           </div>
-        ))}
+
+          <div className="infra-tabs-nav">
+            {sections.map((section, index) => {
+              const IconComponent = section.icon;
+              return (
+                <button
+                  key={section.id}
+                  className={`infra-tab-btn ${index === activeTab ? "infra-tab-btn--active" : ""}`}
+                  onClick={() => setActiveTab(index)}
+                >
+                  <span className="infra-tab-icon">
+                    <IconComponent />
+                  </span>
+                  <span className="infra-tab-label">{section.title}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* CONTENT DISPLAY */}
+        <div className="infra-content-wrapper">
+          <div className="infra-content-left">
+            <div className="infra-image-card">
+              <img
+                src={activeSection.img}
+                alt={activeSection.title}
+                className="infra-image"
+              />
+            </div>
+          </div>
+
+          <div className="infra-content-right">
+            <div className="infra-spec-header">
+              <h3 className="infra-spec-title">{activeSection.title}</h3>
+              <p className="infra-spec-description">{activeSection.description}</p>
+            </div>
+
+            <div className="infra-specs-grid">
+              {activeSection.specs.map((spec, index) => (
+                <div key={index} className="infra-spec-item">
+                  <div className="infra-spec-label">{spec.label}</div>
+                  <div className="infra-spec-value">{spec.value}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* CTA STRIP */}
