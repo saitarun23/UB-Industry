@@ -10,7 +10,7 @@ import Home from "./pages/home/Home";
 import About from "./pages/about/About";
 import Services from "./pages/services/Services";
 import Infrastructure from "./pages/infrastructure/Infrastructure";
-import WhatsNew from "./pages/whatsnew/WhatsNew";
+import Products from "./pages/products/Products";
 import Contact from "./pages/contact/Contact";
 
 const App = () => {
@@ -22,7 +22,7 @@ const App = () => {
       "about",
       "services",
       "infrastructure",
-      "whatsnew",
+      "products",
       "contact",
     ];
     return validPages.includes(hash) ? hash : "home";
@@ -48,7 +48,7 @@ const App = () => {
     about: <About />,
     services: <Services />,
     infrastructure: <Infrastructure />,
-    whatsnew: <WhatsNew />,
+    products: <Products />,
     contact: <Contact />,
   };
 

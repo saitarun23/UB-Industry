@@ -45,9 +45,9 @@ const Navbar = ({ onChangePage, activePage }) => {
           </a>
 
           <a
-            href="#whatsnew"
-            className={activePage === "whatsnew" ? "active" : ""}
-            onClick={handleLinkClick("whatsnew")}
+            href="#products"
+            className={activePage === "products" ? "active" : ""}
+            onClick={handleLinkClick("products")}
           >
             PRODUCTS
           </a>
@@ -109,9 +109,9 @@ const Navbar = ({ onChangePage, activePage }) => {
         </a>
 
         <a
-          href="#whatsnew"
-          className={activePage === "whatsnew" ? "active" : ""}
-          onClick={handleLinkClick("whatsnew")}
+          href="#products"
+          className={activePage === "products" ? "active" : ""}
+          onClick={handleLinkClick("products")}
         >
           PRODUCTS
         </a>

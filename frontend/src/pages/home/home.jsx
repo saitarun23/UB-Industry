@@ -1,7 +1,7 @@
 import React from 'react'
 import Hero from './Hero.jsx'
 import HomeServices from './HomeServices.jsx'
-import Products from './Products.jsx'
+import HomeProducts from './HomeProducts.jsx'
 import WhyChooseUs from './WhyChooseUs.jsx'
 // import StatsSection from './StatsSection.jsx'
 import ValuesSection from './ValuesSection.jsx'
@@ -13,7 +13,7 @@ const home = () => {
     <div>
       <Hero/>
       <HomeServices/>
-      <Products/>
+      <HomeProducts/>
       <WhyChooseUs/>
       {/* <StatsSection/> */}
       <ValuesSection/>

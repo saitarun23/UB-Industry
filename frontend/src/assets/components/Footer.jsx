@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import assets from "../images";
 import "../../styles/footer.css";
 
 // Custom SVG Icons
@@ -69,7 +70,6 @@ export default function Footer() {
   const [email, setEmail] = useState("");
   const [activeLink, setActiveLink] = useState(null);
 
-
   return (
     <footer className="footer-modern">
       {/* Main Footer Content */}
@@ -79,7 +79,7 @@ export default function Footer() {
           {/* Column 1: Company Info */}
           <div className="footer-column footer-about">
             <div className="footer-logo">
-              <div className="logo-square"></div>
+              <img src={assets.logo} alt="UB Industry Logo" className="footer-logo-img" />
               <div className="logo-text">
                 <h2>UB Industry</h2>
                 <span className="logo-tagline">Flexible Printing Solutions</span>
@@ -117,7 +117,7 @@ export default function Footer() {
               Get In Touch
             </h3>
             
-            <div className="contact-info">
+            <div className="contact-info contact-grid">
               <div className="contact-item">
                 <div className="contact-icon">
                   <MapPinIcon />

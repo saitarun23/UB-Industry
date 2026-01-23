@@ -1,32 +1,32 @@
 import React from "react";
-import "../../styles/products.css";
+import "../../styles/homeproducts.css";
 import assets from "../../assets/images";
 import { FiLink, FiSearch } from "react-icons/fi";
 
-const products = [
+const homeproducts = [
   {
     title: "General Purpose Packings",
-    image: assets.products1,
+    image: assets.product1,
   },
   {
     title: "Food & FMCG Packaging",
-    image: assets.products2,
+    image: assets.product2,
   },
   {
     title: "Personal Care Packaging",
-    image: assets.products3,
+    image: assets.product3,
   },
   {
     title: "Household Products",
-    image: assets.products4,
+    image: assets.product4,
   },
 ];
 
-export default function Products() {
+export default function HomeProducts() {
   return (
-    <section className="products-section scroll-effect">
+    <section className="homeproducts-section scroll-effect">
       {/* HEADING */}
-      <div className="products-heading scroll-effect">
+      <div className="homeproducts-heading scroll-effect">
         <span>Products</span>
         <h2>
           We specialize in the production of high-quality flexible packaging
@@ -35,17 +35,17 @@ export default function Products() {
       </div>
 
       {/* GRID */}
-      <div className="products-grid scroll-effect">
-        {products.map((item, index) => (
-          <div className="product-card" key={index}>
+      <div className="homeproducts-grid scroll-effect">
+        {homeproducts.map((item, index) => (
+          <div className="homeproduct-card" key={index}>
             <img src={item.image} alt={item.title} />
 
             {/* HOVER OVERLAY */}
-            <div className="product-overlay">
-              <p className="overlay-sub">Stationery</p>
+            <div className="homeproduct-overlay">
+              <p className="homeproductoverlay-sub">Stationery</p>
               <h3>{item.title}</h3>
 
-              <div className="overlay-icons">
+              <div className="homeproductoverlay-icons">
                 <span>
                   <FiLink />
                 </span>

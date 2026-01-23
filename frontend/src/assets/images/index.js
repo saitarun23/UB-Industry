@@ -1,4 +1,4 @@
-import logo from './logo1.jpeg';
+import logo from './logo.png';
 import hero1 from './hero1.png';
 import hero2 from './hero2.png';
 import printing from './printing.png';
@@ -15,6 +15,11 @@ import contacthero from './contacthero.png';
 import aboutHero from './aboutHero.png';
 import aboutDirector from './aboutDirector.png';
 import servicesHero from './servicesHero.png';
+import productHero from './productHero.png';
+import product1 from './product1.png';
+import product2 from './product2.png';
+import product3 from './product3.png';
+import product4 from './product4.png';
 
 
 export default {
@@ -34,5 +39,10 @@ export default {
   contacthero,
   aboutHero,
   aboutDirector,
-  servicesHero
+  servicesHero,
+  productHero,
+  product1,
+  product2,
+  product3,
+  product4,
 }
