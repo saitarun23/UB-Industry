@@ -3,7 +3,7 @@ import Hero from './Hero.jsx'
 import HomeServices from './HomeServices.jsx'
 import Products from './Products.jsx'
 import WhyChooseUs from './WhyChooseUs.jsx'
-import StatsSection from './StatsSection.jsx'
+// import StatsSection from './StatsSection.jsx'
 import ValuesSection from './ValuesSection.jsx'
 import AboutHighlights from './AboutHighlights.jsx'
 import ContactNewsletter from './ContactNewsletter.jsx'
@@ -15,7 +15,7 @@ const home = () => {
       <HomeServices/>
       <Products/>
       <WhyChooseUs/>
-      <StatsSection/>
+      {/* <StatsSection/> */}
       <ValuesSection/>
       <AboutHighlights/>
       <ContactNewsletter/>
