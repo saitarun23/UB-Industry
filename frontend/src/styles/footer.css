@@ -65,7 +65,6 @@
   object-fit: contain;
   border-radius: 4px;
 }
-
 .logo-text h2 {
   font-size: 24px;
   font-weight: 900;
@@ -88,6 +87,67 @@
   margin-bottom: 40px;
 }
 
+/* Newsletter Section */
+.footer-newsletter h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.newsletter-form {
+  position: relative;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  border: 1px solid #333;
+  transition: border-color 0.3s ease;
+}
+
+.input-wrapper:focus-within {
+  border-color: #fff;
+}
+
+.input-wrapper input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 16px 20px;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+.input-wrapper input::placeholder {
+  color: #666;
+}
+
+.subscribe-btn {
+  background: #fff;
+  border: none;
+  padding: 16px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  color: #000;
+}
+
+.subscribe-btn:hover {
+  background: #000;
+  color: #fff;
+  transform: translateX(4px);
+}
+
+.subscribe-btn svg {
+  width: 18px;
+  height: 18px;
+}
 
 /* ============================================
    FOOTER HEADINGS
@@ -375,8 +435,6 @@
 /* ============================================
    RESPONSIVE DESIGN
    ============================================ */
-
-   
 
 @media (max-width: 1200px) {
   .footer-grid {

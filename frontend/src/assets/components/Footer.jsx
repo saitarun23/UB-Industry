@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
+import "../../styles/Footer.css";
 import assets from "../images";
-import "../../styles/footer.css";
 
 // Custom SVG Icons
 const ArrowRightIcon = () => (
@@ -70,6 +70,22 @@ export default function Footer() {
   const [email, setEmail] = useState("");
   const [activeLink, setActiveLink] = useState(null);
 
+  const quickLinks = [
+    { name: "Home", path: "/" },
+    { name: "About Us", path: "/about" },
+    { name: "Services", path: "/services" },
+    { name: "Infrastructure", path: "/infrastructure" },
+    { name: "Products", path: "/products" },
+    { name: "Contact Us", path: "/contact" }
+  ];
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    // Handle newsletter subscription
+    console.log("Subscribing:", email);
+    setEmail("");
+  };
+
   return (
     <footer className="footer-modern">
       {/* Main Footer Content */}
@@ -78,7 +94,7 @@ export default function Footer() {
           
           {/* Column 1: Company Info */}
           <div className="footer-column footer-about">
-            <div className="footer-logo">
+             <div className="footer-logo">
               <img src={assets.logo} alt="UB Industry Logo" className="footer-logo-img" />
               <div className="logo-text">
                 <h2>UB Industry</h2>
@@ -92,6 +108,46 @@ export default function Footer() {
               all your packaging needs.
             </p>
 
+            {/* <div className="footer-newsletter">
+              <h4>Stay Updated</h4>
+              <form onSubmit={handleSubscribe} className="newsletter-form">
+                <div className="input-wrapper">
+                  <input 
+                    type="email" 
+                    placeholder="Enter your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                  <button type="submit" className="subscribe-btn">
+                    <ArrowRightIcon />
+                  </button>
+                </div>
+              </form>
+            </div> */}
+          </div>
+
+          {/* Column 2: Quick Links */}
+          <div className="footer-column">
+            <h3 className="footer-heading">
+              <span className="heading-line"></span>
+              Quick Links
+            </h3>
+            <ul className="footer-links">
+              {quickLinks.map((link, index) => (
+                <li 
+                  key={index}
+                  className={activeLink === index ? 'active' : ''}
+                  onMouseEnter={() => setActiveLink(index)}
+                  onMouseLeave={() => setActiveLink(null)}
+                >
+                  <a href={link.path}>
+                    <ChevronIcon />
+                    <span>{link.name}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Column 3: Services */}
@@ -117,7 +173,7 @@ export default function Footer() {
               Get In Touch
             </h3>
             
-            <div className="contact-info contact-grid">
+            <div className="contact-info">
               <div className="contact-item">
                 <div className="contact-icon">
                   <MapPinIcon />
