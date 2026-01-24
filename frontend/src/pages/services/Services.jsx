@@ -30,7 +30,7 @@ const packagingSolutions = [
     title: "Food Packaging",
     desc:
       "Solutions suitable for nitrogen flushing, good moisture and oxygen barrier with matt, gloss and metallic finishes.",
-    Icon: FoodPacketIcon,          
+    Icon: FoodPacketIcon,
     variant: "food",
   },
   {
@@ -51,7 +51,7 @@ const packagingSolutions = [
     title: "Industrial Packaging",
     desc:
       "High-performance industrial laminates engineered for demanding environments and heavy products.",
-    Icon: Box,            
+    Icon: Box,
     variant: "industrial",
   },
   {
@@ -74,37 +74,43 @@ const whyChooseUsFeatures = [
   {
     icon: Zap,
     title: "State-of-the-Art Technology",
-    description: "High-speed multi-colour printing lines with web guiding and camera tracking for precision and quality.",
+    description:
+      "High-speed multi-colour printing lines with web guiding and camera tracking for precision and quality.",
     gradient: "from-yellow-500 to-orange-500",
   },
   {
     icon: Shield,
     title: "Quality Assurance",
-    description: "Rigorous QA processes with in-line inspection systems ensuring consistent quality across every batch.",
+    description:
+      "Rigorous QA processes with in-line inspection systems ensuring consistent quality across every batch.",
     gradient: "from-blue-500 to-cyan-500",
   },
   {
     icon: Users,
     title: "Expert Team",
-    description: "Experienced production and technical teams with deep knowledge in flexible packaging solutions.",
+    description:
+      "Experienced production and technical teams with deep knowledge in flexible packaging solutions.",
     gradient: "from-purple-500 to-pink-500",
   },
   {
     icon: TrendingUp,
     title: "Scalable Production",
-    description: "From pilot runs to full-scale commercial production with quick turnaround and consistent output.",
+    description:
+      "From pilot runs to full-scale commercial production with quick turnaround and consistent output.",
     gradient: "from-green-500 to-emerald-500",
   },
   {
     icon: Clock,
     title: "Fast Turnaround",
-    description: "Efficient workflows and integrated processes ensure your packaging reaches market faster.",
+    description:
+      "Efficient workflows and integrated processes ensure your packaging reaches market faster.",
     gradient: "from-red-500 to-rose-500",
   },
   {
     icon: Sparkles,
     title: "Custom Solutions",
-    description: "Tailored packaging solutions designed specifically for your product requirements and market needs.",
+    description:
+      "Tailored packaging solutions designed specifically for your product requirements and market needs.",
     gradient: "from-indigo-500 to-blue-500",
   },
 ];
@@ -198,13 +204,8 @@ export default function Services() {
             </div>
             <div className="service-card-content">
               <div className="service-header">
-                <div className="service-icon-wrap">
-                  <Printer className="service-icon" />
-                </div>
-                <div className="service-header-text">
-                  <span className="service-tag">Core Service</span>
-                  <h3 className="service-title">High-Performance Printing</h3>
-                </div>
+                <span className="service-tag">Core Service</span>
+                <h3 className="service-title">High-Performance Printing</h3>
               </div>
               <p className="service-description">
                 Multi-color flexographic &amp; gravure printing on a range of
@@ -249,13 +250,8 @@ export default function Services() {
             </div>
             <div className="service-card-content">
               <div className="service-header">
-                <div className="service-icon-wrap">
-                  <Layers className="service-icon" />
-                </div>
-                <div className="service-header-text">
-                  <span className="service-tag">Barrier &amp; Protection</span>
-                  <h3 className="service-title">Coating &amp; Lamination</h3>
-                </div>
+                <span className="service-tag">Barrier &amp; Protection</span>
+                <h3 className="service-title">Coating &amp; Lamination</h3>
               </div>
               <p className="service-description">
                 Our lamination lines build structures that protect aroma, extend
@@ -298,13 +294,8 @@ export default function Services() {
             </div>
             <div className="service-card-content">
               <div className="service-header">
-                <div className="service-icon-wrap">
-                  <Scissors className="service-icon" />
-                </div>
-                <div className="service-header-text">
-                  <span className="service-tag">Precision Finishing</span>
-                  <h3 className="service-title">Web Slitting &amp; Rewinding</h3>
-                </div>
+                <span className="service-tag">Precision Finishing</span>
+                <h3 className="service-title">Web Slitting &amp; Rewinding</h3>
               </div>
               <p className="service-description">
                 Web-guided slitters with auto tension control deliver clean
@@ -348,13 +339,8 @@ export default function Services() {
             </div>
             <div className="service-card-content">
               <div className="service-header">
-                <div className="service-icon-wrap">
-                  <Package className="service-icon" />
-                </div>
-                <div className="service-header-text">
-                  <span className="service-tag">Ready-to-Fill</span>
-                  <h3 className="service-title">Pouch Conversion</h3>
-                </div>
+                <span className="service-tag">Ready-to-Fill</span>
+                <h3 className="service-title">Pouch Conversion</h3>
               </div>
               <p className="service-description">
                 Dedicated pouching lines convert printed laminates into
@@ -403,13 +389,8 @@ export default function Services() {
             </div>
             <div className="service-card-content">
               <div className="service-header">
-                <div className="service-icon-wrap">
-                  <FileText className="service-icon" />
-                </div>
-                <div className="service-header-text">
-                  <span className="service-tag">Design Support</span>
-                  <h3 className="service-title">Prepress &amp; Consulting</h3>
-                </div>
+                <span className="service-tag">Design Support</span>
+                <h3 className="service-title">Prepress &amp; Consulting</h3>
               </div>
               <p className="service-description">
                 We work closely with your marketing and procurement teams to
@@ -419,7 +400,9 @@ export default function Services() {
               <ul className="service-features">
                 <li>
                   <CheckCircle className="feature-check" />
-                  <span>Artwork review, trapping &amp; colour-separation guidance</span>
+                  <span>
+                    Artwork review, trapping &amp; colour-separation guidance
+                  </span>
                 </li>
                 <li>
                   <CheckCircle className="feature-check" />
@@ -464,24 +447,26 @@ export default function Services() {
             </div>
             <h2 className="why-choose-title">Why Choose Us</h2>
             <p className="why-choose-subtitle">
-              Decades of expertise combined with cutting-edge technology to deliver packaging solutions that exceed expectations.
+              Decades of expertise combined with cutting-edge technology to
+              deliver packaging solutions that exceed expectations.
             </p>
           </div>
 
           <div className="why-features-grid">
-            {whyChooseUsFeatures.map(({ icon: Icon, title, description, gradient }, index) => (
-              <div className="why-feature-card" key={index}>
-                <div className="why-feature-glow" />
-                <div className={`why-feature-icon-wrap gradient-${gradient}`}>
-                  <Icon className="why-feature-icon" />
+            {whyChooseUsFeatures.map(
+              ({ icon: Icon, title, description, gradient }, index) => (
+                <div className="why-feature-card" key={index}>
+                  <div className="why-feature-glow" />
+                  <div className={`why-feature-icon-wrap gradient-${gradient}`}>
+                    <Icon className="why-feature-icon" />
+                  </div>
+                  <h3 className="why-feature-title">{title}</h3>
+                  <p className="why-feature-desc">{description}</p>
                 </div>
-                <h3 className="why-feature-title">{title}</h3>
-                <p className="why-feature-desc">{description}</p>
-              </div>
-            ))}
+              )
+            )}
           </div>
 
-          
           {/* Additional Value Points */}
           <div className="why-value-cards">
             <div className="why-value-card why-value-primary">
@@ -491,7 +476,13 @@ export default function Services() {
               <div className="why-value-content">
                 <h3 className="why-value-title">Advanced Infrastructure</h3>
                 <p className="why-value-text">
-                  Our facility houses state-of-the-art machinery including high-speed rotogravure and flexographic printing presses, solvent-less lamination units, precision slitting machines, and automated pouch-making equipment. Each machine is regularly calibrated and maintained to deliver consistent, high-quality output that meets international packaging standards.
+                  Our facility houses state-of-the-art machinery including
+                  high-speed rotogravure and flexographic printing presses,
+                  solvent-less lamination units, precision slitting machines,
+                  and automated pouch-making equipment. Each machine is
+                  regularly calibrated and maintained to deliver consistent,
+                  high-quality output that meets international packaging
+                  standards.
                 </p>
               </div>
             </div>
@@ -503,7 +494,13 @@ export default function Services() {
               <div className="why-value-content">
                 <h3 className="why-value-title">Comprehensive Support</h3>
                 <p className="why-value-text">
-                  From concept to delivery, our technical team provides end-to-end guidance. We assist with material selection, structural design, artwork optimization, and production planning. Our experts help you navigate regulatory requirements, shelf-life testing, and sustainability considerations, ensuring your packaging solution is both commercially viable and market-ready.
+                  From concept to delivery, our technical team provides
+                  end-to-end guidance. We assist with material selection,
+                  structural design, artwork optimization, and production
+                  planning. Our experts help you navigate regulatory
+                  requirements, shelf-life testing, and sustainability
+                  considerations, ensuring your packaging solution is both
+                  commercially viable and market-ready.
                 </p>
               </div>
             </div>
