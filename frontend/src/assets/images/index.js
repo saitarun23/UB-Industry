@@ -11,15 +11,26 @@ import infra2 from './infra2.png';
 import infra3 from './infra3.png';
 import infra4 from './infra4.png';
 import infra5 from './infra5.png';
+import infra6 from './infra6.png';
+import infra7 from './infra7.png';
+import infra8 from './infra8.png';
 import contacthero from './contacthero.png';
 import aboutHero from './aboutHero.png';
+import aboutwe from './aboutwe.png';
+import aboutjourney from './aboutjourney.png';
 import aboutDirector from './aboutDirector.png';
 import servicesHero from './servicesHero.png';
+import service1 from './service1.png';
+import service2 from './service2.png';
+import service3 from './service3.png';
+import service4 from './service4.png';
+import service5 from './service5.png';
 import productHero from './productHero.png';
 import product1 from './product1.png';
 import product2 from './product2.png';
 import product3 from './product3.png';
 import product4 from './product4.png';
+import product5 from './product5.png';
 
 
 export default {
@@ -36,13 +47,24 @@ export default {
   infra3,
   infra4,
   infra5,
+  infra6,
+  infra7,
+  infra8,
   contacthero,
   aboutHero,
+  aboutwe,
+  aboutjourney,
   aboutDirector,
   servicesHero,
+  service1,
+  service2,
+  service3,
+  service4,
+  service5,
   productHero,
   product1,
   product2,
   product3,
   product4,
+  product5,
 }

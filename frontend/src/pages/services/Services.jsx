@@ -1,22 +1,113 @@
-import React from "react";
-import { 
-  Printer, 
-  Layers, 
-  Scissors, 
-  Package, 
-  FileText, 
-  CheckCircle, 
-  Settings, 
+import {
+  Printer,
+  Layers,
+  Scissors,
+  Package,
+  FileText,
+  CheckCircle,
+  Settings,
   Award,
-  TrendingUp,
-  Users,
+  Target,
+  Lightbulb,
+  Sprout,
+  CupSoda,
+  Droplet,
+  HeartPulse,
+  Box,
   Zap,
   Shield,
-  Target,
-  Lightbulb
+  Users,
+  TrendingUp,
+  Clock,
+  Sparkles,
 } from "lucide-react";
+import FoodPacketIcon from "../../assets/components/icons/FoodPacketIcon";
 import assets from "../../assets/images";
 import "../../styles/services.css";
+
+const packagingSolutions = [
+  {
+    title: "Food Packaging",
+    desc:
+      "Solutions suitable for nitrogen flushing, good moisture and oxygen barrier with matt, gloss and metallic finishes.",
+    Icon: FoodPacketIcon,          
+    variant: "food",
+  },
+  {
+    title: "Agriculture Packaging",
+    desc:
+      "Structures tailored for agricultural products with reliable barrier and mechanical strength for rural distribution.",
+    Icon: Sprout,
+    variant: "agri",
+  },
+  {
+    title: "Beverages Packaging",
+    desc:
+      "Roll stock and pouches that protect flavour and freshness while giving strong shelf appeal for beverages.",
+    Icon: CupSoda,
+    variant: "beverage",
+  },
+  {
+    title: "Industrial Packaging",
+    desc:
+      "High-performance industrial laminates engineered for demanding environments and heavy products.",
+    Icon: Box,            
+    variant: "industrial",
+  },
+  {
+    title: "Liquid Packaging",
+    desc:
+      "Leak-proof laminates and pouches for edible oils, cleaners and other liquid products.",
+    Icon: Droplet,
+    variant: "liquid",
+  },
+  {
+    title: "Healthcare Packaging",
+    desc:
+      "Packaging suitable for pharma and healthcare products with high hygiene and protection needs.",
+    Icon: HeartPulse,
+    variant: "health",
+  },
+];
+
+const whyChooseUsFeatures = [
+  {
+    icon: Zap,
+    title: "State-of-the-Art Technology",
+    description: "High-speed multi-colour printing lines with web guiding and camera tracking for precision and quality.",
+    gradient: "from-yellow-500 to-orange-500",
+  },
+  {
+    icon: Shield,
+    title: "Quality Assurance",
+    description: "Rigorous QA processes with in-line inspection systems ensuring consistent quality across every batch.",
+    gradient: "from-blue-500 to-cyan-500",
+  },
+  {
+    icon: Users,
+    title: "Expert Team",
+    description: "Experienced production and technical teams with deep knowledge in flexible packaging solutions.",
+    gradient: "from-purple-500 to-pink-500",
+  },
+  {
+    icon: TrendingUp,
+    title: "Scalable Production",
+    description: "From pilot runs to full-scale commercial production with quick turnaround and consistent output.",
+    gradient: "from-green-500 to-emerald-500",
+  },
+  {
+    icon: Clock,
+    title: "Fast Turnaround",
+    description: "Efficient workflows and integrated processes ensure your packaging reaches market faster.",
+    gradient: "from-red-500 to-rose-500",
+  },
+  {
+    icon: Sparkles,
+    title: "Custom Solutions",
+    description: "Tailored packaging solutions designed specifically for your product requirements and market needs.",
+    gradient: "from-indigo-500 to-blue-500",
+  },
+];
 
 export default function Services() {
   return (
@@ -46,44 +137,36 @@ export default function Services() {
             </div>
             <h2 className="services-intro-title">Our Capabilities</h2>
             <p className="services-intro-text">
-              At <strong>Urmila Bhupathiraju Flexible Printers</strong>, every job
-              is handled as a complete solution — from artwork and cylinder
-              preparation to printing, lamination, slitting and pouch conversion.
-              Our integrated setup helps you move faster to market, maintain
-              consistent quality and keep your packaging supply chain simple.
+              At <strong>Urmila Bhupathiraju Flexible Printers</strong>, every
+              job is handled as a complete solution — from artwork and cylinder
+              preparation to printing, lamination, slitting and pouch
+              conversion. Our integrated setup helps you move faster to market,
+              maintain consistent quality and keep your packaging supply chain
+              simple.
             </p>
           </div>
         </section>
 
-        {/* STATS SECTION */}
-        <section className="services-stats">
-          <div className="stat-card">
-            <div className="stat-icon-wrap">
-              <TrendingUp className="stat-icon" />
-            </div>
-            <h3 className="stat-number">500+</h3>
-            <p className="stat-label">Projects Completed</p>
+        {/* PACKAGING SOLUTIONS */}
+        <section className="packaging-section">
+          <div className="packaging-header">
+            <h2 className="packaging-title">Packaging Solutions</h2>
+            <p className="packaging-subtitle">
+              Application-focused flexible packaging for different product
+              categories.
+            </p>
           </div>
-          <div className="stat-card">
-            <div className="stat-icon-wrap">
-              <Users className="stat-icon" />
-            </div>
-            <h3 className="stat-number">200+</h3>
-            <p className="stat-label">Happy Clients</p>
-          </div>
-          <div className="stat-card">
-            <div className="stat-icon-wrap">
-              <Zap className="stat-icon" />
-            </div>
-            <h3 className="stat-number">99%</h3>
-            <p className="stat-label">On-Time Delivery</p>
-          </div>
-          <div className="stat-card">
-            <div className="stat-icon-wrap">
-              <Shield className="stat-icon" />
-            </div>
-            <h3 className="stat-number">100%</h3>
-            <p className="stat-label">Quality Assured</p>
+
+          <div className="packaging-grid">
+            {packagingSolutions.map(({ title, desc, Icon, variant }) => (
+              <div className="pack-card" key={title}>
+                <div className={`pack-icon-circle pack-${variant}`}>
+                  <Icon className="pack-icon" />
+                </div>
+                <h3 className="pack-card-title">{title}</h3>
+                <p className="pack-card-text">{desc}</p>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -104,7 +187,7 @@ export default function Services() {
           <article className="service-card">
             <div className="service-card-image">
               <img
-                src={assets.infra1}
+                src={assets.service1}
                 alt="Flexible packaging printing machine"
               />
               <div className="image-overlay">
@@ -132,7 +215,9 @@ export default function Services() {
               <ul className="service-features">
                 <li>
                   <CheckCircle className="feature-check" />
-                  <span>Surface &amp; reverse printing up to wide web widths</span>
+                  <span>
+                    Surface &amp; reverse printing up to wide web widths
+                  </span>
                 </li>
                 <li>
                   <CheckCircle className="feature-check" />
@@ -144,7 +229,9 @@ export default function Services() {
                 </li>
                 <li>
                   <CheckCircle className="feature-check" />
-                  <span>In-line inspection for print defects and shade variation</span>
+                  <span>
+                    In-line inspection for print defects and shade variation
+                  </span>
                 </li>
               </ul>
             </div>
@@ -153,10 +240,7 @@ export default function Services() {
           {/* LAMINATION */}
           <article className="service-card service-card-reverse">
             <div className="service-card-image">
-              <img
-                src={assets.servicesLam}
-                alt="Lamination machine"
-              />
+              <img src={assets.service2} alt="Lamination machine" />
               <div className="image-overlay">
                 <div className="overlay-icon-wrap">
                   <Layers className="overlay-icon" />
@@ -194,7 +278,9 @@ export default function Services() {
                 </li>
                 <li>
                   <CheckCircle className="feature-check" />
-                  <span>Heat-seal, cold-seal &amp; speciality coating options</span>
+                  <span>
+                    Heat-seal, cold-seal &amp; speciality coating options
+                  </span>
                 </li>
               </ul>
             </div>
@@ -203,10 +289,7 @@ export default function Services() {
           {/* SLITTING */}
           <article className="service-card">
             <div className="service-card-image">
-              <img
-                src={assets.servicesSlit}
-                alt="Slitting machine"
-              />
+              <img src={assets.service3} alt="Slitting machine" />
               <div className="image-overlay">
                 <div className="overlay-icon-wrap">
                   <Scissors className="overlay-icon" />
@@ -235,11 +318,15 @@ export default function Services() {
                 </li>
                 <li>
                   <CheckCircle className="feature-check" />
-                  <span>Custom slit widths for form-fill-seal &amp; VFFS machines</span>
+                  <span>
+                    Custom slit widths for form-fill-seal &amp; VFFS machines
+                  </span>
                 </li>
                 <li>
                   <CheckCircle className="feature-check" />
-                  <span>Core &amp; roll OD as per your machine requirements</span>
+                  <span>
+                    Core &amp; roll OD as per your machine requirements
+                  </span>
                 </li>
                 <li>
                   <CheckCircle className="feature-check" />
@@ -252,10 +339,7 @@ export default function Services() {
           {/* POUCHING */}
           <article className="service-card service-card-reverse">
             <div className="service-card-image">
-              <img
-                src={assets.servicesPouch}
-                alt="Pouching machine"
-              />
+              <img src={assets.service4} alt="Pouching machine" />
               <div className="image-overlay">
                 <div className="overlay-icon-wrap">
                   <Package className="overlay-icon" />
@@ -280,11 +364,15 @@ export default function Services() {
               <ul className="service-features">
                 <li>
                   <CheckCircle className="feature-check" />
-                  <span>Center-seal, three-side seal &amp; side-gusset pouches</span>
+                  <span>
+                    Center-seal, three-side seal &amp; side-gusset pouches
+                  </span>
                 </li>
                 <li>
                   <CheckCircle className="feature-check" />
-                  <span>Stand-up pouches with zipper, spout &amp; tear notch options</span>
+                  <span>
+                    Stand-up pouches with zipper, spout &amp; tear notch options
+                  </span>
                 </li>
                 <li>
                   <CheckCircle className="feature-check" />
@@ -292,7 +380,9 @@ export default function Services() {
                 </li>
                 <li>
                   <CheckCircle className="feature-check" />
-                  <span>Laser scoring, euro-hole and punch options on request</span>
+                  <span>
+                    Laser scoring, euro-hole and punch options on request
+                  </span>
                 </li>
               </ul>
             </div>
@@ -302,7 +392,7 @@ export default function Services() {
           <article className="service-card">
             <div className="service-card-image">
               <img
-                src={assets.servicesConsult}
+                src={assets.service5}
                 alt="Design and prepress consultation"
               />
               <div className="image-overlay">
@@ -333,15 +423,21 @@ export default function Services() {
                 </li>
                 <li>
                   <CheckCircle className="feature-check" />
-                  <span>Recommendations on substrates, thickness &amp; structure</span>
+                  <span>
+                    Recommendations on substrates, thickness &amp; structure
+                  </span>
                 </li>
                 <li>
                   <CheckCircle className="feature-check" />
-                  <span>Pack format suggestions based on filling &amp; distribution</span>
+                  <span>
+                    Pack format suggestions based on filling &amp; distribution
+                  </span>
                 </li>
                 <li>
                   <CheckCircle className="feature-check" />
-                  <span>Cost-to-performance optimisation for new launches</span>
+                  <span>
+                    Cost-to-performance optimisation for new launches
+                  </span>
                 </li>
               </ul>
             </div>
@@ -359,72 +455,57 @@ export default function Services() {
           </p>
         </section>
 
-        {/* EXPERTISE & CONSULTING - COMBINED SECTION */}
-        <section className="services-value-section">
-          <div className="value-section-header">
-            <h2 className="value-section-title">Why Choose Us</h2>
-            <div className="value-title-underline"></div>
+        {/* REDESIGNED WHY CHOOSE US SECTION */}
+        <section className="why-choose-section">
+          <div className="why-choose-header">
+            <div className="why-header-badge">
+              <Award className="why-badge-icon" />
+              <span>Our Advantage</span>
+            </div>
+            <h2 className="why-choose-title">Why Choose Us</h2>
+            <p className="why-choose-subtitle">
+              Decades of expertise combined with cutting-edge technology to deliver packaging solutions that exceed expectations.
+            </p>
           </div>
 
-          <div className="value-grid">
-            {/* EXPERTISE */}
-            <div className="value-card">
-              <div className="value-card-header">
-                <Settings className="value-card-icon" />
-                <h3 className="value-card-title">Our Expertise</h3>
+          <div className="why-features-grid">
+            {whyChooseUsFeatures.map(({ icon: Icon, title, description, gradient }, index) => (
+              <div className="why-feature-card" key={index}>
+                <div className="why-feature-glow" />
+                <div className={`why-feature-icon-wrap gradient-${gradient}`}>
+                  <Icon className="why-feature-icon" />
+                </div>
+                <h3 className="why-feature-title">{title}</h3>
+                <p className="why-feature-desc">{description}</p>
               </div>
-              <ul className="value-list">
-                <li>
-                  <span className="value-bullet"></span>
-                  <span>High-efficiency slitting machines with web guiding and camera tracking for critical jobs.</span>
-                </li>
-                <li>
-                  <span className="value-bullet"></span>
-                  <span>High-speed multi-colour printing lines capable of handling wide webs and large repeat sizes.</span>
-                </li>
-                <li>
-                  <span className="value-bullet"></span>
-                  <span>Ability to run short pilot lots and scale quickly into full commercial production.</span>
-                </li>
-                <li>
-                  <span className="value-bullet"></span>
-                  <span>Capability to produce speciality pouches for snacks, pet food, agro, detergent and frozen products.</span>
-                </li>
-                <li>
-                  <span className="value-bullet"></span>
-                  <span>Experienced production &amp; QA teams with a strong customer-service mindset.</span>
-                </li>
-              </ul>
+            ))}
+          </div>
+
+          
+          {/* Additional Value Points */}
+          <div className="why-value-cards">
+            <div className="why-value-card why-value-primary">
+              <div className="why-value-icon-circle">
+                <Settings className="why-value-icon" />
+              </div>
+              <div className="why-value-content">
+                <h3 className="why-value-title">Advanced Infrastructure</h3>
+                <p className="why-value-text">
+                  Our facility houses state-of-the-art machinery including high-speed rotogravure and flexographic printing presses, solvent-less lamination units, precision slitting machines, and automated pouch-making equipment. Each machine is regularly calibrated and maintained to deliver consistent, high-quality output that meets international packaging standards.
+                </p>
+              </div>
             </div>
 
-            {/* CONSULTING */}
-            <div className="value-card">
-              <div className="value-card-header">
-                <Lightbulb className="value-card-icon" />
-                <h3 className="value-card-title">Consulting &amp; Support</h3>
+            <div className="why-value-card why-value-secondary">
+              <div className="why-value-icon-circle">
+                <Lightbulb className="why-value-icon" />
               </div>
-              <ul className="value-list">
-                <li>
-                  <span className="value-bullet"></span>
-                  <span>Guidance from initial idea to final pack — material selection, print approach and pack format.</span>
-                </li>
-                <li>
-                  <span className="value-bullet"></span>
-                  <span>Support on artwork layout, design balance and colour choices.</span>
-                </li>
-                <li>
-                  <span className="value-bullet"></span>
-                  <span>Suggestions on number of layers and barrier levels based on product shelf-life and filling conditions.</span>
-                </li>
-                <li>
-                  <span className="value-bullet"></span>
-                  <span>Advice on pouch sizes keeping in mind product density, volume and display requirements.</span>
-                </li>
-                <li>
-                  <span className="value-bullet"></span>
-                  <span>Ongoing technical support to improve line efficiency and reduce wastage on your packing machines.</span>
-                </li>
-              </ul>
+              <div className="why-value-content">
+                <h3 className="why-value-title">Comprehensive Support</h3>
+                <p className="why-value-text">
+                  From concept to delivery, our technical team provides end-to-end guidance. We assist with material selection, structural design, artwork optimization, and production planning. Our experts help you navigate regulatory requirements, shelf-life testing, and sustainability considerations, ensuring your packaging solution is both commercially viable and market-ready.
+                </p>
+              </div>
             </div>
           </div>
         </section>

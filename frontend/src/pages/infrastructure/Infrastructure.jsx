@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaCog, FaPalette, FaLink, FaFilm, FaMicroscope } from "react-icons/fa";
+import { FaCog, FaPalette, FaLink, FaFilm, FaBox, FaIndustry, FaRuler, FaBullseye } from "react-icons/fa";
 import assets from "../../assets/images";
 import "../../styles/infrastructure.css";
 
@@ -7,7 +7,7 @@ const sections = [
   {
     id: 1,
     title: "Rotogravure Printing",
-    icon: FaCog,
+    icon: FaCog, // Good - mechanical printing process
     specs: [
       { label: "Equipment", value: "7 Rotomec presses from Italy" },
       { label: "Color Capability", value: "Up to 9 colours" },
@@ -16,12 +16,12 @@ const sections = [
       { label: "Max Width", value: "1200 mm" },
     ],
     description: "Advanced rotogravure technology for premium packaging solutions",
-    img: assets.infraRotogravure || assets.infra1,
+    img: assets.infra1,
   },
   {
     id: 2,
     title: "CI Flexo Printing",
-    icon: FaPalette,
+    icon: FaPalette, // Good - printing/color process
     specs: [
       { label: "Machines", value: "3 machines from F&K Germany" },
       { label: "Color Options", value: "Up to 10 colours" },
@@ -30,12 +30,12 @@ const sections = [
       { label: "Speed", value: "600 m/min" },
     ],
     description: "High-speed flexographic printing for diverse substrates",
-    img: assets.infraFlexo || assets.infra2,
+    img: assets.infra2,
   },
   {
     id: 3,
     title: "Adhesive Lamination",
-    icon: FaLink,
+    icon: FaLink, // Good - bonding/linking layers
     specs: [
       { label: "Lamination Lines", value: "10 machines" },
       { label: "Technology", value: "Solvent & solvent-free options" },
@@ -44,12 +44,12 @@ const sections = [
       { label: "Capacity", value: "High-volume production" },
     ],
     description: "Multi-layer adhesive bonding for enhanced barrier properties",
-    img: assets.infraLamination || assets.infra3,
+    img: assets.infra3,
   },
   {
     id: 4,
-    title: "Polyethylene Film",
-    icon: FaFilm,
+    title: "Extrusion lamination",
+    icon: FaFilm, // Good - film production
     specs: [
       { label: "Film Lines", value: "11 blown film lines" },
       { label: "Layer Structure", value: "Up to 9-layer structures" },
@@ -58,12 +58,12 @@ const sections = [
       { label: "Production", value: "Multi-layer complexity" },
     ],
     description: "Custom polyethylene film production with advanced layering",
-    img: assets.infraPolyFilm || assets.infra4,
+    img: assets.infra4,
   },
   {
     id: 5,
-    title: "Cylinder Engraving",
-    icon: FaMicroscope,
+    title: "Pouching",
+    icon: FaBox, // Better - represents packaging/pouches
     specs: [
       { label: "Facility", value: "In-house engraving capability" },
       { label: "Annual Output", value: "15000 cylinders per annum" },
@@ -72,7 +72,49 @@ const sections = [
       { label: "Quality", value: "Premium precision engraving" },
     ],
     description: "Precision cylinder engraving for rotogravure applications",
-    img: assets.infraCylinder || assets.infra5,
+    img: assets.infra5,
+  },
+  {
+    id: 6,
+    title: "Polyethylene Extrusion",
+    icon: FaIndustry, // Better - industrial manufacturing process
+    specs: [
+      { label: "Lines", value: "Multiple high-output lines" },
+      { label: "Material", value: "LDPE, LLDPE, HDPE blends" },
+      { label: "Layer Options", value: "Up to 7-layer structures" },
+      { label: "Capacity", value: "High-volume PE film production" },
+      { label: "Applications", value: "Packaging, lamination, industrial films" },
+    ],
+    description: "Advanced polyethylene extrusion for durable and versatile packaging films.",
+    img: assets.infra6,
+  },
+  {
+    id: 7,
+    title: "CI Plate Making",
+    icon: FaRuler, // Better - precision manufacturing/measurement
+    specs: [
+      { label: "Technology", value: "Digital photopolymer plate making" },
+      { label: "Resolution", value: "Up to 5080 DPI" },
+      { label: "Plate Types", value: "Solvent & thermal plates" },
+      { label: "Precision", value: "High-accuracy dot reproduction" },
+      { label: "Support", value: "Optimized for CI Flexo printing" },
+    ],
+    description: "High-precision photopolymer plate making that enhances CI Flexo print quality.",
+    img: assets.infra7,
+  },
+  {
+    id: 8,
+    title: "Cylinder Engraving",
+    icon: FaBullseye, // Good - precision/accuracy in engraving
+    specs: [
+      { label: "Engraving Units", value: "State-of-the-art electronic engraving" },
+      { label: "Capacity", value: "15000+ cylinders annually" },
+      { label: "Accuracy", value: "High-precision micro-cell engraving" },
+      { label: "Consistency", value: "Auto-controlled engraving systems" },
+      { label: "Quality", value: "Premium rotogravure cylinders" },
+    ],
+    description: "Electronic cylinder engraving for superior rotogravure print clarity and consistency.",
+    img: assets.infra8,
   },
 ];
 

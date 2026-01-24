@@ -43,14 +43,14 @@ export default function About() {
               <div className="about-company-image-container">
                 <div className="about-company-image-wrap">
                   <img
-                    src={assets.infraHero}
+                    src={assets.aboutwe}
                     alt="Manufacturing facility"
                     className="about-company-image"
                   />
                 </div>
-                <div className="about-image-badge">
+                {/* <div className="about-image-badge">
                   <span className="badge-text">State-of-the-art Facility</span>
-                </div>
+                </div> */}
               </div>
 
               <div className="about-company-text">
@@ -158,7 +158,7 @@ export default function About() {
                 <h3 className="about-director-name">Urmila Bhupathiraju</h3>
                 <p className="about-director-role">Managing Director</p>
 
-                <div className="director-stats">
+                {/* <div className="director-stats">
                   <div className="stat-item">
                     <span className="stat-number">20+</span>
                     <span className="stat-label">Years Experience</span>
@@ -167,7 +167,7 @@ export default function About() {
                     <span className="stat-number">100%</span>
                     <span className="stat-label">Client Satisfaction</span>
                   </div>
-                </div>
+                </div> */}
               </div>
 
               <div className="about-director-right">
@@ -222,13 +222,13 @@ export default function About() {
               <div className="history-image-side">
                 <div className="history-image-wrap">
                   <img
-                    src={assets.infraHero}
+                    src={assets.aboutjourney}
                     alt="Company journey"
                     className="history-image"
                   />
-                  <div className="history-overlay">
+                  {/* <div className="history-overlay">
                     <span className="overlay-text">Since Inception</span>
-                  </div>
+                  </div> */}
                 </div>
               </div>
 

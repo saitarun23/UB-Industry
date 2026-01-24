@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "../../styles/contactnewsletter.css";
-import { FiMail, FiArrowRight } from "react-icons/fi";
+import { FiMail, FiArrowRight, FiCheck } from "react-icons/fi";
+import { HiSparkles } from "react-icons/hi";
 
 export default function ContactNewsletter() {
   const [email, setEmail] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -12,34 +14,83 @@ export default function ContactNewsletter() {
       return;
     }
     // Placeholder for API call
-    alert(`Thank you for subscribing with ${email}!`);
-    setEmail("");
+    setIsSubmitted(true);
+    setTimeout(() => {
+      setEmail("");
+      setIsSubmitted(false);
+    }, 3000);
   };
 
   return (
-    <section className="newsletter-section scroll-effect">
+    <section className="newsletter-section">
+      <div className="newsletter-bg-pattern"></div>
       <div className="newsletter-container">
-        <h2>Subscribe to Our Newsletter</h2>
-        <p>
-          Stay updated with the latest developments, innovations, and updates
-          from our packaging industry.
-        </p>
-
-        <form className="newsletter-form" onSubmit={handleSubmit}>
-          <div className="input-wrapper">
-            <FiMail className="input-icon" />
-            <input
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
+        <div className="newsletter-content">
+          {/* Icon Badge */}
+          <div className="newsletter-badge">
+            <HiSparkles className="badge-icon" />
+            <span>Stay Connected</span>
           </div>
-          <button type="submit">
-            Subscribe <FiArrowRight className="arrow-icon" />
-          </button>
-        </form>
+
+          {/* Heading */}
+          <h2 className="newsletter-title">
+            Join Our Packaging Community
+          </h2>
+          
+          {/* Description */}
+          <p className="newsletter-description">
+            Get exclusive insights into flexible packaging innovations, industry trends, 
+            technical guides, and special offers delivered straight to your inbox.
+          </p>
+
+          {/* Features List */}
+          <div className="newsletter-features">
+            <div className="feature-item">
+              <FiCheck className="feature-check" />
+              <span>Industry News & Updates</span>
+            </div>
+            <div className="feature-item">
+              <FiCheck className="feature-check" />
+              <span>Technical Resources</span>
+            </div>
+            <div className="feature-item">
+              <FiCheck className="feature-check" />
+              <span>Exclusive Promotions</span>
+            </div>
+          </div>
+
+          {/* Form */}
+          <form className="newsletter-form" onSubmit={handleSubmit}>
+            <div className="input-wrapper">
+              <FiMail className="input-icon" />
+              <input
+                type="email"
+                placeholder="Enter your email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                disabled={isSubmitted}
+              />
+            </div>
+            <button 
+              type="submit" 
+              className={`subscribe-btn ${isSubmitted ? 'submitted' : ''}`}
+              disabled={isSubmitted}
+            >
+              {isSubmitted ? (
+                <>
+                  <FiCheck className="btn-icon" />
+                  Subscribed!
+                </>
+              ) : (
+                <>
+                  Subscribe Now
+                  <FiArrowRight className="btn-icon" />
+                </>
+              )}
+            </button>
+          </form>
+        </div>
       </div>
     </section>
   );
