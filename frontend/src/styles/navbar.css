@@ -46,21 +46,23 @@
 .brand-name {
   color: #ffffff;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.6px;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 /* Second line */
 .brand-industry {
-  color: #757c89;
-  font-size: 15px;
-  font-weight: 500;
-  margin-left: -70px;
+  color: #d4af37;
+  font-size: 16px;
+  font-weight: 550;
+  margin-left: -20px;
+  font-family: 'Pacifico', cursive;
 }
 
+
 /* =========================
-   DESKTOP / LAPTOP MENU
-   (>= 1024px)
+   DESKTOP / LAPTOP MENU (>= 1024px)
    ========================= */
 .navbar-menu {
   display: flex;
