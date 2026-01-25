@@ -31,6 +31,23 @@ import product2 from './product2.png';
 import product3 from './product3.png';
 import product4 from './product4.png';
 import product5 from './product5.png';
+import dairy from '../images/New folder/dairy.png';
+import vaccum from '../images/New folder/vaccum.png';
+import personalcare from '../images/New folder/personalcare.png';
+import powdered from '../images/New folder/powdered.png';
+import seafood from '../images/New folder/seafood.png';
+import beverges from '../images/New folder/beverges.png';
+import biscuits from '../images/New folder/biscuits.png';
+import chips from '../images/New folder/chips.png';
+import coffee from '../images/New folder/coffee.png';
+import oil from '../images/New folder/oil.png';
+import agriculture from '../images/New folder/agriculture.png';
+import chemical from '../images/New folder/chemical.png';
+import healthcare from '../images/New folder/healthcare.png';
+import lid from '../images/New folder/lid.png';
+import shrink from '../images/New folder/shrink.png';
+import ecommerce from '../images/New folder/ecommerce.png';
+
 
 
 export default {
@@ -67,4 +84,21 @@ export default {
   product3,
   product4,
   product5,
+  dairy,
+  vaccum,
+  personalcare,
+  powdered,
+  seafood,
+  beverges,
+  biscuits,
+  chips,
+  coffee,
+  oil,
+  agriculture,
+  chemical,
+  healthcare,
+  lid,
+  shrink,
+  ecommerce,
+
 }
