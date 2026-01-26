@@ -4,54 +4,54 @@ import "../../styles/product.css";
 
 const FOOD_CATEGORIES = [
   {
-    id: "snacks-chips",
+    id: "snackschips",
     title: "Snacks & Chips",
-    image: assets.chips,
+    image: assets.chip4,
   },
   {
     id: "biscuits",
     title: "Biscuits",
-    image: assets.biscuits,
+    image: assets.biscuit4,
   },
   {
-    id: "dairy-products",
+    id: "dairyproducts",
     title: "Dairy Products",
-    image: assets.dairy,
+    image: assets.dairy1,
   },
   {
-    id: "oil-products",
+    id: "oilproducts",
     title: "Oil Products",
-    image: assets.oil,
+    image: assets.oil6,
   },
   {
-    id: "powdered-products",
-    title: "Powdered Products",
-    image: assets.powdered,
+    id: "GeneralGroceries",
+    title: "General Groceries",
+    image: assets.powdered1,
   },
   {
-    id: "tea-coffee",
+    id: "teacoffee",
     title: "Tea & Coffee",
-    image: assets.coffee,
+    image: assets.coffee2,
   },
   {
-    id: "vaccum-packaging",
+    id: "vaccumpackaging",
     title: "Vaccum Packaging",
-    image: assets.vaccum,
+    image: assets.vaccum6,
   },
   {
     id: "beverages",
     title: "Beverages",
-    image: assets.beverges,
+    image: assets.beverages1,
   },
   {
     id: "seafood",
     title: "Seafood",
-    image: assets.seafood,
+    image: assets.seafood1,
   },
   {
-    id: "lidding-films",
+    id: "liddingfilms",
     title: "Lidding Films",
-    image: assets.lid,
+    image: assets.lid2,
   },
 ];
 
@@ -59,42 +59,65 @@ const NON_FOOD_CATEGORIES = [
   {
     id: "detergent",
     title: "Detergent",
-    image: assets.detergents,
+    image: assets.detergent2,
   },
   {
-    id: "fertilizer",
-    title: "Fertilizers",
-    image: assets.chemical,
+    id: "chemicals",
+    title: "Chemicals",
+    image: assets.chemical1,
   },
   {
-    id: "agro-chemicals",
-    title: "Agro Chemicals",
-    image: assets.agriculture,
+    id: "agriculture",
+    title: "Agriculture",
+    image: assets.agri2,
   },
   {
-    id: "health-care",
+    id: "healthcare",
     title: "Health Care",
-    image: assets.healthcare,
+    image: assets.healthcare1,
   },
   {
-    id: "e-commerce",
+    id: "ecommerce",
     title: "E-commerce Packaging",
-    image: assets.ecommerce,
+    image: assets.ecommerce2,
   },
   {
-    id: "shrink-films",
+    id: "shrinkfilms",
     title: "Shrink Films",
-    image: assets.shrink,
+    image: assets.shrink1,
   },
   {
-    id: "body-care",
+    id: "bodycare",
     title: "Body Care",
-    image: assets.bodycare,
+    image: assets.bodycare2,
   },
 ];
 
+// 👇 helper to get initial tab (remembers last choice)
+const getInitialTab = () => {
+  if (typeof window === "undefined") return "food";
+
+  const saved = sessionStorage.getItem("productsActiveTab");
+  if (saved === "food" || saved === "non-food") {
+    return saved;
+  }
+
+  // optional: read from URL like #products?tab=non-food (if you ever use that)
+  const hash = window.location.hash.startsWith("#")
+    ? window.location.hash.slice(1)
+    : window.location.hash;
+  const [, queryString = ""] = hash.split("?");
+  const params = new URLSearchParams(queryString);
+  const tabFromUrl = params.get("tab");
+  if (tabFromUrl === "food" || tabFromUrl === "non-food") {
+    return tabFromUrl;
+  }
+
+  return "food";
+};
+
 export default function Products() {
-  const [activeTab, setActiveTab] = useState("food");
+  const [activeTab, setActiveTab] = useState(getInitialTab);
   const [query, setQuery] = useState("");
 
   const categories = useMemo(
@@ -109,6 +132,23 @@ export default function Products() {
       item.title.toLowerCase().includes(q)
     );
   }, [categories, query]);
+
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("productsActiveTab", tab); // 👈 remember last tab
+    }
+  };
+
+  const handleCardClick = (id) => {
+    // also store current tab before leaving
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("productsActiveTab", activeTab);
+    }
+
+    // navigate to detail page with hash
+    window.location.hash = `#product-detail?item=${id}`;
+  };
 
   return (
     <main className="product-page" id="products">
@@ -146,7 +186,7 @@ export default function Products() {
             className={`product-tab ${
               activeTab === "food" ? "active" : ""
             }`}
-            onClick={() => setActiveTab("food")}
+            onClick={() => handleTabClick("food")}
           >
             FOOD
           </button>
@@ -155,7 +195,7 @@ export default function Products() {
             className={`product-tab ${
               activeTab === "non-food" ? "active" : ""
             }`}
-            onClick={() => setActiveTab("non-food")}
+            onClick={() => handleTabClick("non-food")}
           >
             NON FOOD
           </button>
@@ -167,7 +207,7 @@ export default function Products() {
             <article
               key={item.id}
               className="product-card"
-              onClick={() => window.location.hash = `#product-detail?item=${item.id}`}
+              onClick={() => handleCardClick(item.id)}
             >
               <div className="product-card-image">
                 <img src={item.image} alt={item.title} />
@@ -180,4 +220,3 @@ export default function Products() {
     </main>
   );
 }
-

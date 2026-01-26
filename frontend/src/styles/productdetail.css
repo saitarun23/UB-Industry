@@ -24,11 +24,11 @@
 }
 
 .detail-img-box {
-  background: #ffffff;
+  background: transparent;
   border-radius: 16px;
   padding: 20px;
   max-width: 220px;
-  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
+  /* box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15); */
 }
 
 .detail-img-box img {

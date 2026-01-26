@@ -163,7 +163,7 @@
    ===================================================== */
 
 .product-card {
-  background: #ffffff;          /* white card */
+  background: #000000;          /* white card */
   color: #000000;               /* dark text inside card */
   border: 1px solid #333333;
   padding: 40px 1px 32px;
@@ -176,7 +176,7 @@
 .product-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 24px 45px rgba(0, 0, 0, 0.22);
-  border-color: #ffffff;
+  /* border-color: #ffffff; */
 }
 
 .product-card-image {
@@ -195,7 +195,7 @@
   font-size: 1.3rem;
   font-weight: 500;
   margin-top: 20px;
-  color: #000000;               /* title also dark for readability */
+  color: #ffffff;               /* title also dark for readability */
 }
 
 /* =====================================================

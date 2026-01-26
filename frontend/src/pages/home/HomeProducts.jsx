@@ -9,7 +9,7 @@ const homeproducts = [
   { title: "Personal Care Packaging", image: assets.personalcare },
   { title: "General Purpose Products Packaging", image: assets.powdered },
   { title: "Seafood Packaging", image: assets.seafood },
-  { title: "Beverages Packaging", image: assets.beverges },
+  { title: "Beverages Packaging", image: assets.beverages },
   { title: "Biscuits Packaging", image: assets.biscuits },
   { title: "Chips Packaging", image: assets.chips },
   { title: "Coffee Packaging", image: assets.coffee },
