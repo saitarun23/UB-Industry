@@ -11,12 +11,12 @@ export default function Hero() {
   // Add a background color for each product
   const heroData = [
     { id: 1, img: assets.product1, bg: "linear-gradient(135deg, #e5e909 0%, #e5f10b 100%)" }, // green-ish
-    { id: 2, img: assets.product2, bg: "linear-gradient(135deg, #bbff99 0%, #18ff08 100%)" }, // orange/red
+    { id: 2, img: assets.product2, bg: "linear-gradient(135deg, #5f9445 0%, #18ff08 100%)" }, // orange/red
     { id: 3, img: assets.product3, bg: "linear-gradient(135deg, #f72516 0%, #e31313 100%)" }, // yellow/orange
     { id: 4, img: assets.product4, bg: "linear-gradient(135deg, #0d35e7 0%, #150bd8 100%)" }, // blue
-    { id: 5, img: assets.product5, bg: "linear-gradient(135deg, #f8a10d 0%, #f39f86 100%)" }, // warm
+    { id: 5, img: assets.product5, bg: "linear-gradient(135deg, #9a7027 0%, #f39f86 100%)" }, // warm
     { id: 6, img: assets.product6, bg: "linear-gradient(135deg, #f309ff 0%, #b301ff 100%)" }, // light
-    { id: 7, img: assets.product7, bg: "linear-gradient(135deg, #ffc400 0%, #fb3b06 100%)" }, // warm
+    { id: 7, img: assets.product7, bg: "linear-gradient(135deg, #8c6c4b 0%, #fb3b06 100%)" }, // warm
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
