@@ -12,7 +12,10 @@ export default function Hero() {
     { id: 1, img: assets.product1, label: "Rigid Boxes" },
     { id: 2, img: assets.product2, label: "Labels" },
     { id: 3, img: assets.product3, label: "Cartons" },
-    { id: 5, img: assets.product5, label: "Flex Banners" },
+    { id: 4, img: assets.product4, label: "Flex Banners" },
+    { id: 5, img: assets.product5, label: "Paper Bags" },
+    { id: 6, img: assets.product6, label: "Brochures" },
+    { id: 7, img: assets.product7, label: "Flyers" },
   ];
 
   return (

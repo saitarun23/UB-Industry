@@ -31,6 +31,8 @@ import product2 from './product2.png';
 import product3 from './product3.png';
 import product4 from './product4.png';
 import product5 from './product5.png';
+import product6 from './product6.png';
+import product7 from './product7.png';
 import dairy from '../images/New folder/dairy.png';
 import vaccum from '../images/New folder/vaccum.png';
 import personalcare from '../images/New folder/personalcare.png';
@@ -84,6 +86,8 @@ export default {
   product3,
   product4,
   product5,
+  product6,
+  product7,
   dairy,
   vaccum,
   personalcare,

@@ -86,7 +86,6 @@ export default function HomeServices() {
                   className="read-more" 
                   onClick={() => {
                     window.location.hash = "#services";
-                    window.scrollTo(0, 0);
                   }}
                 >
                   <span className="read-more-text">Explore More</span>

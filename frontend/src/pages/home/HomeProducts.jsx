@@ -4,21 +4,21 @@ import assets from "../../assets/images";
 import { FiLink, FiSearch } from "react-icons/fi";
 
 const homeproducts = [
-  { title: "Dairy Products", image: assets.dairy },
+  { title: "Dairy Products Packaging", image: assets.dairy },
   { title: "Vaccum Packaging", image: assets.vaccum },
   { title: "Personal Care Packaging", image: assets.personalcare },
-  { title: "Household Products", image: assets.powdered },
-  { title: "Seafood", image: assets.seafood },
-  { title: "Beverage Packaging", image: assets.beverges },
+  { title: "General Purpose Products Packaging", image: assets.powdered },
+  { title: "Seafood Packaging", image: assets.seafood },
+  { title: "Beverages Packaging", image: assets.beverges },
   { title: "Biscuits Packaging", image: assets.biscuits },
   { title: "Chips Packaging", image: assets.chips },
   { title: "Coffee Packaging", image: assets.coffee },
   { title: "Oil Packaging", image: assets.oil },
   { title: "Healthcare Packaging", image: assets.healthcare },
-  { title: "Lid Packaging", image: assets.lid },
+  { title: "Lidding Films", image: assets.lid },
   { title: "Chemical Packaging", image: assets.chemical },
   { title: "Agriculture Packaging", image: assets.agriculture },
-  { title: "Shrink Packaging", image: assets.shrink },
+  { title: "Shrink Films", image: assets.shrink },
   { title: "E-commerce Packaging", image: assets.ecommerce },
 ];
 

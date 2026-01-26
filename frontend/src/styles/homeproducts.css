@@ -55,8 +55,8 @@
 /* CARD */
 .homeproduct-card {
   position: relative;
-  min-width: 250px;
-  height: 360px; /* slightly taller */
+  min-width: 200px;
+  height: 400px; /* slightly taller */
   overflow: hidden;
   background: #fff;
   flex-shrink: 0;
