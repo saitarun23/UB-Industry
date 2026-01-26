@@ -40,6 +40,12 @@ import powdered from '../images/New folder/powdered.png';
 import seafood from '../images/New folder/seafood.png';
 import beverges from '../images/New folder/beverges.png';
 import biscuits from '../images/New folder/biscuits.png';
+import biscuit1 from '../images/New folder/biscuit1.png';
+import biscuit2 from '../images/New folder/biscuit2.png';
+import biscuit3 from '../images/New folder/biscuit3.png';
+import biscuit4 from '../images/New folder/biscuit4.png';
+import biscuit5 from '../images/New folder/biscuit5.png';
+import biscuit6 from '../images/New folder/biscuit6.png';
 import chips from '../images/New folder/chips.png';
 import coffee from '../images/New folder/coffee.png';
 import oil from '../images/New folder/oil.png';
@@ -49,7 +55,8 @@ import healthcare from '../images/New folder/healthcare.png';
 import lid from '../images/New folder/lid.png';
 import shrink from '../images/New folder/shrink.png';
 import ecommerce from '../images/New folder/ecommerce.png';
-
+import bodycare from '../images/New folder/bodycare.png';
+import detergents from '../images/New folder/detergents.png';
 
 
 export default {
@@ -95,6 +102,13 @@ export default {
   seafood,
   beverges,
   biscuits,
+  biscuit1,
+  biscuit2,
+  biscuit3,
+  biscuit4,
+  biscuit5,
+  biscuit6,
+
   chips,
   coffee,
   oil,
@@ -104,5 +118,7 @@ export default {
   lid,
   shrink,
   ecommerce,
+  bodycare,
+  detergents
 
 }
