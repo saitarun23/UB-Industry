@@ -8,6 +8,8 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  /* Background is now set inline from React
+     but keep a default just in case */
   background: linear-gradient(135deg, #6dd5ed 0%, #2193b0 100%);
 }
 
@@ -30,22 +32,28 @@
 
 /* Additional wavy line patterns - topographic style */
 .hero-bg-pattern::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background-image: 
-    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 50 Q 25 45, 50 50 T 100 50' stroke='rgba(255,255,255,0.2)' stroke-width='1' fill='none'/%3E%3Cpath d='M0 60 Q 25 55, 50 60 T 100 60' stroke='rgba(255,255,255,0.15)' stroke-width='1' fill='none'/%3E%3Cpath d='M0 70 Q 25 65, 50 70 T 100 70' stroke='rgba(255,255,255,0.12)' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 50 Q 25 45, 50 50 T 100 50' stroke='rgba(255,255,255,0.2)' stroke-width='1' fill='none'/%3E%3Cpath d='M0 60 Q 25 55, 50 60 T 100 60' stroke='rgba(255,255,255,0.15)' stroke-width='1' fill='none'/%3E%3Cpath d='M0 70 Q 25 65, 50 70 T 100 70' stroke='rgba(255,255,255,0.12)' stroke-width='1' fill='none'/%3E%3C/svg%3E");
   background-size: 200px 200px;
   opacity: 0.6;
 }
 
 .hero-bg-pattern::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.06) 0%, transparent 50%);
+  background: radial-gradient(
+      circle at 20% 30%,
+      rgba(255, 255, 255, 0.08) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(255, 255, 255, 0.06) 0%,
+      transparent 50%
+    );
 }
 
 /* ========== MAIN LAYOUT ========== */
@@ -105,7 +113,7 @@
 
 .hero-swiper {
   width: 100%;
-  height: 350px;
+  height: 420px; /* increased height for larger product */
 }
 
 /* ========== SLIDE CONTENT ========== */
@@ -116,53 +124,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px;
+  padding: 20px; /* reduced padding so image can be bigger */
 }
 
 .slide-image {
-  max-width: 100%;
+  max-width: 100%; /* bigger product */
   max-height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 24px 50px rgba(0, 0, 0, 0.35));
+  transform: scale(1.05);
+  transition: transform 0.6s ease;
 }
 
-/* Label below image */
-.slide-label-wrapper {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.slide-label {
-  font-size: 32px;
-  font-weight: 600;
-  color: #1a1a1a;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: inline-block;
-}
-
-/* ========== PAGINATION DOTS ========== */
-
-.hero-pagination {
-  margin-top: 25px;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.dot.active {
-  background: #000000;
-  width: 12px;
-  height: 12px;
+/* Slight extra zoom for active slide */
+.swiper-slide-active .slide-image {
+  transform: scale(1.12);
 }
 
 /* ========== FADE ANIMATION ========== */
@@ -181,11 +157,6 @@
   animation: fadeInScale 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.swiper-slide-active .slide-label {
-  animation: fadeInUp 0.8s ease 0.3s forwards;
-  opacity: 0;
-}
-
 @keyframes fadeInScale {
   from {
     opacity: 0;
@@ -193,18 +164,7 @@
   }
   to {
     opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+    transform: scale(1.12);
   }
 }
 
@@ -221,7 +181,7 @@
   }
 
   .hero-swiper {
-    height: 450px;
+    height: 420px;
   }
 }
 
@@ -246,11 +206,7 @@
   }
 
   .hero-swiper {
-    height: 420px;
-  }
-
-  .slide-label {
-    font-size: 28px;
+    height: 400px;
   }
 }
 
@@ -270,25 +226,11 @@
   }
 
   .hero-swiper {
-    height: 350px;
+    height: 330px;
   }
 
   .slide-content {
-    padding: 20px;
-  }
-
-  .slide-label {
-    font-size: 22px;
-  }
-
-  .dot {
-    width: 8px;
-    height: 8px;
-  }
-
-  .dot.active {
-    width: 10px;
-    height: 10px;
+    padding: 16px;
   }
 }
 
@@ -299,9 +241,5 @@
 
   .hero-swiper {
     height: 300px;
-  }
-
-  .slide-label {
-    font-size: 20px;
   }
 }

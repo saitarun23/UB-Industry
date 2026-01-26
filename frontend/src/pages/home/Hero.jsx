@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
 import assets from "../../assets/images";
@@ -8,23 +8,40 @@ import "swiper/css/effect-fade";
 import "../../styles/hero.css";
 
 export default function Hero() {
+  // Add a background color for each product
   const heroData = [
-    { id: 1, img: assets.product1, label: "Rigid Boxes" },
-    { id: 2, img: assets.product2, label: "Labels" },
-    { id: 3, img: assets.product3, label: "Cartons" },
-    { id: 4, img: assets.product4, label: "Flex Banners" },
-    { id: 5, img: assets.product5, label: "Paper Bags" },
-    { id: 6, img: assets.product6, label: "Brochures" },
-    { id: 7, img: assets.product7, label: "Flyers" },
+    { id: 1, img: assets.product1, bg: "linear-gradient(135deg, #e5e909 0%, #e5f10b 100%)" }, // green-ish
+    { id: 2, img: assets.product2, bg: "linear-gradient(135deg, #bbff99 0%, #18ff08 100%)" }, // orange/red
+    { id: 3, img: assets.product3, bg: "linear-gradient(135deg, #f72516 0%, #e31313 100%)" }, // yellow/orange
+    { id: 4, img: assets.product4, bg: "linear-gradient(135deg, #0d35e7 0%, #150bd8 100%)" }, // blue
+    { id: 5, img: assets.product5, bg: "linear-gradient(135deg, #f8a10d 0%, #f39f86 100%)" }, // warm
+    { id: 6, img: assets.product6, bg: "linear-gradient(135deg, #f309ff 0%, #b301ff 100%)" }, // light
+    { id: 7, img: assets.product7, bg: "linear-gradient(135deg, #ffc400 0%, #fb3b06 100%)" }, // warm
   ];
 
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
-    <section className="hero-section">
+    <section
+      className="hero-section"
+      style={{ background: heroData[activeIndex].bg }}
+    >
       {/* Wavy background pattern */}
       <div className="hero-bg-pattern">
-        <svg className="wave-svg" viewBox="0 0 1440 800" preserveAspectRatio="none">
+        <svg
+          className="wave-svg"
+          viewBox="0 0 1440 800"
+          preserveAspectRatio="none"
+        >
           <defs>
-            <pattern id="wave-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+            <pattern
+              id="wave-pattern"
+              x="0"
+              y="0"
+              width="100"
+              height="100"
+              patternUnits="userSpaceOnUse"
+            >
               <path
                 d="M0 50 Q 25 40, 50 50 T 100 50"
                 stroke="rgba(255,255,255,0.15)"
@@ -61,7 +78,7 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* RIGHT COLUMN - 3D Card Swiper */}
+        {/* RIGHT COLUMN - Product Swiper */}
         <div className="hero-right">
           <div className="hero-swiper-wrapper">
             <Swiper
@@ -72,31 +89,20 @@ export default function Hero() {
               autoplay={{ delay: 3500, disableOnInteraction: false }}
               speed={1000}
               className="hero-swiper"
+              onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
             >
               {heroData.map((item) => (
                 <SwiperSlide key={item.id}>
                   <div className="slide-content">
                     <img
                       src={item.img}
-                      alt={item.label}
+                      alt=""
                       className="slide-image"
                     />
                   </div>
                 </SwiperSlide>
               ))}
             </Swiper>
-
-            {/* Label below the image */}
-            <div className="slide-label-wrapper">
-              <span className="slide-label">{heroData[0].label}</span>
-            </div>
-
-            {/* Pagination dots */}
-            <div className="hero-pagination">
-              {heroData.map((item, index) => (
-                <span key={item.id} className={`dot ${index === 0 ? 'active' : ''}`}></span>
-              ))}
-            </div>
           </div>
         </div>
       </div>
