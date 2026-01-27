@@ -97,8 +97,8 @@ export default function Footer() {
              <div className="footer-logo">
               <img src={assets.logo} alt="UB Industry Logo" className="footer-logo-img" />
               <div className="logo-text">
-                <h2>UB Industry</h2>
-                <span className="logo-tagline">Flexible Printing Solutions</span>
+                <h2>UB Industries</h2>
+                <span className="logo-tagline">Flexible Rotto Print & Pack Solutions</span>
               </div>
             </div>
             

@@ -1,4 +1,5 @@
 import logo from './logo.png';
+import logo1 from './logo1.png';
 import hero1 from './hero1.png';
 import hero2 from './hero2.png';
 import printing from './printing.png';
@@ -145,7 +146,7 @@ import detergent6 from '../images/New folder/detergent6.png';
 
 
 export default {
-  logo,
+  logo,logo1,
   hero1,
   hero2,
   printing,

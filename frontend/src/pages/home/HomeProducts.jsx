@@ -29,6 +29,11 @@ export default function HomeProducts() {
   const scrollContainerRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
 
+  const handleNavigateToProducts = () => {
+    window.location.hash = "#products";
+    window.scrollTo(0, 0);
+  };
+
   // auto-scroll in a circular loop
   useEffect(() => {
     const container = scrollContainerRef.current;
@@ -70,9 +75,9 @@ export default function HomeProducts() {
   };
 
   return (
-    <section className="homeproducts-section scroll-effect">
+    <section className="homeproducts-section">
       {/* HEADING */}
-      <div className="homeproducts-heading scroll-effect">
+      <div className="homeproducts-heading">
         <span>Products</span>
         <h2>
           We specialize in the production of high-quality flexible packaging
@@ -84,7 +89,7 @@ export default function HomeProducts() {
       <div className="homeproducts-scroll-wrapper">
         <div
           ref={scrollContainerRef}
-          className="homeproducts-scroll-container scroll-effect"
+          className="homeproducts-scroll-container"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           onWheel={handleWheel}
@@ -97,10 +102,10 @@ export default function HomeProducts() {
                 <h3>{item.title}</h3>
 
                 <div className="homeproductoverlay-icons">
-                  <span>
+                  <span onClick={handleNavigateToProducts} style={{ cursor: "pointer" }}>
                     <FiLink />
                   </span>
-                  <span>
+                  <span onClick={handleNavigateToProducts} style={{ cursor: "pointer" }}>
                     <FiSearch />
                   </span>
                 </div>

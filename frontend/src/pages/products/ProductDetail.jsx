@@ -15,20 +15,20 @@ const PRODUCT_DETAILS = {
     ],
 
     overview: {
-      materials: `Tailor-made combinations from single layer to five layers 
-      as per shelf life requirement. Combinations like PET, MET PET, BOPP, 
-      MET BOPP, CPP, MET CPP, Paper, Al Foil, PA as per requirement.`,
+      materials: `Tailor-made laminate combinations ranging from single-layer to five-layer structures,
+       designed to meet varying shelf-life requirements. Options include PET, MET PET, BOPP, MET BOPP, CPP, MET CPP, Paper,
+       Aluminium Foil, and PA, selected as per product needs.`,
 
       features: [
-        "Excellent moisture, oxygen & gas barrier properties.",
-        "Tailor-made laminates depending on shelf-life needs.",
-        "High tear-resistance and durability.",
+        "Excellent moisture, oxygen, and gas-barrier properties.",
+        "Customizable laminate structures based on specific shelf-life requirements",
+        "High tear-resistance and superior durability.",
       ],
 
       benefits: [
-        "Advanced printing with Rotogravure & Flexo for standout packaging.",
-        "Customised printed & unprinted rolls for HFFS & VFFS.",
-        "Available in Matt, Gloss, Metallic, Clear, and Window combinations.",
+        "High-quality Rotogravure and Flexo printing for premium visual appeal.",
+        "Custom printed and unprinted rolls suitable for both HFFS and VFFS applications.",
+        "Available in Matt, Gloss, Metallic, Clear, and Window finish combinations.",
       ],
     },
   },
@@ -56,9 +56,9 @@ const PRODUCT_DETAILS = {
       ],
 
       benefits: [
-        "Advanced printing with Rotogravure & Flexo for standout packaging.",
-        "Customised printed & unprinted rolls for HFFS & VFFS.",
-        "Available in Matt, Gloss, Metallic, Clear, and Window combinations.",
+        "High-quality Rotogravure and Flexo printing for premium visual appeal.",
+        "Custom printed and unprinted rolls suitable for both HFFS and VFFS applications.",
+        "Available in Matt, Gloss, Metallic, Clear, and Window finish combinations.",
       ],
     },
   },

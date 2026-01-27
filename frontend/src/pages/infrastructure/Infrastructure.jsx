@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaCog, FaPalette, FaLink, FaFilm, FaBox, FaIndustry, FaRuler, FaBullseye } from "react-icons/fa";
 import assets from "../../assets/images";
 import "../../styles/infrastructure.css";
@@ -7,7 +7,7 @@ const sections = [
   {
     id: 1,
     title: "Rotogravure Printing",
-    icon: FaCog, // Good - mechanical printing process
+    icon: FaCog,
     specs: [
       { label: "Equipment", value: "7 Rotomec presses from Italy" },
       { label: "Color Capability", value: "Up to 9 colours" },
@@ -21,7 +21,7 @@ const sections = [
   {
     id: 2,
     title: "CI Flexo Printing",
-    icon: FaPalette, // Good - printing/color process
+    icon: FaPalette,
     specs: [
       { label: "Machines", value: "3 machines from F&K Germany" },
       { label: "Color Options", value: "Up to 10 colours" },
@@ -35,7 +35,7 @@ const sections = [
   {
     id: 3,
     title: "Adhesive Lamination",
-    icon: FaLink, // Good - bonding/linking layers
+    icon: FaLink,
     specs: [
       { label: "Lamination Lines", value: "10 machines" },
       { label: "Technology", value: "Solvent & solvent-free options" },
@@ -49,7 +49,7 @@ const sections = [
   {
     id: 4,
     title: "Extrusion lamination",
-    icon: FaFilm, // Good - film production
+    icon: FaFilm,
     specs: [
       { label: "Film Lines", value: "11 blown film lines" },
       { label: "Layer Structure", value: "Up to 9-layer structures" },
@@ -63,7 +63,7 @@ const sections = [
   {
     id: 5,
     title: "Pouching",
-    icon: FaBox, // Better - represents packaging/pouches
+    icon: FaBox,
     specs: [
       { label: "Facility", value: "In-house engraving capability" },
       { label: "Annual Output", value: "15000 cylinders per annum" },
@@ -77,7 +77,7 @@ const sections = [
   {
     id: 6,
     title: "Polyethylene Extrusion",
-    icon: FaIndustry, // Better - industrial manufacturing process
+    icon: FaIndustry,
     specs: [
       { label: "Lines", value: "Multiple high-output lines" },
       { label: "Material", value: "LDPE, LLDPE, HDPE blends" },
@@ -91,7 +91,7 @@ const sections = [
   {
     id: 7,
     title: "CI Plate Making",
-    icon: FaRuler, // Better - precision manufacturing/measurement
+    icon: FaRuler,
     specs: [
       { label: "Technology", value: "Digital photopolymer plate making" },
       { label: "Resolution", value: "Up to 5080 DPI" },
@@ -105,7 +105,7 @@ const sections = [
   {
     id: 8,
     title: "Cylinder Engraving",
-    icon: FaBullseye, // Good - precision/accuracy in engraving
+    icon: FaBullseye,
     specs: [
       { label: "Engraving Units", value: "State-of-the-art electronic engraving" },
       { label: "Capacity", value: "15000+ cylinders annually" },
@@ -121,6 +121,27 @@ const sections = [
 export default function Infrastructure() {
   const [activeTab, setActiveTab] = useState(0);
   const activeSection = sections[activeTab];
+
+  // Force scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+
+    // Additional attempts with delays
+    const timer1 = setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 50);
+
+    const timer2 = setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 150);
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+    };
+  }, []);
 
   return (
     <main className="infra-page">

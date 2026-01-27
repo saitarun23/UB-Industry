@@ -11,27 +11,25 @@ import About from "./pages/about/About";
 import Services from "./pages/services/Services";
 import Infrastructure from "./pages/infrastructure/Infrastructure";
 import Products from "./pages/products/Products";
+import ProductDetail from "./pages/products/ProductDetail";
 import Contact from "./pages/contact/Contact";
-import ProductDetail from "./pages/products/ProductDetail"; // ⭐ NEW
 
 const App = () => {
   // Get initial page from URL hash (/#about, /#services, etc.)
   const getPageFromHash = () => {
-    // hash looks like: "#products" or "#product-detail?item=biscuits"
-    const rawHash = window.location.hash.replace("#", "") || "home";
-    const page = rawHash.split("?")[0]; // remove query part
-
+    const hash = window.location.hash.replace("#", "") || "home";
+    // Extract the page name (before the ? if present)
+    const pageName = hash.split("?")[0];
     const validPages = [
       "home",
       "about",
       "services",
       "infrastructure",
       "products",
-      "product-detail", // ⭐ NEW
+      "product-detail",
       "contact",
     ];
-
-    return validPages.includes(page) ? page : "home";
+    return validPages.includes(pageName) ? pageName : "home";
   };
 
   const [activePage, setActivePage] = useState(getPageFromHash);
@@ -39,7 +37,7 @@ const App = () => {
   // Re-run scroll effect when page changes
   useScrollEffect(activePage);
 
-  // Listen to URL hash changes (back/forward, manual typing, clicks)
+  // Listen to URL hash changes (back/forward, manual typing)
   useEffect(() => {
     const handleHashChange = () => {
       setActivePage(getPageFromHash());
@@ -55,7 +53,7 @@ const App = () => {
     services: <Services />,
     infrastructure: <Infrastructure />,
     products: <Products />,
-    "product-detail": <ProductDetail />, // ⭐ NEW
+    "product-detail": <ProductDetail />,
     contact: <Contact />,
   };
 
