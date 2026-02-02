@@ -22,7 +22,7 @@ const Navbar = ({ onChangePage, activePage }) => {
 
           <div className="brand-text">
             <span className="brand-name">Urmila Bhupathiraju Industries</span>
-            <span className="brand-industry">Flexible Rotto Print & Pack Solutions</span>
+            <span className="brand-industry">Flexible Roto Print & Pack</span>
           </div>
         </div>
 

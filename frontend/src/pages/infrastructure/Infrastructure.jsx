@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FaCog, FaPalette, FaLink, FaFilm, FaBox, FaIndustry, FaRuler, FaBullseye } from "react-icons/fa";
+import { FaCog, FaPalette, FaLink, FaFilm, FaBox, FaCut } from "react-icons/fa";
 import assets from "../../assets/images";
 import "../../styles/infrastructure.css";
 
@@ -9,114 +9,61 @@ const sections = [
     title: "Rotogravure Printing",
     icon: FaCog,
     specs: [
-      { label: "Equipment", value: "7 Rotomec presses from Italy" },
-      { label: "Color Capability", value: "Up to 9 colours" },
+      { label: "Color Capability", value: "Up to 7 colours" },
       { label: "Control System", value: "Auto registration control" },
       { label: "Quality", value: "On-line video & defect detection" },
-      { label: "Max Width", value: "1200 mm" },
+      { label: "Max Width", value: "1050 mm" },
     ],
     description: "Advanced rotogravure technology for premium packaging solutions",
     img: assets.infra1,
   },
+
   {
     id: 2,
-    title: "CI Flexo Printing",
-    icon: FaPalette,
-    specs: [
-      { label: "Machines", value: "3 machines from F&K Germany" },
-      { label: "Color Options", value: "Up to 10 colours" },
-      { label: "Detection", value: "Defect detection system" },
-      { label: "Width Range", value: "Up to 1250 mm" },
-      { label: "Speed", value: "600 m/min" },
-    ],
-    description: "High-speed flexographic printing for diverse substrates",
-    img: assets.infra2,
-  },
-  {
-    id: 3,
-    title: "Adhesive Lamination",
+    title: "Lamination",
     icon: FaLink,
     specs: [
-      { label: "Lamination Lines", value: "10 machines" },
-      { label: "Technology", value: "Solvent & solvent-free options" },
-      { label: "Web Width", value: "Up to 1320 mm" },
-      { label: "Specialization", value: "High-barrier laminates" },
-      { label: "Capacity", value: "High-volume production" },
+      { label: "Technology", value: "Solvent & solvent-free lamination" },
+      { label: "Coating System", value: "High-precision gravure coating" },
+      { label: "Bond Strength", value: "Excellent interlayer adhesion" },
+      { label: "Quality Control", value: "On-line coating & defect monitoring" },
+      { label: "Max Width", value: "Up to 1320 mm" },
     ],
-    description: "Multi-layer adhesive bonding for enhanced barrier properties",
+    description: "Multi-layer lamination for enhanced strength and barrier performance",
     img: assets.infra3,
   },
+
   {
-    id: 4,
-    title: "Extrusion lamination",
-    icon: FaFilm,
+    id: 3,
+    title: "Slitting",
+    icon: FaCut, // ✅ Slitting icon
     specs: [
-      { label: "Film Lines", value: "11 blown film lines" },
-      { label: "Layer Structure", value: "Up to 9-layer structures" },
-      { label: "Monthly Capacity", value: "3000+ MT" },
-      { label: "Thickness Range", value: "18–280 microns" },
-      { label: "Production", value: "Multi-layer complexity" },
+      { label: "Slitting Type", value: "Razor & shear slitting" },
+      { label: "Tension Control", value: "Automatic web tension control" },
+      { label: "Edge Quality", value: "Clean, burr-free edges" },
+      { label: "Inspection", value: "On-line defect inspection system" },
+      { label: "Max Width", value: "Up to 1320 mm" },
     ],
-    description: "Custom polyethylene film production with advanced layering",
+    description: "Precision slitting for consistent roll quality and smooth conversion",
     img: assets.infra4,
   },
+
   {
-    id: 5,
+    id: 4,
     title: "Pouching",
     icon: FaBox,
     specs: [
-      { label: "Facility", value: "In-house engraving capability" },
-      { label: "Annual Output", value: "15000 cylinders per annum" },
-      { label: "Expansion", value: "Ready for future capacity" },
-      { label: "Process Control", value: "Tight consistency standards" },
-      { label: "Quality", value: "Premium precision engraving" },
+      { label: "Pouch Types", value: "Stand-up, flat & zipper pouches" },
+      { label: "Sealing System", value: "Precision temperature-controlled sealing" },
+      { label: "Automation", value: "PLC & servo-driven control" },
+      { label: "Quality Check", value: "Seal integrity & pouch inspection" },
+      { label: "Output", value: "High-speed, consistent production" },
     ],
-    description: "Precision cylinder engraving for rotogravure applications",
+    description: "Advanced pouch making solutions for flexible packaging applications",
     img: assets.infra5,
   },
-  {
-    id: 6,
-    title: "Polyethylene Extrusion",
-    icon: FaIndustry,
-    specs: [
-      { label: "Lines", value: "Multiple high-output lines" },
-      { label: "Material", value: "LDPE, LLDPE, HDPE blends" },
-      { label: "Layer Options", value: "Up to 7-layer structures" },
-      { label: "Capacity", value: "High-volume PE film production" },
-      { label: "Applications", value: "Packaging, lamination, industrial films" },
-    ],
-    description: "Advanced polyethylene extrusion for durable and versatile packaging films.",
-    img: assets.infra6,
-  },
-  {
-    id: 7,
-    title: "CI Plate Making",
-    icon: FaRuler,
-    specs: [
-      { label: "Technology", value: "Digital photopolymer plate making" },
-      { label: "Resolution", value: "Up to 5080 DPI" },
-      { label: "Plate Types", value: "Solvent & thermal plates" },
-      { label: "Precision", value: "High-accuracy dot reproduction" },
-      { label: "Support", value: "Optimized for CI Flexo printing" },
-    ],
-    description: "High-precision photopolymer plate making that enhances CI Flexo print quality.",
-    img: assets.infra7,
-  },
-  {
-    id: 8,
-    title: "Cylinder Engraving",
-    icon: FaBullseye,
-    specs: [
-      { label: "Engraving Units", value: "State-of-the-art electronic engraving" },
-      { label: "Capacity", value: "15000+ cylinders annually" },
-      { label: "Accuracy", value: "High-precision micro-cell engraving" },
-      { label: "Consistency", value: "Auto-controlled engraving systems" },
-      { label: "Quality", value: "Premium rotogravure cylinders" },
-    ],
-    description: "Electronic cylinder engraving for superior rotogravure print clarity and consistency.",
-    img: assets.infra8,
-  },
 ];
+
 
 export default function Infrastructure() {
   const [activeTab, setActiveTab] = useState(0);
@@ -149,22 +96,20 @@ export default function Infrastructure() {
       <header className="infra-hero">
         <div className="infra-hero-bg">
           <img
-            src={assets.infraHero || assets.infraRotogravure || assets.infra1}
+            src={ assets.infraHero }
             alt="Infrastructure overview"
           />
         </div>
         <div className="infra-hero-overlay" />
         <div className="infra-hero-content">
-          <p className="infra-hero-kicker">Infrastructure</p>
-          <h1 className="infra-hero-title">
-            Precision equipment for every print run.
-          </h1>
-          <p className="infra-hero-subtitle">
+          <h1 className="infra-hero-title scroll-effect">Infrastructure</h1>
+            <p className="infra-hero-subtitle scroll-effect">
             A future-ready plant with high-speed presses, laminators and film
             lines to support demanding packaging projects.
-          </p>
+            </p>
         </div>
-      </header>
+      </header>     
+      
 
       {/* ADVANCED TAB-BASED SECTION */}
       <section className="infra-main">
@@ -223,21 +168,6 @@ export default function Infrastructure() {
               ))}
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* CTA STRIP */}
-      <section className="infra-cta">
-        <div className="infra-cta-inner">
-          <p className="infra-cta-kicker">Let&apos;s talk infrastructure</p>
-          <h2 className="infra-cta-title">
-            Ready for your next high-volume print or packaging project.
-          </h2>
-          <p className="infra-cta-text">
-            From artwork to finished roll, our lines are built to deliver
-            consistent quality, fast turnarounds, and strong brand presence on
-            shelf.
-          </p>
         </div>
       </section>
     </main>

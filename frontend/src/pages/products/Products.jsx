@@ -159,7 +159,7 @@ export default function Products() {
         </div>
         <div className="product-hero-overlay" />
         <div className="product-hero-content">
-          <h1 className="product-hero-title">Our Products</h1>
+          <h1 className="product-hero-title">Products</h1>
         </div>
       </header>
 

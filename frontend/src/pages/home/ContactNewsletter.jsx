@@ -5,45 +5,69 @@ import { HiSparkles } from "react-icons/hi";
 
 export default function ContactNewsletter() {
   const [email, setEmail] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [status, setStatus] = useState("idle"); // idle | loading | success | error
+  const [message, setMessage] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!email) {
-      alert("Please enter your email.");
+      setStatus("error");
+      setMessage("Please enter your email address.");
       return;
     }
-    // Placeholder for API call
-    setIsSubmitted(true);
-    setTimeout(() => {
+
+    setStatus("loading");
+    setMessage("");
+
+    try {
+      const res = await fetch("http://localhost:5000/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        throw new Error(data?.error || data?.message || "Subscription failed");
+      }
+
+      setStatus("success");
+      setMessage("You’re subscribed! Check your email for confirmation.");
       setEmail("");
-      setIsSubmitted(false);
-    }, 3000);
+
+      // auto reset message
+      setTimeout(() => {
+        setStatus("idle");
+        setMessage("");
+      }, 4000);
+    } catch (err) {
+      setStatus("error");
+      setMessage(err.message || "Server error. Please try again.");
+    }
   };
 
   return (
     <section className="newsletter-section">
       <div className="newsletter-bg-pattern"></div>
+
       <div className="newsletter-container">
         <div className="newsletter-content">
-          {/* Icon Badge */}
+          {/* Badge */}
           <div className="newsletter-badge">
             <HiSparkles className="badge-icon" />
             <span>Stay Connected</span>
           </div>
 
-          {/* Heading */}
-          <h2 className="newsletter-title">
-            Join Our Packaging Community
-          </h2>
-          
-          {/* Description */}
+          <h2 className="newsletter-title">Join Our Packaging Community</h2>
+
           <p className="newsletter-description">
-            Get exclusive insights into flexible packaging innovations, industry trends, 
-            technical guides, and special offers delivered straight to your inbox.
+            Get exclusive insights into flexible packaging innovations, industry
+            trends, technical guides, and special offers delivered straight to
+            your inbox.
           </p>
 
-          {/* Features List */}
           <div className="newsletter-features">
             <div className="feature-item">
               <FiCheck className="feature-check" />
@@ -59,7 +83,7 @@ export default function ContactNewsletter() {
             </div>
           </div>
 
-          {/* Form */}
+          {/* FORM */}
           <form className="newsletter-form" onSubmit={handleSubmit}>
             <div className="input-wrapper">
               <FiMail className="input-icon" />
@@ -68,16 +92,21 @@ export default function ContactNewsletter() {
                 placeholder="Enter your email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                disabled={status === "loading"}
                 required
-                disabled={isSubmitted}
               />
             </div>
-            <button 
-              type="submit" 
-              className={`subscribe-btn ${isSubmitted ? 'submitted' : ''}`}
-              disabled={isSubmitted}
+
+            <button
+              type="submit"
+              className={`subscribe-btn ${
+                status === "success" ? "submitted" : ""
+              }`}
+              disabled={status === "loading"}
             >
-              {isSubmitted ? (
+              {status === "loading" ? (
+                "Subscribing..."
+              ) : status === "success" ? (
                 <>
                   <FiCheck className="btn-icon" />
                   Subscribed!
@@ -90,6 +119,19 @@ export default function ContactNewsletter() {
               )}
             </button>
           </form>
+
+          {/* ✅ STATUS MESSAGE UI */}
+          {message && (
+            <div
+              className={`newsletter-status ${
+                status === "success"
+                  ? "newsletter-status--success"
+                  : "newsletter-status--error"
+              }`}
+            >
+              {message}
+            </div>
+          )}
         </div>
       </div>
     </section>

@@ -1,0 +1,409 @@
+/* splashscreen.css */
+
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  overflow: hidden;
+
+  transition: filter 1s ease, opacity 1s ease;
+}
+
+.splash-screen.blurring {
+  filter: blur(12px);
+  opacity: 0;
+}
+
+/* Phase 1: Company Introduction Container */
+.splash-container {
+  position: absolute;
+  width: 100%;
+  max-width: 800px;
+  padding: 40px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+
+  text-align: center;
+  
+  opacity: 1;
+  transition: opacity 0.8s ease-out;
+  z-index: 2;
+}
+
+.splash-container.fade-out-container {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Logo Styles */
+.logo-container {
+  width: 200px;
+  height: 200px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+  
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.1));
+}
+
+.logo-container.fade-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.company-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Company Name Styles */
+.company-name {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.company-name.slide-up {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.name-line {
+  font-size: 36px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  color: #ffffff;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.name-line.emphasis {
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  background: linear-gradient(90deg, #ffffff 0%, #e0e0e0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Tagline Styles */
+.tagline {
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: #d4af37;
+  text-transform: uppercase;
+  
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  
+  margin-top: 8px;
+}
+
+.tagline.fade-in-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Decorative Line */
+.decorative-line {
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    #d4af37 50%, 
+    transparent 100%
+  );
+  
+  margin-top: 16px;
+  transition: width 1s ease-out;
+}
+
+.decorative-line.expand {
+  width: 300px;
+}
+
+/* Phase 2: Full-Screen Services Showcase */
+.splash-services-fullscreen {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.splash-service-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  opacity: 0;
+  transform: scale(1.1);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  
+  pointer-events: none;
+}
+
+.splash-service-slide.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+}
+
+.splash-service-slide.exited {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.splash-service-content {
+  text-align: center;
+  padding: 40px;
+  z-index: 2;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.splash-service-title {
+  font-size: 72px;
+  font-weight: 800;
+  letter-spacing: 12px;
+  color: #ffffff;
+  text-transform: uppercase;
+  
+  text-shadow: 0 6px 20px rgba(0, 0, 0, 0.9),
+               0 0 40px rgba(255, 255, 255, 0.1);
+  
+  animation: slideInTitle 0.8s ease-out;
+}
+
+.splash-service-divider {
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    #d4af37 50%, 
+    transparent 100%
+  );
+  
+  animation: expandDivider 0.6s ease-out 0.3s both;
+}
+
+.splash-service-description {
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  color: #d4af37;
+  text-transform: uppercase;
+  
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.8);
+  
+  animation: fadeInDescription 0.8s ease-out 0.5s both;
+}
+
+/* Animations */
+@keyframes slideInTitle {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes expandDivider {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 120px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInDescription {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design - Tablet */
+@media (max-width: 1024px) {
+  .splash-service-title {
+    font-size: 56px;
+    letter-spacing: 10px;
+  }
+  
+  .splash-service-description {
+    font-size: 20px;
+    letter-spacing: 2px;
+  }
+  
+  .splash-service-divider {
+    width: 100px;
+  }
+}
+
+/* Responsive Design - Mobile */
+@media (max-width: 768px) {
+  .splash-container {
+    padding: 30px;
+    gap: 20px;
+  }
+
+  .logo-container {
+    width: 160px;
+    height: 160px;
+  }
+
+  .name-line {
+    font-size: 28px;
+    letter-spacing: 3px;
+  }
+
+  .name-line.emphasis {
+    font-size: 32px;
+    letter-spacing: 4px;
+  }
+
+  .tagline {
+    font-size: 18px;
+    letter-spacing: 1.5px;
+  }
+
+  .decorative-line.expand {
+    width: 200px;
+  }
+  
+  .splash-service-title {
+    font-size: 48px;
+    letter-spacing: 8px;
+  }
+  
+  .splash-service-description {
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+  
+  .splash-service-content {
+    padding: 30px;
+    gap: 16px;
+  }
+  
+  .splash-service-divider {
+    width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .splash-container {
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .logo-container {
+    width: 130px;
+    height: 130px;
+  }
+
+  .name-line {
+    font-size: 22px;
+    letter-spacing: 2px;
+  }
+
+  .name-line.emphasis {
+    font-size: 26px;
+    letter-spacing: 3px;
+  }
+
+  .tagline {
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
+
+  .decorative-line.expand {
+    width: 150px;
+  }
+  
+  .splash-service-title {
+    font-size: 36px;
+    letter-spacing: 6px;
+  }
+  
+  .splash-service-description {
+    font-size: 14px;
+    letter-spacing: 1.5px;
+  }
+  
+  .splash-service-content {
+    padding: 20px;
+    gap: 12px;
+  }
+  
+  .splash-service-divider {
+    width: 60px;
+    height: 2px;
+  }
+}
+
+/* Accessibility - Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .splash-screen,
+  .logo-container,
+  .company-name,
+  .tagline,
+  .decorative-line,
+  .splash-service-slide,
+  .splash-service-title,
+  .splash-service-description,
+  .splash-service-divider {
+    transition: none;
+    animation: none;
+  }
+}

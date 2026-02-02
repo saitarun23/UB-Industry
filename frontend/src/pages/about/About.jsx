@@ -21,7 +21,7 @@ export default function About() {
       <section className="about-welcome">
         <div className="about-welcome-content">
           <h2 className="about-welcome-title">
-            Welcome to Urmila Bhupathiraju Flexible Printers
+            Welcome to Urmila Bhupathiraju Industries
           </h2>
           <p className="about-welcome-subtitle">
             Excellence in Flexible Printing & Packaging Solutions Since Day One
@@ -55,7 +55,7 @@ export default function About() {
 
               <div className="about-company-text">
                 <p className="about-intro-text">
-                  <strong>Urmila Bhupathiraju Industry</strong> is a flexible
+                  <strong>Urmila Bhupathiraju Industries</strong> is a flexible
                   printing and packaging company based in Visakhapatnam, India.
                   With a strong foundation in high-quality flexible materials, we
                   are committed to delivering reliable, high-performance printing
@@ -107,8 +107,7 @@ export default function About() {
             </div>
 
             {/* MISSION & VISION */}
-            <div className="about-mission-vision-section">
-              {/* Mission */}
+            {/* <div className="about-mission-vision-section">
               <div className="mission-vision-card mission-card">
                 <div className="card-icon-wrap">
                   <div className="card-icon"><FaCrosshairs /></div>
@@ -120,8 +119,6 @@ export default function About() {
                   and reliability.
                 </p>
               </div>
-
-              {/* Vision */}
               <div className="mission-vision-card vision-card">
                 <div className="card-icon-wrap">
                   <div className="card-icon"><FaRocket /></div>
@@ -133,7 +130,7 @@ export default function About() {
                   world-class technical capability.
                 </p>
               </div>
-            </div>
+            </div> */}
           </div>
         </section>
 
@@ -208,99 +205,101 @@ export default function About() {
         </section>
 
         {/* HISTORY SECTION */}
-        <section className="about-history-section">
-          <div className="about-history-container">
-            <div className="about-history-header">
-              <h2 className="about-section-title">Our Journey</h2>
-              <div className="about-title-underline"></div>
-              <p className="about-history-intro">
-                Built on trust, driven by excellence, sustained by customer relationships
+        
+<section className="about-history-section">
+  <div className="about-history-container">
+    <div className="about-history-header">
+      <h2 className="about-section-title">Our Journey</h2>
+      <div className="about-title-underline"></div>
+      <p className="about-history-intro">
+        Built on trust, driven by excellence, sustained by customer relationships
+      </p>
+    </div>
+
+    <div className="about-history-content">
+      <div className="history-image-side">
+        <div className="history-image-wrap">
+          <img
+            src={assets.aboutjourney}
+            alt="Company journey"
+            className="history-image"
+          />
+        </div>
+      </div>
+
+      <div className="history-text-side">
+        <h3 className="history-subtitle">Where Our Journey Took Shape</h3>     
+        <p className="history-description">
+          From the beginning, our focus has been simple—understand what
+          each customer truly needs, and build packaging that supports
+          their business for the long term.
+        </p>
+
+        <div className="history-principles">
+          <div className="principle-item">
+            <div className="principle-number">01</div>
+            <div className="principle-content">
+              <h4>The Vision Begins</h4>
+              <p>
+                Founded in January 2025, Urmila BhupathiRaju Industries was born
+                from a passion to bring quality packaging solutions to businesses
+                of all sizes across the region.
               </p>
             </div>
+          </div>
 
-            <div className="about-history-content">
-              <div className="history-image-side">
-                <div className="history-image-wrap">
-                  <img
-                    src={assets.aboutjourney}
-                    alt="Company journey"
-                    className="history-image"
-                  />
-                  {/* <div className="history-overlay">
-                    <span className="overlay-text">Since Inception</span>
-                  </div> */}
-                </div>
-              </div>
-
-              <div className="history-text-side">
-                <h3 className="history-subtitle">Where Our Journey Took Shape</h3>
-                <p className="history-description">
-                  From the beginning, our focus has been simple—understand what
-                  each customer truly needs, and build packaging that supports
-                  their business for the long term.
-                </p>
-
-                <div className="history-principles">
-                  {/* Principle items — untouched */}
-                  <div className="principle-item">
-                    <div className="principle-number">01</div>
-                    <div className="principle-content">
-                      <h4>Customer-Centric Approach</h4>
-                      <p>
-                        We dive deep into your requirements to design solutions
-                        that align with your brand goals.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="principle-item">
-                    <div className="principle-number">02</div>
-                    <div className="principle-content">
-                      <h4>Uncompromising Quality</h4>
-                      <p>
-                        Rigorous quality control using only genuine, high-grade
-                        materials meeting industry standards.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="principle-item">
-                    <div className="principle-number">03</div>
-                    <div className="principle-content">
-                      <h4>Technical Expertise</h4>
-                      <p>
-                        Bridging the gap between printing technology and your
-                        vision with expert guidance.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="principle-item">
-                    <div className="principle-number">04</div>
-                    <div className="principle-content">
-                      <h4>Timely Delivery</h4>
-                      <p>
-                        Accuracy in production and logistics ensuring reliable,
-                        on-time delivery every time.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="principle-item">
-                    <div className="principle-number">05</div>
-                    <div className="principle-content">
-                      <h4>Long-Term Partnerships</h4>
-                      <p>
-                        We see clients as partners. Our growth is driven by trust
-                        and loyalty built over years.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <div className="principle-item">
+            <div className="principle-number">02</div>
+            <div className="principle-content">
+              <h4>Building the Foundation</h4>
+              <p>
+                From day one, we invested in the best machinery, sourced only
+                high-grade materials, and assembled a skilled team dedicated to
+                delivering excellence in every order.
+              </p>
             </div>
           </div>
-        </section>
+
+          <div className="principle-item">
+            <div className="principle-number">03</div>
+            <div className="principle-content">
+              <h4>Earning Customer Trust</h4>
+              <p>
+                Within our first months of operation, we built strong relationships
+                with clients by consistently delivering quality work on time and
+                understanding their unique packaging needs.
+              </p>
+            </div>
+          </div>
+
+          <div className="principle-item">
+            <div className="principle-number">04</div>
+            <div className="principle-content">
+              <h4>Expanding Our Reach</h4>
+              <p>
+                As word spread about our commitment to quality and service, our
+                client base grew steadily — serving businesses from small startups
+                to large-scale enterprises.
+              </p>
+            </div>
+          </div>
+
+          <div className="principle-item">
+            <div className="principle-number">05</div>
+            <div className="principle-content">
+              <h4>The Road Ahead</h4>
+              <p>
+                Today, we look ahead with confidence. Our goal is to keep growing,
+                keep innovating, and continue being the most reliable packaging
+                partner for every business we serve.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
       </section>
 
       {/* CTA */}

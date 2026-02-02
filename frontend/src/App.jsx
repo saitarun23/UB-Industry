@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./App.css";
 
 import useScrollEffect from "./assets/hooks/useScrollEffect";
@@ -14,11 +14,11 @@ import Products from "./pages/products/Products";
 import ProductDetail from "./pages/products/ProductDetail";
 import Contact from "./pages/contact/Contact";
 
+import SplashScreen from "./assets/components/SplashScreen";
+
 const App = () => {
-  // Get initial page from URL hash (/#about, /#services, etc.)
   const getPageFromHash = () => {
     const hash = window.location.hash.replace("#", "") || "home";
-    // Extract the page name (before the ? if present)
     const pageName = hash.split("?")[0];
     const validPages = [
       "home",
@@ -32,17 +32,23 @@ const App = () => {
     return validPages.includes(pageName) ? pageName : "home";
   };
 
-  const [activePage, setActivePage] = useState(getPageFromHash);
+  const initialPageRef = useRef(getPageFromHash());
 
-  // Re-run scroll effect when page changes
-  useScrollEffect(activePage);
+  const [activePage, setActivePage] = useState(initialPageRef.current);
+  const [showSplash, setShowSplash] = useState(true);
 
-  // Listen to URL hash changes (back/forward, manual typing)
+  // ✅ Force scroll effect to re-run once splash ends
+  const scrollEffectKey = showSplash ? "__splash__" : activePage;
+  useScrollEffect(scrollEffectKey);
+
+  // ✅ Scroll to top on page change (after splash)
   useEffect(() => {
-    const handleHashChange = () => {
-      setActivePage(getPageFromHash());
-    };
+    if (!showSplash) window.scrollTo(0, 0);
+  }, [activePage, showSplash]);
 
+  // Listen to URL hash changes
+  useEffect(() => {
+    const handleHashChange = () => setActivePage(getPageFromHash());
     window.addEventListener("hashchange", handleHashChange);
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
@@ -59,6 +65,19 @@ const App = () => {
 
   return (
     <div>
+      {showSplash && (
+        <SplashScreen
+          onFinish={() => {
+            setShowSplash(false);
+            setActivePage(initialPageRef.current);
+
+            if (!window.location.hash) {
+              window.location.hash = `#${initialPageRef.current}`;
+            }
+          }}
+        />
+      )}
+
       <Navbar onChangePage={setActivePage} activePage={activePage} />
       {pages[activePage]}
       <Footer />

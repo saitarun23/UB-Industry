@@ -14,16 +14,14 @@
   width: 100%;
   min-height: calc(100vh - 80px);
   display: flex;
-  align-items: center;          /* vertically center content */
-  justify-content: flex-start;  /* keep it on the left */
-  padding: 120px 8% 80px;       /* top padding clears navbar */
-  background-color: #000;
-  color: #fff;
-  overflow: hidden;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 90px 8% 70px; /* clears header */
   box-sizing: border-box;
+  overflow: hidden;
+  background: #000000;
+  color: #ffffff;
 }
-
-/* background image */
 
 .infra-hero-bg {
   position: absolute;
@@ -35,68 +33,39 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: contrast(1.05) brightness(0.55); /* darken slightly */
+  filter: grayscale(0.1) brightness(0.9);
 }
-
-/* overlay to keep text readable */
 
 .infra-hero-overlay {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.85) 0%,
-      rgba(0, 0, 0, 0.55) 40%,
-      rgba(0, 0, 0, 0.25) 100%
-    );
   z-index: 2;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.85) 35%,
+    rgba(0, 0, 0, 0.6) 70%,
+    transparent 100%
+  );
 }
-
-/* content */
 
 .infra-hero-content {
   position: relative;
   z-index: 3;
-  max-width: 720px;
 }
-
-/* small label above heading */
-
-.infra-hero-kicker {
-  text-transform: uppercase;
-  letter-spacing: 0.28em;
-  font-weight: 600;
-  color: #f1f1f1;
-  margin-bottom: 18px;
-  font-size: 0.8rem;
-  display: block;
-  margin-right: 64px;
-}
-
-/* main heading */
 
 .infra-hero-title {
-  font-size: clamp(2.7rem, 5vw, 3.6rem);
-  font-weight: 800;
-  color: #ffffff;
-  line-height: 1.08;
-  margin-bottom: 18px;
-  letter-spacing: -1px;
-  margin-right: 50px;
+  font-size: 2.6rem;
+  font-weight: 900;
+  margin: 0 0 10px;
 }
-
-/* subheading */
 
 .infra-hero-subtitle {
-  font-size: 1.05rem;
-  color: #dedede;
-  max-width: 520px;
+  font-size: 1rem;
+  max-width: 460px;
   line-height: 1.7;
-  font-weight: 400;
-  margin-left: 64px;
+  color: #ffffff;
 }
-
 /* =========================
    MAIN SECTIONS - TAB BASED
    ========================= */
@@ -155,7 +124,7 @@
   justify-content: center;
   gap: 8px;
   padding: 12px 14px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  /* background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%); */
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
   color: #aaaaaa;
@@ -178,7 +147,6 @@
   background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
   border-color: #ffffff;
   color: #000000;
-  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
 }
 
 .infra-tab-icon {
@@ -224,7 +192,6 @@
   overflow: hidden;
   border-radius: 20px;
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.08);
   aspect-ratio: 4/3;
 }
 
@@ -300,7 +267,6 @@
   background: #ffffff;
   border-color: #ffffff;
   transform: scaleX(1.05);
-  box-shadow: 0 12px 32px rgba(255, 255, 255, 0.2);
 }
 
 .infra-spec-item:hover::before {
@@ -332,63 +298,6 @@
 .infra-spec-item:hover .infra-spec-value {
   color: #000000;
 }
-
-/* =========================
-   CTA STRIP
-   ========================= */
-.infra-cta {
-  background: linear-gradient(90deg,
-    #9400D3,  /* Violet */
-    #4B0082,  /* Indigo */
-    #0000FF,  /* Blue */
-    #FF0000,  /* Red */
-    #FFFF00,  /* Yellow */
-    #FF7F00,  /* Orange */
-    #00FF00   /* Green */
-  );
-
-   
-  color: #ffffff;
-  padding: 80px 0;             
-}
-
-.infra-cta-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 60px;
-  text-align: left;             /* ← like your reference */
-}
-
-/* top small line: “Let’s talk infrastructure” */
-
-.infra-cta-kicker {
-  font-size: 1rem;
-  line-height: 1.6;
-  max-width: 520px;
-  color: #f5f5f5;
-  margin: 0 0 20px 0;
-}
-
-/* big main line */
-
-.infra-cta-title {
-  font-size: 2.4rem;
-  font-weight: 800;
-  line-height: 1.3;
-  margin: 0 0 16px 0;
-  max-width: 780px;             /* keeps it on 2–3 lines */
-}
-
-/* bottom supporting text */
-
-.infra-cta-text {
-  font-size: 1rem;
-  line-height: 1.7;
-  max-width: 550px;
-  color: #e0e0e0;
-  margin: 0;
-}
-
 
 /* =========================
    RESPONSIVE

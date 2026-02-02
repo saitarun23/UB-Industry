@@ -10,10 +10,9 @@ import {
   Target,
   Lightbulb,
   Sprout,
-  CupSoda,
+  Milk,
   Droplet,
   HeartPulse,
-  Box,
   Zap,
   Shield,
   Users,
@@ -22,6 +21,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import FoodPacketIcon from "../../assets/components/icons/FoodPacketIcon";
+
 import assets from "../../assets/images";
 import "../../styles/services.css";
 
@@ -41,17 +41,17 @@ const packagingSolutions = [
     variant: "agri",
   },
   {
-    title: "Beverages Packaging",
+    title: "Milk Products Packaging",
     desc:
-      "Roll stock and pouches that protect flavour and freshness while giving strong shelf appeal for beverages.",
-    Icon: CupSoda,
+      "Laminates and pouches for milk and dairy products, maintaining hygiene, freshness and reliable distribution.",
+    Icon: Milk,
     variant: "beverage",
   },
   {
     title: "Industrial Packaging",
     desc:
       "High-performance industrial laminates engineered for demanding environments and heavy products.",
-    Icon: Box,
+    Icon: Layers,
     variant: "industrial",
   },
   {
@@ -125,8 +125,8 @@ export default function Services() {
         </div>
         <div className="services-hero-overlay" />
         <div className="services-hero-content">
-          <h1 className="services-hero-title">Services</h1>
-          <p className="services-hero-subtitle">
+          <h1 className="services-hero-title scroll-effect">Our Services</h1>
+          <p className="services-hero-subtitle scroll-effect">
             End-to-end flexible printing and converting under one roof.
           </p>
         </div>
@@ -137,13 +137,13 @@ export default function Services() {
         {/* CAPABILITIES INTRO */}
         <section className="services-intro-section">
           <div className="services-intro-container">
-            <div className="intro-badge">
+            <div className="intro-badge services-badge">
               <Award className="intro-badge-icon" />
               <span>Complete Solutions</span>
             </div>
-            <h2 className="services-intro-title">Our Capabilities</h2>
-            <p className="services-intro-text">
-              At <strong>Urmila Bhupathiraju Flexible Printers</strong>, every
+            <h2 className="services-intro-title scroll-effect">Our Capabilities</h2>
+            <p className="services-intro-text scroll-effect">
+              At <strong>UB Industries</strong>, every
               job is handled as a complete solution — from artwork and cylinder
               preparation to printing, lamination, slitting and pouch
               conversion. Our integrated setup helps you move faster to market,
@@ -156,21 +156,21 @@ export default function Services() {
         {/* PACKAGING SOLUTIONS */}
         <section className="packaging-section">
           <div className="packaging-header">
-            <h2 className="packaging-title">Packaging Solutions</h2>
-            <p className="packaging-subtitle">
+            <h2 className="packaging-title scroll-effect">Packaging Solutions</h2>
+            <p className="packaging-subtitle scroll-effect">
               Application-focused flexible packaging for different product
               categories.
             </p>
           </div>
 
-          <div className="packaging-grid">
+          <div className="packaging-grid">  
             {packagingSolutions.map(({ title, desc, Icon, variant }) => (
-              <div className="pack-card" key={title}>
+              <div className="pack-card scroll-effect" key={title}>
                 <div className={`pack-icon-circle pack-${variant}`}>
                   <Icon className="pack-icon" />
                 </div>
-                <h3 className="pack-card-title">{title}</h3>
-                <p className="pack-card-text">{desc}</p>
+                <h3 className="pack-card-title scroll-effect">{title}</h3>
+                <p className="pack-card-text scroll-effect">{desc}</p>
               </div>
             ))}
           </div>
@@ -191,7 +191,7 @@ export default function Services() {
         <section className="services-grid">
           {/* PRINTING */}
           <article className="service-card">
-            <div className="service-card-image">
+            <div className="service-card-image scroll-effect">
               <img
                 src={assets.service1}
                 alt="Flexible packaging printing machine"
@@ -468,7 +468,7 @@ export default function Services() {
           </div>
 
           {/* Additional Value Points */}
-          <div className="why-value-cards">
+          {/* <div className="why-value-cards">
             <div className="why-value-card why-value-primary">
               <div className="why-value-icon-circle">
                 <Settings className="why-value-icon" />
@@ -504,7 +504,7 @@ export default function Services() {
                 </p>
               </div>
             </div>
-          </div>
+          </div> */}
         </section>
       </section>
     </main>

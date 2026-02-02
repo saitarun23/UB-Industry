@@ -71,7 +71,7 @@
    ================ */
 
 .about-welcome {
-  background: linear-gradient(135deg, #111111 0%, #000000 100%);
+  background: #000000;
   padding: 80px 40px;
   text-align: center;
 }
@@ -88,6 +88,7 @@
   letter-spacing: -0.5px;
   margin: 0 0 16px;
   line-height: 1.2;
+  margin-top: 40px;
 }
 
 .about-welcome-subtitle {

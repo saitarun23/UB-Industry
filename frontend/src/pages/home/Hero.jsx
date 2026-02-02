@@ -63,7 +63,7 @@ export default function Hero() {
       <div className="hero-container">
         {/* LEFT COLUMN */}
         <div className="hero-left">
-          <h1 className="hero-title">
+          <h1 className="hero-title scroll-effect">
             We cover the
             <br />
             entire gamut of
@@ -71,7 +71,7 @@ export default function Hero() {
             print needs
           </h1>
 
-          <p className="hero-subtitle">
+          <p className="hero-subtitle scroll-effect">
             We serve customers across India
             <br />
             and world-wide.
@@ -80,7 +80,7 @@ export default function Hero() {
 
         {/* RIGHT COLUMN - Product Swiper */}
         <div className="hero-right">
-          <div className="hero-swiper-wrapper">
+          <div className="hero-swiper-wrapper scroll-effect">
             <Swiper
               modules={[Autoplay, EffectFade]}
               effect="fade"

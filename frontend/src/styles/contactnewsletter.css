@@ -363,6 +363,35 @@
   color: #666666;
 }
 
+/* =========================
+   NEWSLETTER STATUS MESSAGE
+   ========================= */
+
+.newsletter-status {
+  margin-top: 20px;
+  padding: 14px 18px;
+  border: 1px solid #333;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.newsletter-status--success {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.newsletter-status--error {
+  background: rgba(255, 70, 70, 0.1);
+  color: #ffd6d6;
+  border-color: rgba(255, 70, 70, 0.35);
+}
+
+
 /* =====================================
    RESPONSIVE DESIGN
    ===================================== */

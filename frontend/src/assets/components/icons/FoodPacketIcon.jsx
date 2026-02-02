@@ -1,42 +1,25 @@
-export default function FoodPacketIcon({ size = 48, color = "white" }) {
+export default function FoodPacketIcon({ className }) {
   return (
     <svg
-      width={size}
-      height={size}
-      viewBox="0 0 64 64"
+      className={className}
+      viewBox="0 0 24 24"
       fill="none"
-      stroke={color}
-      strokeWidth="2.2"
+      stroke="currentColor"
+      strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      {/* Outer pouch – slightly tapered with top & bottom seals */}
-      <path
-        d="
-          M22 10
-          L42 10
-          L48 16
-          V48
-          L42 54
-          H22
-          L16 48
-          V16
-          Z
-        "
-      />
-
-      {/* Top crimp / tear edge */}
-      <path d="M18 16 L22 13 L26 16 L30 13 L34 16 L38 13 L42 16 L46 13" />
-
-      {/* Bottom crimp */}
-      <path d="M18 48 L22 51 L26 48 L30 51 L34 48 L38 51 L42 48 L46 51" />
-
-      {/* Label area */}
-      <rect x="23" y="22" width="18" height="14" rx="3" />
-
-      {/* Chip illustration inside the label */}
-      <path d="M26 30c1.5-2 4-3 6-3s4.5 1 6 3" />
-      <path d="M26 32c1.5 2 4 3 6 3s4.5-1 6-3" />
+      {/* Main packet body - simplified rectangular pouch */}
+      <path d="M7 4h10v16H7z" />
+      
+      {/* Top seal/fold */}
+      <path d="M7 4v-2h10v2" />
+      <line x1="7" y1="6" x2="17" y2="6" />
+      
+      {/* Simple wheat grain icon in center */}
+      <line x1="12" y1="10" x2="12" y2="16" strokeWidth="2.5" />
+      <path d="M10 12c.7-.5 1.3-.5 2 0s1.3-.5 2 0" strokeWidth="1.8" />
+      <path d="M10 14c.7-.5 1.3-.5 2 0s1.3-.5 2 0" strokeWidth="1.8" />
     </svg>
   );
 }

@@ -98,7 +98,7 @@ export default function Footer() {
               <img src={assets.logo} alt="UB Industry Logo" className="footer-logo-img" />
               <div className="logo-text">
                 <h2>UB Industries</h2>
-                <span className="logo-tagline">Flexible Rotto Print & Pack Solutions</span>
+                <span className="logo-tagline">Flexible Roto Print & Pack</span>
               </div>
             </div>
             
@@ -107,24 +107,6 @@ export default function Footer() {
               We specialize in multi-layer, multi-color printing and laminations for 
               all your packaging needs.
             </p>
-
-            {/* <div className="footer-newsletter">
-              <h4>Stay Updated</h4>
-              <form onSubmit={handleSubscribe} className="newsletter-form">
-                <div className="input-wrapper">
-                  <input 
-                    type="email" 
-                    placeholder="Enter your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
-                  <button type="submit" className="subscribe-btn">
-                    <ArrowRightIcon />
-                  </button>
-                </div>
-              </form>
-            </div> */}
           </div>
 
           {/* Column 2: Quick Links */}
@@ -195,7 +177,7 @@ export default function Footer() {
                 </div>
               </div>
 
-              <div className="contact-item">
+              {/* <div className="contact-item">
                 <div className="contact-icon">
                   <EmailIcon />
                 </div>
@@ -213,7 +195,7 @@ export default function Footer() {
                   <h5>Working Hours</h5>
                   <p>Mon - Sat: 09:00 AM - 07:00 PM</p>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

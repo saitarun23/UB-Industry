@@ -22,29 +22,29 @@ const features = [
 export default function WhyChooseUs() {
   return (
     <section
-      className="why-section scroll-effect"
+      className="why-section"
       style={{ backgroundImage: `url(${assets.hero1})` }} // ✅ background image
     >
       <div className="why-overlay"></div>
 
-      <div className="why-container">
+      <div className="why-container scroll-effect">
         {/* LEFT CONTENT */}
-        <div className="why-left">
+        <div className="why-left scroll-effect">
           <span className="why-tag">Why Choose</span>
 
           <h2>
-            Urmila Bhupathiraju Industry<br />
+            UB Industries<br />
             Built on <strong>Quality</strong>. Driven by <strong>Precision</strong>.
           </h2>
 
-          <p>
+          {/* <p>
             We combine advanced technology, skilled professionals, and strict
             quality control to deliver world-class flexible packaging solutions.
-          </p>
+          </p> */}
         </div>
 
         {/* RIGHT GRID */}
-        <div className="why-grid">
+        <div className="why-grid scroll-effect">
           {features.map((item, i) => (
             <div className="why-card" key={i}>
               <div className="why-icon">{item.icon}</div>

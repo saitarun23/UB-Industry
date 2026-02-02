@@ -37,7 +37,7 @@ const items = [
 
 export default function AboutHighlights() {
   return (
-    <section className="about-highlights scroll-effect">
+    <section className="about-highlights">
         {/* HEADING */}
       <div className="about-heading scroll-effect">
         <span>Our Infrastructure</span>

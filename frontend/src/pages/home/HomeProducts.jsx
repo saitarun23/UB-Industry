@@ -65,19 +65,27 @@ export default function HomeProducts() {
   }, [isHovered]);
 
   // when mouse wheel is over the strip, scroll horizontally instead of page
-  const handleWheel = (e) => {
+  useEffect(() => {
     const container = scrollContainerRef.current;
     if (!container) return;
 
-    e.preventDefault(); // stop page vertical scroll
-    const delta = e.deltaY || e.deltaX;
-    container.scrollLeft += delta;
-  };
+    const handleWheel = (e) => {
+      e.preventDefault(); // stop page vertical scroll
+      const delta = e.deltaY || e.deltaX;
+      container.scrollLeft += delta;
+    };
+
+    container.addEventListener("wheel", handleWheel, { passive: false });
+
+    return () => {
+      container.removeEventListener("wheel", handleWheel);
+    };
+  }, []);
 
   return (
     <section className="homeproducts-section">
       {/* HEADING */}
-      <div className="homeproducts-heading">
+      <div className="homeproducts-heading scroll-effect">
         <span>Products</span>
         <h2>
           We specialize in the production of high-quality flexible packaging
@@ -86,13 +94,12 @@ export default function HomeProducts() {
       </div>
 
       {/* SCROLL WRAPPER */}
-      <div className="homeproducts-scroll-wrapper">
+      <div className="homeproducts-scroll-wrapper scroll-effect">
         <div
           ref={scrollContainerRef}
           className="homeproducts-scroll-container"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          onWheel={handleWheel}
         >
           {extendedProducts.map((item, index) => (
             <div className="homeproduct-card" key={`${item.title}-${index}`}>

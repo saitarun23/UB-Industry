@@ -20,8 +20,10 @@
   min-height: calc(100vh - 80px);
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   padding: 90px 8% 70px;
   box-sizing: border-box;
+  overflow: hidden;
   background: #000000;
   color: #ffffff;
 }
@@ -58,10 +60,10 @@
 }
 
 .product-hero-title {
-  font-size: 3rem;
+  font-size: 2.6rem;
   font-weight: 800;
+  margin: 0 0 10px;
   margin-left: 150px;
-  color: #ffffff;
 }
 
 /* =====================================================
