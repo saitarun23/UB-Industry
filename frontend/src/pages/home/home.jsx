@@ -13,8 +13,8 @@ const home = () => {
     <div>
       <Hero/>
       <HomeServices/>
-      <HomeProducts/>
       <ValuesSection/>
+      <HomeProducts/>
       <WhyChooseUs/>
       {/* <StatsSection/> */}
       <AboutHighlights/>

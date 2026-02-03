@@ -41,8 +41,8 @@ export default function AboutHighlights() {
         {/* HEADING */}
       <div className="about-heading scroll-effect">
         <span>Our Infrastructure</span>
-            <h2>Our facility features a high-speed, five-drive, six-color rotogravure printer, 
-                handling prints up to 1100mm wide and 1000mm in circumference,
+            <h2>Our facility features a high-speed, five-drive, seven-color rotogravure printer, 
+                handling prints up to 1050mm wide and 1000mm in circumference,
                 complemented by advanced lamination and slitting machines for superior packaging quality.
             </h2>
       </div>

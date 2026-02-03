@@ -30,7 +30,7 @@ export default function WhyChooseUs() {
       <div className="why-container scroll-effect">
         {/* LEFT CONTENT */}
         <div className="why-left scroll-effect">
-          <span className="why-tag">Why Choose</span>
+          <span className="why-tag">Reasons to Choose</span>
 
           <h2>
             UB Industries<br />

@@ -37,20 +37,13 @@ const homeservices = [
 export default function HomeServices() {
   return (
     <section className="homeservices-section">
-      <div className="homeservices-container">
-        {/* HEADING */}
-        <div className="homeservices-heading scroll-effect">
-          <div className="heading-badge">
-            <span className="badge-dot"></span>
-            <span className="badge-text">Our Services</span>
-          </div>
-          <h2 className="heading-title scroll-effect">
-            We collaborate with brands of every scale, delivering excellence without volume constraints.
-          </h2>
-          <p className="heading-subtitle scroll-effect">
-            Comprehensive flexible packaging solutions from printing to finished product
-          </p>
-        </div>
+         {/* HEADING */}
+         <div className="homeservices-heading scroll-effect">
+        <span>Our Services</span>
+            <h2>we collaborate with brands of every scale, 
+              delivering excellence without volume constraints.
+            </h2>
+      </div>
 
         {/* GRID */}
         <div className="homeservices-grid scroll-effect">
@@ -99,7 +92,7 @@ export default function HomeServices() {
         </div>
 
         
-      </div>
+      
     </section>
   );
 }

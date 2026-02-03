@@ -18,50 +18,22 @@
    ================ */
 .homeservices-heading {
   text-align: center;
-  margin-bottom: 70px;
+  margin-bottom: 60px;
 }
 
-.heading-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 20px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 50px;
-  margin-bottom: 20px;
-  transition: all 0.4s ease;
-}
-
-.heading-badge:hover {
-  border-color: rgba(255, 255, 255, 0.4);
-  transform: translateY(-2px);
-}
-
-.badge-text {
-  font-size: 12px;
-  letter-spacing: 2.5px;
+.homeservices-heading span {
+  font-size: 33px;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  color: #ffffff;
-  font-weight: 600;
-}
-
-.heading-title {
-  font-size: 38px;
   font-weight: 700;
-  margin: 0 0 16px;
-  line-height: 1.4;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
   color: #ffffff;
 }
 
-.heading-subtitle {
-  font-size: 16px;
-  color: rgba(255, 255, 255, 0.6);
-  margin: 0;
-  font-weight: 400;
-  letter-spacing: 0.3px;
+.homeservices-heading h2 {
+  font-size: 18px;
+  /* font-weight: 700; */
+  margin-top: 12px;
+  color: #aaa;
 }
 
 /* ================

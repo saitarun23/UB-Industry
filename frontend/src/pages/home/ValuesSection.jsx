@@ -130,7 +130,7 @@ export default function ValuesSection() {
       <div className="values-container-modern">
         <div className="section-header-modern">
           <div className="header-line"></div>
-          <span className="header-label">CORE VALUES</span>
+          {/* <span className="header-label">CORE VALUES</span> */}
           <h2 className="section-title-modern">
             <span className="title-word" data-word="What">What</span>
             <span className="title-word" data-word="Drives">Drives</span>

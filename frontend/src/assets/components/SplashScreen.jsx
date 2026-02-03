@@ -14,18 +14,18 @@ const SplashScreen = ({ onFinish }) => {
   const services = [
     {
       title: "PRINT",
-      image: assets.printing,
-      description: "High-Quality Printing"
+      image: assets.land1,
+      // description: "High-Quality Printing"
     },
     {
       title: "LAMINATE",
-      image: assets.lamination,
-      description: "Premium Lamination"
+      image: assets.land2,
+      // description: "Premium Lamination"
     },
     {
       title: "PACK",
-      image: assets.pouching,
-      description: "Expert Packaging"
+      image: assets.land3,
+      // description: "Expert Packaging"
     }
   ];
 
@@ -104,8 +104,8 @@ const SplashScreen = ({ onFinish }) => {
 
         {/* Company Name */}
         <div className={`company-name ${showCompanyName ? "slide-up" : ""}`}>
-          <div className="name-line">Urmila Bhupathiraju</div>
-          <div className="name-line emphasis">Industries</div>
+          <div className="name-line">Urmila Bhupathiraju Industries</div>
+          {/* <div className="name-line emphasis"></div> */}
         </div>
 
         {/* Main Tagline */}
@@ -132,7 +132,7 @@ const SplashScreen = ({ onFinish }) => {
             >
               <div className="splash-service-content">
                 <h2 className="splash-service-title">{service.title}</h2>
-                <div className="splash-service-divider"></div>
+                {/* <div className="splash-service-divider"></div> */}
                 <p className="splash-service-description">{service.description}</p>
               </div>
             </div>

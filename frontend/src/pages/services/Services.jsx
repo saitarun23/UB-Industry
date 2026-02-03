@@ -339,7 +339,7 @@ export default function Services() {
             </div>
             <div className="service-card-content">
               <div className="service-header">
-                <span className="service-tag">Ready-to-Fill</span>
+                <span className="service-tag">Flexible Packaging</span>
                 <h3 className="service-title">Pouch Conversion</h3>
               </div>
               <p className="service-description">
@@ -438,14 +438,14 @@ export default function Services() {
           </p>
         </section>
 
-        {/* REDESIGNED WHY CHOOSE US SECTION */}
+        {/* REDESIGNED Built for You US SECTION */}
         <section className="why-choose-section">
           <div className="why-choose-header">
             <div className="why-header-badge">
               <Award className="why-badge-icon" />
               <span>Our Advantage</span>
             </div>
-            <h2 className="why-choose-title">Why Choose Us</h2>
+            <h2 className="why-choose-title">Built for You</h2>
             <p className="why-choose-subtitle">
               Decades of expertise combined with cutting-edge technology to
               deliver packaging solutions that exceed expectations.

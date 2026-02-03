@@ -30,7 +30,7 @@ const sections = [
       { label: "Max Width", value: "Up to 1320 mm" },
     ],
     description: "Multi-layer lamination for enhanced strength and barrier performance",
-    img: assets.infra3,
+    img: assets.infra2,
   },
 
   {
@@ -45,7 +45,7 @@ const sections = [
       { label: "Max Width", value: "Up to 1320 mm" },
     ],
     description: "Precision slitting for consistent roll quality and smooth conversion",
-    img: assets.infra4,
+    img: assets.infra3,
   },
 
   {
@@ -60,7 +60,7 @@ const sections = [
       { label: "Output", value: "High-speed, consistent production" },
     ],
     description: "Advanced pouch making solutions for flexible packaging applications",
-    img: assets.infra5,
+    img: assets.infra4,
   },
 ];
 
