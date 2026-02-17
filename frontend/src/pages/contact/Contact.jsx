@@ -224,7 +224,7 @@ export default function Contact() {
           <div className="contact-map-card">
             <iframe
               title="Company location"
-              src="https://www.google.com/maps/embed?pb="
+              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d792.7094235418319!2d83.37844970854543!3d17.884984074607424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDUzJzA2LjEiTiA4M8KwMjInNDIuNCJF!5e0!3m2!1sen!2sin!4v1770617613500!5m2!1sen!2sin"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>

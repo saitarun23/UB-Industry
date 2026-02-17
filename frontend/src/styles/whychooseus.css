@@ -31,7 +31,7 @@
 
 /* LEFT CONTENT */
 .why-tag {
-  color: #ff4d2d;
+  color: #14b8a6;
   font-size: 44px;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -44,7 +44,7 @@
 }
 
 .why-left strong {
-  color: #ff4d2d;
+  color: #14b8a6;
 }
 
 .why-left p {
@@ -72,20 +72,42 @@
   transition: color 0.4s ease;
 }
 
-/* HOVER FILL EFFECT */
+/* FILL EFFECT */
 .why-card::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: #ff4d2d;
-  transform: scaleX(0);
-  transform-origin: bottom;
+  background: #14b8a6;
+  transform: scaleY(0);
+  transform-origin: left;
   transition: transform 0.45s ease;
   z-index: 0;
 }
 
+/* ACTIVE STATE (AUTO ANIMATION) */
+.why-card.active::before {
+  transform: scaleY(1);
+}
+
+.why-card.active {
+  color: #111;
+}
+
+.why-card.active .why-icon {
+  color: #111;
+}
+
+/* HOVER EFFECT (STILL WORKS) */
 .why-card:hover::before {
   transform: scaleX(1);
+}
+
+.why-card:hover {
+  color: #111;
+}
+
+.why-card:hover .why-icon {
+  color: #111;
 }
 
 .why-card * {
@@ -96,20 +118,12 @@
 .why-icon {
   font-size: 34px;
   margin-bottom: 14px;
+  transition: color 0.4s ease;
 }
 
 .why-card h4 {
   font-size: 18px;
   font-weight: 600;
-}
-
-/* CHANGE COLOR ON HOVER */
-.why-card:hover {
-  color: #111;
-}
-
-.why-card:hover .why-icon {
-  color: #111;
 }
 
 /* RESPONSIVE */
@@ -120,5 +134,23 @@
 
   .why-left h2 {
     font-size: 34px;
+  }
+}
+
+@media (max-width: 768px) {
+  .why-section {
+    padding: 40px 20px;
+  }
+
+  .why-tag {
+    font-size: 32px;
+  }
+
+  .why-left h2 {
+    font-size: 28px;
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr;
   }
 }

@@ -21,7 +21,7 @@ const Navbar = ({ onChangePage, activePage }) => {
           <img src={assets.logo} alt="Urmistek Logo" />
 
           <div className="brand-text">
-            <span className="brand-name">Urmila Bhupathiraju Industries</span>
+            <span className="brand-name">rmila Bhupathiraju Industries</span>
             <span className="brand-industry">Flexible Roto Print & Pack</span>
           </div>
         </div>

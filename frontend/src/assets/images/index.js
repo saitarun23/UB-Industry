@@ -3,6 +3,9 @@ import logo1 from './logo1.png';
 import land1 from './land1.png';
 import land2 from './land2.png';
 import land3 from './land3.png';
+import print from './print.png';
+import laminate from './laminate.png';
+import pack from './pack.png';
 import hero1 from './hero1.png';
 import hero2 from './hero2.png';
 import printing from './printing.png';
@@ -41,6 +44,7 @@ import dairy4 from '../images/New folder/dairy4.png';
 import dairy5 from '../images/New folder/dairy5.png';
 import dairy6 from '../images/New folder/dairy6.png';
 import vaccum from '../images/New folder/vaccum.png';
+import vaccums from '../images/New folder/vaccums.png';
 import vaccum1 from '../images/New folder/vaccum1.png';
 import vaccum2 from '../images/New folder/vaccum2.png';
 import vaccum3 from '../images/New folder/vaccum3.png';
@@ -49,6 +53,7 @@ import vaccum5 from '../images/New folder/vaccum5.png';
 import vaccum6 from '../images/New folder/vaccum6.png';
 import personalcare from '../images/New folder/personalcare.png';
 import powdered from '../images/New folder/powdered.png';
+import powdereds from '../images/New folder/powdereds.png';
 import powdered1 from '../images/New folder/powdered1.png';
 import powdered2 from '../images/New folder/powdered2.png';
 import powdered3 from '../images/New folder/powdered3.png';
@@ -56,6 +61,7 @@ import powdered4 from '../images/New folder/powdered4.png';
 import powdered5 from '../images/New folder/powdered5.png';
 import powdered6 from '../images/New folder/powdered6.png';
 import seafood from '../images/New folder/seafood.png';
+import seafoods from '../images/New folder/seafoods.png';
 import seafood1 from '../images/New folder/seafood1.png';
 import seafood2 from '../images/New folder/seafood2.png';
 import seafood3 from '../images/New folder/seafood3.png';
@@ -70,6 +76,7 @@ import beverages4 from '../images/New folder/beverages4.png';
 import beverages5 from '../images/New folder/beverages5.png';
 import beverages6 from '../images/New folder/beverages6.png';
 import biscuits from '../images/New folder/biscuits.png';
+import biscuit from '../images/New folder/biscuit.png';
 import biscuit1 from '../images/New folder/biscuit1.png';
 import biscuit2 from '../images/New folder/biscuit2.png';
 import biscuit3 from '../images/New folder/biscuit3.png';
@@ -77,6 +84,7 @@ import biscuit4 from '../images/New folder/biscuit4.png';
 import biscuit5 from '../images/New folder/biscuit5.png';
 import biscuit6 from '../images/New folder/biscuit6.png';
 import chips from '../images/New folder/chips.png';
+import chip from '../images/New folder/chip.png';
 import chip1 from '../images/New folder/chip1.png';
 import chip2 from '../images/New folder/chip2.png';
 import chip3 from '../images/New folder/chip3.png';
@@ -84,12 +92,14 @@ import chip4 from '../images/New folder/chip4.png';
 import chip5 from '../images/New folder/chip5.png';
 import chip6 from '../images/New folder/chip6.png';
 import coffee from '../images/New folder/coffee.png';
+import coffees from '../images/New folder/coffees.png';
 import coffee1 from '../images/New folder/coffee1.png';
 import coffee2 from '../images/New folder/coffee2.png';
 import coffee3 from '../images/New folder/coffee3.png';
 import coffee5 from '../images/New folder/coffee5.png';
 import coffee6 from '../images/New folder/coffee6.png';
 import oil from '../images/New folder/oil.png';
+import oils from '../images/New folder/oils.png';
 import oil1 from '../images/New folder/oil1.png';
 import oil2 from '../images/New folder/oil2.png';
 import oil3 from '../images/New folder/oil3.png';
@@ -97,6 +107,7 @@ import oil4 from '../images/New folder/oil4.png';
 import oil5 from '../images/New folder/oil5.png';
 import oil6 from '../images/New folder/oil6.png';
 import agriculture from '../images/New folder/agriculture.png';
+import agricultures from '../images/New folder/agricultures.png';
 import agri1 from '../images/New folder/agri1.png';
 import agri2 from '../images/New folder/agri2.png';
 import agri3 from '../images/New folder/agri3.png';
@@ -111,17 +122,20 @@ import chemical4 from '../images/New folder/chemical4.png';
 import chemical5 from '../images/New folder/chemical5.png';
 import chemical6 from '../images/New folder/chemical6.png';
 import healthcare from '../images/New folder/healthcare.png';
+import healthcares from '../images/New folder/healthcares.png';
 import healthcare1 from '../images/New folder/healthcare1.png';
 import healthcare2 from '../images/New folder/healthcare2.png';
 import healthcare3 from '../images/New folder/healthcare3.png';
 import healthcare4 from '../images/New folder/healthcare4.png';
 import healthcare5 from '../images/New folder/healthcare5.png';
 import lid from '../images/New folder/lid.png';
+import lids from '../images/New folder/lids.png';
 import lid1 from '../images/New folder/lid1.png';
 import lid2 from '../images/New folder/lid2.png';
 import lid3 from '../images/New folder/lid3.png';
 import lid4 from '../images/New folder/lid4.png';
 import shrink from '../images/New folder/shrink.png';
+import shrinks from '../images/New folder/shrinks.png';
 import shrink1 from '../images/New folder/shrink1.png';
 import shrink2 from '../images/New folder/shrink2.png';
 import ecommerce from '../images/New folder/ecommerce.png';
@@ -146,6 +160,7 @@ import detergent6 from '../images/New folder/detergent6.png';
 
 export default {
   logo,logo1,
+  print,laminate,pack,
   land1,land2,land3,
   hero1,hero2,
   printing,
@@ -164,20 +179,20 @@ export default {
   productHero,
   product1,product2,product3,product4,product5,product6,product7,
   dairy,dairy1,dairy2,dairy3,dairy4,dairy5,dairy6,
-  vaccum,vaccum1,vaccum2,vaccum3,vaccum4,vaccum5,vaccum6,
+  vaccums,vaccum,vaccum1,vaccum2,vaccum3,vaccum4,vaccum5,vaccum6,
   personalcare,
-  powdered,powdered1,powdered2,powdered3,powdered4,powdered5,powdered6,
-  seafood,seafood1,seafood2,seafood3,seafood4,seafood5,seafood6,
+  powdereds,powdered,powdered1,powdered2,powdered3,powdered4,powdered5,powdered6,
+  seafoods,seafood,seafood1,seafood2,seafood3,seafood4,seafood5,seafood6,
   beverages,beverages1,beverages2,beverages3,beverages4,beverages5,beverages6,
-  biscuits,biscuit1,biscuit2,biscuit3,biscuit4,biscuit5,biscuit6,
-  chips,chip1,chip2,chip3,chip4,chip5,chip6,
-  coffee,coffee1,coffee2,coffee3,coffee5,coffee6,
-  oil,oil1,oil2,oil3,oil4,oil5,oil6,
-  agriculture,agri1,agri2,agri3,agri4,agri5,agri6,
+  biscuit,biscuits,biscuit1,biscuit2,biscuit3,biscuit4,biscuit5,biscuit6,
+  chip,chips,chip1,chip2,chip3,chip4,chip5,chip6,
+  coffees,coffee,coffee1,coffee2,coffee3,coffee5,coffee6,
+  oils,oil,oil1,oil2,oil3,oil4,oil5,oil6,
+  agricultures,agriculture,agri1,agri2,agri3,agri4,agri5,agri6,
   chemical,chemical1,chemical2,chemical3,chemical4,chemical5,chemical6,
-  healthcare,healthcare1,healthcare2,healthcare3,healthcare4,healthcare5,
-  lid,lid1,lid2,lid3,lid4,
-  shrink,shrink1,shrink2,
+  healthcares,healthcare,healthcare1,healthcare2,healthcare3,healthcare4,healthcare5,
+  lids,lid,lid1,lid2,lid3,lid4,
+  shrinks,shrink,shrink1,shrink2,
   ecommerce,ecommerce1,ecommerce2,ecommerce3,
   bodycare,bodycare1,bodycare2,bodycare3,bodycare4,bodycare5,
   detergents,detergent1,detergent2,detergent3,detergent4,detergent5,detergent6,

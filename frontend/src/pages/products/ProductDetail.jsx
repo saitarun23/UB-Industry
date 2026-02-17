@@ -16,7 +16,7 @@ const PRODUCT_DETAILS = {
 
     overview: {
       materials: `Tailor-made laminate combinations ranging from single-layer to five-layer structures,
-       designed to meet varying shelf-life requirements. Options include PET, MET PET, BOPP, MET BOPP, CPP, MET CPP, Paper,
+       designed to meet varying shelf-life requirements. Options include PET, MET PET, BOPP, Paper,
        Aluminium Foil, and PA, selected as per product needs.`,
 
       features: [
@@ -47,7 +47,7 @@ const PRODUCT_DETAILS = {
     overview: {
       materials: `Tailor-made combinations from single layer to five layers 
       as per shelf life requirement. Combinations like PET, MET PET, BOPP, 
-      MET BOPP, CPP, MET CPP, Paper, Al Foil, PA as per requirement.`,
+      Paper, Al Foil, PA as per requirement.`,
 
       features: [
         "Excellent moisture, oxygen & gas barrier properties.",
@@ -77,7 +77,7 @@ const PRODUCT_DETAILS = {
     overview: {
       materials: `Tailor-made combinations from single layer to five layers 
       as per shelf life requirement. Combinations like PET, MET PET, BOPP, 
-      MET BOPP, CPP, MET CPP, Paper, Al Foil, PA as per requirement.`,
+      Paper, Al Foil, PA as per requirement.`,
 
       features: [
         "Excellent moisture, oxygen & gas barrier properties.",
@@ -107,7 +107,7 @@ const PRODUCT_DETAILS = {
     overview: {
       materials: `Tailor-made combinations from single layer to five layers 
       as per shelf life requirement. Combinations like PET, MET PET, BOPP, 
-      MET BOPP, CPP, MET CPP, Paper, Al Foil, PA as per requirement.`,
+      Paper, Al Foil, PA as per requirement.`,
 
       features: [
         "Excellent moisture, oxygen & gas barrier properties.",
@@ -137,7 +137,7 @@ const PRODUCT_DETAILS = {
     overview: {
       materials: `Tailor-made combinations from single layer to five layers 
       as per shelf life requirement. Combinations like PET, MET PET, BOPP, 
-      MET BOPP, CPP, MET CPP, Paper, Al Foil, PA as per requirement.`,
+      Paper, Al Foil, PA as per requirement.`,
 
       features: [
         "Excellent moisture, oxygen & gas barrier properties.",
@@ -166,7 +166,7 @@ const PRODUCT_DETAILS = {
     overview: {
       materials: `Tailor-made combinations from single layer to five layers 
       as per shelf life requirement. Combinations like PET, MET PET, BOPP, 
-      MET BOPP, CPP, MET CPP, Paper, Al Foil, PA as per requirement.`,
+      Paper, Al Foil, PA as per requirement.`,
 
       features: [
         "Excellent moisture, oxygen & gas barrier properties.",
@@ -196,7 +196,7 @@ const PRODUCT_DETAILS = {
     overview: {
       materials: `Tailor-made combinations from single layer to five layers 
       as per shelf life requirement. Combinations like PET, MET PET, BOPP, 
-      MET BOPP, CPP, MET CPP, Paper, Al Foil, PA as per requirement.`,
+      Paper, Al Foil, PA as per requirement.`,
 
       features: [
         "Excellent moisture, oxygen & gas barrier properties.",
@@ -226,7 +226,7 @@ const PRODUCT_DETAILS = {
     overview: {
       materials: `Tailor-made combinations from single layer to five layers 
       as per shelf life requirement. Combinations like PET, MET PET, BOPP, 
-      MET BOPP, CPP, MET CPP, Paper, Al Foil, PA as per requirement.`,
+      Paper, Al Foil, PA as per requirement.`,
 
       features: [
         "Excellent moisture, oxygen & gas barrier properties.",
@@ -256,7 +256,7 @@ const PRODUCT_DETAILS = {
     overview: {
       materials: `Tailor-made combinations from single layer to five layers 
       as per shelf life requirement. Combinations like PET, MET PET, BOPP, 
-      MET BOPP, CPP, MET CPP, Paper, Al Foil, PA as per requirement.`,
+      Paper, Al Foil, PA as per requirement.`,
 
       features: [
         "Excellent moisture, oxygen & gas barrier properties.",
@@ -284,7 +284,7 @@ const PRODUCT_DETAILS = {
     overview: {
       materials: `Tailor-made combinations from single layer to five layers 
       as per shelf life requirement. Combinations like PET, MET PET, BOPP, 
-      MET BOPP, CPP, MET CPP, Paper, Al Foil, PA as per requirement.`,
+      Paper, Al Foil, PA as per requirement.`,
 
       features: [
         "Excellent moisture, oxygen & gas barrier properties.",
@@ -314,7 +314,7 @@ const PRODUCT_DETAILS = {
     overview: {
       materials: `Tailor-made combinations from single layer to five layers 
       as per shelf life requirement. Combinations like PET, MET PET, BOPP, 
-      MET BOPP, CPP, MET CPP, Paper, Al Foil, PA as per requirement.`,
+      Paper, Al Foil, PA as per requirement.`,
 
       features: [
         "Excellent moisture, oxygen & gas barrier properties.",
@@ -344,7 +344,7 @@ const PRODUCT_DETAILS = {
     overview: {
       materials: `Tailor-made combinations from single layer to five layers 
       as per shelf life requirement. Combinations like PET, MET PET, BOPP, 
-      MET BOPP, CPP, MET CPP, Paper, Al Foil, PA as per requirement.`,
+      Paper, Al Foil, PA as per requirement.`,
 
       features: [
         "Excellent moisture, oxygen & gas barrier properties.",
@@ -374,7 +374,7 @@ const PRODUCT_DETAILS = {
     overview: {
       materials: `Tailor-made combinations from single layer to five layers 
       as per shelf life requirement. Combinations like PET, MET PET, BOPP, 
-      MET BOPP, CPP, MET CPP, Paper, Al Foil, PA as per requirement.`,
+      Paper, Al Foil, PA as per requirement.`,
 
       features: [
         "Excellent moisture, oxygen & gas barrier properties.",
@@ -404,7 +404,7 @@ const PRODUCT_DETAILS = {
     overview: {
       materials: `Tailor-made combinations from single layer to five layers 
       as per shelf life requirement. Combinations like PET, MET PET, BOPP, 
-      MET BOPP, CPP, MET CPP, Paper, Al Foil, PA as per requirement.`,
+      Paper, Al Foil, PA as per requirement.`,
 
       features: [
         "Excellent moisture, oxygen & gas barrier properties.",
@@ -434,7 +434,7 @@ const PRODUCT_DETAILS = {
     overview: {
       materials: `Tailor-made combinations from single layer to five layers 
       as per shelf life requirement. Combinations like PET, MET PET, BOPP, 
-      MET BOPP, CPP, MET CPP, Paper, Al Foil, PA as per requirement.`,
+      Paper, Al Foil, PA as per requirement.`,
 
       features: [
         "Excellent moisture, oxygen & gas barrier properties.",
@@ -460,7 +460,7 @@ const PRODUCT_DETAILS = {
     overview: {
       materials: `Tailor-made combinations from single layer to five layers 
       as per shelf life requirement. Combinations like PET, MET PET, BOPP, 
-      MET BOPP, CPP, MET CPP, Paper, Al Foil, PA as per requirement.`,
+      Paper, Al Foil, PA as per requirement.`,
 
       features: [
         "Excellent moisture, oxygen & gas barrier properties.",
@@ -487,7 +487,7 @@ const PRODUCT_DETAILS = {
     overview: {
       materials: `Tailor-made combinations from single layer to five layers 
       as per shelf life requirement. Combinations like PET, MET PET, BOPP, 
-      MET BOPP, CPP, MET CPP, Paper, Al Foil, PA as per requirement.`,
+      Paper, Al Foil, PA as per requirement.`,
 
       features: [
         "Excellent moisture, oxygen & gas barrier properties.",

@@ -6,12 +6,12 @@ const FOOD_CATEGORIES = [
   {
     id: "snackschips",
     title: "Snacks & Chips",
-    image: assets.chip4,
+    image: assets.chip,
   },
   {
     id: "biscuits",
     title: "Biscuits",
-    image: assets.biscuit4,
+    image: assets.biscuit,
   },
   {
     id: "dairyproducts",
@@ -21,22 +21,22 @@ const FOOD_CATEGORIES = [
   {
     id: "oilproducts",
     title: "Oil Products",
-    image: assets.oil6,
+    image: assets.oils,
   },
   {
     id: "GeneralGroceries",
     title: "General Groceries",
-    image: assets.powdered1,
+    image: assets.powdereds,
   },
   {
     id: "teacoffee",
     title: "Tea & Coffee",
-    image: assets.coffee2,
+    image: assets.coffees,
   },
   {
     id: "vaccumpackaging",
     title: "Vaccum Packaging",
-    image: assets.vaccum6,
+    image: assets.vaccums,
   },
   {
     id: "beverages",
@@ -46,12 +46,12 @@ const FOOD_CATEGORIES = [
   {
     id: "seafood",
     title: "Seafood",
-    image: assets.seafood1,
+    image: assets.seafoods,
   },
   {
     id: "liddingfilms",
     title: "Lidding Films",
-    image: assets.lid2,
+    image: assets.lids,
   },
 ];
 
@@ -69,12 +69,12 @@ const NON_FOOD_CATEGORIES = [
   {
     id: "agriculture",
     title: "Agriculture",
-    image: assets.agri2,
+    image: assets.agricultures,
   },
   {
     id: "healthcare",
     title: "Health Care",
-    image: assets.healthcare1,
+    image: assets.healthcares,
   },
   {
     id: "ecommerce",
@@ -84,7 +84,7 @@ const NON_FOOD_CATEGORIES = [
   {
     id: "shrinkfilms",
     title: "Shrink Films",
-    image: assets.shrink1,
+    image: assets.shrinks,
   },
   {
     id: "bodycare",

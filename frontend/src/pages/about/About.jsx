@@ -187,7 +187,7 @@ export default function About() {
 
                   <p>
                     Urmila's approach is deeply rooted in hands-on experience. She
-                    is known for her involvement in the technical nuances of the
+                    is known for her involvement in the technical aspects of the
                     production floor, ensuring that the precision of every print
                     run aligns with the client's brand identity.
                   </p>
@@ -241,7 +241,7 @@ export default function About() {
             <div className="principle-content">
               <h4>The Vision Begins</h4>
               <p>
-                Founded in January 2025, Urmila BhupathiRaju Industries was born
+                Founded in 2025, Urmila BhupathiRaju Industries was born
                 from a passion to bring quality packaging solutions to businesses
                 of all sizes across the region.
               </p>

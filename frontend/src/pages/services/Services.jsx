@@ -135,7 +135,7 @@ export default function Services() {
       {/* MAIN BODY */}
       <section className="services-main">
         {/* CAPABILITIES INTRO */}
-        <section className="services-intro-section">
+        <section className="services-intro-section scroll-effect">
           <div className="services-intro-container">
             <div className="intro-badge services-badge">
               <Award className="intro-badge-icon" />
@@ -178,10 +178,10 @@ export default function Services() {
 
         {/* QUOTE BANNER */}
         <section className="services-quote-banner">
-          <div className="quote-icon-wrap">
-            <Target className="quote-icon" />
+          <div className="quote-icon-wrap scroll-effect">
+            <Target className="quote-icon scroll-effect" />
           </div>
-          <p>
+          <p className="scroll-effect">
             We support brands of every size — from pilot runs to full-scale
             production — with the same focus on quality, speed and reliability.
           </p>
@@ -193,7 +193,7 @@ export default function Services() {
           <article className="service-card">
             <div className="service-card-image scroll-effect">
               <img
-                src={assets.service1}
+                src={assets.printing}
                 alt="Flexible packaging printing machine"
               />
               <div className="image-overlay">
@@ -240,8 +240,8 @@ export default function Services() {
 
           {/* LAMINATION */}
           <article className="service-card service-card-reverse">
-            <div className="service-card-image">
-              <img src={assets.service2} alt="Lamination machine" />
+            <div className="service-card-image scroll-effect">
+              <img src={assets.lamination} alt="Lamination machine" />
               <div className="image-overlay">
                 <div className="overlay-icon-wrap">
                   <Layers className="overlay-icon" />
@@ -284,8 +284,8 @@ export default function Services() {
 
           {/* SLITTING */}
           <article className="service-card">
-            <div className="service-card-image">
-              <img src={assets.service3} alt="Slitting machine" />
+            <div className="service-card-image scroll-effect">
+              <img src={assets.sliting} alt="Slitting machine" />
               <div className="image-overlay">
                 <div className="overlay-icon-wrap">
                   <Scissors className="overlay-icon" />
@@ -329,8 +329,8 @@ export default function Services() {
 
           {/* POUCHING */}
           <article className="service-card service-card-reverse">
-            <div className="service-card-image">
-              <img src={assets.service4} alt="Pouching machine" />
+            <div className="service-card-image scroll-effect ">
+              <img src={assets.pouching} alt="Pouching machine" />
               <div className="image-overlay">
                 <div className="overlay-icon-wrap">
                   <Package className="overlay-icon" />
@@ -375,7 +375,7 @@ export default function Services() {
           </article>
 
           {/* PREPRESS & SUPPORT */}
-          <article className="service-card">
+          {/* <article className="service-card">
             <div className="service-card-image">
               <img
                 src={assets.service5}
@@ -424,23 +424,23 @@ export default function Services() {
                 </li>
               </ul>
             </div>
-          </article>
+          </article> */}
         </section>
 
         {/* SECOND QUOTE BANNER */}
         <section className="services-quote-banner services-quote-secondary">
-          <div className="quote-icon-wrap">
-            <Lightbulb className="quote-icon" />
+          <div className="quote-icon-wrap scroll-effect">
+            <Lightbulb className="quote-icon scroll-effect" />
           </div>
-          <p>
+          <p className="scroll-effect">
             Choosing the right film, structure and format is as important as
             choosing the right design. Our team helps you get all three right.
           </p>
         </section>
 
         {/* REDESIGNED Built for You US SECTION */}
-        <section className="why-choose-section">
-          <div className="why-choose-header">
+        <section className="why-choose-section ">
+          <div className="why-choose-header scroll-effect">
             <div className="why-header-badge">
               <Award className="why-badge-icon" />
               <span>Our Advantage</span>
@@ -452,10 +452,10 @@ export default function Services() {
             </p>
           </div>
 
-          <div className="why-features-grid">
+          <div className="why-features-grid ">
             {whyChooseUsFeatures.map(
               ({ icon: Icon, title, description, gradient }, index) => (
-                <div className="why-feature-card" key={index}>
+                <div className="why-feature-card scroll-effect" key={index}>
                   <div className="why-feature-glow" />
                   <div className={`why-feature-icon-wrap gradient-${gradient}`}>
                     <Icon className="why-feature-icon" />
