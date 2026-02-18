@@ -47,3 +47,8 @@ button:focus, input:focus {
   opacity: 1;
   transform: translateY(0);
 }
+html, body {
+  background: #0a0a0a; /* same as splash bg */
+  margin: 0;
+  padding: 0;
+}

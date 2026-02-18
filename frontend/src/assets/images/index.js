@@ -37,6 +37,7 @@ import product5 from './product5.png';
 import product6 from './product6.png';
 import product7 from './product7.png';
 import dairy from '../images/New folder/dairy.png';
+import dairys from '../images/New folder/dairys.png';
 import dairy1 from '../images/New folder/dairy1.png';
 import dairy2 from '../images/New folder/dairy2.png';
 import dairy3 from '../images/New folder/dairy3.png';
@@ -69,6 +70,7 @@ import seafood4 from '../images/New folder/seafood4.png';
 import seafood5 from '../images/New folder/seafood5.png';
 import seafood6 from '../images/New folder/seafood6.png';
 import beverages from '../images/New folder/beverages.png';
+import beverage from '../images/New folder/beverage.png';
 import beverages1 from '../images/New folder/beverages1.png';
 import beverages2 from '../images/New folder/beverages2.png';
 import beverages3 from '../images/New folder/beverages3.png';
@@ -149,6 +151,7 @@ import bodycare3 from '../images/New folder/bodycare3.png';
 import bodycare4 from '../images/New folder/bodycare4.png';
 import bodycare5 from '../images/New folder/bodycare5.png';
 import detergents from '../images/New folder/detergents.png';
+import detergent from '../images/New folder/detergent.png';
 import detergent1 from '../images/New folder/detergent1.png';
 import detergent2 from '../images/New folder/detergent2.png';
 import detergent3 from '../images/New folder/detergent3.png';
@@ -178,12 +181,12 @@ export default {
   service1,service2,service3,service4,service5,
   productHero,
   product1,product2,product3,product4,product5,product6,product7,
-  dairy,dairy1,dairy2,dairy3,dairy4,dairy5,dairy6,
+  dairys,dairy,dairy1,dairy2,dairy3,dairy4,dairy5,dairy6,
   vaccums,vaccum,vaccum1,vaccum2,vaccum3,vaccum4,vaccum5,vaccum6,
   personalcare,
   powdereds,powdered,powdered1,powdered2,powdered3,powdered4,powdered5,powdered6,
   seafoods,seafood,seafood1,seafood2,seafood3,seafood4,seafood5,seafood6,
-  beverages,beverages1,beverages2,beverages3,beverages4,beverages5,beverages6,
+  beverage,beverages,beverages1,beverages2,beverages3,beverages4,beverages5,beverages6,
   biscuit,biscuits,biscuit1,biscuit2,biscuit3,biscuit4,biscuit5,biscuit6,
   chip,chips,chip1,chip2,chip3,chip4,chip5,chip6,
   coffees,coffee,coffee1,coffee2,coffee3,coffee5,coffee6,
@@ -195,6 +198,6 @@ export default {
   shrinks,shrink,shrink1,shrink2,
   ecommerce,ecommerce1,ecommerce2,ecommerce3,
   bodycare,bodycare1,bodycare2,bodycare3,bodycare4,bodycare5,
-  detergents,detergent1,detergent2,detergent3,detergent4,detergent5,detergent6,
+  detergents,detergent,detergent1,detergent2,detergent3,detergent4,detergent5,detergent6,
 
 }

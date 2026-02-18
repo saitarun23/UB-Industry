@@ -78,12 +78,12 @@ export default function Footer() {
   const [activeLink, setActiveLink] = useState(null);
 
   const quickLinks = [
-    { name: "Home", path: "/" },
-    { name: "About Us", path: "/about" },
-    { name: "Services", path: "/services" },
-    { name: "Infrastructure", path: "/infrastructure" },
-    { name: "Products", path: "/products" },
-    { name: "Contact Us", path: "/contact" }
+    { name: "Home", path: "#home" },
+    { name: "About Us", path: "#about" },
+    { name: "Services", path: "#services" },
+    { name: "Infrastructure", path: "#infrastructure" },
+    { name: "Products", path: "#products" },
+    { name: "Contact Us", path: "#contact" }
   ];
 
   const handleSubscribe = (e) => {
@@ -146,12 +146,12 @@ export default function Footer() {
               Our Services
             </h3>
             <ul className="footer-links">
-              <li><a href="#"><ChevronIcon /><span>Flexible Packaging</span></a></li>
-              <li><a href="#"><ChevronIcon /><span>Multi-Color Printing</span></a></li>
-              <li><a href="#"><ChevronIcon /><span>Lamination Services</span></a></li>
-              <li><a href="#"><ChevronIcon /><span>Custom Pouches</span></a></li>
-              <li><a href="#"><ChevronIcon /><span>Roll Form Solutions</span></a></li>
-              <li><a href="#"><ChevronIcon /><span>Quality Assurance</span></a></li>
+              <li><a href="#" onClick={(e) => e.preventDefault()}><ChevronIcon /><span>Flexible Packaging</span></a></li>
+              <li><a href="#" onClick={(e) => e.preventDefault()}><ChevronIcon /><span>Multi-Color Printing</span></a></li>
+              <li><a href="#" onClick={(e) => e.preventDefault()}><ChevronIcon /><span>Lamination Services</span></a></li>
+              <li><a href="#" onClick={(e) => e.preventDefault()}><ChevronIcon /><span>Custom Pouches</span></a></li>
+              <li><a href="#" onClick={(e) => e.preventDefault()}><ChevronIcon /><span>Roll Form Solutions</span></a></li>
+              <li><a href="#" onClick={(e) => e.preventDefault()}><ChevronIcon /><span>Quality Assurance</span></a></li>
             </ul>
           </div>
 
@@ -216,13 +216,13 @@ export default function Footer() {
           </div>
 
           <div className="footer-social">
-            <a href="#" className="social-link" aria-label="Gmail">
+            <a href="mailto:Ubindustries@gmail.com" className="social-link" aria-label="Gmail">
               <GmailIcon />
             </a>
-            <a href="#" className="social-link" aria-label="Twitter">
+            <a href="https://twitter.com" className="social-link" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
               <TwitterIcon />
             </a>
-            <a href="#" className="social-link" aria-label="LinkedIn">
+            <a href="https://linkedin.com" className="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
               <LinkedInIcon />
             </a>
           </div>

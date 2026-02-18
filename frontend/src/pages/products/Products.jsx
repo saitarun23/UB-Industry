@@ -16,7 +16,7 @@ const FOOD_CATEGORIES = [
   {
     id: "dairyproducts",
     title: "Dairy Products",
-    image: assets.dairy1,
+    image: assets.dairys,
   },
   {
     id: "oilproducts",
@@ -41,7 +41,7 @@ const FOOD_CATEGORIES = [
   {
     id: "beverages",
     title: "Beverages",
-    image: assets.beverages1,
+    image: assets.beverage,
   },
   {
     id: "seafood",
@@ -59,7 +59,7 @@ const NON_FOOD_CATEGORIES = [
   {
     id: "detergent",
     title: "Detergent",
-    image: assets.detergent2,
+    image: assets.detergent,
   },
   {
     id: "chemicals",

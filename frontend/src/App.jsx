@@ -35,23 +35,31 @@ const App = () => {
   const initialPageRef = useRef(getPageFromHash());
 
   const [activePage, setActivePage] = useState(initialPageRef.current);
-  const [showSplash, setShowSplash] = useState(true);
 
-  // ✅ Force scroll effect to re-run once splash ends
-  const scrollEffectKey = showSplash ? "__splash__" : activePage;
+  // 🔥 Two states:
+  // showSplash = splash component mounted
+  // splashDone  = splash finished timeline, content can render
+  const [showSplash, setShowSplash] = useState(true);
+  const [splashDone, setSplashDone] = useState(false);
+
+  // ✅ Trigger scroll observer only after content is visible
+  const scrollEffectKey = splashDone ? activePage : "__splash__";
   useScrollEffect(scrollEffectKey);
 
   // ✅ Scroll to top on page change (after splash)
   useEffect(() => {
-    if (!showSplash) window.scrollTo(0, 0);
-  }, [activePage, showSplash]);
+    if (splashDone) window.scrollTo(0, 0);
+  }, [activePage, splashDone]);
 
-  // Listen to URL hash changes
+  // hash changes
   useEffect(() => {
-    const handleHashChange = () => setActivePage(getPageFromHash());
+    const handleHashChange = () => {
+      if (!splashDone) return;
+      setActivePage(getPageFromHash());
+    };
     window.addEventListener("hashchange", handleHashChange);
     return () => window.removeEventListener("hashchange", handleHashChange);
-  }, []);
+  }, [splashDone]);
 
   const pages = {
     home: <Home />,
@@ -63,24 +71,36 @@ const App = () => {
     contact: <Contact />,
   };
 
+  const handleSplashFinish = () => {
+    // 1) allow content to mount behind splash immediately
+    setSplashDone(true);
+
+    const page = initialPageRef.current;
+    setActivePage(page);
+    if (!window.location.hash) window.location.hash = `#${page}`;
+
+    // 2) keep splash mounted for 2 frames, then remove it
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setShowSplash(false);
+        window.scrollTo(0, 0);
+      });
+    });
+  };
+
   return (
     <div>
-      {showSplash && (
-        <SplashScreen
-          onFinish={() => {
-            setShowSplash(false);
-            setActivePage(initialPageRef.current);
-
-            if (!window.location.hash) {
-              window.location.hash = `#${initialPageRef.current}`;
-            }
-          }}
-        />
+      {/* ✅ Render content as soon as splashDone, even if splash still mounted */}
+      {splashDone && (
+        <>
+          <Navbar onChangePage={setActivePage} activePage={activePage} />
+          {pages[activePage]}
+          <Footer />
+        </>
       )}
 
-      <Navbar onChangePage={setActivePage} activePage={activePage} />
-      {pages[activePage]}
-      <Footer />
+      {/* ✅ Splash stays above content until showSplash false */}
+      {showSplash && <SplashScreen onFinish={handleSplashFinish} />}
     </div>
   );
 };

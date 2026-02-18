@@ -3,137 +3,108 @@ import assets from "../images";
 import "../../styles/splashscreen.css";
 
 const SplashScreen = ({ onFinish }) => {
-  const [showLogo, setShowLogo] = useState(false);
-  const [fadeInLogo, setFadeInLogo] = useState(false);
-  const [showCompanyName, setShowCompanyName] = useState(false);
-  const [showTagline, setShowTagline] = useState(false);
+  const [logoState, setLogoState]       = useState("hidden"); // hidden → burst → stable
+  const [showTitle, setShowTitle]       = useState(false);
+  const [showTagline, setShowTagline]   = useState(false);
+  const [showDecor, setShowDecor]       = useState(false);
   const [showServices, setShowServices] = useState(false);
-  const [activeServiceIndex, setActiveServiceIndex] = useState(0);
-  const [blurring, setBlurring] = useState(false);
+  const [introHide, setIntroHide]       = useState(false);
+  const [activeIdx, setActiveIdx]       = useState(0);
+  const [blurring, setBlurring]         = useState(false);
 
   const services = [
-    {
-      title: "PRINT",
-      image: assets.land1,
-      // description: "High-Quality Printing"
-    },
-    {
-      title: "LAMINATE",
-      image: assets.land2,
-      // description: "Premium Lamination"
-    },
-    {
-      title: "PACK",
-      image: assets.land3,
-      // description: "Expert Packaging"
-    }
+    { title: "PRINT",    image: assets.land1 },
+    { title: "LAMINATE", image: assets.land2 },
+    { title: "PACK",     image: assets.land3 },
   ];
 
   useEffect(() => {
-    // Prevent scrolling during splash screen
     window.scrollTo(0, 0);
     document.body.style.overflow = "hidden";
 
-    // Animation timeline - Phase 1: Logo and Company Info
-    const logoTimer = setTimeout(() => {
-      setShowLogo(true);
-      setTimeout(() => setFadeInLogo(true), 50);
-    }, 300);
+    // ── Phase 1: Logo appears (clean pop, no glow) ──
+    const t1 = setTimeout(() => setLogoState("burst"),  400);
+    const t2 = setTimeout(() => setLogoState("stable"), 750);
 
-    const companyNameTimer = setTimeout(() => {
-      setShowCompanyName(true);
-    }, 1200);
+    // ── Phase 2: Brand name slides up as ONE block ──
+    const t3 = setTimeout(() => setShowTitle(true),   1200);
 
-    const taglineTimer = setTimeout(() => {
-      setShowTagline(true);
-    }, 1800);
+    // ── Phase 3: Tagline + gold line ──
+    const t4 = setTimeout(() => setShowTagline(true), 2000);
+    const t5 = setTimeout(() => setShowDecor(true),   2300);
 
-    // Phase 2: Show Services (start showing first service)
-    const servicesTimer = setTimeout(() => {
+    // ── Hold so user can read (~2 seconds of reading time) ──
+
+    // ── Phase 4: Services full-screen ──
+    const t6 = setTimeout(() => {
+      setIntroHide(true);
       setShowServices(true);
-      setActiveServiceIndex(0);
-    }, 3500);
+      setActiveIdx(0);
+    }, 4500);
 
-    // Transition through services one by one
-    const service1Timer = setTimeout(() => {
-      setActiveServiceIndex(1);
-    }, 5000); // Show LAMINATE at 5s
+    const t7 = setTimeout(() => setActiveIdx(1), 6200);
+    const t8 = setTimeout(() => setActiveIdx(2), 7900);
 
-    const service2Timer = setTimeout(() => {
-      setActiveServiceIndex(2);
-    }, 6500); // Show PACK at 6.5s
-
-    // Start blur and transition to main site
-    const blurTimer = setTimeout(() => {
-      setBlurring(true);
-    }, 8000);
-
-    const finishTimer = setTimeout(() => {
+    // ── Phase 5: Blur-out exit ──
+    const t9  = setTimeout(() => setBlurring(true), 9700);
+    const t10 = setTimeout(() => {
       document.body.style.overflow = "auto";
       onFinish?.();
-    }, 9000);
+    }, 10700);
 
-    // Cleanup
     return () => {
-      clearTimeout(logoTimer);
-      clearTimeout(companyNameTimer);
-      clearTimeout(taglineTimer);
-      clearTimeout(servicesTimer);
-      clearTimeout(service1Timer);
-      clearTimeout(service2Timer);
-      clearTimeout(blurTimer);
-      clearTimeout(finishTimer);
+      [t1,t2,t3,t4,t5,t6,t7,t8,t9,t10].forEach(clearTimeout);
       document.body.style.overflow = "auto";
     };
   }, [onFinish]);
 
   return (
-    <div className={`splash-screen ${blurring ? "blurring" : ""}`}>
-      {/* Phase 1: Company Introduction */}
-      <div className={`splash-container ${showServices ? "fade-out-container" : ""}`}>
-        {/* Logo */}
-        {showLogo && (
-          <div className={`logo-container ${fadeInLogo ? "fade-in" : ""}`}>
-            <img
-              src={assets.logo}
-              alt="Urmila Bhupathiraju Industries Logo"
-              className="company-logo"
-            />
-          </div>
-        )}
+    <div className={`splash-screen ${blurring ? "splash-exit" : ""}`}>
 
-        {/* Company Name */}
-        <div className={`company-name ${showCompanyName ? "slide-up" : ""}`}>
-          <div className="name-line">Urmila Bhupathiraju Industries</div>
-          {/* <div className="name-line emphasis"></div> */}
+      {/* ── Phase 1–3: Company Introduction ── */}
+      <div className={`splash-intro ${introHide ? "intro-hide" : ""}`}>
+
+        {/* Logo — clean fade+pop, no glow ring */}
+        <div className={`splash-logo-wrap logo-${logoState}`}>
+          <img
+            src={assets.logo}
+            alt="Urmila Bhupathiraju Industries"
+            className="splash-logo-img"
+          />
+          <div className="logo-ring" />
         </div>
 
-        {/* Main Tagline */}
-        <div className={`tagline ${showTagline ? "fade-in-text" : ""}`}>
-          Flexible Roto Print & Pack
+        {/* Brand name — whole line reveals at once */}
+        <div className={`splash-title ${showTitle ? "title-in" : ""}`}>
+          <span className="title-word w1">Urmila </span>
+          <span className="title-word w2">Bhupathiraju </span>
+          <span className="title-word w3">Industries</span>
         </div>
 
-        {/* Decorative Element */}
-        <div className={`decorative-line ${showTagline ? "expand" : ""}`}></div>
+        {/* Tagline */}
+        <div className={`splash-tagline ${showTagline ? "tagline-in" : ""}`}>
+          Flexible Roto Print &amp; Pack
+        </div>
+
+        {/* Gold separator */}
+        <div className={`splash-decor ${showDecor ? "decor-expand" : ""}`} />
       </div>
 
-      {/* Phase 2: Services Showcase - Full Screen Transitions */}
+      {/* ── Phase 4: Full-Screen Services ── */}
       {showServices && (
-        <div className="splash-services-fullscreen">
-          {services.map((service, index) => (
+        <div className="splash-services">
+          {services.map((svc, i) => (
             <div
-              key={index}
-              className={`splash-service-slide ${
-                index === activeServiceIndex ? "active" : ""
-              } ${index < activeServiceIndex ? "exited" : ""}`}
+              key={i}
+              className={`svc-slide ${i === activeIdx ? "svc-active" : ""} ${i < activeIdx ? "svc-done" : ""}`}
               style={{
-                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url(${service.image})`,
+                backgroundImage: `linear-gradient(rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.65) 100%), url(${svc.image})`,
               }}
             >
-              <div className="splash-service-content">
-                <h2 className="splash-service-title">{service.title}</h2>
-                {/* <div className="splash-service-divider"></div> */}
-                <p className="splash-service-description">{service.description}</p>
+              <div className="svc-inner">
+                <span className="svc-index">0{i + 1}</span>
+                <h2 className="svc-title">{svc.title}</h2>
+                <div className="svc-bar" />
               </div>
             </div>
           ))}
