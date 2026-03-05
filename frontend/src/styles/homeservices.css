@@ -1,351 +1,484 @@
-/* ================
-   SECTION
-   ================ */
-.homeservices-section {
-  background: #000000;
-  padding: 0px 60px 20px;
-  color: #ffffff;
-  position: relative;
+/* ================================================================
+   homeservices.css — Compact E-commerce style product grid
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap');
+
+.home-services {
+  min-height: 100vh;
+  background: #0a0a0a;
+  padding: 80px 5% 100px;
 }
 
-.homeservices-container {
+/* ── Header ───────────────────────────────────────────────────── */
+.hs-header {
+  max-width: 1400px;
+  margin: 0 auto 60px;
+  text-align: center;
+}
+
+.hs-eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #d4af37;
+  margin-bottom: 12px;
+  display: inline-block;
+}
+
+.hs-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+
+.hs-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 32px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Products Grid (E-commerce style - COMPACT) ───────────────── */
+.hs-products-grid {
   max-width: 1400px;
   margin: 0 auto;
-}
-
-/* ================
-   HEADING
-   ================ */
-.homeservices-heading {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.homeservices-heading span {
-  font-size: 33px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: #ffffff;
-}
-
-.homeservices-heading h2 {
-  font-size: 18px;
-  /* font-weight: 700; */
-  margin-top: 12px;
-  color: #aaa;
-}
-
-/* ================
-   GRID
-   ================ */
-.homeservices-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 35px;
-  margin-bottom: 70px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 28px;
 }
 
-/* ================
-   CARD
-   ================ */
-.homeservice-card {
-  background: #ffffff;
-  color: #000000;
-  display: flex;
-  flex-direction: column;
-  /* border: 1px solid #e5e5e5; */
-  overflow: hidden;
-  position: relative;
-  transition: border-color 0.3s ease;
+/* ── Product Card (Compact size) ──────────────────────────────── */
+.hs-product-card {
+  background: rgba(20, 20, 20, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
-}
-
-/* removed card top-bar + lift hover */
-/* .homeservice-card::before and :hover removed */
-
-/* ================
-   IMAGE WRAPPER
-   ================ */
-.homeservice-img-wrapper {
-  position: relative;
-  width: 100%;
-}
-
-.homeservice-img {
-  width: 100%;
-  height: 220px;
   overflow: hidden;
-  position: relative;
-  /* border-radius: 12px; */
-}
-
-.homeservice-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-  filter: grayscale(0.2);
-}
-
-/* only image-related hover */
-.homeservice-card:hover .homeservice-img img {
-  transform: scale(1.1);
-  filter: grayscale(0);
-}
-
-.img-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.6) 0%,
-    transparent 60%
-  );
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.homeservice-card:hover .img-overlay {
-  opacity: 1;
-}
-
-/* ================
-   ICON BADGE
-   ================ */
-.service-icon-badge {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 50px;
-  height: 50px;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  z-index: 2;
-}
-
-.homeservice-card:hover .service-icon-badge {
-  transform: scale(1.15);
-  background: rgba(0, 0, 0, 0.95);
-  border-color: rgba(255, 255, 255, 0.4);
-}
-
-.service-icon {
-  width: 24px;
-  height: 24px;
-  color: #ffffff;
-  transition: all 0.4s ease;
-}
-
-.homeservice-card:hover .service-icon {
-  transform: scale(1.2);
-}
-
-/* ================
-   STATS BADGE
-   ================ */
-.service-stats {
-  position: absolute;
-  bottom: 16px;
-  left: 16px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  padding: 8px 16px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  z-index: 2;
-}
-
-.homeservice-card:hover .service-stats {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.stats-label {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: rgba(0, 0, 0, 0.5);
-  font-weight: 600;
-}
-
-.stats-value {
-  font-size: 13px;
-  font-weight: 700;
-  color: #000000;
-  letter-spacing: 0.3px;
-}
-
-/* ================
-   CONTENT
-   ================ */
-.homeservice-content {
-  padding: 28px 24px;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.content-header {
-  margin-bottom: 14px;
-}
-
-.homeservice-content h3 {
-  font-size: 22px;
-  font-weight: 700;
-  margin: 0 0 8px;
-  color: #000000;
-  transition: color 0.3s ease;
-}
-
-.homeservice-content p {
-  font-size: 14px;
-  line-height: 1.7;
-  color: #444444;
-  margin: 0;
-  transition: color 0.3s ease;
-}
-
-/* no card-hover layout effects here */
-
-/* ================
-   READ MORE BUTTON
-   ================ */
-.read-more {
-  position: relative;
-  padding: 18px 24px;
-  border-top: 1px solid #e5e5e5;
-  font-size: 14px;
-  font-weight: 600;
   cursor: pointer;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  opacity: 0;
+  animation: cardSlideUp 0.5s ease-out forwards;
   transition: all 0.3s ease;
 }
 
-.read-more-text {
+.hs-product-card:hover {
+  border-color: #d4af37;
+  transform: translateY(-6px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6),
+              0 0 24px rgba(212, 175, 55, 0.15);
+}
+
+/* Image Container */
+.hsp-image-wrap {
   position: relative;
-  z-index: 2;
-  transition: all 0.4s ease;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  font-size: 12px;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  background: #1a1a1a;
 }
 
-.read-more-icon {
-  width: 18px;
-  height: 18px;
-  position: relative;
-  z-index: 2;
-  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  opacity: 0;
-  transform: translateX(-10px);
-}
-
-/* icon & bg react only when hovering the row */
-.read-more:hover .read-more-icon {
-  opacity: 1;
-  transform: translateX(4px);
-}
-
-.readmore-bg {
+.hsp-img {
   position: absolute;
-  inset: 0;
-  background: #000000;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.img-1 {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 2;
+}
+
+.img-1.hide {
+  opacity: 0;
+  transform: scale(1.05);
+}
+
+.img-2 {
+  opacity: 0;
+  transform: scale(1.08);
   z-index: 1;
 }
 
-.read-more:hover .readmore-bg {
-  transform: scaleX(1);
+.img-2.show {
+  opacity: 1;
+  transform: scale(1);
 }
 
-.read-more:hover .read-more-text {
+/* Badge */
+.hsp-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #d4af37;
+  z-index: 3;
+}
+
+/* Popular Tag */
+.hsp-popular-tag {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #d4af37;
+  color: #0a0a0a;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 6px;
+  z-index: 3;
+}
+
+/* Content */
+.hsp-content {
+  padding: 16px 14px;
+}
+
+.hsp-name {
+  font-family: 'Sora', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
   color: #ffffff;
-  transform: translateX(4px);
+  margin-bottom: 6px;
+  line-height: 1.3;
 }
 
-/* ================
-   RESPONSIVE
-   ================ */
+.hsp-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 10px;
+}
+
+/* Materials */
+.hsp-materials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.hsp-mat-tag {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  padding: 4px 10px;
+}
+
+/* CTA Button */
+.hsp-cta-btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #d4af37;
+  background: transparent;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 6px;
+  padding: 8px 12px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.hsp-cta-btn:hover {
+  background: rgba(212, 175, 55, 0.1);
+  border-color: #d4af37;
+}
+
+.hsp-arrow {
+  font-size: 16px;
+  transition: transform 0.3s;
+}
+
+.hsp-cta-btn:hover .hsp-arrow {
+  transform: translateX(3px);
+}
+
+/* ── Explore More Banner ──────────────────────────────────────── */
+.hs-explore-banner {
+  max-width: 1400px;
+  margin: 60px auto 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(160, 125, 28, 0.08) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  position: relative;
+}
+
+.hs-explore-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 80% 50%, rgba(212, 175, 55, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hs-explore-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 48px 56px;
+  position: relative;
+  z-index: 1;
+}
+
+.hs-explore-text {
+  flex: 1;
+}
+
+.hs-explore-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.hs-explore-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+  max-width: 560px;
+}
+
+.hs-explore-btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #0a0a0a;
+  background: #d4af37;
+  border: none;
+  border-radius: 50px;
+  padding: 16px 36px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.3s;
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.3);
+}
+
+.hs-explore-btn:hover {
+  background: #f0d060;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.45);
+}
+
+/* ── Process Section ──────────────────────────────────────────── */
+.hs-process {
+  max-width: 1400px;
+  margin: 80px auto 0;
+  padding: 60px;
+  background: rgba(20, 20, 20, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+}
+
+.hp-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.hp-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.hp-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.hp-steps {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.hp-step {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 32px 24px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.hp-step:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #d4af37;
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.hp-step-number {
+  font-family: 'Sora', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: #d4af37;
+  opacity: 0.3;
+  margin-bottom: 16px;
+}
+
+.hp-step-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.hp-step-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.hp-step-arrow {
+  font-size: 32px;
+  color: #d4af37;
+  opacity: 0.4;
+  flex-shrink: 0;
+}
+
+/* ── Animations ───────────────────────────────────────────────── */
+@keyframes cardSlideUp {
+  0%   { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ───────────────────────────────────────────────── */
 @media (max-width: 1024px) {
-  .homeservices-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+  .hs-products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 24px;
+  }
+
+  .hp-steps {
+    flex-direction: column;
+  }
+
+  .hp-step-arrow {
+    transform: rotate(90deg);
+    margin: 12px 0;
+  }
+
+  .hs-explore-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 36px;
+    gap: 28px;
+  }
+
+  .hs-explore-subtitle {
+    max-width: 100%;
   }
 }
 
 @media (max-width: 768px) {
-  .homeservices-section {
-    padding: 80px 30px;
+  .home-services {
+    padding: 60px 5% 80px;
   }
 
-  .heading-title {
-    font-size: 30px;
+  .hs-title {
+    font-size: 32px;
   }
 
-  .heading-subtitle {
-    font-size: 14px;
+  .hs-products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
   }
 
-  .homeservices-grid {
-    grid-template-columns: 1fr;
-    gap: 25px;
+  .hsp-image-wrap {
+    height: 180px;
   }
 
-  .cta-content {
-    flex-direction: column;
-    align-items: stretch;
-    text-align: center;
+  .hsp-content {
+    padding: 16px 14px;
   }
 
-  .cta-button {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 640px) {
-  .homeservices-section {
-    padding: 60px 20px;
+  .hsp-name {
+    font-size: 15px;
   }
 
-  .heading-title {
-    font-size: 26px;
+  .hsp-desc {
+    font-size: 12px;
   }
 
-  .homeservice-img {
-    height: 200px;
-  }
-
-  .homeservice-content {
-    padding: 24px 20px;
-  }
-
-  .homeservice-content h3 {
-    font-size: 20px;
-  }
-
-  .services-cta {
+  .hs-process {
     padding: 40px 24px;
   }
 
-  .cta-text {
-    font-size: 16px;
+  .hs-explore-banner {
+    margin: 40px auto 0;
+  }
+
+  .hs-explore-content {
+    padding: 32px 28px;
+  }
+
+  .hs-explore-title {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hs-title {
+    font-size: 26px;
+  }
+
+  .hs-products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hsp-image-wrap {
+    height: 200px;
+  }
+
+  .hs-explore-btn {
+    width: 100%;
+    justify-content: center;
   }
 }

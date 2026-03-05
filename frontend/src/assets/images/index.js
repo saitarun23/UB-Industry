@@ -1,5 +1,6 @@
 import logo from './logo.png';
 import logo1 from './logo1.png';
+import logo2 from './logo2.png';
 import land1 from './land1.png';
 import land2 from './land2.png';
 import land3 from './land3.png';
@@ -23,11 +24,6 @@ import aboutwe from './aboutwe.png';
 import aboutjourney from './aboutjourney.png';
 import aboutDirector from './aboutDirector.png';
 import servicesHero from './servicesHero.png';
-import service1 from './service1.png';
-import service2 from './service2.png';
-import service3 from './service3.png';
-import service4 from './service4.png';
-import service5 from './service5.png';
 import productHero from './productHero.png';
 import product1 from './product1.png';
 import product2 from './product2.png';
@@ -36,6 +32,7 @@ import product4 from './product4.png';
 import product5 from './product5.png';
 import product6 from './product6.png';
 import product7 from './product7.png';
+import product8 from './product8.png';
 import dairy from '../images/New folder/dairy.png';
 import dairys from '../images/New folder/dairys.png';
 import dairy1 from '../images/New folder/dairy1.png';
@@ -162,7 +159,7 @@ import detergent6 from '../images/New folder/detergent6.png';
 
 
 export default {
-  logo,logo1,
+  logo,logo1,logo2,
   print,laminate,pack,
   land1,land2,land3,
   hero1,hero2,
@@ -178,9 +175,8 @@ export default {
   aboutjourney,
   aboutDirector,
   servicesHero,
-  service1,service2,service3,service4,service5,
   productHero,
-  product1,product2,product3,product4,product5,product6,product7,
+  product1,product2,product3,product4,product5,product6,product7,product8,
   dairys,dairy,dairy1,dairy2,dairy3,dairy4,dairy5,dairy6,
   vaccums,vaccum,vaccum1,vaccum2,vaccum3,vaccum4,vaccum5,vaccum6,
   personalcare,

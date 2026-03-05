@@ -13,11 +13,11 @@
 }
 
 .homeproducts-heading span {
-  font-size: 33px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  font-weight: 700;
+  font-size: 35px;
+  font-weight: 400;
   color: #ffffff;
+  font-family: "Aleo", serif;
+  letter-spacing: 0.5px;
 }
 
 .homeproducts-heading h2 {
@@ -25,6 +25,7 @@
   /* font-weight: 700; */
   margin-top: 15px;
   color: #aaa;
+  font-family: "Aleo", serif;
 }
 
 /* SCROLL WRAPPER */

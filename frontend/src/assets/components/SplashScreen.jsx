@@ -3,7 +3,7 @@ import assets from "../images";
 import "../../styles/splashscreen.css";
 
 const SplashScreen = ({ onFinish }) => {
-  const [logoState, setLogoState]       = useState("hidden"); // hidden → burst → stable
+  const [logoState, setLogoState]       = useState("hidden");
   const [showTitle, setShowTitle]       = useState(false);
   const [showTagline, setShowTagline]   = useState(false);
   const [showDecor, setShowDecor]       = useState(false);
@@ -11,49 +11,79 @@ const SplashScreen = ({ onFinish }) => {
   const [introHide, setIntroHide]       = useState(false);
   const [activeIdx, setActiveIdx]       = useState(0);
   const [blurring, setBlurring]         = useState(false);
+  const [showSubtitle, setShowSubtitle] = useState(false);
 
   const services = [
-    { title: "PRINT",    image: assets.land1 },
-    { title: "LAMINATE", image: assets.land2 },
-    { title: "PACK",     image: assets.land3 },
+    {
+      title:    "PRINT",
+      subtitle: "Print. Precision. Packaging.",
+      desc:     "High-speed rotogravure printing on flexible films with up to 7 vivid colours.",
+      image:    assets.land1,
+    },
+    {
+      title:    "LAMINATE",
+      subtitle: "Layer. Bond. Protect.",
+      desc:     "Multi-layer film bonding that creates strong, barrier-rich packaging material.",
+      image:    assets.land2,
+    },
+    {
+      title:    "PACK",
+      subtitle: "Pouch. Pack. Deliver.",
+      desc:     "Converting laminated rolls into finished pouches and bags, ready for brands.",
+      image:    assets.land3,
+    },
   ];
 
   useEffect(() => {
     window.scrollTo(0, 0);
     document.body.style.overflow = "hidden";
 
-    // ── Phase 1: Logo appears (clean pop, no glow) ──
-    const t1 = setTimeout(() => setLogoState("burst"),  400);
-    const t2 = setTimeout(() => setLogoState("stable"), 750);
+    // ── Phase 1: Logo pop ───────────────────────────────── 0s
+    const t1 = setTimeout(() => setLogoState("burst"),  1900);
+    const t2 = setTimeout(() => setLogoState("stable"), 1100);
 
-    // ── Phase 2: Brand name slides up as ONE block ──
-    const t3 = setTimeout(() => setShowTitle(true),   1200);
+    // ── Phase 2: Brand name slides up ──────────────────── 1.6s
+    const t3 = setTimeout(() => setShowTitle(true),   1600);
 
-    // ── Phase 3: Tagline + gold line ──
-    const t4 = setTimeout(() => setShowTagline(true), 2000);
-    const t5 = setTimeout(() => setShowDecor(true),   2300);
+    // ── Phase 3: Tagline + gold line ───────────────────── 2.8s
+    const t4 = setTimeout(() => setShowTagline(true), 2800);
+    const t5 = setTimeout(() => setShowDecor(true),   3200);
 
-    // ── Hold so user can read (~2 seconds of reading time) ──
+    // ── Hold ~3s so user reads intro comfortably ────────
 
-    // ── Phase 4: Services full-screen ──
+    // ── Phase 4: PRINT slide ────────────────────────────── 6.5s
     const t6 = setTimeout(() => {
       setIntroHide(true);
       setShowServices(true);
       setActiveIdx(0);
-    }, 4500);
+      setShowSubtitle(false);
+    }, 6500);
+    // subtitle + desc appear 1.1s after slide image settles
+    const t6b = setTimeout(() => setShowSubtitle(true), 7600);
 
-    const t7 = setTimeout(() => setActiveIdx(1), 6200);
-    const t8 = setTimeout(() => setActiveIdx(2), 7900);
+    // ── LAMINATE slide ──────────────────────────────────── 11.5s  (~4s reading time per slide)
+    const t7 = setTimeout(() => {
+      setActiveIdx(1);
+      setShowSubtitle(false);
+    }, 11500);
+    const t7b = setTimeout(() => setShowSubtitle(true), 12600);
 
-    // ── Phase 5: Blur-out exit ──
-    const t9  = setTimeout(() => setBlurring(true), 9700);
+    // ── PACK slide ──────────────────────────────────────── 16.5s
+    const t8 = setTimeout(() => {
+      setActiveIdx(2);
+      setShowSubtitle(false);
+    }, 16500);
+    const t8b = setTimeout(() => setShowSubtitle(true), 17600);
+
+    // ── Phase 5: Blur-out exit ──────────────────────────── 21.5s
+    const t9  = setTimeout(() => setBlurring(true), 21500);
     const t10 = setTimeout(() => {
       document.body.style.overflow = "auto";
       onFinish?.();
-    }, 10700);
+    }, 22700);
 
     return () => {
-      [t1,t2,t3,t4,t5,t6,t7,t8,t9,t10].forEach(clearTimeout);
+      [t1,t2,t3,t4,t5,t6,t6b,t7,t7b,t8,t8b,t9,t10].forEach(clearTimeout);
       document.body.style.overflow = "auto";
     };
   }, [onFinish]);
@@ -64,7 +94,6 @@ const SplashScreen = ({ onFinish }) => {
       {/* ── Phase 1–3: Company Introduction ── */}
       <div className={`splash-intro ${introHide ? "intro-hide" : ""}`}>
 
-        {/* Logo — clean fade+pop, no glow ring */}
         <div className={`splash-logo-wrap logo-${logoState}`}>
           <img
             src={assets.logo}
@@ -74,19 +103,16 @@ const SplashScreen = ({ onFinish }) => {
           <div className="logo-ring" />
         </div>
 
-        {/* Brand name — whole line reveals at once */}
         <div className={`splash-title ${showTitle ? "title-in" : ""}`}>
           <span className="title-word w1">Urmila </span>
           <span className="title-word w2">Bhupathiraju </span>
           <span className="title-word w3">Industries</span>
         </div>
 
-        {/* Tagline */}
         <div className={`splash-tagline ${showTagline ? "tagline-in" : ""}`}>
           Flexible Roto Print &amp; Pack
         </div>
 
-        {/* Gold separator */}
         <div className={`splash-decor ${showDecor ? "decor-expand" : ""}`} />
       </div>
 
@@ -98,13 +124,23 @@ const SplashScreen = ({ onFinish }) => {
               key={i}
               className={`svc-slide ${i === activeIdx ? "svc-active" : ""} ${i < activeIdx ? "svc-done" : ""}`}
               style={{
-                backgroundImage: `linear-gradient(rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.65) 100%), url(${svc.image})`,
+                backgroundImage: `linear-gradient(rgba(0,0,0,0.28) 0%, rgba(0,0,0,0.72) 100%), url(${svc.image})`,
               }}
             >
               <div className="svc-inner">
                 <span className="svc-index">0{i + 1}</span>
+
                 <h2 className="svc-title">{svc.title}</h2>
+
                 <div className="svc-bar" />
+
+                <p className={`svc-subtitle ${i === activeIdx && showSubtitle ? "subtitle-in" : ""}`}>
+                  {svc.subtitle}
+                </p>
+
+                <p className={`svc-desc ${i === activeIdx && showSubtitle ? "desc-in" : ""}`}>
+                  {svc.desc}
+                </p>
               </div>
             </div>
           ))}

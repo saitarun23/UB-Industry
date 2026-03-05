@@ -237,18 +237,23 @@ export default function About() {
                 <style>{`
                   .orbit-spin { animation: orbitSpin 80s linear infinite; transform-origin: 600px 600px; }
                   .glow-ring   { }
+                  .card-float { animation: floatCard 2.5s ease-in-out infinite; }
                   @keyframes orbitSpin  { to { transform: rotate(360deg); } }
+                  @keyframes floatCard {
+                    0%, 100% { transform: translateY(0px); }
+                    50% { transform: translateY(-15px); }
+                  }
                 `}</style>
 
                 {/* Outer dashed orbit ring */}
-                <circle
+                {/* <circle
                   className="orbit-spin"
                   cx={SVG_C} cy={SVG_C} r={ORBIT_R + 30}
                   fill="none"
                   stroke="rgba(255,255,255,0.12)"
                   strokeWidth="1.5"
                   strokeDasharray="10 14"
-                />
+                /> */}
 
                 {/* Inner orbit ring */}
                 {/* <circle
@@ -259,33 +264,30 @@ export default function About() {
                 /> */}
 
                 {/* Connector lines + endpoint dots */}
-                {CARDS.map((card, i) => {
+                {/* {CARDS.map((card, i) => {
                   const p = linePoints(card);
                   const midX = (p.x1 + p.x2) / 2;
                   const midY = (p.y1 + p.y2) / 2;
                   return (
                     <g key={`conn-${i}`}>
-                      {/* Glow blur line */}
                       <line
                         x1={p.x1} y1={p.y1} x2={p.x2} y2={p.y2}
                         stroke="rgba(255,255,255,0.07)"
                         strokeWidth="7"
                       />
-                      {/* Dashed connector */}
                       <line
                         x1={p.x1} y1={p.y1} x2={p.x2} y2={p.y2}
                         stroke="rgba(255,255,255,0.32)"
                         strokeWidth="2"
                         strokeDasharray="8 6"
                       />
-                      {/* Endpoint dots */}
                       <circle cx={p.x1} cy={p.y1} r="7" fill="rgba(255,255,255,0.65)" />
                       <circle cx={p.x2} cy={p.y2} r="7" fill="rgba(255,255,255,0.65)" />
-                      {/* Mid dot */}
+                     
                       <circle cx={midX} cy={midY} r="4" fill="rgba(255,255,255,0.3)" />
                     </g>
                   );
-                })}
+                })} */}
 
                 {/* Center image */}
                 <image
@@ -315,7 +317,7 @@ export default function About() {
                   const descStartY  = titleStartY + titleLines.length * 22 + 10;
 
                   return (
-                    <g key={`card-${i}`}>
+                    <g key={`card-${i}`} className="card-float" style={{ animationDelay: `${i * 0.2}s` }}>
                       {/* Drop shadow */}
                       <circle
                         cx={card.cx + 4} cy={card.cy + 6}
@@ -403,12 +405,12 @@ export default function About() {
       </section>
 
       {/* CTA */}
-      <section className="about-cta">
+      {/* <section className="about-cta">
         <div className="about-cta-inner">
           <h2 className="about-cta-title">About Us</h2>
           <p className="about-cta-text">Get in touch to learn how we can support your flexible packaging needs.</p>
         </div>
-      </section>
+      </section> */}
 
     </main>
   );

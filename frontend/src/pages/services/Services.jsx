@@ -1,14 +1,7 @@
+import React, { useState } from "react";
 import {
-  Printer,
   Layers,
-  Scissors,
-  Package,
-  FileText,
-  CheckCircle,
-  Settings,
-  Award,
   Target,
-  Lightbulb,
   Sprout,
   Milk,
   Droplet,
@@ -19,54 +12,162 @@ import {
   TrendingUp,
   Clock,
   Sparkles,
+  ArrowRight,
+  ChevronRight,
 } from "lucide-react";
 import FoodPacketIcon from "../../assets/components/icons/FoodPacketIcon";
-
 import assets from "../../assets/images";
 import "../../styles/services.css";
+
+/* ── Data ─────────────────────────────────────────────────────── */
 
 const packagingSolutions = [
   {
     title: "Food Packaging",
-    desc:
-      "Solutions suitable for nitrogen flushing, good moisture and oxygen barrier with matt, gloss and metallic finishes.",
+    desc: "Solutions suitable for nitrogen flushing, good moisture and oxygen barrier with matt, gloss and metallic finishes.",
     Icon: FoodPacketIcon,
     variant: "food",
   },
   {
     title: "Agriculture Packaging",
-    desc:
-      "Structures tailored for agricultural products with reliable barrier and mechanical strength for rural distribution.",
+    desc: "Structures tailored for agricultural products with reliable barrier and mechanical strength for rural distribution.",
     Icon: Sprout,
     variant: "agri",
   },
   {
     title: "Milk Products Packaging",
-    desc:
-      "Laminates and pouches for milk and dairy products, maintaining hygiene, freshness and reliable distribution.",
+    desc: "Laminates and pouches for milk and dairy products, maintaining hygiene, freshness and reliable distribution.",
     Icon: Milk,
     variant: "beverage",
   },
   {
     title: "Industrial Packaging",
-    desc:
-      "High-performance industrial laminates engineered for demanding environments and heavy products.",
+    desc: "High-performance industrial laminates engineered for demanding environments and heavy products.",
     Icon: Layers,
     variant: "industrial",
   },
   {
     title: "Liquid Packaging",
-    desc:
-      "Leak-proof laminates and pouches for edible oils, cleaners and other liquid products.",
+    desc: "Leak-proof laminates and pouches for edible oils, cleaners and other liquid products.",
     Icon: Droplet,
     variant: "liquid",
   },
   {
     title: "Healthcare Packaging",
-    desc:
-      "Packaging suitable for pharma and healthcare products with high hygiene and protection needs.",
+    desc: "Packaging suitable for pharma and healthcare products with high hygiene and protection needs.",
     Icon: HeartPulse,
     variant: "health",
+  },
+];
+
+const allProducts = [
+  {
+    id: "food-packaging",
+    name: "Food Packaging Films",
+    badge: "FDA Compliant",
+    popular: true,
+    shortDesc: "Multi-layer barrier films for fresh and processed foods",
+    specs: "High-barrier • FDA compliant • Vibrant rotogravure prints",
+    materials: ["PET/ALU/PE", "BOPP/CPP", "Metallized PET"],
+    image1: assets.biscuit,
+    image2: assets.biscuit1,
+    applications: "Biscuits, Chocolates, Dairy, Ready-to-eat Meals",
+  },
+  {
+    id: "snack-films",
+    name: "Snack & Chips Films",
+    badge: "Auto-pack Ready",
+    popular: true,
+    shortDesc: "Moisture-resistant BOPP laminates with crisp bag properties",
+    specs: "Moisture barrier • Auto-pack ready • High gloss finish",
+    materials: ["BOPP", "BOPP/CPP", "Metallized BOPP"],
+    image1: assets.snackFilms,
+    image2: assets.snackFilms2,
+    applications: "Potato Chips, Namkeen, Extruded Snacks, Dry Fruits",
+  },
+  {
+    id: "pharmaceutical",
+    name: "Pharmaceutical Packaging",
+    badge: "Sterile Grade",
+    popular: false,
+    shortDesc: "Clean-room grade barrier laminates for medical applications",
+    specs: "Light & oxygen barrier • Tamper-evident • Sterile grade",
+    materials: ["PET/ALU/PE", "Paper Laminates", "Foil-based"],
+    image1: "/images/services/pharma-1.jpg",
+    image2: "/images/services/pharma-2.jpg",
+    applications: "Blister Packs, Strip Packs, Sachets, Medical Wraps",
+  },
+  {
+    id: "coffee-tea",
+    name: "Coffee & Tea Packaging",
+    badge: "Valve Ready",
+    popular: false,
+    shortDesc: "Aroma-lock multilayer films for premium beverages",
+    specs: "Aroma retention • Valve-ready • UV barrier",
+    materials: ["PET/ALU/PE", "BOPP/EVOH/PE", "Metallized"],
+    image1: "/images/services/coffee-1.jpg",
+    image2: "/images/services/coffee-2.jpg",
+    applications: "Coffee Beans, Ground Coffee, Tea Leaves, Instant Mix",
+  },
+  {
+    id: "spices-masala",
+    name: "Spices & Masala Films",
+    badge: "Aroma-lock",
+    popular: false,
+    shortDesc: "High-barrier films preserving aroma and freshness",
+    specs: "Aroma-lock • Puncture resistant • Anti-static",
+    materials: ["PET/PE", "BOPP/CPP", "Metallized Films"],
+    image1: "/images/services/spices-1.jpg",
+    image2: "/images/services/spices-2.jpg",
+    applications: "Turmeric, Chili Powder, Curry Powder, Whole Spices",
+  },
+  {
+    id: "agrochemicals",
+    name: "Agrochemical Packaging",
+    badge: "UV Stable",
+    popular: false,
+    shortDesc: "Heavy-duty chemical-resistant laminates",
+    specs: "Chemical resistant • Puncture proof • UV stable",
+    materials: ["BOPP", "PET/PE", "Nylon-based"],
+    image1: "/images/services/agro-1.jpg",
+    image2: "/images/services/agro-2.jpg",
+    applications: "Pesticides, Herbicides, Fertilizers, Seeds",
+  },
+  {
+    id: "pouch-films",
+    name: "Stand-up Pouch Films",
+    badge: "Zipper Ready",
+    popular: true,
+    shortDesc: "Versatile laminated structures for auto-pack machines",
+    specs: "Zipper-ready • Spout compatible • Printable",
+    materials: ["PET/PE", "BOPP/CPP", "Nylon/PE"],
+    image1: "/images/services/pouch-1.jpg",
+    image2: "/images/services/pouch-2.jpg",
+    applications: "Liquid Products, Dry Mixes, Pet Food, Detergents",
+  },
+  {
+    id: "lamination-base",
+    name: "Lamination Base Films",
+    badge: "Corona Treated",
+    popular: false,
+    shortDesc: "High-quality substrate films for converting operations",
+    specs: "Corona treated • High clarity • Ink adhesion",
+    materials: ["PET", "BOPP", "CPP", "PE"],
+    image1: "/images/services/lamination-1.jpg",
+    image2: "/images/services/lamination-2.jpg",
+    applications: "Converting, Printing Base, Industrial Laminates",
+  },
+  {
+    id: "retail-display",
+    name: "Retail Display Films",
+    badge: "High Clarity",
+    popular: false,
+    shortDesc: "Premium-finish films for consumer visibility",
+    specs: "High clarity • Brilliant print • Shelf appeal",
+    materials: ["BOPP", "PET", "CPP"],
+    image1: "/images/services/retail-1.jpg",
+    image2: "/images/services/retail-2.jpg",
+    applications: "Window Packs, Overwraps, Gift Wraps, Sleeves",
   },
 ];
 
@@ -115,10 +216,39 @@ const whyChooseUsFeatures = [
   },
 ];
 
+/* ── Component ────────────────────────────────────────────────── */
+
 export default function Services() {
+  const [activeCategory, setActiveCategory] = useState("all");
+  const [hoveredCard, setHoveredCard] = useState(null);
+
+  const filterOptions = [
+    { id: "all", label: "All Products" },
+    { id: "food-packaging", label: "Food" },
+    { id: "snack-films", label: "Snacks" },
+    { id: "pharmaceutical", label: "Pharma" },
+    { id: "agrochemicals", label: "Agro" },
+    { id: "pouch-films", label: "Pouches" },
+  ];
+
+  const filteredProducts =
+    activeCategory === "all"
+      ? allProducts
+      : allProducts.filter((p) => p.id === activeCategory);
+
+  const handleViewDetails = (categoryId) => {
+    window.location.hash = `#product-detail?category=${categoryId}`;
+  };
+
+  const handleButtonClick = (e, categoryId) => {
+    e.stopPropagation();
+    handleViewDetails(categoryId);
+  };
+
   return (
     <main className="services-page" id="services">
-      {/* HERO */}
+
+      {/* ── HERO ─────────────────────────────────────────────── */}
       <header className="services-hero">
         <div className="services-hero-bg">
           <img src={assets.servicesHero} alt="Production floor" />
@@ -132,54 +262,34 @@ export default function Services() {
         </div>
       </header>
 
-      {/* MAIN BODY */}
+      {/* ── MAIN BODY ─────────────────────────────────────────── */}
       <section className="services-main">
-        {/* CAPABILITIES INTRO */}
-        <section className="services-intro-section scroll-effect">
-          <div className="services-intro-container">
-            <div className="intro-badge services-badge">
-              <Award className="intro-badge-icon" />
-              <span>Complete Solutions</span>
-            </div>
-            <h2 className="services-intro-title scroll-effect">Our Capabilities</h2>
-            <p className="services-intro-text scroll-effect">
-              At <strong>UB Industries</strong>, every
-              job is handled as a complete solution — from artwork and cylinder
-              preparation to printing, lamination, slitting and pouch
-              conversion. Our integrated setup helps you move faster to market,
-              maintain consistent quality and keep your packaging supply chain
-              simple.
-            </p>
-          </div>
-        </section>
 
-        {/* PACKAGING SOLUTIONS */}
+        {/* ── PACKAGING SOLUTIONS ─────────────────────────────── */}
         <section className="packaging-section">
           <div className="packaging-header">
             <h2 className="packaging-title scroll-effect">Packaging Solutions</h2>
             <p className="packaging-subtitle scroll-effect">
-              Application-focused flexible packaging for different product
-              categories.
+              Application-focused flexible packaging for different product categories.
             </p>
           </div>
-
-          <div className="packaging-grid">  
+          <div className="packaging-grid">
             {packagingSolutions.map(({ title, desc, Icon, variant }) => (
               <div className="pack-card scroll-effect" key={title}>
                 <div className={`pack-icon-circle pack-${variant}`}>
                   <Icon className="pack-icon" />
                 </div>
-                <h3 className="pack-card-title scroll-effect">{title}</h3>
-                <p className="pack-card-text scroll-effect">{desc}</p>
+                <h3 className="pack-card-title">{title}</h3>
+                <p className="pack-card-text">{desc}</p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* QUOTE BANNER */}
+        {/* ── QUOTE BANNER ────────────────────────────────────── */}
         <section className="services-quote-banner">
           <div className="quote-icon-wrap scroll-effect">
-            <Target className="quote-icon scroll-effect" />
+            <Target className="quote-icon" />
           </div>
           <p className="scroll-effect">
             We support brands of every size — from pilot runs to full-scale
@@ -187,325 +297,131 @@ export default function Services() {
           </p>
         </section>
 
-        {/* SERVICE ROWS */}
-        <section className="services-grid">
-          {/* PRINTING */}
-          <article className="service-card">
-            <div className="service-card-image scroll-effect">
-              <img
-                src={assets.printing}
-                alt="Flexible packaging printing machine"
-              />
-              <div className="image-overlay">
-                <div className="overlay-icon-wrap">
-                  <Printer className="overlay-icon" />
-                </div>
-              </div>
-            </div>
-            <div className="service-card-content">
-              <div className="service-header">
-                <span className="service-tag">Core Service</span>
-                <h3 className="service-title">High-Performance Printing</h3>
-              </div>
-              <p className="service-description">
-                Multi-color flexographic &amp; gravure printing on a range of
-                substrates including BOPP, PET, PE and laminates. Optimised
-                ink-matching and registration control ensures your brand colours
-                stay consistent across every batch.
-              </p>
-              <ul className="service-features">
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>
-                    Surface &amp; reverse printing up to wide web widths
-                  </span>
-                </li>
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>Fine halftones, vignettes and photo-quality graphics</span>
-                </li>
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>Food-grade inks and coatings where required</span>
-                </li>
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>
-                    In-line inspection for print defects and shade variation
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </article>
+        {/* ── PRODUCT RANGE ───────────────────────────────────── */}
+        <section className="sv-products-section">
+          <div className="sv-products-header">
+            <span className="sv-eyebrow">Our Product Range</span>
+            <h2 className="sv-products-title scroll-effect">
+              Rotogravure Printed Packaging Films
+            </h2>
+            <p className="sv-products-subtitle scroll-effect">
+              High-barrier laminated films for food, pharma, and industrial applications.
+              Browse our full catalogue below.
+            </p>
 
-          {/* LAMINATION */}
-          <article className="service-card service-card-reverse">
-            <div className="service-card-image scroll-effect">
-              <img src={assets.lamination} alt="Lamination machine" />
-              <div className="image-overlay">
-                <div className="overlay-icon-wrap">
-                  <Layers className="overlay-icon" />
-                </div>
-              </div>
+            {/* Filter Buttons */}
+            <div className="sv-quick-filters">
+              {filterOptions.map((opt) => (
+                <button
+                  key={opt.id}
+                  className={`sv-qf-btn ${activeCategory === opt.id ? "active" : ""}`}
+                  onClick={() => setActiveCategory(opt.id)}
+                >
+                  {opt.label}
+                </button>
+              ))}
             </div>
-            <div className="service-card-content">
-              <div className="service-header">
-                <span className="service-tag">Barrier &amp; Protection</span>
-                <h3 className="service-title">Coating &amp; Lamination</h3>
-              </div>
-              <p className="service-description">
-                Our lamination lines build structures that protect aroma, extend
-                shelf life and improve handling. From simple duplex laminates to
-                complex multi-layer constructions, we tune barrier properties to
-                suit your product.
-              </p>
-              <ul className="service-features">
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>Solvent-less &amp; solvent-based lamination options</span>
-                </li>
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>Structures from 20 microns up to 200 microns</span>
-                </li>
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>High bond strength &amp; excellent curl control</span>
-                </li>
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>
-                    Heat-seal, cold-seal &amp; speciality coating options
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </article>
-
-          {/* SLITTING */}
-          <article className="service-card">
-            <div className="service-card-image scroll-effect">
-              <img src={assets.sliting} alt="Slitting machine" />
-              <div className="image-overlay">
-                <div className="overlay-icon-wrap">
-                  <Scissors className="overlay-icon" />
-                </div>
-              </div>
-            </div>
-            <div className="service-card-content">
-              <div className="service-header">
-                <span className="service-tag">Precision Finishing</span>
-                <h3 className="service-title">Web Slitting &amp; Rewinding</h3>
-              </div>
-              <p className="service-description">
-                Web-guided slitters with auto tension control deliver clean
-                edges, accurate roll widths and consistent roll profiles that
-                run smoothly on your packing lines.
-              </p>
-              <ul className="service-features">
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>Camera-based edge &amp; print mark tracking</span>
-                </li>
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>
-                    Custom slit widths for form-fill-seal &amp; VFFS machines
-                  </span>
-                </li>
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>
-                    Core &amp; roll OD as per your machine requirements
-                  </span>
-                </li>
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>Doctoring &amp; reworking of problem reels</span>
-                </li>
-              </ul>
-            </div>
-          </article>
-
-          {/* POUCHING */}
-          <article className="service-card service-card-reverse">
-            <div className="service-card-image scroll-effect ">
-              <img src={assets.pouching} alt="Pouching machine" />
-              <div className="image-overlay">
-                <div className="overlay-icon-wrap">
-                  <Package className="overlay-icon" />
-                </div>
-              </div>
-            </div>
-            <div className="service-card-content">
-              <div className="service-header">
-                <span className="service-tag">Flexible Packaging</span>
-                <h3 className="service-title">Pouch Conversion</h3>
-              </div>
-              <p className="service-description">
-                Dedicated pouching lines convert printed laminates into
-                shelf-ready formats that are strong, leak-proof and visually
-                striking on the rack.
-              </p>
-              <ul className="service-features">
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>
-                    Center-seal, three-side seal &amp; side-gusset pouches
-                  </span>
-                </li>
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>
-                    Stand-up pouches with zipper, spout &amp; tear notch options
-                  </span>
-                </li>
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>Heavy-duty bags designed up to 25&nbsp;kg fill weight</span>
-                </li>
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>
-                    Laser scoring, euro-hole and punch options on request
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </article>
-
-          {/* PREPRESS & SUPPORT */}
-          {/* <article className="service-card">
-            <div className="service-card-image">
-              <img
-                src={assets.service5}
-                alt="Design and prepress consultation"
-              />
-              <div className="image-overlay">
-                <div className="overlay-icon-wrap">
-                  <FileText className="overlay-icon" />
-                </div>
-              </div>
-            </div>
-            <div className="service-card-content">
-              <div className="service-header">
-                <span className="service-tag">Design Support</span>
-                <h3 className="service-title">Prepress &amp; Consulting</h3>
-              </div>
-              <p className="service-description">
-                We work closely with your marketing and procurement teams to
-                translate design intent into packaging that is practical to
-                produce and performs well in real-world conditions.
-              </p>
-              <ul className="service-features">
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>
-                    Artwork review, trapping &amp; colour-separation guidance
-                  </span>
-                </li>
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>
-                    Recommendations on substrates, thickness &amp; structure
-                  </span>
-                </li>
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>
-                    Pack format suggestions based on filling &amp; distribution
-                  </span>
-                </li>
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>
-                    Cost-to-performance optimisation for new launches
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </article> */}
-        </section>
-
-        {/* SECOND QUOTE BANNER */}
-        <section className="services-quote-banner services-quote-secondary">
-          <div className="quote-icon-wrap scroll-effect">
-            <Lightbulb className="quote-icon scroll-effect" />
           </div>
-          <p className="scroll-effect">
-            Choosing the right film, structure and format is as important as
-            choosing the right design. Our team helps you get all three right.
-          </p>
+
+          {/* Products Grid */}
+          <div className="sv-products-grid">
+            {filteredProducts.map((cat, idx) => (
+              <div
+                key={cat.id}
+                className="sv-product-card"
+                style={{ animationDelay: `${idx * 0.05}s` }}
+                onMouseEnter={() => setHoveredCard(cat.id)}
+                onMouseLeave={() => setHoveredCard(null)}
+              >
+                {/* Image */}
+                <div className="sv-img-wrap">
+                  <img
+                    src={cat.image1}
+                    alt={cat.name}
+                    className={`sv-img img-primary ${hoveredCard === cat.id ? "hide" : ""}`}
+                  />
+                  <img
+                    src={cat.image2}
+                    alt={cat.name}
+                    className={`sv-img img-secondary ${hoveredCard === cat.id ? "show" : ""}`}
+                  />
+                  {/* {cat.popular && (
+                    <span className="sv-popular-tag">Popular</span>
+                  )}
+                  <span className="sv-badge">{cat.badge}</span> */}
+                </div>
+
+                {/* Content */}
+                <div className="sv-card-content">
+                  <h3 className="sv-card-name">{cat.name}</h3>
+                  <p className="sv-card-desc">{cat.shortDesc}</p>
+
+                  <div className="sv-mat-tags">
+                    {cat.materials.map((mat, i) => (
+                      <span key={i} className="sv-mat-tag">{mat}</span>
+                    ))}
+                  </div>
+
+                  <button 
+                    className="sv-cta-btn"
+                    onClick={(e) => handleButtonClick(e, cat.id)}
+                  >
+                    View Technical Details
+                    <ChevronRight size={16} />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
         </section>
 
-        {/* REDESIGNED Built for You US SECTION */}
-        <section className="why-choose-section ">
-          <div className="why-choose-header scroll-effect">
-            <div className="why-header-badge">
-              <Award className="why-badge-icon" />
-              <span>Our Advantage</span>
-            </div>
-            <h2 className="why-choose-title">Built for You</h2>
-            <p className="why-choose-subtitle">
-              Decades of expertise combined with cutting-edge technology to
-              deliver packaging solutions that exceed expectations.
+        {/* ── PRODUCTION PROCESS ──────────────────────────────── */}
+        <section className="sv-process-section">
+          <div className="sv-process-header">
+            <h3 className="sv-process-title scroll-effect">Our Production Process</h3>
+            <p className="sv-process-subtitle scroll-effect">
+              From printing to lamination — precision engineering at every step
             </p>
           </div>
-
-          <div className="why-features-grid ">
-            {whyChooseUsFeatures.map(
-              ({ icon: Icon, title, description, gradient }, index) => (
-                <div className="why-feature-card scroll-effect" key={index}>
-                  <div className="why-feature-glow" />
-                  <div className={`why-feature-icon-wrap gradient-${gradient}`}>
-                    <Icon className="why-feature-icon" />
-                  </div>
-                  <h3 className="why-feature-title">{title}</h3>
-                  <p className="why-feature-desc">{description}</p>
+          <div className="sv-process-steps">
+            {[
+              {
+                num: "01",
+                title: "Rotogravure Printing",
+                desc: "High-quality multi-color printing on PET/BOPP at speeds up to 250 m/min",
+              },
+              {
+                num: "02",
+                title: "Lamination",
+                desc: "Solvent/Solventless bonding of multiple layers for barrier properties",
+              },
+              {
+                num: "03",
+                title: "Slitting",
+                desc: "Converting jumbo rolls into customer-specified widths with precision",
+              },
+              {
+                num: "04",
+                title: "Quality Check",
+                desc: "100% inspection and packaging for dispatch with full traceability",
+              },
+            ].map((step, i, arr) => (
+              <React.Fragment key={step.num}>
+                <div className="sv-step scroll-effect">
+                  <div className="sv-step-num">{step.num}</div>
+                  <h4 className="sv-step-title">{step.title}</h4>
+                  <p className="sv-step-desc">{step.desc}</p>
                 </div>
-              )
-            )}
+                {i < arr.length - 1 && (
+                  <div className="sv-step-arrow">
+                    <ArrowRight size={28} />
+                  </div>
+                )}
+              </React.Fragment>
+            ))}
           </div>
+        </section>  
 
-          {/* Additional Value Points */}
-          {/* <div className="why-value-cards">
-            <div className="why-value-card why-value-primary">
-              <div className="why-value-icon-circle">
-                <Settings className="why-value-icon" />
-              </div>
-              <div className="why-value-content">
-                <h3 className="why-value-title">Advanced Infrastructure</h3>
-                <p className="why-value-text">
-                  Our facility houses state-of-the-art machinery including
-                  high-speed rotogravure and flexographic printing presses,
-                  solvent-less lamination units, precision slitting machines,
-                  and automated pouch-making equipment. Each machine is
-                  regularly calibrated and maintained to deliver consistent,
-                  high-quality output that meets international packaging
-                  standards.
-                </p>
-              </div>
-            </div>
-
-            <div className="why-value-card why-value-secondary">
-              <div className="why-value-icon-circle">
-                <Lightbulb className="why-value-icon" />
-              </div>
-              <div className="why-value-content">
-                <h3 className="why-value-title">Comprehensive Support</h3>
-                <p className="why-value-text">
-                  From concept to delivery, our technical team provides
-                  end-to-end guidance. We assist with material selection,
-                  structural design, artwork optimization, and production
-                  planning. Our experts help you navigate regulatory
-                  requirements, shelf-life testing, and sustainability
-                  considerations, ensuring your packaging solution is both
-                  commercially viable and market-ready.
-                </p>
-              </div>
-            </div>
-          </div> */}
-        </section>
       </section>
     </main>
   );

@@ -166,7 +166,7 @@ export default function Products() {
       {/* BODY */}
       <section className="product-body">
         {/* Search bar */}
-        <form
+        {/* <form
           className="product-search"
           onSubmit={(e) => e.preventDefault()}
         >
@@ -177,7 +177,7 @@ export default function Products() {
             onChange={(e) => setQuery(e.target.value)}
           />
           <button type="submit">Search</button>
-        </form>
+        </form> */}
 
         {/* Tabs */}
         <div className="product-tabs">

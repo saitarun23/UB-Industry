@@ -12,6 +12,7 @@ import Services from "./pages/services/Services";
 import Infrastructure from "./pages/infrastructure/Infrastructure";
 import Products from "./pages/products/Products";
 import ProductDetail from "./pages/products/ProductDetail";
+import ServiceDetail from "./pages/home/ServiceDetail";
 import Contact from "./pages/contact/Contact";
 
 import SplashScreen from "./assets/components/SplashScreen";
@@ -71,6 +72,13 @@ const App = () => {
     contact: <Contact />,
   };
 
+  // Render either ServiceDetail or ProductDetail based on URL parameters
+  const renderDetailPage = () => {
+    const params = new URLSearchParams(window.location.hash.split("?")[1]);
+    const hasCategory = params.has("category");
+    return hasCategory ? <ServiceDetail /> : <ProductDetail />;
+  };
+
   const handleSplashFinish = () => {
     // 1) allow content to mount behind splash immediately
     setSplashDone(true);
@@ -94,7 +102,7 @@ const App = () => {
       {splashDone && (
         <>
           <Navbar onChangePage={setActivePage} activePage={activePage} />
-          {pages[activePage]}
+          {activePage === "product-detail" ? renderDetailPage() : pages[activePage]}
           <Footer />
         </>
       )}

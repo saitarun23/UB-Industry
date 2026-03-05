@@ -58,9 +58,10 @@
 
 .about-hero-title {
   font-size: 2.6rem;
-  font-weight: 800;
-  margin: 0 0 10px;
+  font-weight: 400;
+  margin: 0 0 6px;
   margin-left: 150px;
+  font-family: "Aleo", serif;
 }
 
 /* ================
@@ -79,19 +80,21 @@
 
 .about-welcome-title {
   font-size: 2.5rem;
-  font-weight: 800;
+  font-weight: 400;
   color: #ffffff;
   letter-spacing: -0.5px;
   margin: 40px 0 16px;
   line-height: 1.2;
+  font-family: "Aleo", serif;
 }
 
 .about-welcome-subtitle {
   font-size: 1.15rem;
   color: #cfcfcf;
-  font-weight: 400;
+  /* font-weight: 400; */
   margin: 0;
   letter-spacing: 0.3px;
+  font-family: "Aleo", serif;
 }
 
 /* ================
@@ -108,10 +111,11 @@
    ================ */
 .about-section-title {
   font-size: 2.4rem;
-  font-weight: 800;
+  font-weight: 400;
   color: #ffffff;
   margin: 0 0 12px;
   text-align: center;
+  font-family: "Aleo", serif;
 }
 
 .about-title-underline {
@@ -309,18 +313,21 @@
 
 .about-director-name {
   font-size: 1.6rem;
-  font-weight: 700;
+  font-weight: 500;
   color: #ffffff;
   margin: 0 0 8px;
+  font-family: "Aleo", serif;
+  letter-spacing: 1.5px;
 }
 
 .about-director-role {
   font-size: 1rem;
-  color: #f3f3f3;
-  font-weight: 600;
+  color: #d8d6d6;
+  /* font-weight: 600; */
   text-transform: uppercase;
   letter-spacing: 1px;
   margin: 0 0 32px;
+  font-family: "Aleo", serif;
 }
 
 .about-director-right {
