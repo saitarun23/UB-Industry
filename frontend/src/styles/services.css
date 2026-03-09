@@ -4,72 +4,112 @@
 .services-page {
   background: #0a0a0a;
   color: #ffffff;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
   overflow-x: hidden;
 }
 
 /* ================
-   HERO
+   HERO WITH THREE.JS & VARIED TEXT ANIMATIONS
    ================ */
 .services-hero {
   position: relative;
   width: 100%;
-  min-height: calc(100vh - 80px);
+  min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  padding: 90px 8% 70px;
-  box-sizing: border-box;
+  justify-content: center;
   overflow: hidden;
   background: #000000;
   color: #ffffff;
 }
 
-.services-hero-bg {
+.services-hero-canvas {
   position: absolute;
   inset: 0;
   z-index: 1;
-}
-
-.services-hero-bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(0.1);
 }
 
 .services-hero-overlay {
   position: absolute;
   inset: 0;
   z-index: 2;
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.92) 0%,
-    rgba(0, 0, 0, 0.78) 35%,
-    rgba(0, 0, 0, 0.4) 70%,
-    transparent 100%
+  background: radial-gradient(
+    ellipse at center,
+    rgba(20, 184, 166, 0.05) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.85) 100%
   );
+  animation: gradientPulse 8s ease-in-out infinite;
+}
+
+@keyframes gradientPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
 }
 
 .services-hero-content {
   position: relative;
   z-index: 3;
+  text-align: center;
+  width: 100%;
 }
 
-.services-hero-title {
-  font-size: 2.6rem;
-  font-weight: 400;
-  margin: 0 0 6px;
-  margin-left: 150px;
-  font-family: "Aleo", serif;
+.services-hero-text-container {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.services-hero-subtitle {
-  margin-left: 150px;
-  font-size: 1rem;
-  max-width: 430px;
-  color: #e4e4e4;
-  font-family: "Aleo", serif;
+/* Two-line layout */
+.text-layout-two-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.text-line-1,
+.text-line-2 {
+  font-size: 4rem;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1;
+  letter-spacing: -2px;
+  /* text-transform: uppercase; */
+}
+
+/* Inline layout (horizontal words) */
+.text-layout-inline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.text-word {
+  font-size: 4rem;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1;
+  letter-spacing: -1px;
+  display: inline-block;
+}
+
+/* Single word */
+.text-single {
+  font-size: 5rem;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1;
+  letter-spacing: -2px;
+  perspective: 1000px;
 }
 
 /* ================
@@ -80,6 +120,7 @@
   margin: 0 auto;
   padding: 0;
 }
+
 
 /* =====================================
    PACKAGING SOLUTIONS
@@ -96,12 +137,11 @@
 }
 
 .packaging-title {
-  font-size: 35px;
-  font-weight: 500;
+  font-size: 2.4rem;
+  font-weight: 800;
   color: #ffffff;
   margin: 0 0 14px;
   letter-spacing: -0.5px;
-  font-family: "Aleo", serif;
 }
 
 .packaging-subtitle {
@@ -109,7 +149,6 @@
   color: #d1d5db;
   margin: 0;
   line-height: 1.7;
-  font-family: "Aleo", serif;
 }
 
 .packaging-grid {
@@ -164,513 +203,42 @@
   box-shadow: 0 24px 50px rgba(0, 0, 0, 0.8);
 }
 
-.pack-food      { background: #f97316; }
-.pack-agri      { background: #22c55e; }
-.pack-beverage  { background: #0b4f6e; }
-.pack-industrial { background: #6c2506; }
-.pack-liquid    { background: #0ea5e9; }
-.pack-health    { background: #14b8a6; }
-
-/* ================
-   QUOTE BANNERS
-   ================ */
-.services-quote-banner {
-  margin: 0;
-  padding: 60px 40px;
-  background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
-  position: relative;
-  overflow: hidden;
+.pack-food {
+  background: #f97316;
 }
 
-.services-quote-banner::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.05) 0%,
-    transparent 70%
-  );
-  border-radius: 50%;
+.pack-agri {
+  background: #22c55e;
 }
 
-.quote-icon-wrap {
-  width: 70px;
-  height: 70px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 24px;
-  position: relative;
-  z-index: 1;
+.pack-beverage {
+  background: #0b4f6e;
 }
 
-.quote-icon {
-  width: 32px;
-  height: 32px;
-  color: #ffffff;
+.pack-industrial {
+  background: #6c2506;
 }
 
-.services-quote-banner p {
-  margin: 0 auto;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #ffffff;
-  line-height: 1.7;
-  text-align: center;
-  max-width: 900px;
-  position: relative;
-  z-index: 1;
+.pack-liquid {
+  background: #0ea5e9;
 }
 
-/* ==============================================
-   PRODUCT RANGE SECTION (Services page version)
-   ============================================== */
-.sv-products-section {
-  padding: 100px 40px 80px;
-  background: #050505;
-  max-width: 1300px;
-  margin: 0 auto;
-}
-
-.sv-products-header {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto 60px;
-}
-
-.sv-eyebrow {
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #d4af37;
-  margin-bottom: 14px;
-}
-
-.sv-products-title {
-  font-size: 2.4rem;
-  font-weight: 600;
-  color: #ffffff;
-  margin: 0 0 14px;
-  line-height: 1.2;
-  font-family: "Aleo", serif;
-}
-
-.sv-products-subtitle {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.6);
-  line-height: 1.7;
-  margin: 0 0 32px;
-}
-
-/* Filter Buttons */
-.sv-quick-filters {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.sv-qf-btn {
-  font-size: 13px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.7);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 50px;
-  padding: 10px 24px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.sv-qf-btn:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: #d4af37;
-  color: #d4af37;
-}
-
-.sv-qf-btn.active {
-  background: #d4af37;
-  border-color: #d4af37;
-  color: #0a0a0a;
-  font-weight: 600;
-}
-
-/* Products Grid */
-.sv-products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 28px;
-  -ms-grid-rows: 1fr;
-}
-
-/* Product Card */
-.sv-product-card {
-  background: rgba(20, 20, 20, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  overflow: hidden;
-  cursor: pointer;
-  opacity: 0;
-  animation: svCardUp 0.5s ease-out forwards;
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.sv-product-card:hover {
-  border-color: #d4af37;
-  transform: translateY(-6px);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6), 0 0 24px rgba(212, 175, 55, 0.12);
-}
-
-@keyframes svCardUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* Image */
-.sv-img-wrap {
-  position: relative;
-  width: 100%;
-  height: 300px;
-  overflow: hidden;
-  background: #1a1a1a;
-}
-
-.sv-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.img-primary {
-  opacity: 1;
-  transform: scale(1);
-  z-index: 2;
-}
-
-.img-primary.hide {
-  opacity: 0;
-  transform: scale(1.05);
-}
-
-.img-secondary {
-  opacity: 0;
-  transform: scale(1.08);
-  z-index: 1;
-}
-
-.img-secondary.show {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.sv-badge {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: rgba(10, 10, 10, 0.85);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(212, 175, 55, 0.4);
-  border-radius: 6px;
-  padding: 5px 12px;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  color: #d4af37;
-  z-index: 3;
-}
-
-.sv-popular-tag {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: #d4af37;
-  color: #0a0a0a;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 5px 12px;
-  border-radius: 6px;
-  z-index: 3;
-}
-
-/* Card Content */
-.sv-card-content {
-  padding: 16px 14px;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.sv-card-name {
-  font-size: 17px;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 6px;
-  line-height: 1.3;
-  font-family: "Aleo", serif;
-}
-
-.sv-card-desc {
-  font-size: 13px;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.6);
-  margin-bottom: 10px;
-  flex-grow: 1;
-}
-
-.sv-mat-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 12px;
-}
-
-.sv-mat-tag {
-  font-size: 10px;
-  font-weight: 500;
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 4px;
-  padding: 4px 10px;
-}
-
-.sv-cta-btn {
-  font-size: 13px;
-  font-weight: 600;
-  color: #d4af37;
-  background: transparent;
-  border: 1px solid rgba(212, 175, 55, 0.4);
-  border-radius: 6px;
-  padding: 10px 16px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  transition: all 0.3s;
-  gap: 8px;
-  margin-top: auto;
-}
-
-.sv-cta-btn:hover {
-  background: rgba(212, 175, 55, 0.1);
-  border-color: #d4af37;
-}
-
-/* =====================
-   PRODUCTION PROCESS
-   ===================== */
-.sv-process-section {
-  padding: 80px 40px 100px;
-  background: #0a0a0a;
-}
-
-.sv-process-header {
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.sv-process-title {
-  font-size: 2rem;
-  font-weight: 600;
-  color: #ffffff;
-  margin-bottom: 12px;
-  font-family: "Aleo", serif;
-}
-
-.sv-process-subtitle {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.sv-process-steps {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.sv-step {
-  flex: 1;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 32px 24px;
-  text-align: center;
-  transition: all 0.3s;
-}
-
-.sv-step:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: #d4af37;
-  transform: translateY(-6px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-}
-
-.sv-step-num {
-  font-size: 40px;
-  font-weight: 700;
-  color: #d4af37;
-  opacity: 0.3;
-  margin-bottom: 16px;
-  font-family: "Aleo", serif;
-}
-
-.sv-step-title {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 10px;
-}
-
-.sv-step-desc {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.sv-step-arrow {
-  color: #d4af37;
-  opacity: 0.4;
-  flex-shrink: 0;
-}
-
-/* =======================================
-   WHY CHOOSE US SECTION
-   ======================================= */
-.why-choose-section {
-  padding: 100px 40px;
-  background: linear-gradient(180deg, #0a0a0a 0%, #050505 100%);
-  position: relative;
-  overflow: hidden;
-}
-
-.why-choose-header {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto 70px;
-}
-
-.why-choose-title {
-  font-size: 2.6rem;
-  font-weight: 450;
-  color: #ffffff;
-  margin: 0 0 18px;
-  line-height: 1.1;
-  letter-spacing: -0.5px;
-  font-family: "Aleo", serif;
-}
-
-.why-choose-subtitle {
-  font-size: 1.05rem;
-  line-height: 1.8;
-  color: #9ca3af;
-  margin: 0 auto;
-  max-width: 680px;
-  font-family: "Aleo", serif;
-}
-
-/* Features Grid */
-.why-features-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.why-feature-card {
-  background: linear-gradient(
-    135deg,
-    rgba(31, 41, 55, 0.6) 0%,
-    rgba(17, 24, 39, 0.8) 100%
-  );
-  padding: 36px 28px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  text-align: center;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.why-feature-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(212, 175, 55, 0.3);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
-}
-
-.why-feature-icon-wrap {
-  width: 72px;
-  height: 72px;
-  border-radius: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 22px;
-  background: linear-gradient(135deg, #d4af37, #a07d1c);
-  transition: all 0.4s ease;
-}
-
-.why-feature-card:hover .why-feature-icon-wrap {
-  transform: scale(1.1) rotate(-5deg);
-}
-
-.why-feature-icon {
-  width: 32px;
-  height: 32px;
-  color: #ffffff;
-}
-
-.why-feature-title {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin: 0 0 12px;
-  line-height: 1.3;
-}
-
-.why-feature-desc {
-  font-size: 0.93rem;
-  line-height: 1.7;
-  color: #cbd5e1;
-  margin: 0;
+.pack-health {
+  background: #14b8a6;
 }
 
 /* ================
    RESPONSIVE DESIGN
    ================ */
 @media (max-width: 1024px) {
-  .services-hero-title,
-  .services-hero-subtitle {
-    margin-left: 80px;
+  .text-line-1,
+  .text-line-2,
+  .text-single {
+    font-size: 5rem;
   }
 
-  .why-features-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .sv-process-steps {
-    flex-direction: column;
-  }
-
-  .sv-step-arrow {
-    transform: rotate(90deg);
+  .text-word {
+    font-size: 4.5rem;
   }
 }
 
@@ -682,33 +250,18 @@
 }
 
 @media (max-width: 768px) {
-  .services-quote-banner {
-    padding: 50px 24px;
+  .text-line-1,
+  .text-line-2,
+  .text-single {
+    font-size: 3.5rem;
   }
 
-  .services-quote-banner p {
-    font-size: 1.1rem;
+  .text-layout-inline {
+    gap: 15px;
   }
 
-  .why-choose-section {
-    padding: 80px 24px;
-  }
-
-  .why-choose-title {
-    font-size: 2rem;
-  }
-
-  .why-features-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .sv-products-section {
-    padding: 60px 24px 60px;
-  }
-
-  .sv-process-section {
-    padding: 60px 24px;
+  .text-word {
+    font-size: 3rem;
   }
 }
 
@@ -717,12 +270,13 @@
     padding: 80px 18px 60px;
   }
 
-  .services-hero-title,
-  .services-hero-subtitle {
-    margin-left: 0;
+  .text-line-1,
+  .text-line-2,
+  .text-single {
+    font-size: 2.5rem;
   }
 
-  .services-hero-title {
+  .text-word {
     font-size: 2.2rem;
   }
 
@@ -732,13 +286,5 @@
 
   .packaging-grid {
     grid-template-columns: 1fr;
-  }
-
-  .sv-products-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .why-choose-title {
-    font-size: 1.8rem;
   }
 }

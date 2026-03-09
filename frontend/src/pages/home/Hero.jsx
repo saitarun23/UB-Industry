@@ -1,229 +1,389 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import assets from "../../assets/images";
 import "../../styles/hero.css";
+
+import { motion, AnimatePresence } from "framer-motion";
+import gsap from "gsap";
+import * as THREE from "three";
 
 const slides = [
   {
     type: "text",
-    bg: null,
     headline: ["Welcome to the World of", "Branding"],
     sub: "Serving industries across India and worldwide",
-    cta: [
-      { label: "Explore Services", href: "#services", primary: true },
-      { label: "Our Products", href: "#products", primary: false },
-    ],
+    showParticles: true,
   },
   {
     type: "image",
     bg: assets.product1,
     headline: ["Rolls"],
+    showParticles: false,
   },
   {
     type: "image",
     bg: assets.product2,
-    headline: ["Bakery &",  "Snack Packs"],
+    headline: ["Bakery &", "Snack Packs"],
+    showParticles: false,
   },
   {
     type: "image",
     bg: assets.product3,
     headline: ["Medicine", "Packing"],
-  },
-  {
-    type: "image",
-    bg: assets.product4,
-    headline: ["Sea Food", "Packing"],
-  },
-  {
-    type: "image",
-    bg: assets.product5,
-    headline: ["Dairy", "Packing"],
-  },
-  {
-    type: "image",
-    bg: assets.product6,
-    headline: ["Oil Packing"],
-  },
-  {
-    type: "image",
-    bg: assets.product7,
-    headline: ["W - Cut", "D- Cut Bags"],
-  },
-  {
-    type: "image",
-    bg: assets.product8,
-    headline: ["Powdered", "Packing"],
+    showParticles: false,
   },
 ];
 
 export default function Hero() {
   const [current, setCurrent] = useState(0);
-  const [prev, setPrev] = useState(null);
-  const [mouse, setMouse] = useState({ x: 0, y: 0 });
-  const [animKey, setAnimKey] = useState(0);
-  const timerRef = useRef(null);
-  const sectionRef = useRef(null);
+  const [direction, setDirection] = useState(1);
+  const heroRef = useRef(null);
+  const canvasRef = useRef(null);
+  const sceneRef = useRef(null);
+  const animationRef = useRef(null);
+
   const total = slides.length;
 
-  const goTo = useCallback(
-    (idx, dir = 1) => {
-      setPrev(current);
-      setCurrent(idx);
-      setAnimKey((k) => k + 1);
-    },
-    [current]
-  );
+  const next = () => {
+    setDirection(1);
+    setCurrent((prev) => (prev + 1) % total);
+  };
 
-  const next = useCallback(() => goTo((current + 1) % total, 1), [current, total, goTo]);
-  const prev_ = useCallback(() => goTo((current - 1 + total) % total, -1), [current, total, goTo]);
+  const prev = () => {
+    setDirection(-1);
+    setCurrent((prev) => (prev - 1 + total) % total);
+  };
 
+  const goToSlide = (index) => {
+    setDirection(index > current ? 1 : -1);
+    setCurrent(index);
+  };
+
+  /* AUTO SLIDE */
   useEffect(() => {
-    timerRef.current = setTimeout(next, 3500);
-    return () => clearTimeout(timerRef.current);
-  }, [current, next]);
+    const timer = setTimeout(next, 5000);
+    return () => clearTimeout(timer);
+  }, [current]);
 
-  const handleMouseMove = useCallback((e) => {
-    const rect = sectionRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    setMouse({
-      x: ((e.clientX - rect.left) / rect.width - 0.5) * 2,
-      y: ((e.clientY - rect.top) / rect.height - 0.5) * 2,
+  /* GSAP TEXT ANIMATION */
+  useEffect(() => {
+    const tl = gsap.timeline();
+    
+    tl.fromTo(
+      ".hero-line",
+      { 
+        y: 100, 
+        opacity: 0,
+        rotationX: -90,
+        transformOrigin: "center top"
+      },
+      { 
+        y: 0, 
+        opacity: 1,
+        rotationX: 0,
+        stagger: 0.15, 
+        duration: 1.2,
+        ease: "power3.out"
+      }
+    );
+
+    if (slides[current].sub) {
+      tl.fromTo(
+        ".hero-sub",
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 0.7, duration: 0.8, ease: "power2.out" },
+        "-=0.5"
+      );
+    }
+  }, [current]);
+
+  /* THREE JS PARTICLES - Only for first slide */
+  useEffect(() => {
+    if (!canvasRef.current) return;
+
+    const scene = new THREE.Scene();
+    sceneRef.current = scene;
+
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      1,
+      1000
+    );
+    camera.position.z = 300;
+
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvasRef.current,
+      alpha: true,
+      antialias: true,
     });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    // Create particles
+    const particlesGeometry = new THREE.BufferGeometry();
+    const particlesCount = 2000;
+    const posArray = new Float32Array(particlesCount * 3);
+    const scaleArray = new Float32Array(particlesCount);
+
+    for (let i = 0; i < particlesCount * 3; i += 3) {
+      posArray[i] = (Math.random() - 0.5) * 1000;
+      posArray[i + 1] = (Math.random() - 0.5) * 1000;
+      posArray[i + 2] = (Math.random() - 0.5) * 500;
+      scaleArray[i / 3] = Math.random();
+    }
+
+    particlesGeometry.setAttribute(
+      "position",
+      new THREE.BufferAttribute(posArray, 3)
+    );
+    particlesGeometry.setAttribute(
+      "scale",
+      new THREE.BufferAttribute(scaleArray, 1)
+    );
+
+    // Particle shader material for more dynamic effects
+    const particlesMaterial = new THREE.PointsMaterial({
+      size: 3,
+      color: 0xd4af37,
+      transparent: true,
+      opacity: 0.8,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+    });
+
+    const particlesMesh = new THREE.Points(
+      particlesGeometry,
+      particlesMaterial
+    );
+    scene.add(particlesMesh);
+
+    // Add ambient particles with different colors
+    const particlesGeometry2 = new THREE.BufferGeometry();
+    const posArray2 = new Float32Array(1000 * 3);
+    
+    for (let i = 0; i < 1000 * 3; i += 3) {
+      posArray2[i] = (Math.random() - 0.5) * 800;
+      posArray2[i + 1] = (Math.random() - 0.5) * 800;
+      posArray2[i + 2] = (Math.random() - 0.5) * 400;
+    }
+
+    particlesGeometry2.setAttribute(
+      "position",
+      new THREE.BufferAttribute(posArray2, 3)
+    );
+
+    const particlesMaterial2 = new THREE.PointsMaterial({
+      size: 1.5,
+      color: 0xd4af37,
+      transparent: true,
+      opacity: 0.4,
+      blending: THREE.AdditiveBlending,
+    });
+
+    const particlesMesh2 = new THREE.Points(
+      particlesGeometry2,
+      particlesMaterial2
+    );
+    scene.add(particlesMesh2);
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let targetX = 0;
+    let targetY = 0;
+
+    const handleMouseMove = (event) => {
+      mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+      mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    const clock = new THREE.Clock();
+
+    const animate = () => {
+      animationRef.current = requestAnimationFrame(animate);
+
+      const elapsedTime = clock.getElapsedTime();
+
+      // Smooth mouse following
+      targetX += (mouseX - targetX) * 0.05;
+      targetY += (mouseY - targetY) * 0.05;
+
+      // Animate particles with wave effect
+      particlesMesh.rotation.y = elapsedTime * 0.05;
+      particlesMesh.rotation.x = targetY * 0.3;
+      particlesMesh.position.x = targetX * 50;
+
+      particlesMesh2.rotation.y = -elapsedTime * 0.03;
+      particlesMesh2.rotation.x = targetY * 0.2;
+
+      // Pulsating effect
+      const positions = particlesGeometry.attributes.position.array;
+      for (let i = 0; i < particlesCount; i++) {
+        const i3 = i * 3;
+        const y = positions[i3 + 1];
+        positions[i3 + 1] = y + Math.sin(elapsedTime + i) * 0.1;
+      }
+      particlesGeometry.attributes.position.needsUpdate = true;
+
+      renderer.render(scene, camera);
+    };
+
+    animate();
+
+    const handleResize = () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("resize", handleResize);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+      renderer.dispose();
+      particlesGeometry.dispose();
+      particlesMaterial.dispose();
+      particlesGeometry2.dispose();
+      particlesMaterial2.dispose();
+    };
   }, []);
 
-  useEffect(() => {
-    const onKey = (e) => {
-      if (e.key === "ArrowRight") next();
-      if (e.key === "ArrowLeft") prev_();
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [next, prev_]);
-
   const slide = slides[current];
-  const isText = slide.type === "text";
+
+  const slideVariants = {
+    enter: (direction) => ({
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0,
+      scale: 0.8,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      scale: 1,
+    },
+    exit: (direction) => ({
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0,
+      scale: 0.8,
+    }),
+  };
 
   return (
-    <section
-      className="ubp-hero"
-      ref={sectionRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={() => setMouse({ x: 0, y: 0 })}
-      aria-label="Hero Slideshow"
-    >
-      {/* ── BACKGROUND LAYERS ── */}
-      {slides.map((s, i) => (
-        <div
-          key={i}
-          className={`ubp-bg ${i === current ? "ubp-bg--active" : ""} ${i === prev ? "ubp-bg--prev" : ""}`}
-          style={
-            s.bg
-              ? {
-                  backgroundImage: `url(${s.bg})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center center",
-                  transform: `scale(1.06) translate(${mouse.x * -8}px, ${mouse.y * -6}px)`,
-                }
-              : {
-                  background: "radial-gradient(ellipse 80% 80% at 50% 40%, #1a1a2e 0%, #0d0d0d 60%, #000 100%)",
-                  transform: `scale(1.02) translate(${mouse.x * -3}px, ${mouse.y * -2}px)`,
-                }
-          }
-        >
-          {s.bg && <div className="ubp-scrim" />}
-          <div className="ubp-grain" />
-        </div>
-      ))}
+    <section className="hero" ref={heroRef}>
+      
+      {/* THREE BACKGROUND - Only visible on first slide */}
+      <canvas 
+        ref={canvasRef} 
+        className={`hero-canvas ${slide.showParticles ? 'visible' : 'hidden'}`}
+      />
 
-      {/* ── DECORATIVE RINGS (text slide only) ── */}
-      {isText && (
-        <div className="ubp-deco" aria-hidden="true">
-          <div className="ubp-deco__circle ubp-deco__circle--1" />
-          <div className="ubp-deco__circle ubp-deco__circle--2" />
-          <div className="ubp-deco__line ubp-deco__line--v1" />
-          <div className="ubp-deco__line ubp-deco__line--v2" />
-          <div className="ubp-deco__line ubp-deco__line--h" />
-        </div>
-      )}
+      {/* ANIMATED GRADIENT OVERLAY for first slide */}
+      {slide.showParticles && <div className="hero-gradient-overlay" />}
 
-      {/* ── CONTENT ── */}
-      <div
-        className={`ubp-content ${isText ? "ubp-content--centered" : "ubp-content--image"}`}
-        key={animKey}
-      >
-        <h1 className="ubp-headline">
-          {slide.headline.map((line, i) => (
-            <span
-              key={i}
-              className="ubp-headline__row"
-              style={{ animationDelay: `${0.1 + i * 0.12}s` }}
-            >
-              {i === slide.headline.length - 1 && isText ? (
-                <em className="ubp-headline__em">{line}</em>
-              ) : (
-                line
-              )}
-            </span>
-          ))}
-        </h1>
-
-        {isText && <p className="ubp-sub">{slide.sub}</p>}
-
-        {isText && (
-          <div className="ubp-cta-row">
-            {slide.cta.map((c, i) => (
-              <a
-                key={i}
-                href={c.href}
-                className={`ubp-cta ${c.primary ? "ubp-cta--primary" : "ubp-cta--ghost"}`}
-                style={{ animationDelay: `${0.55 + i * 0.1}s` }}
-              >
-                {c.label}
-                {c.primary && (
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                  </svg>
-                )}
-              </a>
-            ))}
-          </div>
+      {/* IMAGE BACKGROUND with smooth transitions and hover effect */}
+      <AnimatePresence mode="wait">
+        {slide.bg && (
+          <motion.div
+            key={current}
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="hero-bg-wrapper"
+          >
+            <div
+              className="hero-bg"
+              style={{ backgroundImage: `url(${slide.bg})` }}
+            />
+          </motion.div>
         )}
-      </div>
+      </AnimatePresence>
 
-      {/* ── SLIDE COUNTER ── */}
-      {/* <div className="ubp-counter" aria-hidden="true">
-        <span className="ubp-counter__current">{String(current + 1).padStart(2, "0")}</span>
-        <div className="ubp-counter__track">
-          <div className="ubp-counter__fill" style={{ width: `${((current + 1) / total) * 100}%` }} />
-        </div>
-        <span className="ubp-counter__total">{String(total).padStart(2, "0")}</span>
-      </div> */}
+      {/* CONTENT with slide animation */}
+      <AnimatePresence mode="wait" custom={direction}>
+        <motion.div
+          key={current}
+          custom={direction}
+          variants={slideVariants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{
+            x: { type: "spring", stiffness: 300, damping: 30 },
+            opacity: { duration: 0.5 },
+            scale: { duration: 0.5 },
+          }}
+          className="hero-content"
+        >
+          <h1 className="hero-title">
+            {slide.headline.map((line, i) => (
+              <span key={i} className="hero-line">
+                {line}
+              </span>
+            ))}
+          </h1>
 
-      {/* ── NAV ARROWS ── */}
-      <button className="ubp-nav ubp-nav--prev" onClick={prev_} aria-label="Previous slide">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <polyline points="15 18 9 12 15 6" />
+          {slide.sub && <p className="hero-sub">{slide.sub}</p>}
+        </motion.div>
+      </AnimatePresence>
+
+      {/* ENHANCED NAV BUTTONS */}
+      <motion.button
+        className="hero-nav prev"
+        onClick={prev}
+        whileHover={{ scale: 1.1, x: -3 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
-      </button>
-      <button className="ubp-nav ubp-nav--next" onClick={next} aria-label="Next slide">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <polyline points="9 18 15 12 9 6" />
-        </svg>
-      </button>
+      </motion.button>
 
-      {/* ── DOT PAGINATION ── */}
-      <div className="ubp-dots" role="tablist" aria-label="Slide navigation">
+      <motion.button
+        className="hero-nav next"
+        onClick={next}
+        whileHover={{ scale: 1.1, x: 3 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </motion.button>
+
+      {/* ENHANCED DOTS with progress animation */}
+      <div className="hero-dots">
         {slides.map((_, i) => (
-          <button
+          <motion.span
             key={i}
-            role="tab"
-            aria-selected={i === current}
-            aria-label={`Go to slide ${i + 1}`}
-            className={`ubp-dot ${i === current ? "ubp-dot--active" : ""}`}
-            onClick={() => goTo(i, i > current ? 1 : -1)}
-          />
+            className={`dot ${i === current ? "active" : ""}`}
+            onClick={() => goToSlide(i)}
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            {i === current && (
+              <motion.span
+                className="dot-progress"
+                initial={{ width: 0 }}
+                animate={{ width: "100%" }}
+                transition={{ duration: 5, ease: "linear" }}
+              />
+            )}
+          </motion.span>
         ))}
       </div>
+
+      {/* SLIDE COUNTER */}
+      <div className="hero-counter">
+        <span className="current-slide">0{current + 1}</span>
+        <span className="slide-divider">/</span>
+        <span className="total-slides">0{total}</span>
+      </div>
+
     </section>
   );
 }
