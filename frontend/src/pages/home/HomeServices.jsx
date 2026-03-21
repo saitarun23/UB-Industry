@@ -55,7 +55,7 @@ const HomeServices = () => {
     <section className="home-services">
 
       <div className="hs-header">
-        <h2>Explore Custom Pouches</h2>
+        <h2>Custom Flexible Packaging</h2>
       </div>
 
       <div className="hs-grid">

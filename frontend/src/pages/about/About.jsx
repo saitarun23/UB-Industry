@@ -1,7 +1,60 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FaBox, FaCheck, FaBolt, FaBullseye } from "react-icons/fa6";
+import {FiStar, FiTrendingUp, FiFileText, FiUserCheck} from "react-icons/fi";
+import { motion, AnimatePresence } from "framer-motion";
 import assets from "../../assets/images";
 import "../../styles/about.css";
+
+// text configurations with varied animation styles
+const textConfigurations = [
+  {
+    type: "two-line-caps",
+    line1: "BUILT FOR",
+    line2: "YOU",
+    line1Color: "#ffffff",
+    line2Color: "#14b8a6",
+  },
+  {
+    type: "two-word-mixed",
+    word1: "Health",
+    word2: "& Wellness",
+    word1Color: "#ffffff",
+    word2Color: "#14b8a6",
+  },
+  {
+    type: "three-word-mixed",
+    word1: "Lawn",
+    word2: "&",
+    word3: "Garden",
+    word1Color: "#d1d5db",
+    word2Color: "#14b8a6",
+    word3Color: "#d1d5db",
+  },
+  {
+    type: "two-word-mixed",
+    word1: "Pet",
+    word2: "Food",
+    word1Color: "#ffffff",
+    word2Color: "#14b8a6",
+  },
+  {
+    type: "single-word",
+    text: "Agriculture",
+    color: "#ffffff",
+  },
+  {
+    type: "single-word",
+    text: "Beverages",
+    color: "#14b8a6",
+  },
+  {
+    type: "two-word-mixed",
+    word1: "Natural",
+    word2: "& Organic",
+    word1Color: "#ffffff",
+    word2Color: "#14b8a6",
+  },
+];
 
 const JOURNEY = [
   {
@@ -36,20 +89,31 @@ const JOURNEY = [
   },
 ];
 
-/*
-  SVG canvas  : 1200 × 1200
-  Center      : (600, 600)
-  Orbit radius: 420px
-  Image radius: 185px
-  Card radius : 145px
+const items = [
+  {
+    title: "Our Values",
+    desc: "Driven by integrity, quality, and long-term partnerships.",
+    icon: <FiStar />,
+  },
+  {
+    title: "Our Vision",
+    desc:
+      "UB Industry expands its horizon to international markets and serves customers across India.",
+    icon: <FiTrendingUp />,
+   
+  },
+  {
+    title: "Our History",
+    desc: "A legacy built on precision printing and continuous innovation.",
+    icon: <FiFileText />,
+  },
+  {
+    title: "Our Capabilities",
+    desc: "Advanced infrastructure supporting scalable packaging solutions.",
+    icon: <FiUserCheck />,
+  },
+];
 
-  5 cards at 72° intervals starting from -90° (top):
-    0: -90°  → (600, 180)
-    1: -18°  → (999, 430)
-    2:  54°  → (847, 940)  -- corrected
-    3: 126°  → (353, 940)  -- corrected
-    4: 198°  → (201, 430)
-*/
 const SVG_C = 600;
 const ORBIT_R = 420;
 const IMG_R = 185;
@@ -93,30 +157,225 @@ function wrapText(text, maxLen) {
 }
 
 export default function About() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % items.length);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Hero text rotation state
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+
+  // Rotate text every 1 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTextIndex((prev) => (prev + 1) % textConfigurations.length);
+    }, 1400);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const currentConfig = textConfigurations[currentTextIndex];
+
   return (
     <main className="about-page" id="about">
+      {/* HERO WITH NEW TEXT CONFIGURATIONS */}
+      <header className="industry-hero">
+        <div className="industry-bg-pattern"></div>
 
-      {/* HERO */}
-      <header className="about-hero">
-        <div className="about-hero-bg">
-          <img src={assets.aboutHero} alt="Team at work" />
-        </div>
-        <div className="about-hero-overlay" />
-        <div className="about-hero-content">
-          <h1 className="about-hero-title">About Us</h1>
+        <div className="industry-hero-content">
+          <AnimatePresence mode="wait">
+            {/* Two Line Caps Layout */}
+            {currentConfig.type === "two-line-caps" && (
+              <motion.div
+                key={currentTextIndex}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-layout-two-line"
+              >
+                <motion.h1
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -50, opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  style={{ color: currentConfig.line1Color }}
+                  className="text-line-1"
+                >
+                  {currentConfig.line1}
+                </motion.h1>
+                <motion.h1
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -50, opacity: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  style={{ color: currentConfig.line2Color }}
+                  className="text-line-2"
+                >
+                  {currentConfig.line2}
+                </motion.h1>
+              </motion.div>
+            )}
+
+            {/* Two Line Mixed Layout */}
+            {currentConfig.type === "two-line-mixed" && (
+              <motion.div
+                key={currentTextIndex}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-layout-two-line"
+              >
+                <motion.h1
+                  initial={{ x: -100, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: 100, opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  style={{ color: currentConfig.line1Color }}
+                  className="text-line-1"
+                >
+                  {currentConfig.line1}
+                </motion.h1>
+                <motion.h1
+                  initial={{ x: 100, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: -100, opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  style={{ color: currentConfig.line2Color }}
+                  className="text-line-2"
+                >
+                  {currentConfig.line2}
+                </motion.h1>
+              </motion.div>
+            )}
+
+            {/* Two Word Mixed Layout */}
+            {currentConfig.type === "two-word-mixed" && (
+              <motion.div
+                key={currentTextIndex}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-layout-inline"
+              >
+                <motion.span
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0, opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  style={{ color: currentConfig.word1Color }}
+                  className="text-word"
+                >
+                  {currentConfig.word1}
+                </motion.span>
+                <motion.span
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0, opacity: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  style={{ color: currentConfig.word2Color }}
+                  className="text-word"
+                >
+                  {currentConfig.word2}
+                </motion.span>
+              </motion.div>
+            )}
+
+            {/* Three Word Mixed Layout */}
+            {currentConfig.type === "three-word-mixed" && (
+              <motion.div
+                key={currentTextIndex}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-layout-inline"
+              >
+                <motion.span
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -50, opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  style={{ color: currentConfig.word1Color }}
+                  className="text-word"
+                >
+                  {currentConfig.word1}
+                </motion.span>
+                <motion.span
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0, opacity: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  style={{ color: currentConfig.word2Color }}
+                  className="text-word"
+                >
+                  {currentConfig.word2}
+                </motion.span>
+                <motion.span
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -50, opacity: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  style={{ color: currentConfig.word3Color }}
+                  className="text-word"
+                >
+                  {currentConfig.word3}
+                </motion.span>
+              </motion.div>
+            )}
+
+            {/* Single Word Layout */}
+            {currentConfig.type === "single-word" && (
+              <motion.h1
+                key={currentTextIndex}
+                initial={{ rotateX: 90, opacity: 0 }}
+                animate={{ rotateX: 0, opacity: 1 }}
+                exit={{ rotateX: -90, opacity: 0 }}
+                transition={{ duration: 0.6 }}
+                style={{ color: currentConfig.color }}
+                className="text-single"
+              >
+                {currentConfig.text}
+              </motion.h1>
+            )}
+          </AnimatePresence>
         </div>
       </header>
 
       {/* WELCOME */}
       <section className="about-welcome">
-        <div className="about-welcome-content">
-          <h2 className="about-welcome-title">Welcome to Urmila Bhupathiraju Industries</h2>
-          <p className="about-welcome-subtitle">Excellence in Flexible Printing &amp; Packaging Solutions Since Day One</p>
+        <div className="aboutfirst-grid scroll-effect">
+          {items.map((item, index) => {
+            const isActive = index === activeIndex;
+
+            return (
+              <div
+                key={index}
+                className={`aboutfirst-card 
+                  ${item.featured ? "featured" : ""} 
+                  ${isActive ? "active" : ""}
+                `}
+                onMouseEnter={() => setActiveIndex(index)}
+              >
+                <div className="aboutfirst-card-inner">
+                  <div className="icon">{item.icon}</div>
+                  <h3>{item.title}</h3>
+                  <p>{item.desc}</p>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 
       <section className="about-main">
-
         {/* WHO WE ARE */}
         <section className="about-company-section">
           <div className="about-company-content">
@@ -124,6 +383,11 @@ export default function About() {
               <h2 className="about-section-title">Who We Are</h2>
               <div className="about-title-underline"></div>
             </div>
+            <p className="about-intro-text">
+              <strong>Urmila Bhupathiraju Industries</strong> is a flexible printing and packaging company
+              based in Visakhapatnam, India. With a strong foundation in high-quality flexible materials,
+              we are committed to delivering reliable, high-performance printing solutions.
+            </p>
             <div className="about-company-grid">
               <div className="about-company-image-container">
                 <div className="about-company-image-wrap">
@@ -131,11 +395,6 @@ export default function About() {
                 </div>
               </div>
               <div className="about-company-text">
-                <p className="about-intro-text">
-                  <strong>Urmila Bhupathiraju Industries</strong> is a flexible printing and packaging company
-                  based in Visakhapatnam, India. With a strong foundation in high-quality flexible materials,
-                  we are committed to delivering reliable, high-performance printing solutions.
-                </p>
                 <div className="about-features-grid">
                   <div className="about-feature-item">
                     <div className="feature-icon"><FaBox /></div>
@@ -207,7 +466,7 @@ export default function About() {
               </p>
             </div>
 
-            {/* SVG ORBITAL — shows on ALL screen sizes, scales via viewBox */}
+            {/* SVG ORBITAL */}
             <div className="journey-svg-wrapper">
               <svg
                 className="journey-svg"
@@ -233,7 +492,6 @@ export default function About() {
                   </filter>
                 </defs>
 
-                {/* Spin + glow keyframes inside SVG */}
                 <style>{`
                   .orbit-spin { animation: orbitSpin 80s linear infinite; transform-origin: 600px 600px; }
                   .glow-ring   { }
@@ -245,50 +503,6 @@ export default function About() {
                   }
                 `}</style>
 
-                {/* Outer dashed orbit ring */}
-                {/* <circle
-                  className="orbit-spin"
-                  cx={SVG_C} cy={SVG_C} r={ORBIT_R + 30}
-                  fill="none"
-                  stroke="rgba(255,255,255,0.12)"
-                  strokeWidth="1.5"
-                  strokeDasharray="10 14"
-                /> */}
-
-                {/* Inner orbit ring */}
-                {/* <circle
-                  cx={SVG_C} cy={SVG_C} r={ORBIT_R - 30}
-                  fill="none"
-                  stroke="rgba(255,255,255,0.05)"
-                  strokeWidth="1"
-                /> */}
-
-                {/* Connector lines + endpoint dots */}
-                {/* {CARDS.map((card, i) => {
-                  const p = linePoints(card);
-                  const midX = (p.x1 + p.x2) / 2;
-                  const midY = (p.y1 + p.y2) / 2;
-                  return (
-                    <g key={`conn-${i}`}>
-                      <line
-                        x1={p.x1} y1={p.y1} x2={p.x2} y2={p.y2}
-                        stroke="rgba(255,255,255,0.07)"
-                        strokeWidth="7"
-                      />
-                      <line
-                        x1={p.x1} y1={p.y1} x2={p.x2} y2={p.y2}
-                        stroke="rgba(255,255,255,0.32)"
-                        strokeWidth="2"
-                        strokeDasharray="8 6"
-                      />
-                      <circle cx={p.x1} cy={p.y1} r="7" fill="rgba(255,255,255,0.65)" />
-                      <circle cx={p.x2} cy={p.y2} r="7" fill="rgba(255,255,255,0.65)" />
-                     
-                      <circle cx={midX} cy={midY} r="4" fill="rgba(255,255,255,0.3)" />
-                    </g>
-                  );
-                })} */}
-
                 {/* Center image */}
                 <image
                   href={assets.aboutjourney}
@@ -297,7 +511,6 @@ export default function About() {
                   clipPath="url(#imgClip)"
                   preserveAspectRatio="xMidYMid slice"
                 />
-                {/* Center image border */}
                 <circle
                   cx={SVG_C} cy={SVG_C} r={IMG_R}
                   fill="none"
@@ -318,13 +531,11 @@ export default function About() {
 
                   return (
                     <g key={`card-${i}`} className="card-float" style={{ animationDelay: `${i * 0.2}s` }}>
-                      {/* Drop shadow */}
                       <circle
                         cx={card.cx + 4} cy={card.cy + 6}
                         r={CARD_R}
                         fill="rgba(0,0,0,0.6)"
                       />
-                      {/* Card body */}
                       <circle
                         cx={card.cx} cy={card.cy}
                         r={CARD_R}
@@ -332,7 +543,6 @@ export default function About() {
                         stroke="rgba(255,255,255,0.25)"
                         strokeWidth="2.5"
                       />
-                      {/* Top shine arc */}
                       <path
                         d={`M ${card.cx - CARD_R * 0.62} ${card.cy - CARD_R * 0.72}
                             A ${CARD_R} ${CARD_R} 0 0 1
@@ -343,7 +553,6 @@ export default function About() {
                         strokeLinecap="round"
                       />
 
-                      {/* STEP label */}
                       <text
                         x={card.cx} y={stepY}
                         textAnchor="middle"
@@ -356,7 +565,6 @@ export default function About() {
                         {`STEP ${item.label}`}
                       </text>
 
-                      {/* Separator */}
                       <line
                         x1={card.cx - 32} y1={sepY}
                         x2={card.cx + 32} y2={sepY}
@@ -364,7 +572,6 @@ export default function About() {
                         strokeWidth="1"
                       />
 
-                      {/* Title */}
                       {titleLines.map((line, li) => (
                         <text
                           key={`t-${li}`}
@@ -380,7 +587,6 @@ export default function About() {
                         </text>
                       ))}
 
-                      {/* Description */}
                       {descLines.map((line, li) => (
                         <text
                           key={`d-${li}`}
@@ -399,19 +605,9 @@ export default function About() {
                 })}
               </svg>
             </div>
-
           </div>
         </section>
       </section>
-
-      {/* CTA */}
-      {/* <section className="about-cta">
-        <div className="about-cta-inner">
-          <h2 className="about-cta-title">About Us</h2>
-          <p className="about-cta-text">Get in touch to learn how we can support your flexible packaging needs.</p>
-        </div>
-      </section> */}
-
     </main>
   );
 }

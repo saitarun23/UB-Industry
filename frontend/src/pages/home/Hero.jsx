@@ -31,6 +31,36 @@ const slides = [
     headline: ["Medicine", "Packing"],
     showParticles: false,
   },
+  {
+    type: "image",
+    bg: assets.product4,
+    headline: ["Sea Food", "Packaging"],
+    showParticles: false,
+  },
+  {
+    type: "image",
+    bg: assets.product5,
+    headline: ["Dairy", "Products"],
+    showParticles: false,
+  },
+  {
+    type: "image",
+    bg: assets.product6,
+    headline: ["Oil", "Packaging"],
+    showParticles: false,
+  },
+  {
+    type: "image",
+    bg: assets.product7,
+    headline: ["W-Cut & D-Cut", "Bags"],
+    showParticles: false,
+  },
+  {
+    type: "image",
+    bg: assets.product8,
+    headline: ["Powdered", "Packs"],
+    showParticles: false,
+  }
 ];
 
 export default function Hero() {
@@ -356,7 +386,7 @@ export default function Hero() {
       </motion.button>
 
       {/* ENHANCED DOTS with progress animation */}
-      <div className="hero-dots">
+      {/* <div className="hero-dots">
         {slides.map((_, i) => (
           <motion.span
             key={i}
@@ -375,7 +405,7 @@ export default function Hero() {
             )}
           </motion.span>
         ))}
-      </div>
+      </div> */}
 
       {/* SLIDE COUNTER */}
       <div className="hero-counter">
