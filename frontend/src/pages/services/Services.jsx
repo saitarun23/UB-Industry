@@ -31,67 +31,103 @@ import "../../styles/services.css";
 const textConfigurations = [
   {
     type: "two-line-caps",
-    line1: "BUILT FOR",
-    line2: "YOU",
+    line1: "We Brand",
+    line2: "4",
+    showLogo: true,
     line1Color: "#ffffff",
-    line2Color: "#fbbf24",
+    line2Color: "#14b8a6",
   },
+  // {
+  //   type: "three-word-mixed",
+  //   word1: "Flexible",
+  //   word2: "&",
+  //   word3: "Quality",
+  //   word1Color: "#d1d5db",
+  //   word2Color: "#14b8a6",
+  //   word3Color: "#d1d5db",
+  // },
   {
     type: "two-word-mixed",
-    word1: "Tea",
+    word1: "Tea &",
     word2: "Coffee",
     word1Color: "#ffffff",
-    word2Color: "#fbbf24",
+    word2Color: "#14b8a6",
+  },
+  
+  {
+    type: "single-word",
+    text: "Bakery & confectionary",
+    color: "#ffffff",
+  },
+  
+  {
+    type: "single-word",
+    text: "Chips & Snacks",
+    color: "#ffffff",
+  },
+  {
+    type: "single-word",
+    text: "Spices & Pulses",
+    color: "#14b8a6",
   },
   {
     type: "three-word-mixed",
-    word1: "Lawn",
-    word2: "&",
-    word3: "Garden",
+    word1: "Grains, ",
+    word2: "Seeds",
+    word3: "& Flour",
     word1Color: "#d1d5db",
-    word2Color: "#fbbf24",
+    word2Color: "#14b8a6",
     word3Color: "#d1d5db",
   },
   {
     type: "two-word-mixed",
-    word1: "Pet",
-    word2: "Food",
+    word1: "Noodles &",
+    word2: "Pasta",
     word1Color: "#ffffff",
-    word2Color: "#fbbf24",
+    word2Color: "#14b8a6",
   },
   {
     type: "single-word",
-    text: "Bakery",
+    text: "Choclates & Protien Mix",
+    color: "#ffffff",
+  },
+  {
+    type: "single-word",
+    text: "Oil & Liquid",
+    color: "#ffffff",
+  },
+  {
+    type: "single-word",
+    text: "Pharma & Fertilizers",
     color: "#ffffff",
   },
   {
     type: "two-word-mixed",
-    word1: "Natural",
-    word2: "& Organic",
+    word1: "Next-Gen",
+    word2: "EcoPackaging",
     word1Color: "#ffffff",
-    word2Color: "#fbbf24",
-  },
-  {
-    type: "single-word",
-    text: "Chips",
-    color: "#ffffff",
-  },
-  {
-    type: "single-word",
-    text: "Spices",
-    color: "#fbbf24",
-  },
-  {
-    type: "single-word",
-    text: "Dates",
-    color: "#ffffff",
+    word2Color: "#14b8a6",
   },
   {
     type: "two-word-mixed",
-    word1: "Milk",
+    word1: "Frozen Shrimp & ",
+    word2: "Sea Food",
+    word1Color: "#ffffff",
+    word2Color: "#14b8a6",
+  },
+  {
+    type: "two-word-mixed",
+    word1: "Dairy",
     word2: "Products",
     word1Color: "#ffffff",
-    word2Color: "#fbbf24",
+    word2Color: "#14b8a6",
+  },
+   {
+    type: "two-word-mixed",
+    word1: "Pet",
+    word2: "Feed",
+    word1Color: "#ffffff",
+    word2Color: "#14b8a6",
   },
 ];
 
@@ -193,7 +229,7 @@ export default function Services() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTextIndex((prev) => (prev + 1) % textConfigurations.length);
-    }, 3000);
+    }, 1400);
 
     return () => clearInterval(interval);
   }, []);
@@ -228,16 +264,40 @@ export default function Services() {
                 >
                   {currentConfig.line1}
                 </motion.h1>
-                <motion.h1
-                  initial={{ y: 50, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -50, opacity: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  style={{ color: currentConfig.line2Color }}
-                  className="text-line-2"
-                >
-                  {currentConfig.line2}
-                </motion.h1>
+                {currentConfig.showLogo ? (
+                  <div className="text-line-with-logo">
+                    <motion.h1
+                      initial={{ y: 50, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: -50, opacity: 0 }}
+                      transition={{ duration: 0.5, delay: 0.1 }}
+                      style={{ color: currentConfig.line2Color }}
+                      className="text-line-2"
+                    >
+                      {currentConfig.line2}
+                    </motion.h1>
+                    <motion.img
+                      initial={{ y: 50, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: -50, opacity: 0 }}
+                      transition={{ duration: 0.5, delay: 0.15 }}
+                      src={assets.logo}
+                      alt="UB Industries Logo"
+                      className="text-line-logo"
+                    />
+                  </div>
+                ) : (
+                  <motion.h1
+                    initial={{ y: 50, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -50, opacity: 0 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    style={{ color: currentConfig.line2Color }}
+                    className="text-line-2"
+                  >
+                    {currentConfig.line2}
+                  </motion.h1>
+                )}
               </motion.div>
             )}
 

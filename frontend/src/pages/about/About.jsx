@@ -9,48 +9,49 @@ import "../../styles/about.css";
 const textConfigurations = [
   {
     type: "two-line-caps",
-    line1: "BUILT FOR",
-    line2: "YOU",
+    line1: "ABOUT",
+    showLogo: true,
+    line2: "S",
     line1Color: "#ffffff",
     line2Color: "#14b8a6",
   },
   {
     type: "two-word-mixed",
-    word1: "Health",
-    word2: "& Wellness",
+    word1: "Our",
+    word2: "Story",
     word1Color: "#ffffff",
     word2Color: "#14b8a6",
   },
   {
     type: "three-word-mixed",
-    word1: "Lawn",
+    word1: "Quality",
     word2: "&",
-    word3: "Garden",
+    word3: "Excellence",
     word1Color: "#d1d5db",
     word2Color: "#14b8a6",
     word3Color: "#d1d5db",
   },
   {
     type: "two-word-mixed",
-    word1: "Pet",
-    word2: "Food",
+    word1: "Trust",
+    word2: "& Partnership",
     word1Color: "#ffffff",
     word2Color: "#14b8a6",
   },
   {
     type: "single-word",
-    text: "Agriculture",
+    text: "Innovation",
     color: "#ffffff",
   },
   {
     type: "single-word",
-    text: "Beverages",
+    text: "Excellence",
     color: "#14b8a6",
   },
   {
     type: "two-word-mixed",
-    word1: "Natural",
-    word2: "& Organic",
+    word1: "Customer",
+    word2: "Focused",
     word1Color: "#ffffff",
     word2Color: "#14b8a6",
   },
@@ -209,16 +210,40 @@ export default function About() {
                 >
                   {currentConfig.line1}
                 </motion.h1>
-                <motion.h1
-                  initial={{ y: 50, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -50, opacity: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  style={{ color: currentConfig.line2Color }}
-                  className="text-line-2"
-                >
-                  {currentConfig.line2}
-                </motion.h1>
+                {currentConfig.showLogo ? (
+                  <div className="text-line-with-logo">
+                    <motion.img
+                      initial={{ x: -50, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      exit={{ x: -50, opacity: 0 }}
+                      transition={{ duration: 0.5, delay: 0.05 }}
+                      src={assets.logo}
+                      alt="UB Industries Logo"
+                      className="text-line-logo"
+                    />
+                    <motion.h1
+                      initial={{ x: 50, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      exit={{ x: 50, opacity: 0 }}
+                      transition={{ duration: 0.5, delay: 0.1 }}
+                      style={{ color: currentConfig.line2Color }}
+                      className="text-line-2"
+                    >
+                      {currentConfig.line2}
+                    </motion.h1>
+                  </div>
+                ) : (
+                  <motion.h1
+                    initial={{ y: 50, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -50, opacity: 0 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    style={{ color: currentConfig.line2Color }}
+                    className="text-line-2"
+                  >
+                    {currentConfig.line2}
+                  </motion.h1>
+                )}
               </motion.div>
             )}
 

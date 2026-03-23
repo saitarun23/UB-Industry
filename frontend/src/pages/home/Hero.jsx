@@ -90,7 +90,7 @@ export default function Hero() {
 
   /* AUTO SLIDE */
   useEffect(() => {
-    const timer = setTimeout(next, 5000);
+    const timer = setTimeout(next, 2000);
     return () => clearTimeout(timer);
   }, [current]);
 
@@ -149,72 +149,94 @@ export default function Hero() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    // Create particles
-    const particlesGeometry = new THREE.BufferGeometry();
-    const particlesCount = 2000;
-    const posArray = new Float32Array(particlesCount * 3);
-    const scaleArray = new Float32Array(particlesCount);
-
-    for (let i = 0; i < particlesCount * 3; i += 3) {
-      posArray[i] = (Math.random() - 0.5) * 1000;
-      posArray[i + 1] = (Math.random() - 0.5) * 1000;
-      posArray[i + 2] = (Math.random() - 0.5) * 500;
-      scaleArray[i / 3] = Math.random();
-    }
-
-    particlesGeometry.setAttribute(
-      "position",
-      new THREE.BufferAttribute(posArray, 3)
-    );
-    particlesGeometry.setAttribute(
-      "scale",
-      new THREE.BufferAttribute(scaleArray, 1)
-    );
-
-    // Particle shader material for more dynamic effects
-    const particlesMaterial = new THREE.PointsMaterial({
-      size: 3,
-      color: 0xd4af37,
-      transparent: true,
-      opacity: 0.8,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false,
-    });
-
-    const particlesMesh = new THREE.Points(
-      particlesGeometry,
-      particlesMaterial
-    );
-    scene.add(particlesMesh);
-
-    // Add ambient particles with different colors
-    const particlesGeometry2 = new THREE.BufferGeometry();
-    const posArray2 = new Float32Array(1000 * 3);
+    // Create 3D industrial gears and mechanical parts
+    const gearsGroup = new THREE.Group();
+    const gears = [];
     
-    for (let i = 0; i < 1000 * 3; i += 3) {
-      posArray2[i] = (Math.random() - 0.5) * 800;
-      posArray2[i + 1] = (Math.random() - 0.5) * 800;
-      posArray2[i + 2] = (Math.random() - 0.5) * 400;
-    }
-
-    particlesGeometry2.setAttribute(
-      "position",
-      new THREE.BufferAttribute(posArray2, 3)
-    );
-
-    const particlesMaterial2 = new THREE.PointsMaterial({
-      size: 1.5,
-      color: 0xd4af37,
-      transparent: true,
-      opacity: 0.4,
-      blending: THREE.AdditiveBlending,
+    // Metallic material for gears
+    const metalMaterial = new THREE.MeshStandardMaterial({
+      color: 0x444444,
+      metalness: 0.8,
+      roughness: 0.2,
     });
 
-    const particlesMesh2 = new THREE.Points(
-      particlesGeometry2,
-      particlesMaterial2
-    );
-    scene.add(particlesMesh2);
+    const accentMaterial = new THREE.MeshStandardMaterial({
+      color: 0xd4af37,
+      metalness: 0.9,
+      roughness: 0.1,
+    });
+
+    // Helper function to create a gear
+    const createGear = (radius, teeth, depth, x, y, z, rotationSpeed) => {
+      const group = new THREE.Group();
+      
+      // Main gear disk
+      const gearGeometry = new THREE.CylinderGeometry(radius, radius, depth, 32);
+      const gear = new THREE.Mesh(gearGeometry, metalMaterial);
+      group.add(gear);
+
+      // Teeth on gear
+      const toothGeometry = new THREE.BoxGeometry(
+        radius * 0.3,
+        radius * 0.4,
+        depth * 1.2
+      );
+      
+      for (let i = 0; i < teeth; i++) {
+        const angle = (i / teeth) * Math.PI * 2;
+        const tooth = new THREE.Mesh(toothGeometry, metalMaterial);
+        
+        const toothX = Math.cos(angle) * (radius + radius * 0.2);
+        const toothZ = Math.sin(angle) * (radius + radius * 0.2);
+        
+        tooth.position.set(toothX, 0, toothZ);
+        tooth.rotation.y = angle;
+        group.add(tooth);
+      }
+
+      // Center hub
+      const hubGeometry = new THREE.CylinderGeometry(radius * 0.3, radius * 0.3, depth * 1.5, 32);
+      const hub = new THREE.Mesh(hubGeometry, accentMaterial);
+      group.add(hub);
+
+      group.position.set(x, y, z);
+      group.userData = {
+        rotationSpeed: rotationSpeed,
+        axis: new THREE.Vector3(0, 1, 0),
+      };
+
+      gearsGroup.add(group);
+      gears.push(group);
+      
+      return group;
+    };
+
+    // Create multiple gears at different positions
+    createGear(50, 12, 15, -120, 100, 0, 0.005);
+    createGear(35, 9, 12, 50, 80, -80, -0.008);
+    createGear(45, 11, 14, 0, -100, 60, 0.006);
+    createGear(40, 10, 13, -80, -60, -100, -0.007);
+    createGear(30, 8, 10, 100, -80, 50, 0.009);
+    createGear(55, 13, 16, 60, 120, -60, -0.004);
+
+    scene.add(gearsGroup);
+
+    // Enhanced lighting for metallic effect
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+    scene.add(ambientLight);
+
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLight.position.set(300, 400, 300);
+    directionalLight.castShadow = true;
+    scene.add(directionalLight);
+
+    const pointLight1 = new THREE.PointLight(0xd4af37, 0.8, 1200);
+    pointLight1.position.set(-400, 0, 0);
+    scene.add(pointLight1);
+
+    const pointLight2 = new THREE.PointLight(0x87ceeb, 0.5, 1200);
+    pointLight2.position.set(400, 0, 0);
+    scene.add(pointLight2);
 
     let mouseX = 0;
     let mouseY = 0;
@@ -239,22 +261,21 @@ export default function Hero() {
       targetX += (mouseX - targetX) * 0.05;
       targetY += (mouseY - targetY) * 0.05;
 
-      // Animate particles with wave effect
-      particlesMesh.rotation.y = elapsedTime * 0.05;
-      particlesMesh.rotation.x = targetY * 0.3;
-      particlesMesh.position.x = targetX * 50;
+      // Animate gears group
+      gearsGroup.rotation.y = elapsedTime * 0.03;
+      gearsGroup.rotation.x = targetY * 0.2;
+      gearsGroup.position.x = targetX * 50;
 
-      particlesMesh2.rotation.y = -elapsedTime * 0.03;
-      particlesMesh2.rotation.x = targetY * 0.2;
+      // Animate individual gears
+      gears.forEach((gear) => {
+        gear.rotation.y += gear.userData.rotationSpeed;
+        gear.rotation.x = Math.sin(elapsedTime * 0.3) * 0.2;
+      });
 
-      // Pulsating effect
-      const positions = particlesGeometry.attributes.position.array;
-      for (let i = 0; i < particlesCount; i++) {
-        const i3 = i * 3;
-        const y = positions[i3 + 1];
-        positions[i3 + 1] = y + Math.sin(elapsedTime + i) * 0.1;
-      }
-      particlesGeometry.attributes.position.needsUpdate = true;
+      // Update lights to follow interaction
+      pointLight1.position.x = -400 + targetX * 200;
+      pointLight2.position.x = 400 - targetX * 200;
+      directionalLight.position.y = 400 + targetY * 150;
 
       renderer.render(scene, camera);
     };
@@ -275,11 +296,20 @@ export default function Hero() {
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
+      
+      // Cleanup gears and materials
+      gears.forEach((gear) => {
+        gear.children.forEach((child) => {
+          if (child.geometry) child.geometry.dispose();
+          if (child.material) child.material.dispose();
+        });
+      });
+      
+      // Cleanup materials
+      metalMaterial.dispose();
+      accentMaterial.dispose();
+      
       renderer.dispose();
-      particlesGeometry.dispose();
-      particlesMaterial.dispose();
-      particlesGeometry2.dispose();
-      particlesMaterial2.dispose();
     };
   }, []);
 

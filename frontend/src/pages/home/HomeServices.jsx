@@ -10,21 +10,21 @@ const HomeServices = () => {
       name: "Coffee & Tea Packaging",
       materials: ["PET/ALU/PE","BOPP/CPP","Metallized PET"],
       image1: assets.coffees,
-      image2: assets.biscuit1
+      image2: assets.coffee1
     },
     {
       id: 2,
       name: "Snack & Chips Films",
       materials: ["BOPP","BOPP/CPP","Metallized BOPP"],
-      image1: assets.snackFilms,
-      image2: assets.snackFilms2
+      image1: assets.chip,
+      image2: assets.chip1
     },
     {
       id: 3,
       name: "Pharmaceutical Films",
       materials: ["PET/ALU/PE","Foil Laminates","Paper Laminates"],
-      image1: "/images/services/pharma-1.jpg",
-      image2: "/images/services/pharma-2.jpg"
+      image1: assets.healthcares,
+      image2: assets.healthcare1
     },
     {
       id: 4,
