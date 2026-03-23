@@ -155,12 +155,13 @@
 
 .text-line-1,
 .text-line-2 {
-  font-size: 4.5rem;
-  font-weight: 900;
+  font-size: 5rem;
+  /* font-weight: 900; */
   line-height: 1;
   margin: 0;
   text-align: center;
   letter-spacing: -0.02em;
+  font-family: "Cormorant Garamond", serif;
 }
 
 .text-line-logo {
@@ -181,22 +182,24 @@
 }
 
 .text-word {
-  font-size: 4rem;
-  font-weight: 900;
+  font-size: 5rem;
+  /* font-weight: 900; */
   line-height: 1;
   text-align: center;
   letter-spacing: -0.02em;
+  font-family: "Cormorant Garamond", serif;
 }
 
 /* Single Word Layout */
 .text-single {
-  font-size: 4.5rem;
-  font-weight: 900;
+  font-size: 5rem;
+  /* font-weight: 900; */
   line-height: 1;
   margin: 0;
   text-align: center;
   letter-spacing: -0.02em;
   perspective: 1000px;
+  font-family: "Cormorant Garamond", serif;
 }
 
 /* ================

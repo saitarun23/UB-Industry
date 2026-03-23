@@ -90,7 +90,7 @@ export default function Hero() {
 
   /* AUTO SLIDE */
   useEffect(() => {
-    const timer = setTimeout(next, 2000);
+    const timer = setTimeout(next, 5000);
     return () => clearTimeout(timer);
   }, [current]);
 

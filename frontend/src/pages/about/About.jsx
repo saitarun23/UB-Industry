@@ -424,22 +424,22 @@ export default function About() {
                   <div className="about-feature-item">
                     <div className="feature-icon"><FaBox /></div>
                     <h4>Advanced Infrastructure</h4>
-                    <p>Equipped with cutting-edge presses, laminators and finishing lines to handle complex multilayer structures.</p>
+                    {/* <p>Equipped with cutting-edge presses, laminators and finishing lines to handle complex multilayer structures.</p> */}
                   </div>
                   <div className="about-feature-item">
                     <div className="feature-icon"><FaCheck /></div>
                     <h4>Quality Assurance</h4>
-                    <p>Strict hygiene, safety and compliance protocols ensure consistent performance and brand presentation.</p>
+                    {/* <p>Strict hygiene, safety and compliance protocols ensure consistent performance and brand presentation.</p> */}
                   </div>
                   <div className="about-feature-item">
                     <div className="feature-icon"><FaBolt /></div>
                     <h4>On-Time Delivery</h4>
-                    <p>Wide substrate mix and print volume capacity with guaranteed consistency and timely supply.</p>
+                    {/* <p>Wide substrate mix and print volume capacity with guaranteed consistency and timely supply.</p> */}
                   </div>
                   <div className="about-feature-item">
                     <div className="feature-icon"><FaBullseye /></div>
                     <h4>Technical Excellence</h4>
-                    <p>Every reel follows rigorous quality control to ensure functional performance meets expectations.</p>
+                    {/* <p>Every reel follows rigorous quality control to ensure functional performance meets expectations.</p> */}
                   </div>
                 </div>
               </div>
@@ -469,7 +469,7 @@ export default function About() {
                   <p>Excellence is not just a goal—it's our standard. Every print, every package, every delivery reflects our commitment to perfection.</p>
                 </div>
                 <div className="director-bio">
-                  <p>Under the leadership of Urmila Bhupathiraju, the company has emerged as a powerhouse of innovation in the flexible printing industry. Her tenure has been marked by a transition toward smarter manufacturing and a relentless pursuit of perfection.</p>
+                  <p>Under the leadership of Urmila Bhupathiraju, the company has emerged as a powerhouse of innovation in the flexible printing industry. Her experience has been marked by a transition toward smarter manufacturing and a relentless pursuit of perfection.</p>
                   <p>Urmila's approach is deeply rooted in hands-on experience. She is known for her involvement in the technical aspects of the production floor, ensuring that the precision of every print run aligns with the client's brand identity.</p>
                   <p>Customer satisfaction is the primary compass by which Urmila steers the organization. Her consultative service model focuses on understanding shelf-life and durability needs, resulting in industry-leading client retention.</p>
                 </div>

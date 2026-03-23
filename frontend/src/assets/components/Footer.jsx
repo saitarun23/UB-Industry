@@ -82,7 +82,7 @@ export default function Footer() {
     { name: "About Us", path: "#about" },
     { name: "Services", path: "#services" },
     { name: "Infrastructure", path: "#infrastructure" },
-    { name: "Products", path: "#products" },
+    // { name: "Products", path: "#products" },
     { name: "Contact Us", path: "#contact" }
   ];
 
@@ -149,7 +149,7 @@ export default function Footer() {
               <li><a href="#" onClick={(e) => e.preventDefault()}><ChevronIcon /><span>Flexible Packaging</span></a></li>
               <li><a href="#" onClick={(e) => e.preventDefault()}><ChevronIcon /><span>Multi-Color Printing</span></a></li>
               <li><a href="#" onClick={(e) => e.preventDefault()}><ChevronIcon /><span>Lamination Services</span></a></li>
-              <li><a href="#" onClick={(e) => e.preventDefault()}><ChevronIcon /><span>Custom Pouches</span></a></li>
+              {/* <li><a href="#" onClick={(e) => e.preventDefault()}><ChevronIcon /><span>Custom Pouches</span></a></li> */}
               <li><a href="#" onClick={(e) => e.preventDefault()}><ChevronIcon /><span>Roll Form Solutions</span></a></li>
               <li><a href="#" onClick={(e) => e.preventDefault()}><ChevronIcon /><span>Quality Assurance</span></a></li>
             </ul>
