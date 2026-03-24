@@ -58,7 +58,7 @@ export default function AboutHighlights() {
       </div>
 
       {/* Cards Section */}
-      <div className="highlights-grid scroll-effect">
+      {/* <div className="highlights-grid scroll-effect">
         {items.map((item, index) => (
           <div
             key={index}
@@ -71,7 +71,7 @@ export default function AboutHighlights() {
             <p>{item.desc}</p>
           </div>
         ))}
-      </div>
+      </div> */}
     </section>
   );
 }

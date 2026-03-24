@@ -16,7 +16,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 90px 8% 70px; /* clears header */
+  padding: 90px 8% 70px;
   box-sizing: border-box;
   overflow: hidden;
   background: #000000;
@@ -69,6 +69,7 @@
   color: #ffffff;
   font-family: "Aleo", serif;
 }
+
 /* =========================
    MAIN SECTIONS - TAB BASED
    ========================= */
@@ -128,7 +129,6 @@
   justify-content: center;
   gap: 8px;
   padding: 12px 14px;
-  /* background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%); */
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
   color: #aaaaaa;
@@ -138,6 +138,7 @@
   font-size: 0.85rem;
   text-align: center;
   min-height: 100px;
+  background: transparent;
 }
 
 .infra-tab-btn:hover {
@@ -238,10 +239,9 @@
   line-height: 1.6;
   font-weight: 300;
   font-family: "Aleo", serif;
-  /* letter-spacing: 0.5px; */
 }
 
-/* SPECS GRID */
+/* SPECS GRID WITH AUTO-CYCLE */
 
 .infra-specs-grid {
   display: grid;
@@ -257,27 +257,58 @@
   transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
+/* FILL EFFECT FOR SPEC CARDS */
 .infra-spec-item::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
-  transition: left 0.5s ease;
+  inset: 0;
+  background: #ffffff;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s ease;
+  z-index: 0;
+}
+
+/* ACTIVE STATE (AUTO ANIMATION) */
+.infra-spec-item.infra-spec-item--active::before {
+  transform: scaleX(1);
+}
+
+.infra-spec-item.infra-spec-item--active {
+  border-color: #ffffff;
+}
+
+.infra-spec-item.infra-spec-item--active .infra-spec-label {
+  color: #555555;
+}
+
+.infra-spec-item.infra-spec-item--active .infra-spec-value {
+  color: #000000;
+}
+
+/* HOVER EFFECT (STILL WORKS) */
+.infra-spec-item:hover::before {
+  transform: scaleX(1);
 }
 
 .infra-spec-item:hover {
-  background: #ffffff;
   border-color: #ffffff;
-  transform: scaleX(1.05);
 }
 
-.infra-spec-item:hover::before {
-  left: 100%;
+.infra-spec-item:hover .infra-spec-label {
+  color: #555555;
+}
+
+.infra-spec-item:hover .infra-spec-value {
+  color: #000000;
+}
+
+.infra-spec-item * {
+  position: relative;
+  z-index: 1;
 }
 
 .infra-spec-label {
@@ -296,14 +327,6 @@
   font-weight: 600;
   line-height: 1.4;
   transition: color 0.4s ease;
-}
-
-.infra-spec-item:hover .infra-spec-label {
-  color: #555555;
-}
-
-.infra-spec-item:hover .infra-spec-value {
-  color: #000000;
 }
 
 /* =========================

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { FaCog, FaPalette, FaLink, FaFilm, FaBox, FaCut } from "react-icons/fa";
+import React, { useState, useEffect, useRef } from "react";
+import { FaCog, FaLink, FaFilm, FaBox, FaCut } from "react-icons/fa";
 import assets from "../../assets/images";
 import "../../styles/infrastructure.css";
 
@@ -26,7 +26,6 @@ const sections = [
       { label: "Technology", value: "Solvent & solvent-free lamination" },
       { label: "Coating System", value: "High-precision gravure coating" },
       { label: "Bond Strength", value: "Excellent interlayer adhesion" },
-      // { label: "Quality Control", value: "On-line coating & defect monitoring" },
       { label: "Max Width", value: "Up to 1000 mm" },
     ],
     description: "Multi-layer lamination for enhanced strength and barrier performance",
@@ -36,12 +35,11 @@ const sections = [
   {
     id: 3,
     title: "Slitting",
-    icon: FaCut, // ✅ Slitting icon
+    icon: FaCut,
     specs: [
       { label: "Slitting Type", value: "Razor & shear slitting" },
       { label: "Tension Control", value: "Automatic web tension control" },
       { label: "Edge Quality", value: "Clean, burr-free edges" },
-      // { label: "Inspection", value: "On-line defect inspection system" },  
       { label: "Max Width", value: "Up to 1000 mm" },
     ],
     description: "Precision slitting for consistent roll quality and smooth conversion",
@@ -56,7 +54,6 @@ const sections = [
       { label: "Pouch Types", value: "Stand-up, flat & zipper pouches" },
       { label: "Sealing System", value: "Precision temperature-controlled sealing" },
       { label: "Automation", value: "PLC & servo-driven control" },
-      // { label: "Quality Check", value: "Seal integrity & pouch inspection" },
       { label: "Output", value: "High-speed, consistent production" },
     ],
     description: "Advanced pouch making solutions for flexible packaging applications",
@@ -64,9 +61,11 @@ const sections = [
   },
 ];
 
-
 export default function Infrastructure() {
   const [activeTab, setActiveTab] = useState(0);
+  const [activeSpecIndex, setActiveSpecIndex] = useState(0);
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
   const activeSection = sections[activeTab];
 
   // Force scroll to top when component mounts
@@ -75,7 +74,6 @@ export default function Infrastructure() {
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
 
-    // Additional attempts with delays
     const timer1 = setTimeout(() => {
       window.scrollTo(0, 0);
     }, 50);
@@ -90,29 +88,64 @@ export default function Infrastructure() {
     };
   }, []);
 
+  // Intersection Observer for visibility
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  // Auto-cycle spec cards - changes every 2 seconds when visible
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const interval = setInterval(() => {
+      setActiveSpecIndex((prev) => (prev + 1) % activeSection.specs.length);
+    }, 2000); // Change every 2 seconds
+
+    return () => clearInterval(interval);
+  }, [isVisible, activeSection.specs.length]);
+
+  // Reset spec index when tab changes
+  useEffect(() => {
+    setActiveSpecIndex(0);
+  }, [activeTab]);
+
   return (
     <main className="infra-page">
       {/* HERO */}
       <header className="infra-hero">
         <div className="infra-hero-bg">
           <img
-            src={ assets.infraHero }
+            src={assets.infraHero}
             alt="Infrastructure overview"
           />
         </div>
         <div className="infra-hero-overlay" />
         <div className="infra-hero-content">
           <h1 className="infra-hero-title scroll-effect">Infrastructure</h1>
-            <p className="infra-hero-subtitle scroll-effect">
+          <p className="infra-hero-subtitle scroll-effect">
             A future-ready plant with high-speed presses, laminators and film
             lines to support demanding packaging projects.
-            </p>
+          </p>
         </div>
-      </header>     
-      
+      </header>
 
       {/* ADVANCED TAB-BASED SECTION */}
-      <section className="infra-main">
+      <section className="infra-main" ref={sectionRef}>
         {/* NAVIGATION TABS */}
         <div className="infra-tabs-container">
           <div className="infra-tabs-header">
@@ -161,7 +194,10 @@ export default function Infrastructure() {
 
             <div className="infra-specs-grid">
               {activeSection.specs.map((spec, index) => (
-                <div key={index} className="infra-spec-item">
+                <div 
+                  key={index} 
+                  className={`infra-spec-item ${index === activeSpecIndex ? "infra-spec-item--active" : ""}`}
+                >
                   <div className="infra-spec-label">{spec.label}</div>
                   <div className="infra-spec-value">{spec.value}</div>
                 </div>

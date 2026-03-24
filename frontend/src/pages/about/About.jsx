@@ -115,6 +115,25 @@ const items = [
   },
 ];
 
+const featureItems = [
+  {
+    icon: <FaBox />,
+    title: "Advanced Infrastructure",
+  },
+  {
+    icon: <FaCheck />,
+    title: "Quality Assurance",
+  },
+  {
+    icon: <FaBolt />,
+    title: "On-Time Delivery",
+  },
+  {
+    icon: <FaBullseye />,
+    title: "Technical Excellence",
+  },
+];
+
 const SVG_C = 600;
 const ORBIT_R = 420;
 const IMG_R = 185;
@@ -159,6 +178,9 @@ function wrapText(text, maxLen) {
 
 export default function About() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [activeFeatureIndex, setActiveFeatureIndex] = useState(0);
+  const featureSectionRef = useRef(null);
+  const [isFeatureVisible, setIsFeatureVisible] = useState(false);
   
   useEffect(() => {
     const interval = setInterval(() => {
@@ -167,6 +189,37 @@ export default function About() {
 
     return () => clearInterval(interval);
   }, []);
+
+  // Intersection Observer for feature cards visibility
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsFeatureVisible(entry.isIntersecting);
+      },
+      { threshold: 0.3 }
+    );
+
+    if (featureSectionRef.current) {
+      observer.observe(featureSectionRef.current);
+    }
+
+    return () => {
+      if (featureSectionRef.current) {
+        observer.unobserve(featureSectionRef.current);
+      }
+    };
+  }, []);
+
+  // Auto-cycle feature cards - changes every 2 seconds when visible
+  useEffect(() => {
+    if (!isFeatureVisible) return;
+
+    const interval = setInterval(() => {
+      setActiveFeatureIndex((prev) => (prev + 1) % featureItems.length);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [isFeatureVisible]);
 
   // Hero text rotation state
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
@@ -419,28 +472,17 @@ export default function About() {
                   <img src={assets.aboutwe} alt="Manufacturing facility" className="about-company-image" />
                 </div>
               </div>
-              <div className="about-company-text">
+              <div className="about-company-text" ref={featureSectionRef}>
                 <div className="about-features-grid">
-                  <div className="about-feature-item">
-                    <div className="feature-icon"><FaBox /></div>
-                    <h4>Advanced Infrastructure</h4>
-                    {/* <p>Equipped with cutting-edge presses, laminators and finishing lines to handle complex multilayer structures.</p> */}
-                  </div>
-                  <div className="about-feature-item">
-                    <div className="feature-icon"><FaCheck /></div>
-                    <h4>Quality Assurance</h4>
-                    {/* <p>Strict hygiene, safety and compliance protocols ensure consistent performance and brand presentation.</p> */}
-                  </div>
-                  <div className="about-feature-item">
-                    <div className="feature-icon"><FaBolt /></div>
-                    <h4>On-Time Delivery</h4>
-                    {/* <p>Wide substrate mix and print volume capacity with guaranteed consistency and timely supply.</p> */}
-                  </div>
-                  <div className="about-feature-item">
-                    <div className="feature-icon"><FaBullseye /></div>
-                    <h4>Technical Excellence</h4>
-                    {/* <p>Every reel follows rigorous quality control to ensure functional performance meets expectations.</p> */}
-                  </div>
+                  {featureItems.map((item, index) => (
+                    <div 
+                      key={index} 
+                      className={`about-feature-item ${index === activeFeatureIndex ? "about-feature-item--active" : ""}`}
+                    >
+                      <div className="feature-icon">{item.icon}</div>
+                      <h4>{item.title}</h4>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
