@@ -58,14 +58,10 @@ import powdered3 from '../images/New folder/powdered3.png';
 import powdered4 from '../images/New folder/powdered4.png';
 import powdered5 from '../images/New folder/powdered5.png';
 import powdered6 from '../images/New folder/powdered6.png';
+
 import seafood from '../images/New folder/seafood.png';
-import seafoods from '../images/New folder/seafoods.png';
 import seafood1 from '../images/New folder/seafood1.png';
-import seafood2 from '../images/New folder/seafood2.png';
-import seafood3 from '../images/New folder/seafood3.png';
-import seafood4 from '../images/New folder/seafood4.png';
-import seafood5 from '../images/New folder/seafood5.png';
-import seafood6 from '../images/New folder/seafood6.png';
+
 import beverages from '../images/New folder/beverages.png';
 import beverage from '../images/New folder/beverage.png';
 import beverages1 from '../images/New folder/beverages1.png';
@@ -74,37 +70,24 @@ import beverages3 from '../images/New folder/beverages3.png';
 import beverages4 from '../images/New folder/beverages4.png';
 import beverages5 from '../images/New folder/beverages5.png';
 import beverages6 from '../images/New folder/beverages6.png';
-import biscuits from '../images/New folder/biscuits.png';
+
+import roll from '../images/New folder/roll.png';
+
 import biscuit from '../images/New folder/biscuit.png';
 import biscuit1 from '../images/New folder/biscuit1.png';
-import biscuit2 from '../images/New folder/biscuit2.png';
-import biscuit3 from '../images/New folder/biscuit3.png';
-import biscuit4 from '../images/New folder/biscuit4.png';
-import biscuit5 from '../images/New folder/biscuit5.png';
-import biscuit6 from '../images/New folder/biscuit6.png';
-import chips from '../images/New folder/chips.png';
+
 import chip from '../images/New folder/chip.png';
 import chip1 from '../images/New folder/chip1.png';
-import chip2 from '../images/New folder/chip2.png';
-import chip3 from '../images/New folder/chip3.png';
-import chip4 from '../images/New folder/chip4.png';
-import chip5 from '../images/New folder/chip5.png';
-import chip6 from '../images/New folder/chip6.png';
+
+import milk from '../images/New folder/milk.png';
+import milk1 from '../images/New folder/milk1.png';
+
 import coffee from '../images/New folder/coffee.png';
-import coffees from '../images/New folder/coffees.png';
 import coffee1 from '../images/New folder/coffee1.png';
-import coffee2 from '../images/New folder/coffee2.png';
-import coffee3 from '../images/New folder/coffee3.png';
-import coffee5 from '../images/New folder/coffee5.png';
-import coffee6 from '../images/New folder/coffee6.png';
+
 import oil from '../images/New folder/oil.png';
-import oils from '../images/New folder/oils.png';
 import oil1 from '../images/New folder/oil1.png';
-import oil2 from '../images/New folder/oil2.png';
-import oil3 from '../images/New folder/oil3.png';
-import oil4 from '../images/New folder/oil4.png';
-import oil5 from '../images/New folder/oil5.png';
-import oil6 from '../images/New folder/oil6.png';
+
 import agriculture from '../images/New folder/agriculture.png';
 import agricultures from '../images/New folder/agricultures.png';
 import agri1 from '../images/New folder/agri1.png';
@@ -181,12 +164,15 @@ export default {
   vaccums,vaccum,vaccum1,vaccum2,vaccum3,vaccum4,vaccum5,vaccum6,
   personalcare,
   powdereds,powdered,powdered1,powdered2,powdered3,powdered4,powdered5,powdered6,
-  seafoods,seafood,seafood1,seafood2,seafood3,seafood4,seafood5,seafood6,
+  seafood,seafood1,
   beverage,beverages,beverages1,beverages2,beverages3,beverages4,beverages5,beverages6,
-  biscuit,biscuits,biscuit1,biscuit2,biscuit3,biscuit4,biscuit5,biscuit6,
-  chip,chips,chip1,chip2,chip3,chip4,chip5,chip6,
-  coffees,coffee,coffee1,coffee2,coffee3,coffee5,coffee6,
-  oils,oil,oil1,oil2,oil3,oil4,oil5,oil6,
+
+  roll,
+  biscuit,biscuit1,
+  chip,chip1,
+  milk,milk1,
+  coffee,coffee1,
+  oil,oil1,
   agricultures,agriculture,agri1,agri2,agri3,agri4,agri5,agri6,
   chemical,chemical1,chemical2,chemical3,chemical4,chemical5,chemical6,
   healthcares,healthcare,healthcare1,healthcare2,healthcare3,healthcare4,healthcare5,
