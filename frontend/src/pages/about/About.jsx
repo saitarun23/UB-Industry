@@ -10,8 +10,7 @@ const textConfigurations = [
   {
     type: "two-line-caps",
     line1: "ABOUT",
-    showLogo: true,
-    line2: "S",
+    line2: "US",
     line1Color: "#ffffff",
     line2Color: "#14b8a6",
   },
@@ -224,7 +223,7 @@ export default function About() {
   // Hero text rotation state
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
-  // Rotate text every 1 seconds
+  // Rotate text every 1.4 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTextIndex((prev) => (prev + 1) % textConfigurations.length);
@@ -263,40 +262,16 @@ export default function About() {
                 >
                   {currentConfig.line1}
                 </motion.h1>
-                {currentConfig.showLogo ? (
-                  <div className="text-line-with-logo">
-                    <motion.img
-                      initial={{ x: -50, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      exit={{ x: -50, opacity: 0 }}
-                      transition={{ duration: 0.5, delay: 0.05 }}
-                      src={assets.logo}
-                      alt="UB Industries Logo"
-                      className="text-line-logo"
-                    />
-                    <motion.h1
-                      initial={{ x: 50, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      exit={{ x: 50, opacity: 0 }}
-                      transition={{ duration: 0.5, delay: 0.1 }}
-                      style={{ color: currentConfig.line2Color }}
-                      className="text-line-2"
-                    >
-                      {currentConfig.line2}
-                    </motion.h1>
-                  </div>
-                ) : (
-                  <motion.h1
-                    initial={{ y: 50, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: -50, opacity: 0 }}
-                    transition={{ duration: 0.5, delay: 0.1 }}
-                    style={{ color: currentConfig.line2Color }}
-                    className="text-line-2"
-                  >
-                    {currentConfig.line2}
-                  </motion.h1>
-                )}
+                <motion.h1
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -50, opacity: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  style={{ color: currentConfig.line2Color }}
+                  className="text-line-2"
+                >
+                  {currentConfig.line2}
+                </motion.h1>
               </motion.div>
             )}
 

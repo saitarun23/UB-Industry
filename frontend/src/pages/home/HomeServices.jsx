@@ -9,7 +9,7 @@ const HomeServices = () => {
       id: 1,
       name: "Coffee & Tea Packaging",
       materials: ["PET/ALU/PE","BOPP/CPP","Metallized PET"],
-      image1: assets.coffees,
+      image1: assets.coffee,
       image2: assets.coffee1
     },
     {
@@ -21,35 +21,53 @@ const HomeServices = () => {
     },
     {
       id: 3,
-      name: "Pharmaceutical Films",
-      materials: ["PET/ALU/PE","Foil Laminates","Paper Laminates"],
-      image1: assets.healthcares,
-      image2: assets.healthcare1
+      name: "Milk & Dairy Packaging Films",
+      materials: ["LDPE", "LLDPE", "Co-extruded PE", "Laminated Films"],
+      image1: assets.milk,
+      image2: assets.milk1
     },
     {
       id: 4,
-      name: "Food Packaging Films",
-      materials: ["PET/PE","BOPP/EVOH/PE","Metallized"],
-      image1: "/images/services/coffee-1.jpg",
-      image2: "/images/services/coffee-2.jpg"
+      name: "Edible Oil Packaging Films",
+      materials: ["LDPE", "LLDPE", "PET/PE Laminates", "Metallized PET"],
+      image1: assets.oil,
+      image2: assets.oil1
     },
+{
+  id: 5,
+  name: "Biscuit Packaging Films",
+  materials: ["BOPP", "BOPP/CPP", "Metallized BOPP", "BOPP/PE"],
+  image1: assets.biscuit,
+  image2: assets.biscuit1
+},
     {
-      id: 5,
-      name: "Spices & Masala Films",
-      materials: ["PET/PE","BOPP/CPP","Metallized"],
-      image1: "/images/services/spices-1.jpg",
-      image2: "/images/services/spices-2.jpg"
-    },
+  id: 6,
+  name: "Wheat & Atta Packaging Films",
+  materials: ["BOPP", "BOPP/PE", "PP Woven Laminates", "Metallized Films"],
+  image1: assets.powdered,
+  image2:assets.powdered1
+},
+ {
+  id: 7,
+  name: "Vacuum Packaging Films",
+  materials: ["PA/PE (Nylon/PE)", "EVOH Barrier Films"],
+   image1: assets.vaccum,
+  image2:assets.vaccum1
+},
     {
-      id: 6,
-      name: "Agrochemical Films",
-      materials: ["BOPP","PET/PE","Nylon Based"],
-      image1: "/images/services/agro-1.jpg",
-      image2: "/images/services/agro-2.jpg"
-    }
+  id: 8,
+  name: "Seafood Packaging Films",
+  materials: ["PET/PE", "Nylon/PE", "High Barrier Laminates"],
+  image1: assets.seafood,
+  image2:assets.seafood1
+}
   ];
 
   const [hovered, setHovered] = useState(null);
+
+  const handleServiceClick = (serviceId) => {
+    window.location.hash = `#service-detail?service=${serviceId}`;
+  };
 
   return (
     <section className="home-services">
@@ -64,9 +82,11 @@ const HomeServices = () => {
 
           <div
             key={item.id}
-            className={`hs-card ${hovered === item.id ? "active" : ""}`}
+            className={`hs-card ${(item.id === 4 || item.id === 6 || item.id === 7 ||item.id === 8) ? "hs-card-small-img" : ""}`}
             onMouseEnter={() => setHovered(item.id)}
             onMouseLeave={() => setHovered(null)}
+            onClick={() => handleServiceClick(item.id)}
+            style={{ cursor: "pointer" }}
           >
 
             {/* IMAGE */}
@@ -103,6 +123,17 @@ const HomeServices = () => {
 
         ))}
 
+      </div>
+
+      <div className="hs-explore-btn-container">
+        <button
+          className="hs-explore-btn"
+          onClick={() => {
+            window.location.hash = "#services";
+          }}
+        >
+          Explore More
+        </button>
       </div>
 
     </section>

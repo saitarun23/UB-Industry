@@ -26,6 +26,7 @@ import FoodPacketIcon from "../../assets/components/icons/FoodPacketIcon";
 
 import assets from "../../assets/images";
 import "../../styles/services.css";
+import "../../styles/homeservices.css";
 
 // Text configurations with varied animation styles
 const textConfigurations = [
@@ -34,8 +35,8 @@ const textConfigurations = [
     line1: "We Brand",
     line2: "4",
     showLogo: true,
-    line1Color: "#ffffff",
-    line2Color: "#14b8a6",
+    line1Color: "#14b8a6",
+    line2Color: "#ffffff",
   },
   // {
   //   type: "three-word-mixed",
@@ -55,11 +56,13 @@ const textConfigurations = [
   },
   
   {
-    type: "single-word",
-    text: "Bakery & confectionary",
-    color: "#ffffff",
+    type: "two-word-mixed",
+    word1: "Bakery &",
+    word2: "Confectionary",
+    word1Color: "#ffffff",
+    word2Color: "#14b8a6",
   },
-  
+    
   {
     type: "single-word",
     text: "Chips & Snacks",
@@ -129,6 +132,65 @@ const textConfigurations = [
     word1Color: "#ffffff",
     word2Color: "#14b8a6",
   },
+];
+
+const products = [
+  {
+    id: 1,
+    name: "Coffee & Tea",
+    materials: ["PET/ALU/PE","BOPP/CPP","Metallized PET"],
+    image1: assets.coffee,
+    image2: assets.coffee1
+  },
+  {
+    id: 2,
+    name: "Chips",
+    materials: ["BOPP","BOPP/CPP","Metallized BOPP"],
+    image1: assets.chip,
+    image2: assets.chip1
+  },
+  {
+    id: 3,
+    name: "Milk & Dairy",
+    materials: ["LDPE", "LLDPE", "Co-extruded PE", "Laminated Films"],
+    image1: assets.milk,
+    image2: assets.milk1
+  },
+  {
+    id: 4,
+    name: "Oil",
+    materials: ["LDPE", "LLDPE", "PET/PE Laminates", "Metallized PET"],
+    image1: assets.oil,
+    image2: assets.oil1
+  },
+  {
+    id: 5,
+    name: "Biscuit Packaging Films",
+    materials: ["BOPP", "BOPP/CPP", "Metallized BOPP", "BOPP/PE"],
+    image1: assets.biscuit,
+    image2: assets.biscuit1
+  },
+      {
+    id: 6,
+    name: "Wheat & Atta Packaging Films",
+    materials: ["BOPP", "BOPP/PE", "PP Woven Laminates", "Metallized Films"],
+    image1: assets.powdered,
+    image2:assets.powdered1
+  },
+   {
+    id: 7,
+    name: "Vacuum Packaging Films",
+    materials: ["PA/PE (Nylon/PE)", "EVOH Barrier Films"],
+     image1: assets.vaccum,
+    image2:assets.vaccum1
+  },
+      {
+    id: 8,
+    name: "Seafood Packaging Films",
+    materials: ["PET/PE", "Nylon/PE", "High Barrier Laminates"],
+    image1: assets.seafood,
+    image2:assets.seafood1
+  }
 ];
 
 const packagingSolutions = [
@@ -224,6 +286,7 @@ const whyChooseUsFeatures = [
 export default function Services() {
   // Hero text rotation state
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const [hovered, setHovered] = useState(null);
 
   // Rotate text every 3 seconds
   useEffect(() => {
@@ -428,6 +491,52 @@ export default function Services() {
         </div>
       </header>
 
+      {/* HOME SERVICES - PRODUCTS SECTION */}
+      <section className="home-services">
+        <div className="hs-header">
+          <h2>Custom Flexible Packaging</h2>
+        </div>
+
+        <div className="hs-grid">
+          {products.map((item) => (
+            <div
+              key={item.id}
+               className={`hs-card ${(item.id === 4 || item.id === 6 || item.id === 7 ||item.id === 8) ? "hs-card-small-img" : ""}`}
+              onMouseEnter={() => setHovered(item.id)}
+              onMouseLeave={() => setHovered(null)}
+              onClick={() => {
+                window.location.hash = `#service-detail?service=${item.id}`;
+              }}
+              style={{ cursor: "pointer" }}
+            >
+              {/* IMAGE */}
+              <div className="hs-image">
+                <img
+                  src={item.image1}
+                  className={`img1 ${hovered === item.id ? "hide" : ""}`}
+                  alt={item.name}
+                />
+                <img
+                  src={item.image2}
+                  className={`img2 ${hovered === item.id ? "show" : ""}`}
+                  alt={item.name}
+                />
+              </div>
+
+              {/* CONTENT - ALWAYS VISIBLE */}
+              <div className="hs-content">
+                <h3>{item.name}</h3>
+                <div className="hs-materials">
+                  {item.materials.map((mat, i) => (
+                    <span key={i}>{mat}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* MAIN BODY */}
       <section className="services-main">
         {/* PACKAGING SOLUTIONS */}
@@ -464,234 +573,6 @@ export default function Services() {
           </p>
         </section>
 
-        {/* SERVICE ROWS */}
-        <section className="services-grid">
-          {/* PRINTING */}
-          <article className="service-card">
-            <div className="service-card-image scroll-effect">
-              <img
-                src={assets.printing}
-                alt="Flexible packaging printing machine"
-              />
-              <div className="image-overlay">
-                <div className="overlay-icon-wrap">
-                  <Printer className="overlay-icon" />
-                </div>
-              </div>
-            </div>
-            <div className="service-card-content">
-              <div className="service-header">
-                <span className="service-tag">Core Service</span>
-                <h3 className="service-title">High-Performance Printing</h3>
-              </div>
-              <p className="service-description">
-                Multi-color flexographic &amp; gravure printing on a range of
-                substrates including BOPP, PET, PE and laminates. Optimised
-                ink-matching and registration control ensures your brand colours
-                stay consistent across every batch.
-              </p>
-              <ul className="service-features">
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>
-                    Surface &amp; reverse printing up to wide web widths
-                  </span>
-                </li>
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>Fine halftones, vignettes and photo-quality graphics</span>
-                </li>
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>Food-grade inks and coatings where required</span>
-                </li>
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>
-                    In-line inspection for print defects and shade variation
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </article>
-
-          {/* LAMINATION */}
-          <article className="service-card service-card-reverse">
-            <div className="service-card-image scroll-effect">
-              <img src={assets.lamination} alt="Lamination machine" />
-              <div className="image-overlay">
-                <div className="overlay-icon-wrap">
-                  <Layers className="overlay-icon" />
-                </div>
-              </div>
-            </div>
-            <div className="service-card-content">
-              <div className="service-header">
-                <span className="service-tag">Barrier &amp; Protection</span>
-                <h3 className="service-title">Coating &amp; Lamination</h3>
-              </div>
-              <p className="service-description">
-                Our lamination lines build structures that protect aroma, extend
-                shelf life and improve handling. From simple duplex laminates to
-                complex multi-layer constructions, we tune barrier properties to
-                suit your product.
-              </p>
-              <ul className="service-features">
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>Solvent-less &amp; solvent-based lamination options</span>
-                </li>
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>Structures from 20 microns up to 200 microns</span>
-                </li>
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>High bond strength &amp; excellent curl control</span>
-                </li>
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>
-                    Heat-seal, cold-seal &amp; speciality coating options
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </article>
-
-          {/* SLITTING */}
-          <article className="service-card">
-            <div className="service-card-image scroll-effect">
-              <img src={assets.sliting} alt="Slitting machine" />
-              <div className="image-overlay">
-                <div className="overlay-icon-wrap">
-                  <Scissors className="overlay-icon" />
-                </div>
-              </div>
-            </div>
-            <div className="service-card-content">
-              <div className="service-header">
-                <span className="service-tag">Precision Finishing</span>
-                <h3 className="service-title">Web Slitting &amp; Rewinding</h3>
-              </div>
-              <p className="service-description">
-                Web-guided slitters with auto tension control deliver clean
-                edges, accurate roll widths and consistent roll profiles that
-                run smoothly on your packing lines.
-              </p>
-              <ul className="service-features">
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>Camera-based edge &amp; print mark tracking</span>
-                </li>
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>
-                    Custom slit widths for form-fill-seal &amp; VFFS machines
-                  </span>
-                </li>
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>
-                    Core &amp; roll OD as per your machine requirements
-                  </span>
-                </li>
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>Doctoring &amp; reworking of problem reels</span>
-                </li>
-              </ul>
-            </div>
-          </article>
-
-          {/* POUCHING */}
-          <article className="service-card service-card-reverse">
-            <div className="service-card-image scroll-effect ">
-              <img src={assets.pouching} alt="Pouching machine" />
-              <div className="image-overlay">
-                <div className="overlay-icon-wrap">
-                  <Package className="overlay-icon" />
-                </div>
-              </div>
-            </div>
-            <div className="service-card-content">
-              <div className="service-header">
-                <span className="service-tag">Flexible Packaging</span>
-                <h3 className="service-title">Pouch Conversion</h3>
-              </div>
-              <p className="service-description">
-                Dedicated pouching lines convert printed laminates into
-                shelf-ready formats that are strong, leak-proof and visually
-                striking on the rack.
-              </p>
-              <ul className="service-features">
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>
-                    Center-seal, three-side seal &amp; side-gusset pouches
-                  </span>
-                </li>
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>
-                    Stand-up pouches with zipper, spout &amp; tear notch options
-                  </span>
-                </li>
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>Heavy-duty bags designed up to 25&nbsp;kg fill weight</span>
-                </li>
-                <li>
-                  <CheckCircle className="feature-check" />
-                  <span>
-                    Laser scoring, euro-hole and punch options on request
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </article>
-        </section>
-
-        {/* SECOND QUOTE BANNER */}
-        <section className="services-quote-banner services-quote-secondary">
-          <div className="quote-icon-wrap scroll-effect">
-            <Lightbulb className="quote-icon scroll-effect" />
-          </div>
-          <p className="scroll-effect">
-            Choosing the right film, structure and format is as important as
-            choosing the right design. Our team helps you get all three right.
-          </p>
-        </section>
-
-        {/* REDESIGNED Built for You SECTION */}
-        <section className="why-choose-section ">
-          <div className="why-choose-header scroll-effect">
-            <div className="why-header-badge">
-              <Award className="why-badge-icon" />
-              <span>Our Advantage</span>
-            </div>
-            <h2 className="why-choose-title">Built for You</h2>
-            <p className="why-choose-subtitle">
-              Decades of expertise combined with cutting-edge technology to
-              deliver packaging solutions that exceed expectations.
-            </p>
-          </div>
-
-          <div className="why-features-grid ">
-            {whyChooseUsFeatures.map(
-              ({ icon: Icon, title, description, gradient }, index) => (
-                <div className="why-feature-card scroll-effect" key={index}>
-                  <div className="why-feature-glow" />
-                  <div className={`why-feature-icon-wrap gradient-${gradient}`}>
-                    <Icon className="why-feature-icon" />
-                  </div>
-                  <h3 className="why-feature-title">{title}</h3>
-                  <p className="why-feature-desc">{description}</p>
-                </div>
-              )
-            )}
-          </div>
-        </section>
       </section>
     </main>
   );

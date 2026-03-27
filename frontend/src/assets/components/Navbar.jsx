@@ -44,13 +44,13 @@ const Navbar = ({ onChangePage, activePage }) => {
             SERVICES
           </a>
 
-          <a
+          {/* <a
             href="#products"
             className={activePage === "products" ? "active" : ""}
             onClick={handleLinkClick("products")}
           >
             PRODUCTS
-          </a>
+          </a> */}
 
         
           <a

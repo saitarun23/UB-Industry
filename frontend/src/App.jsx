@@ -11,7 +11,6 @@ import About from "./pages/about/About";
 import Services from "./pages/services/Services";
 import Infrastructure from "./pages/infrastructure/Infrastructure";
 import Products from "./pages/products/Products";
-import ProductDetail from "./pages/products/ProductDetail";
 import ServiceDetail from "./pages/home/ServiceDetail";
 import Contact from "./pages/contact/Contact";
 
@@ -28,6 +27,7 @@ const App = () => {
       "infrastructure",
       "products",
       "product-detail",
+      "service-detail",
       "contact",
     ];
     return validPages.includes(pageName) ? pageName : "home";
@@ -68,7 +68,7 @@ const App = () => {
     services: <Services />,
     infrastructure: <Infrastructure />,
     products: <Products />,
-    "product-detail": <ProductDetail />,
+    "service-detail": <ServiceDetail />,
     contact: <Contact />,
   };
 
@@ -102,7 +102,7 @@ const App = () => {
       {splashDone && (
         <>
           <Navbar onChangePage={setActivePage} activePage={activePage} />
-          {activePage === "product-detail" ? renderDetailPage() : pages[activePage]}
+          {pages[activePage]}
           <Footer />
         </>
       )}

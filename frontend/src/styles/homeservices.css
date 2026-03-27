@@ -30,18 +30,18 @@ margin:auto;
 /* CARD - Compact size */
 
 .hs-card{
-background:#fff;
-border-radius:0;
-overflow:visible;
+background:#14b8a6;
+border-radius:12px;
+overflow:hidden;
 transition:all .3s ease;
 cursor:pointer;
 position:relative;
 }
-
+/* 
 .hs-card:hover{
-transform:translateY(-8px);
 box-shadow:0 12px 30px rgba(0,0,0,.4);
-}
+transform:translateY(-8px);
+} */
 
 /* IMAGE - Smaller height */
 
@@ -76,11 +76,17 @@ opacity:0;
 opacity:1;
 }
 
+/* SMALL IMAGE - Only for Edible Oil card */
+.hs-card-small-img .hs-image img{
+object-fit:contain;
+}
+
 /* CONTENT - Fixed position, no movement */
 
 .hs-content{
 padding:18px 16px;
-background:#fff;
+/* background:#14b8a6; */
+
 }
 
 /* TITLE */
@@ -89,7 +95,7 @@ background:#fff;
 font-size:17px;
 margin-bottom:12px;
 font-weight:600;
-color:#000;
+color:#ffffff;
 text-align:center;
 }
 
@@ -104,7 +110,7 @@ justify-content:center;
 
 .hs-materials span{
 font-size:11px;
-color:#666;
+color:#f7f4f4;
 padding:0;
 border:none;
 }
@@ -163,4 +169,74 @@ grid-template-columns:1fr;
 height:240px;
 }
 
+}
+
+/* EXPLORE MORE BUTTON */
+
+.hs-explore-btn-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+  animation: fadeInUp 0.8s ease-out 0.5s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hs-explore-btn {
+  background: #ffffff;
+  color: #000000;
+  border: 2px solid #ffffff;
+  padding: 14px 40px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hs-explore-btn:hover {
+  background: #000000;
+  color: #ffffff;
+  border-color: #ffffff;
+  transform: translateY(-3px);
+  /* box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3); */
+}
+
+.hs-explore-btn:active {
+  transform: translateY(-1px);
+  /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); */
+}
+
+@media(max-width:768px) {
+  .hs-explore-btn-container {
+    margin-top: 40px;
+  }
+
+  .hs-explore-btn {
+    padding: 12px 32px;
+    font-size: 14px;
+  }
+}
+
+@media(max-width:480px) {
+  .hs-explore-btn-container {
+    margin-top: 30px;
+  }
+
+  .hs-explore-btn {
+    padding: 10px 24px;
+    font-size: 13px;
+  }
 }

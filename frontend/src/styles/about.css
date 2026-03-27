@@ -8,9 +8,6 @@
   overflow-x: hidden;
 }
 
-/* ================
-   HERO
-   ================ */
 /* =========================
    INDUSTRY HERO (NEW)
    ========================= */
@@ -21,8 +18,13 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: linear-gradient(135deg, #2d5a7b 0%, #85C79A 20%, #2d5a7b 40%, #85C79A 60%, #2d5a7b 80%, #051219 100%);
-  background-size: 400% 400%;
+  background: linear-gradient(120deg,
+  #3f6f73 0%,
+  #4f8c7a 20%,
+  #3a6a80 45%,
+  #3a6a80 75%,
+  #7dbb9c 100%);
+  background-size: cover;
   animation: premiumFlow 20s ease infinite;
 }
 
@@ -150,33 +152,11 @@
 .text-line-1,
 .text-line-2 {
   font-size: 7rem;
-  /* font-weight: 900; */
+  font-weight: 900;
   line-height: 1;
   margin: 0;
   text-align: center;
   letter-spacing: -0.05em;
-}
-
-.text-line-with-logo .text-line-2 {
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.text-line-with-logo {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 1.2rem;
-}
-
-.text-line-logo {
-  max-width: 70px;
-  height: auto;
-  max-height: 40px;
-  object-fit: contain;
-  margin: 0;
 }
 
 /* Inline Layouts (Two/Three Words) */
@@ -207,80 +187,12 @@
   perspective: 1000px;
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-  .text-line-1,
-  .text-line-2,
-  .text-word {
-    font-size: 3rem;
-  }
-  
-  .text-line-logo {
-    max-width: 80px;
-    max-height: 70px;
-  }
-  
-  .text-single {
-    font-size: 3.5rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .industry-hero {
-    height: 300px;
-  }
-
-  .text-line-1,
-  .text-line-2,
-  .text-word {
-    font-size: 2.4rem;
-  }
-  
-  .text-line-logo {
-    max-width: 60px;
-    max-height: 50px;
-  }
-  
-  .text-single {
-    font-size: 2.8rem;
-  }
-  
-  .text-layout-inline {
-    gap: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .industry-hero {
-    height: 250px;
-  }
-
-  .text-line-1,
-  .text-line-2,
-  .text-word {
-    font-size: 1.8rem;
-  }
-  
-  .text-line-logo {
-    max-width: 50px;
-    max-height: 40px;
-  }
-  
-  .text-single {
-    font-size: 2rem;
-  }
-  
-  .text-layout-inline {
-    gap: 0.75rem;
-  }
-}
-
 /* ================
    WELCOME
    ================ */
 .about-welcome {
   background: #000000;
-  padding: 40px 40px;
+  padding: 60px 40px;
   text-align: center;
 }
 
@@ -305,6 +217,92 @@
   margin: 0;
   letter-spacing: 0.3px;
   font-family: "Aleo", serif;
+}
+
+/* aboutfirst Cards Grid */
+.aboutfirst-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.aboutfirst-card {
+  background: #fff;
+  border: 1px solid #000;
+  padding: 45px 30px;
+  text-align: center;
+  transition: transform 0.4s ease, background 0.4s ease, border-color 0.4s ease;
+  position: relative;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aboutfirst-card .icon {
+  font-size: 42px;
+  color: #000;
+  margin-bottom: 20px;
+  transition: color 0.4s ease;
+}
+
+.aboutfirst-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #000;
+  transition: color 0.4s ease;
+}
+
+.aboutfirst-card p {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.6;
+  transition: color 0.4s ease;
+}
+
+/* Hover */
+.aboutfirst-card:hover {
+  background: #000;
+  border-color: #000;
+  transform: scaleX(1.05);
+}
+
+.aboutfirst-card:hover .icon,
+.aboutfirst-card:hover h3,
+.aboutfirst-card:hover p {
+  color: #fff;
+} 
+
+/* Featured Card */
+.aboutfirst-card.featured {
+  background: #000;
+  border-color: #000;
+}
+
+.aboutfirst-card.featured .icon,
+.aboutfirst-card.featured h3,
+.aboutfirst-card.featured p {
+  color: #fff;
+}
+
+.aboutfirst-card-inner {
+  transition: all 0.4s ease;
+}
+
+/* auto active effect (same as hover) */
+.aboutfirst-card.active {
+  background: #000;
+  border-color: #000;
+  transform: scaleX(1.05);
+}
+
+.aboutfirst-card.active .icon,
+.aboutfirst-card.active h3,
+.aboutfirst-card.active p {
+  color: #fff;
 }
 
 /* ================
@@ -340,7 +338,7 @@
    WHO WE ARE
    ================ */
 .about-company-section {
-  padding: 50px 40px 20px;
+  padding: 80px 40px 60px;
   background: #000000;
 }
 
@@ -429,6 +427,7 @@
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  min-height: 120px;
 }
 
 /* FILL EFFECT FOR FEATURE CARDS */
@@ -513,7 +512,7 @@
    DIRECTOR
    ================ */
 .about-director-section {
-  padding: 20px 40px;
+  padding: 80px 40px;
   background: linear-gradient(135deg, #050505 0%, #111111 100%);
 }
 
@@ -642,7 +641,7 @@
    JOURNEY — SVG ORBITAL  (ALL screen sizes)
    ========================================== */
 .about-history-section {
-  padding:30px 12px 5px;
+  padding: 80px 40px 60px;
   background: #000000;
 }
 
@@ -679,115 +678,334 @@
   display: block;
   overflow: visible;
 }
-/* aboutfirst Cards Grid */
-.aboutfirst-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
-}
 
-.aboutfirst-card {
-  background: #fff; /* White card background */
-  border: 1px solid #000; /* Black border */
-  padding: 45px 30px;
-  text-align: center;
-  transition: transform 0.4s ease, background 0.4s ease, border-color 0.4s ease;
-  position: relative;
-}
-
-.aboutfirst-card .icon {
-  font-size: 42px;
-  color: #000; /* Black icon */
-  margin-bottom: 20px;
-  transition: color 0.4s ease;
-}
-
-.aboutfirst-card h3 {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 12px;
-  color: #000; /* Black text */
-  transition: color 0.4s ease;
-}
-
-.aboutfirst-card p {
-  font-size: 14px;
-  color: #444; /* Dark gray for paragraph */
-  line-height: 1.6;
-  transition: color 0.4s ease;
-}
-
-/* Hover */
-.aboutfirst-card:hover {
-  background: #000; /* Black background on hover */
-  border-color: #000;
-  transform: scaleX(1.05); /* scale horizontally by 5% */
-}
-
-.aboutfirst-card:hover .icon,
-.aboutfirst-card:hover h3,
-.aboutfirst-card:hover p {
-  color: #fff; /* White text & icon on hover */
-} 
-
-/* Featured Card */
-.aboutfirst-card.featured {
-  background: #000; /* Black background */
-  border-color: #000;
-}
-
-.aboutfirst-card.featured .icon,
-.aboutfirst-card.featured h3,
-.aboutfirst-card.featured p {
-  color: #fff; /* White text & icon */
-}
-.aboutfirst-card-inner {
-  transition: all 0.4s ease;
-}
-
-/* auto active effect (same as hover) */
-.aboutfirst-card.active {
-  background: #000;
-  border-color: #000;
-  transform: scaleX(1.05);
-}
-
-.aboutfirst-card.active .icon,
-.aboutfirst-card.active h3,
-.aboutfirst-card.active p {
-  color: #fff;
-}
 /* ================
-   RESPONSIVE
+   RESPONSIVE - TABLET/IPAD (1024px and below)
    ================ */
 @media (max-width: 1024px) {
-  .about-company-grid { grid-template-columns: 1fr; gap: 40px; }
-  .about-features-grid { grid-template-columns: 1fr 1fr; }
-  .about-director-content { grid-template-columns: 1fr; gap: 40px; padding: 40px; }
+  /* Hero adjustments */
+  .industry-hero {
+    height: 400px;
+  }
+
+  .text-line-1,
+  .text-line-2 {
+    font-size: 4.5rem;
+  }
+  
+  .text-word {
+    font-size: 3rem;
+  }
+  
+  .text-single {
+    font-size: 3.5rem;
+  }
+
+  /* About Welcome - 2x2 Grid for iPad */
+  .aboutfirst-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    padding: 0 20px;
+  }
+
+  .aboutfirst-card {
+    padding: 35px 25px;
+    min-height: 180px;
+  }
+
+  .aboutfirst-card .icon {
+    font-size: 36px;
+  }
+
+  .aboutfirst-card h3 {
+    font-size: 16px;
+  }
+
+  .aboutfirst-card p {
+    font-size: 13px;
+  }
+
+  /* Company Grid - Stack on iPad */
+  .about-company-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-company-image {
+    height: 350px;
+  }
+
+  /* Features Grid - 2x2 on iPad */
+  .about-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  /* Director Section */
+  .about-director-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 40px;
+  }
+
+  .about-director-avatar-wrap {
+    width: 180px;
+    height: 180px;
+    margin-top: 20px;
+  }
 }
 
+/* ================
+   RESPONSIVE - MOBILE (768px and below)
+   ================ */
 @media (max-width: 768px) {
-  .about-welcome { padding: 60px 24px; }
-  .about-welcome-title { font-size: 2rem; }
-  .about-welcome-subtitle { font-size: 1rem; }
+  /* Hero */
+  .industry-hero {
+    height: 320px;
+  }
+
+  .text-line-1,
+  .text-line-2 {
+    font-size: 3rem;
+  }
+  
+  .text-word {
+    font-size: 2.2rem;
+  }
+  
+  .text-single {
+    font-size: 2.5rem;
+  }
+
+  .text-layout-inline {
+    gap: 1rem;
+  }
+
+  /* Welcome Section */
+  .about-welcome {
+    padding: 50px 20px;
+  }
+
+  /* About Welcome - 2x2 Grid for Mobile */
+  .aboutfirst-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    padding: 0 10px;
+  }
+
+  .aboutfirst-card {
+    padding: 25px 15px;
+    min-height: 160px;
+  }
+
+  .aboutfirst-card .icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+
+  .aboutfirst-card h3 {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .aboutfirst-card p {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  /* Sections */
   .about-company-section,
   .about-director-section,
-  .about-history-section { padding: 60px 16px; }
-  .about-section-title { font-size: 2rem; }
-  .about-director-content { padding: 30px; }
-  .about-features-grid { grid-template-columns: 1fr; }
+  .about-history-section {
+    padding: 50px 20px;
+  }
+
+  .about-section-title {
+    font-size: 1.8rem;
+  }
+
+  .about-intro-text {
+    font-size: 1rem;
+    margin-bottom: 40px;
+  }
+
+  .about-company-image {
+    height: 300px;
+  }
+
+  /* Features Grid - 2x2 on Mobile */
+  .about-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .about-feature-item {
+    padding: 18px;
+    min-height: 110px;
+  }
+
+  .feature-icon {
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+  }
+
+  .about-feature-item h4 {
+    font-size: 0.95rem;
+  }
+
+  /* Director */
+  .about-director-content {
+    padding: 30px 20px;
+  }
+
+  .about-director-avatar-wrap {
+    width: 160px;
+    height: 160px;
+  }
+
+  .about-director-name {
+    font-size: 1.3rem;
+  }
+
+  .director-quote {
+    padding: 24px 20px;
+  }
+
+  .director-quote p {
+    font-size: 1rem;
+  }
+
+  .director-bio p {
+    font-size: 0.95rem;
+  }
+
+  /* Journey */
+  .about-history-section {
+    padding: 50px 15px;
+  }
+
+  .about-history-intro {
+    font-size: 1rem;
+  }
+
+  .journey-svg-wrapper {
+    padding: 0;
+  }
 }
 
-@media (max-width: 640px) {
-  .about-hero { padding: 80px 18px 60px; }
-  .about-hero-title { font-size: 2.2rem; margin-left: 0; }
-  .about-welcome-title { font-size: 1.75rem; }
-  .about-section-title { font-size: 1.75rem; }
-  .about-features-grid { gap: 16px; }
-  .about-director-avatar-wrap { width: 160px; height: 160px; }
-  .about-cta-inner { padding: 0 24px; }
-  .about-cta-title { font-size: 2rem; }
-  /* Journey section — give full width with no extra padding */
-  .about-history-section { padding: 50px 8px 80px; }
-  .journey-svg-wrapper { padding: 0; }
+/* ================
+   RESPONSIVE - SMALL MOBILE (480px and below)
+   ================ */
+@media (max-width: 480px) {
+  /* Hero */
+  .industry-hero {
+    height: 280px;
+  }
+
+  .text-line-1,
+  .text-line-2 {
+    font-size: 2.2rem;
+  }
+  
+  .text-word {
+    font-size: 1.8rem;
+  }
+  
+  .text-single {
+    font-size: 2rem;
+  }
+
+  .text-layout-inline {
+    gap: 0.75rem;
+  }
+
+  /* Welcome Section */
+  .about-welcome {
+    padding: 40px 15px;
+  }
+
+  /* About Welcome - 2x2 Grid maintained */
+  .aboutfirst-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 0;
+  }
+
+  .aboutfirst-card {
+    padding: 20px 12px;
+    min-height: 140px;
+  }
+
+  .aboutfirst-card .icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  .aboutfirst-card h3 {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .aboutfirst-card p {
+    font-size: 11px;
+    line-height: 1.3;
+  }
+
+  /* Sections */
+  .about-section-title {
+    font-size: 1.5rem;
+  }
+
+  .about-intro-text {
+    font-size: 0.9rem;
+  }
+
+  .about-company-image {
+    height: 250px;
+  }
+
+  /* Features Grid - 2x2 maintained */
+  .about-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .about-feature-item {
+    padding: 15px;
+    min-height: 100px;
+  }
+
+  .feature-icon {
+    font-size: 1.4rem;
+  }
+
+  .about-feature-item h4 {
+    font-size: 0.85rem;
+  }
+
+  /* Director */
+  .about-director-avatar-wrap {
+    width: 140px;
+    height: 140px;
+  }
+
+  .about-director-name {
+    font-size: 1.1rem;
+  }
+
+  .about-director-role {
+    font-size: 0.85rem;
+  }
+
+  .director-quote {
+    padding: 20px 16px;
+  }
+
+  .director-quote p {
+    font-size: 0.9rem;
+  }
+
+  .director-bio p {
+    font-size: 0.85rem;
+  }
 }
