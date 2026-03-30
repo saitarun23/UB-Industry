@@ -1,7 +1,7 @@
 /* SECTION */
 .homeproducts-section {
   background: #000;
-  padding: 70px 0 180px;
+  padding: 5px 0 70px;
   color: #fff;
   position: relative;
 }
@@ -9,7 +9,7 @@
 /* HEADING */
 .homeproducts-heading {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 
 .homeproducts-heading span {

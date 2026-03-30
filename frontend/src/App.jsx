@@ -11,7 +11,7 @@ import About from "./pages/about/About";
 import Services from "./pages/services/Services";
 import Infrastructure from "./pages/infrastructure/Infrastructure";
 import Products from "./pages/products/Products";
-import ServiceDetail from "./pages/home/ServiceDetail";
+import ProductDetail from "./pages/products/ProductDetail";
 import Contact from "./pages/contact/Contact";
 
 import SplashScreen from "./assets/components/SplashScreen";
@@ -27,7 +27,6 @@ const App = () => {
       "infrastructure",
       "products",
       "product-detail",
-      "service-detail",
       "contact",
     ];
     return validPages.includes(pageName) ? pageName : "home";
@@ -68,15 +67,13 @@ const App = () => {
     services: <Services />,
     infrastructure: <Infrastructure />,
     products: <Products />,
-    "service-detail": <ServiceDetail />,
+    "product-detail": <ProductDetail />,
     contact: <Contact />,
   };
 
-  // Render either ServiceDetail or ProductDetail based on URL parameters
+  // Render ProductDetail
   const renderDetailPage = () => {
-    const params = new URLSearchParams(window.location.hash.split("?")[1]);
-    const hasCategory = params.has("category");
-    return hasCategory ? <ServiceDetail /> : <ProductDetail />;
+    return <ProductDetail />;
   };
 
   const handleSplashFinish = () => {
@@ -102,7 +99,7 @@ const App = () => {
       {splashDone && (
         <>
           <Navbar onChangePage={setActivePage} activePage={activePage} />
-          {pages[activePage]}
+          {activePage === "product-detail" ? renderDetailPage() : pages[activePage]}
           <Footer />
         </>
       )}

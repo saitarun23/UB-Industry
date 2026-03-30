@@ -1,0 +1,431 @@
+/* ============================================
+   PACKAGING SHOWCASE - BOLD MODERN DESIGN
+   ============================================ */
+
+.packaging-showcase {
+  background: #000000;
+  color: #ffffff;
+  padding: 100px 40px;
+  position: relative;
+  overflow: hidden;
+  min-height: 700px;
+}
+
+/* Top Accent Line - Animated */
+.accent-line-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ffffff, transparent);
+  animation: slideRight 3s ease-in-out infinite;
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100vw);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+/* Bottom Accent Line */
+.accent-line-bottom {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #ffffff, transparent);
+}
+
+.showcase-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   LEFT CONTENT PANEL
+   ============================================ */
+
+.content-panel {
+  position: relative;
+}
+
+.vertical-accent {
+  position: absolute;
+  left: -30px;
+  top: 0;
+  width: 3px;
+  height: 400px;
+  background: linear-gradient(180deg, #ffffff 0%, #ffffff 30%, transparent 100%);
+  border-radius: 2px;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  position: relative;
+}
+
+/* Label Badge */
+.section-label {
+  display: inline-block;
+  width: fit-content;
+}
+
+.label-badge {
+  display: inline-block;
+  padding: 8px 20px;
+  background: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 2px;
+}
+
+/* Section Title */
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1.2;
+  margin: 0;
+  letter-spacing: -1px;
+  /* text-transform: uppercase; */
+}
+
+/* .highlight-text {
+  display: block;
+  color: #ffffff;
+  position: relative;
+  padding-bottom: 10px;
+} */
+
+/* .highlight-text::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200px;
+  height: 4px;
+  background: #ffffff;
+} */
+
+/* Materials List - Numbered Style */
+.materials-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.materials-list li {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 1.15rem;
+  color: #ffffff;
+  position: relative;
+}
+
+.material-number {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.material-icon {
+  width: 50px;
+  height: 50px;
+  color: #ffffff;
+  stroke-width: 1.5;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+/* Icon Colors Based on Category */
+.pharma-icon {
+  color: #ef4444;
+}
+
+.agri-icon {
+  color: #22c55e;
+}
+
+.food-icon {
+  color: #f97316;
+}
+
+.beverage-icon {
+  color: #3b82f6;
+}
+
+.material-text {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  /* color: #14b8a6; */
+}
+
+.materials-list li:hover .material-number {
+  background: #ffffff;
+  color: #000000;
+}
+
+.materials-list li:hover .material-icon {
+  color: #ffffff;
+  transform: translateY(-3px);
+}
+
+.materials-list li:hover .material-text {
+  letter-spacing: 1px;
+  color: #14b8a6;
+}
+
+/* Description Text */
+.description-text {
+  font-size: 1rem;
+  color: #cccccc;
+  line-height: 1.8;
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+}
+
+/* Customization Block - Distinctive */
+.customization-block {
+  background: transparent;
+  border: 2px solid #ffffff;
+  padding: 30px;
+  margin-top: 15px;
+  border-radius: 2px;
+  position: relative;
+}
+
+.customization-block::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  width: 24px;
+  height: 24px;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+}
+
+.customization-block::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  right: -12px;
+  width: 24px;
+  height: 24px;
+  border-bottom: 2px solid #ffffff;
+  border-right: 2px solid #ffffff;
+}
+
+.block-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.feature-icon {
+  font-size: 1.5rem;
+}
+
+.feature-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.customization-block .description-text {
+  color: #ffffff;
+}
+
+/* Customization Panel - Right Side */
+.customization-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1200px) {
+  .showcase-container {
+    gap: 60px;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+  }
+
+  .vertical-accent {
+    height: 300px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .showcase-container {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .packaging-showcase {
+    padding: 80px 30px;
+    min-height: auto;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .vertical-accent {
+    left: -40px;
+  }
+
+  .machine-image {
+    max-width: 100%;
+  }
+
+  .machine-label {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .packaging-showcase {
+    padding: 60px 20px;
+    min-height: auto;
+  }
+
+  .showcase-container {
+    gap: 40px;
+  }
+
+  .content-wrapper {
+    gap: 25px;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  .section-label {
+    margin-bottom: 10px;
+  }
+
+  .materials-list {
+    gap: 12px;
+  }
+
+  .material-number {
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+  }
+
+  .material-text {
+    font-size: 1rem;
+  }
+
+  .description-text {
+    font-size: 0.95rem;
+  }
+
+  .accent-line-top {
+    display: none;
+  }
+
+  .accent-line-bottom {
+    display: none;
+  }
+
+  .floating-element {
+    opacity: 0.15;
+  }
+}
+
+@media (max-width: 480px) {
+  .packaging-showcase {
+    padding: 40px 15px;
+    min-height: auto;
+  }
+
+  .showcase-container {
+    gap: 30px;
+  }
+
+  .content-wrapper {
+    gap: 20px;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+  }
+
+  .highlight-text::after {
+    width: 100px;
+  }
+
+  .label-badge {
+    font-size: 0.75rem;
+    padding: 6px 15px;
+  }
+
+  .materials-list li {
+    gap: 12px;
+  }
+
+  .material-number {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .machine-image {
+    padding: 30px;
+    border-width: 2px;
+  }
+
+  .customization-block {
+    padding: 20px;
+  }
+
+  .floating-element {
+    display: none;
+  }
+}

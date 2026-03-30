@@ -223,7 +223,7 @@
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .hero-content {
     padding: 0 8vw;
   }

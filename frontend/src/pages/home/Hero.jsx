@@ -21,26 +21,8 @@ const slides = [
   },
   {
     type: "image",
-    bg: assets.product2,
-    headline: ["Bakery &", "Snack Packs"],
-    showParticles: false,
-  },
-  {
-    type: "image",
-    bg: assets.product3,
-    headline: ["Medicine", "Packing"],
-    showParticles: false,
-  },
-  {
-    type: "image",
-    bg: assets.product4,
-    headline: ["Sea Food", "Packaging"],
-    showParticles: false,
-  },
-  {
-    type: "image",
-    bg: assets.product5,
-    headline: ["Dairy", "Products"],
+    bg: assets.product8,
+    headline: ["Wheat", "Spices", "Packaging"],
     showParticles: false,
   },
   {
@@ -51,16 +33,35 @@ const slides = [
   },
   {
     type: "image",
-    bg: assets.product7,
-    headline: ["W-Cut & D-Cut", "Bags"],
+    bg: assets.product4,
+    headline: ["Sea Food", "Packaging"],
     showParticles: false,
   },
   {
     type: "image",
-    bg: assets.product8,
-    headline: ["Powdered", "Packs"],
+    bg: assets.product2,
+    headline: ["Bakery &", "Confectionery"],
     showParticles: false,
-  }
+  },
+  {
+    type: "image",
+    bg: assets.product5,
+    headline: ["Dairy", "Products"],
+    showParticles: false,
+  },
+  {
+    type: "image",
+    bg: assets.product3,
+    headline: ["Pharma", "Packaging"],
+    showParticles: false,
+  },
+  {
+    type: "image",
+    bg: assets.product7,
+    headline: ["W-Cut & D-Cut", "Bags"],
+    showParticles: false,
+  },
+  
 ];
 
 export default function Hero() {
@@ -90,7 +91,7 @@ export default function Hero() {
 
   /* AUTO SLIDE */
   useEffect(() => {
-    const timer = setTimeout(next, 5000);
+    const timer = setTimeout(next, 2000);
     return () => clearTimeout(timer);
   }, [current]);
 

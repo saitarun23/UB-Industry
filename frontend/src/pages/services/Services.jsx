@@ -1,24 +1,10 @@
 import {
-  Printer,
   Layers,
-  Scissors,
-  Package,
-  FileText,
-  CheckCircle,
-  Settings,
-  Award,
   Target,
-  Lightbulb,
   Sprout,
   Milk,
   Droplet,
   HeartPulse,
-  Zap,
-  Shield,
-  Users,
-  TrendingUp,
-  Clock,
-  Sparkles,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -26,27 +12,16 @@ import FoodPacketIcon from "../../assets/components/icons/FoodPacketIcon";
 
 import assets from "../../assets/images";
 import "../../styles/services.css";
-import "../../styles/homeservices.css";
 
-// Text configurations with varied animation styles
 const textConfigurations = [
   {
     type: "two-line-caps",
     line1: "We Brand",
     line2: "4",
     showLogo: true,
-    line1Color: "#14b8a6",
-    line2Color: "#ffffff",
+    line1Color: "#ffffff",
+    line2Color: "#14b8a6",
   },
-  // {
-  //   type: "three-word-mixed",
-  //   word1: "Flexible",
-  //   word2: "&",
-  //   word3: "Quality",
-  //   word1Color: "#d1d5db",
-  //   word2Color: "#14b8a6",
-  //   word3Color: "#d1d5db",
-  // },
   {
     type: "two-word-mixed",
     word1: "Tea &",
@@ -54,19 +29,19 @@ const textConfigurations = [
     word1Color: "#ffffff",
     word2Color: "#14b8a6",
   },
-  
   {
     type: "two-word-mixed",
     word1: "Bakery &",
-    word2: "Confectionary",
+    word2: "Confectionery",
     word1Color: "#ffffff",
     word2Color: "#14b8a6",
   },
-    
   {
-    type: "single-word",
-    text: "Chips & Snacks",
-    color: "#ffffff",
+    type: "two-word-mixed",
+    word1: "Chips &",
+    word2: "Snacks",
+    word1Color: "#ffffff",
+    word2Color: "#14b8a6",
   },
   {
     type: "single-word",
@@ -125,7 +100,7 @@ const textConfigurations = [
     word1Color: "#ffffff",
     word2Color: "#14b8a6",
   },
-   {
+  {
     type: "two-word-mixed",
     word1: "Pet",
     word2: "Feed",
@@ -138,162 +113,116 @@ const products = [
   {
     id: 1,
     name: "Coffee & Tea",
-    materials: ["PET/ALU/PE","BOPP/CPP","Metallized PET"],
-    image1: assets.coffee,
-    image2: assets.coffee1
+    subcategories: ["Instant Coffee", "Ground Coffee", "Tea Bags", "Loose Leaf Tea", "Green Tea"],
+    description: "Suitable for nitrogen flushing, good moisture & oxygen barrier with matt, gloss and metallic finishes.",
+    materials: ["PET/ALU/PE", "BOPP/CPP", "Metallized PET"],
+    image1: assets.coffees,
   },
   {
     id: 2,
     name: "Chips",
-    materials: ["BOPP","BOPP/CPP","Metallized BOPP"],
+    subcategories: ["Chips", "Wafers", "Crackers", "Popcorn", "Extruded Snacks", "Namkeen"],
+    description: "Suitable for nitrogen flushing, good moisture & oxygen barrier. Matt, gloss & metallic finishes available.",
+    materials: ["BOPP", "BOPP/CPP", "Metallized BOPP"],
     image1: assets.chip,
-    image2: assets.chip1
   },
   {
     id: 3,
-    name: "Milk & Dairy",
+    name: "Dairy",
+    subcategories: ["Milk Pouches", "Buttermilk", "Curd", "Paneer", "Cream"],
+    description: "Laminates and pouches maintaining hygiene, freshness and reliable distribution for dairy products.",
     materials: ["LDPE", "LLDPE", "Co-extruded PE", "Laminated Films"],
-    image1: assets.milk,
-    image2: assets.milk1
+    image1: assets.dairys,
   },
   {
     id: 4,
     name: "Oil",
+    subcategories: ["Edible Oil", "Sunflower Oil", "Palm Oil", "Canola Oil", "Coconut Oil"],
+    description: "Leak-proof laminates and pouches for edible oils with good oxygen & moisture barrier properties.",
     materials: ["LDPE", "LLDPE", "PET/PE Laminates", "Metallized PET"],
-    image1: assets.oil,
-    image2: assets.oil1
+    image1: assets.oils,
   },
   {
     id: 5,
-    name: "Biscuit Packaging Films",
+    name: "Biscuit",
+    subcategories: ["Biscuits", "Cookies", "Chocolate Bars", "Candy", "Candy Sticks"],
+    description: "Good moisture barrier properties. Matt, gloss, metallic & see-through combinations available.",
     materials: ["BOPP", "BOPP/CPP", "Metallized BOPP", "BOPP/PE"],
     image1: assets.biscuit,
-    image2: assets.biscuit1
   },
-      {
+  {
     id: 6,
-    name: "Wheat & Atta Packaging Films",
+    name: "Wheat & Spices",
+    subcategories: ["Wheat Flour", "Atta", "Maida", "Semolina", "Mixed Grain Flour"],
+    description: "High-strength laminates with good moisture barrier for grain and flour products.",
     materials: ["BOPP", "BOPP/PE", "PP Woven Laminates", "Metallized Films"],
-    image1: assets.powdered,
-    image2:assets.powdered1
+    image1: assets.powdereds,
   },
-   {
+  {
     id: 7,
-    name: "Vacuum Packaging Films",
-    materials: ["PA/PE (Nylon/PE)", "EVOH Barrier Films"],
-     image1: assets.vaccum,
-    image2:assets.vaccum1
+    name: "Pasta & Noodles",
+    subcategories: ["Sauces", " Pasta", "Instant Noodles", "Vermicelli"],
+    description: "High-strength barrier films for pasta and noodles with excellent moisture resistance and shelf stability.",
+    materials: ["BOPP", "BOPP/CPP", "Metallized BOPP"],
+    image1: assets.pastas,
   },
-      {
+  {
     id: 8,
-    name: "Seafood Packaging Films",
+    name: "Seafood",
+    subcategories: ["Frozen Shrimp", "Fish Fillets", "Prawns", "Squid", "Crab"],
+    description: "High barrier laminates for frozen seafood with excellent moisture & puncture resistance.",
     materials: ["PET/PE", "Nylon/PE", "High Barrier Laminates"],
-    image1: assets.seafood,
-    image2:assets.seafood1
-  }
+    image1: assets.seafoods,
+  },
 ];
 
 const packagingSolutions = [
   {
     title: "Food Packaging",
-    desc:
-      "Solutions suitable for nitrogen flushing, good moisture and oxygen barrier with matt, gloss and metallic finishes.",
+    desc: "Solutions suitable for nitrogen flushing, good moisture and oxygen barrier with matt, gloss and metallic finishes.",
     Icon: FoodPacketIcon,
     variant: "food",
   },
   {
     title: "Agriculture Packaging",
-    desc:
-      "Structures tailored for agricultural products with reliable barrier and mechanical strength for rural distribution.",
+    desc: "Structures tailored for agricultural products with reliable barrier and mechanical strength for rural distribution.",
     Icon: Sprout,
     variant: "agri",
   },
   {
     title: "Milk Products Packaging",
-    desc:
-      "Laminates and pouches for milk and dairy products, maintaining hygiene, freshness and reliable distribution.",
+    desc: "Laminates and pouches for milk and dairy products, maintaining hygiene, freshness and reliable distribution.",
     Icon: Milk,
     variant: "beverage",
   },
   {
     title: "Industrial Packaging",
-    desc:
-      "High-performance industrial laminates engineered for demanding environments and heavy products.",
+    desc: "High-performance industrial laminates engineered for demanding environments and heavy products.",
     Icon: Layers,
     variant: "industrial",
   },
   {
     title: "Liquid Packaging",
-    desc:
-      "Leak-proof laminates and pouches for edible oils, cleaners and other liquid products.",
+    desc: "Leak-proof laminates and pouches for edible oils, cleaners and other liquid products.",
     Icon: Droplet,
     variant: "liquid",
   },
   {
     title: "Healthcare Packaging",
-    desc:
-      "Packaging suitable for pharma and healthcare products with high hygiene and protection needs.",
+    desc: "Packaging suitable for pharma and healthcare products with high hygiene and protection needs.",
     Icon: HeartPulse,
     variant: "health",
   },
 ];
 
-const whyChooseUsFeatures = [
-  {
-    icon: Zap,
-    title: "State-of-the-Art Technology",
-    description:
-      "High-speed multi-colour printing lines with web guiding and camera tracking for precision and quality.",
-    gradient: "from-yellow-500 to-orange-500",
-  },
-  {
-    icon: Shield,
-    title: "Quality Assurance",
-    description:
-      "Rigorous QA processes with in-line inspection systems ensuring consistent quality across every batch.",
-    gradient: "from-blue-500 to-cyan-500",
-  },
-  {
-    icon: Users,
-    title: "Expert Team",
-    description:
-      "Experienced production and technical teams with deep knowledge in flexible packaging solutions.",
-    gradient: "from-purple-500 to-pink-500",
-  },
-  {
-    icon: TrendingUp,
-    title: "Scalable Production",
-    description:
-      "From pilot runs to full-scale commercial production with quick turnaround and consistent output.",
-    gradient: "from-green-500 to-emerald-500",
-  },
-  {
-    icon: Clock,
-    title: "Fast Turnaround",
-    description:
-      "Efficient workflows and integrated processes ensure your packaging reaches market faster.",
-    gradient: "from-red-500 to-rose-500",
-  },
-  {
-    icon: Sparkles,
-    title: "Custom Solutions",
-    description:
-      "Tailored packaging solutions designed specifically for your product requirements and market needs.",
-    gradient: "from-indigo-500 to-blue-500",
-  },
-];
-
 export default function Services() {
-  // Hero text rotation state
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
-  const [hovered, setHovered] = useState(null);
+  const [hoveredProduct, setHoveredProduct] = useState(null);
 
-  // Rotate text every 3 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTextIndex((prev) => (prev + 1) % textConfigurations.length);
     }, 1400);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -301,13 +230,13 @@ export default function Services() {
 
   return (
     <main className="services-page" id="services">
-      {/* NEW ANIMATED HERO */}
+
+      {/* ANIMATED HERO */}
       <header className="services-hero-new">
         <div className="services-bg-pattern"></div>
-
         <div className="services-hero-content-new">
           <AnimatePresence mode="wait">
-            {/* Two Line Caps Layout */}
+
             {currentConfig.type === "two-line-caps" && (
               <motion.div
                 key={currentTextIndex}
@@ -364,7 +293,6 @@ export default function Services() {
               </motion.div>
             )}
 
-            {/* Two Line Mixed Layout */}
             {currentConfig.type === "two-line-mixed" && (
               <motion.div
                 key={currentTextIndex}
@@ -397,7 +325,6 @@ export default function Services() {
               </motion.div>
             )}
 
-            {/* Two Word Mixed Layout */}
             {currentConfig.type === "two-word-mixed" && (
               <motion.div
                 key={currentTextIndex}
@@ -430,7 +357,6 @@ export default function Services() {
               </motion.div>
             )}
 
-            {/* Three Word Mixed Layout */}
             {currentConfig.type === "three-word-mixed" && (
               <motion.div
                 key={currentTextIndex}
@@ -473,7 +399,6 @@ export default function Services() {
               </motion.div>
             )}
 
-            {/* Single Word Layout */}
             {currentConfig.type === "single-word" && (
               <motion.h1
                 key={currentTextIndex}
@@ -487,69 +412,92 @@ export default function Services() {
                 {currentConfig.text}
               </motion.h1>
             )}
+
           </AnimatePresence>
         </div>
       </header>
 
-      {/* HOME SERVICES - PRODUCTS SECTION */}
-      <section className="home-services">
-        <div className="hs-header">
-          <h2>Custom Flexible Packaging</h2>
-        </div>
-
-        <div className="hs-grid">
-          {products.map((item) => (
-            <div
-              key={item.id}
-               className={`hs-card ${(item.id === 4 || item.id === 6 || item.id === 7 ||item.id === 8) ? "hs-card-small-img" : ""}`}
-              onMouseEnter={() => setHovered(item.id)}
-              onMouseLeave={() => setHovered(null)}
-              onClick={() => {
-                window.location.hash = `#service-detail?service=${item.id}`;
-              }}
-              style={{ cursor: "pointer" }}
-            >
-              {/* IMAGE */}
-              <div className="hs-image">
-                <img
-                  src={item.image1}
-                  className={`img1 ${hovered === item.id ? "hide" : ""}`}
-                  alt={item.name}
-                />
-                <img
-                  src={item.image2}
-                  className={`img2 ${hovered === item.id ? "show" : ""}`}
-                  alt={item.name}
-                />
-              </div>
-
-              {/* CONTENT - ALWAYS VISIBLE */}
-              <div className="hs-content">
-                <h3>{item.name}</h3>
-                <div className="hs-materials">
-                  {item.materials.map((mat, i) => (
-                    <span key={i}>{mat}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* MAIN BODY */}
       <section className="services-main">
-        {/* PACKAGING SOLUTIONS */}
+
+       
+        {/* PRODUCTS SHOWCASE */}
+        <section className="products-showcase-section">
+          <div className="products-showcase-header">
+            <h2 className="products-showcase-title">Flexible Packaging Materials</h2>
+            <p className="products-showcase-subtitle">
+              Premium flexible packaging solutions for diverse industries
+            </p>
+          </div>
+
+          <div className="products-grid">
+            {products.map((product) => (
+              <motion.div
+                key={product.id}
+                className="product-card"
+                onMouseEnter={() => setHoveredProduct(product.id)}
+                onMouseLeave={() => setHoveredProduct(null)}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: product.id * 0.1 }}
+              >
+                {/* IMAGE + OVERLAY */}
+                <div className="product-image-container">
+                  <motion.img
+                    src={product.image1}
+                    alt={product.name}
+                    className="product-image"
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 0.4 }}
+                  />
+
+                  {/* DETAILED OVERLAY */}
+                  <div className="product-overlay">
+
+                    <div className="overlay-section-label">Products</div>
+                    <div className="overlay-chips-row">
+                      {product.subcategories.map((item, i) => (
+                        <span key={i} className="overlay-chip">{item}</span>
+                      ))}
+                    </div>
+
+                    <div className="overlay-divider"></div>
+
+                    <div className="overlay-section-label">Description</div>
+                    <p className="overlay-desc-text">{product.description}</p>
+
+                    <div className="overlay-divider"></div>
+
+                    <div className="overlay-section-label">Type of Materials</div>
+                    <div className="overlay-material-row">
+                      {product.materials.map((mat, i) => (
+                        <span key={i} className="overlay-mat-tag">{mat}</span>
+                      ))}
+                    </div>
+
+                  </div>
+                </div>
+
+                {/* PRODUCT NAME ONLY — material tags removed */}
+                <div className="product-info">
+                  <h3 className="product-name">{product.name}</h3>
+                </div>
+
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+         {/* PACKAGING SOLUTIONS */}
         <section className="packaging-section">
           <div className="packaging-header">
             <h2 className="packaging-title scroll-effect">Packaging Solutions</h2>
             <p className="packaging-subtitle scroll-effect">
-              Application-focused flexible packaging for different product
-              categories.
+              Application-focused flexible packaging for different product categories.
             </p>
           </div>
-
-          <div className="packaging-grid">  
+          <div className="packaging-grid">
             {packagingSolutions.map(({ title, desc, Icon, variant }) => (
               <div className="pack-card scroll-effect" key={title}>
                 <div className={`pack-icon-circle pack-${variant}`}>
@@ -565,7 +513,7 @@ export default function Services() {
         {/* QUOTE BANNER */}
         <section className="services-quote-banner">
           <div className="quote-icon-wrap scroll-effect">
-            <Target className="quote-icon scroll-effect" />
+            <Target className="quote-icon" />
           </div>
           <p className="scroll-effect">
             We support brands of every size — from pilot runs to full-scale

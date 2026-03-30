@@ -3,17 +3,17 @@ import Hero from './Hero.jsx'
 import HomeProducts from './HomeProducts.jsx'
 import WhyChooseUs from './WhyChooseUs.jsx'
 // import StatsSection from './StatsSection.jsx'
-import ValuesSection from './ValuesSection.jsx'
+// import ValuesSection from './ValuesSection.jsx'
 import AboutHighlights from './AboutHighlights.jsx'
 import ContactNewsletter from './ContactNewsletter.jsx'
-import HomeServices from './HomeServices.jsx'
+import PackagingShowcase from './PackagingShowcase.jsx'
 
-const home = () => {
+const Home = () => {
   return (
     <div>
       <Hero/>
-      <HomeServices/>
-      {/* <HomeProducts/> */}
+      <PackagingShowcase/>
+      <HomeProducts/>
       <WhyChooseUs/>
       <AboutHighlights/>
       {/* <ValuesSection/> */}
@@ -23,4 +23,4 @@ const home = () => {
   )
 }
 
-export default home
+export default Home

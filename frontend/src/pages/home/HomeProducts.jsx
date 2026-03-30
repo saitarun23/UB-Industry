@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import "../../styles/homeproducts.css";
 import assets from "../../assets/images";
-import { FiLink, FiSearch } from "react-icons/fi";
 
 const homeproducts = [
   { title: "Dairy Products Packaging", image: assets.dairy },
@@ -11,7 +10,7 @@ const homeproducts = [
   { title: "Seafood Packaging", image: assets.seafood },
   { title: "Beverages Packaging", image: assets.beverages },
   { title: "Biscuits Packaging", image: assets.biscuits },
-  { title: "Chips Packaging", image: assets.chips },
+  { title: "Chips Packaging", image: assets.chip },
   { title: "Coffee Packaging", image: assets.coffee },
   { title: "Oil Packaging", image: assets.oil },
   { title: "Healthcare Packaging", image: assets.healthcare },
@@ -19,7 +18,7 @@ const homeproducts = [
   { title: "Chemical Packaging", image: assets.chemical },
   { title: "Agriculture Packaging", image: assets.agriculture },
   { title: "Shrink Films", image: assets.shrink },
-  { title: "E-commerce Packaging", image: assets.ecommerce },
+  { title: "Noodles & Pasta", image: assets.pasta },
 ];
 
 // duplicated for seamless infinite loop
@@ -28,11 +27,6 @@ const extendedProducts = [...homeproducts, ...homeproducts];
 export default function HomeProducts() {
   const scrollContainerRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
-
-  const handleNavigateToProducts = () => {
-    window.location.hash = "#products";
-    window.scrollTo(0, 0);
-  };
 
   // auto-scroll in a circular loop
   useEffect(() => {
@@ -86,7 +80,7 @@ export default function HomeProducts() {
     <section className="homeproducts-section">
       {/* HEADING */}
       <div className="homeproducts-heading scroll-effect">
-        <span>Products</span>
+        <span>Services</span>
         <h2>
           We specialize in the production of high-quality flexible packaging
           solutions across industries.
@@ -107,15 +101,6 @@ export default function HomeProducts() {
 
               <div className="homeproduct-overlay">
                 <h3>{item.title}</h3>
-
-                <div className="homeproductoverlay-icons">
-                  <span onClick={handleNavigateToProducts} style={{ cursor: "pointer" }}>
-                    <FiLink />
-                  </span>
-                  <span onClick={handleNavigateToProducts} style={{ cursor: "pointer" }}>
-                    <FiSearch />
-                  </span>
-                </div>
               </div>
             </div>
           ))}
