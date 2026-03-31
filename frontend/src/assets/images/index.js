@@ -113,6 +113,7 @@ import oil5 from '../images/New folder/oil5.png';
 import oil6 from '../images/New folder/oil6.png';
 import agriculture from '../images/New folder/agriculture.png';
 import agricultures from '../images/New folder/agricultures.png';
+import agriculturess from '../images/New folder/agriculturess.png';
 import agri1 from '../images/New folder/agri1.png';
 import agri2 from '../images/New folder/agri2.png';
 import agri3 from '../images/New folder/agri3.png';
@@ -128,6 +129,7 @@ import chemical5 from '../images/New folder/chemical5.png';
 import chemical6 from '../images/New folder/chemical6.png';
 import healthcare from '../images/New folder/healthcare.png';
 import healthcares from '../images/New folder/healthcares.png';
+import healthcaress from '../images/New folder/healthcaress.png';
 import healthcare1 from '../images/New folder/healthcare1.png';
 import healthcare2 from '../images/New folder/healthcare2.png';
 import healthcare3 from '../images/New folder/healthcare3.png';
@@ -162,8 +164,14 @@ import detergent4 from '../images/New folder/detergent4.png';
 import detergent5 from '../images/New folder/detergent5.png';
 import detergent6 from '../images/New folder/detergent6.png';
 import pastass from '../images/New folder/pastass.png';
+import pasta from '../images/New folder/pasta.png';
 import pastas from '../images/New folder/pastas.png';
-
+import icecream from '../images/New folder/icecream.png';
+import icecreams from '../images/New folder/icecreams.png';
+import icecreamss from '../images/New folder/icecreamss.png';
+import choclate from '../images/New folder/choclate.png';
+import choclates from '../images/New folder/choclates.png';
+import choclatess from '../images/New folder/choclatess.png';
 
 
 
@@ -190,20 +198,21 @@ export default {
   vaccums,vaccum,vaccum1,vaccum2,vaccum3,vaccum4,vaccum5,vaccum6,
   personalcare,
   powdereds,powdered,powdered1,powdered2,powdered3,powdered4,powdered5,powdered6,powderedss,
-  seafoods,seafoodss,seafood1,seafood2,seafood3,seafood4,seafood5,seafood6,
+  seafood,seafoods,seafoodss,seafood1,seafood2,seafood3,seafood4,seafood5,seafood6,
   beverage,beverages,beverages1,beverages2,beverages3,beverages4,beverages5,beverages6,
   biscuit,biscuits,biscuitss,biscuit1,biscuit2,biscuit3,biscuit4,biscuit5,biscuit6,
   chip,chip1,chip2,chip3,chip4,chip5,chip6,chips,
   coffees,coffee,coffee1,coffee2,coffee3,coffee5,coffee6,coffeess,
   oils,oil,oil1,oil2,oil3,oil4,oil5,oil6,oilss,
-  agricultures,agriculture,agri1,agri2,agri3,agri4,agri5,agri6,
+  agricultures,agriculture,agri1,agri2,agri3,agri4,agri5,agri6,agriculturess,
   chemical,chemical1,chemical2,chemical3,chemical4,chemical5,chemical6,
-  healthcares,healthcare,healthcare1,healthcare2,healthcare3,healthcare4,healthcare5,
+  healthcares,healthcare,healthcare1,healthcare2,healthcare3,healthcare4,healthcare5,healthcaress,
   lids,lid,lid1,lid2,lid3,lid4,
   shrinks,shrink,shrink1,shrink2,
   ecommerce,ecommerce1,ecommerce2,ecommerce3,
   bodycare,bodycare1,bodycare2,bodycare3,bodycare4,bodycare5,
   detergents,detergent,detergent1,detergent2,detergent3,detergent4,detergent5,detergent6,
-  pastass,pastas,
-
+  pastass,pastas,pasta,
+  icecream,icecreams,icecreamss,
+  choclate,choclates,choclatess,
 }

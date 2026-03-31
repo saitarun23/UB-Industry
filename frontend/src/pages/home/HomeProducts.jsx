@@ -4,8 +4,7 @@ import assets from "../../assets/images";
 
 const homeproducts = [
   { title: "Dairy Products Packaging", image: assets.dairy },
-  { title: "Vaccum Packaging", image: assets.vaccum },
-  { title: "Personal Care Packaging", image: assets.personalcare },
+  { title: "Ice Cream Packaging", image: assets.icecream },
   { title: "General Purpose Products Packaging", image: assets.powdered },
   { title: "Seafood Packaging", image: assets.seafood },
   { title: "Beverages Packaging", image: assets.beverages },
@@ -13,7 +12,8 @@ const homeproducts = [
   { title: "Chips Packaging", image: assets.chip },
   { title: "Coffee Packaging", image: assets.coffee },
   { title: "Oil Packaging", image: assets.oil },
-  { title: "Healthcare Packaging", image: assets.healthcare },
+  { title: "Pharma & Healthcare Packaging", image: assets.healthcare },
+  { title: "Chocolates Packaging", image: assets.choclate },
   { title: "Lidding Films", image: assets.lid },
   { title: "Chemical Packaging", image: assets.chemical },
   { title: "Agriculture Packaging", image: assets.agriculture },

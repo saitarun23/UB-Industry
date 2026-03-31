@@ -182,6 +182,42 @@ const products = [
     image1: assets.seafoods,
     image2: assets.seafoodss,
   },
+  {
+    id: 9,
+    name: "Pharma",
+    subcategories: ["Pharmaceuticals", "Surgical Supplies", "Diagnostic Kits"],
+    description: "Safe and sterile packaging solutions designed for healthcare products, ensuring hygiene, protection, and extended shelf life.",
+    materials: ["Medical Grade Paper", "Tyvek®", "PET/PE", "Aluminum Foil Laminates", "PVC Films"],
+    image1: assets.healthcares,
+    image2: assets.healthcaress,
+  },
+  {
+    id: 10,
+    name: "Ice Cream",
+    subcategories: ["Vanilla", "Chocolate", "Strawberry", "Mint", "Cookies & Cream"],
+    description: "Specialized packaging for ice cream with excellent temperature control and moisture barrier.",
+    materials: ["Polyethylene", "Polystyrene", "Aluminum Foil"],
+    image1: assets.icecreams,
+    image2: assets.icecreamss,
+  },
+  {
+    id: 11,
+    name: "Choclates",
+    subcategories: ["Chocolate Bars", "Dark Chocolate", "Milk Chocolate","Truffles"],
+    description: "High barrier laminates for chocolates and protein mixes with excellent moisture resistance and shelf stability.",
+    materials: ["BOPP", "BOPP/CPP", "Metallized BOPP"],
+    image1: assets.choclates,
+    image2: assets.choclatess,
+  },
+  {
+    id: 12,
+    name: "Agriculture",
+    subcategories: ["Seeds", "Fertilizers", "Pesticides", "Grains", "Animal Feed"],
+    description: "Durable and moisture-resistant packaging solutions designed to protect agricultural products from environmental damage and ensure safe storage and transport.",
+    materials: ["HDPE", "LDPE", "PP Woven Sacks", "Laminated Films"],
+    image1: assets.agricultures,
+    image2: assets.agriculturess,
+  },
 ];
 
 const packagingSolutions = [
@@ -243,7 +279,7 @@ export default function Services() {
           ...prev,
           [product.id]: prev[product.id] === 'image2' ? 'image1' : 'image2'
         }));
-      }, 3000); // Change every 3 seconds
+      }, 2500); // Change every 2.5 seconds
     });
 
     return () => {
