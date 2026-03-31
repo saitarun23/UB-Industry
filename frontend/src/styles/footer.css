@@ -162,15 +162,11 @@
   letter-spacing: 1px;
   position: relative;
   padding-bottom: 16px;
+  color: #14b8a6;
 }
 
 .heading-line {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 40px;
-  height: 2px;
-  background: #fff;
+  display: none;
 }
 
 .heading-line::after {
@@ -307,9 +303,48 @@
   transition: opacity 0.4s ease;
 }
 
-.contact-item:hover .contact-icon {
-  background: #000;
+/* Location Icon - Red */
+.contact-item:nth-child(1) .contact-icon {
+  background: #ef4444;
   color: #fff;
+}
+
+.contact-item:nth-child(1) .contact-icon::before {
+  background: #ef4444;
+}
+
+.contact-item:nth-child(1):hover .contact-icon {
+  background: #dc2626;
+  transform: scale(1.1);
+}
+
+/* Email/Middle Icon - Blue */
+.contact-item:nth-child(2) .contact-icon {
+  background: #3b82f6;
+  color: #fff;
+}
+
+.contact-item:nth-child(2) .contact-icon::before {
+  background: #3b82f6;
+}
+
+.contact-item:nth-child(2):hover .contact-icon {
+  background: #2563eb;
+  transform: scale(1.1);
+}
+
+/* Phone/Call Icon - Green */
+.contact-item:nth-child(3) .contact-icon {
+  background: #22c55e;
+  color: #fff;
+}
+
+.contact-item:nth-child(3) .contact-icon::before {
+  background: #22c55e;
+}
+
+.contact-item:nth-child(3):hover .contact-icon {
+  background: #16a34a;
   transform: scale(1.1);
 }
 
@@ -376,7 +411,10 @@
   font-weight: 700;
 }
 
-/* Social Links */
+/* ============================================
+   SOCIAL LINKS - WITH BRAND COLORS
+   ============================================ */
+
 .footer-social {
   display: flex;
   gap: 12px;
@@ -394,6 +432,7 @@
   position: relative;
   overflow: hidden;
   transition: all 0.4s ease;
+  background: transparent;
 }
 
 .social-link::before {
@@ -401,8 +440,9 @@
   position: absolute;
   inset: 0;
   background: #fff;
-  transform: translateX(100%);
+  transform: translateY(100%);
   transition: transform 0.4s ease;
+  z-index: 0;
 }
 
 .social-link svg {
@@ -411,18 +451,87 @@
   transition: all 0.4s ease;
 }
 
-.social-link:hover {
+/* Gmail Icon - Red Color */
+.social-link[aria-label="Gmail"] {
+  border-color: #EA4335;
+  background: transparent;
+}
+
+.social-link[aria-label="Gmail"] svg {
+  color: #EA4335;
+  stroke: #EA4335;
+}
+
+.social-link[aria-label="Gmail"]::before {
+  background: #EA4335;
+}
+
+.social-link[aria-label="Gmail"]:hover {
+  border-color: #EA4335;
+  transform: translateY(-4px);
+}
+
+.social-link[aria-label="Gmail"]:hover::before {
+  transform: translateY(0);
+}
+
+.social-link[aria-label="Gmail"]:hover svg {
+  color: #fff;
+  stroke: #fff;
+}
+
+/* Twitter/X Icon - White */
+.social-link[aria-label="Twitter"] {
+  border-color: #333;
+  background: transparent;
+}
+
+.social-link[aria-label="Twitter"] svg {
+  fill: #fff;
+}
+
+.social-link[aria-label="Twitter"]::before {
+  background: #fff;
+}
+
+.social-link[aria-label="Twitter"]:hover {
   border-color: #fff;
-  transform: translateX(4px);
+  transform: translateY(-4px);
 }
 
-.social-link:hover::before {
-  transform: translateX(0);
+.social-link[aria-label="Twitter"]:hover::before {
+  transform: translateY(0);
 }
 
-.social-link:hover svg {
-  color: #000;
+.social-link[aria-label="Twitter"]:hover svg {
   fill: #000;
+}
+
+/* LinkedIn Icon - Blue Color */
+.social-link[aria-label="LinkedIn"] {
+  border-color: #0A66C2;
+  background: transparent;
+}
+
+.social-link[aria-label="LinkedIn"] svg {
+  fill: #0A66C2;
+}
+
+.social-link[aria-label="LinkedIn"]::before {
+  background: #0A66C2;
+}
+
+.social-link[aria-label="LinkedIn"]:hover {
+  border-color: #0A66C2;
+  transform: translateY(-4px);
+}
+
+.social-link[aria-label="LinkedIn"]:hover::before {
+  transform: translateY(0);
+}
+
+.social-link[aria-label="LinkedIn"]:hover svg {
+  fill: #fff;
 }
 
 /* Footer Credit */

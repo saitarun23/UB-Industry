@@ -35,6 +35,7 @@ import product7 from './product7.png';
 import product8 from './product8.png';
 import dairy from '../images/New folder/dairy.png';
 import dairys from '../images/New folder/dairys.png';
+import dairyss from '../images/New folder/dairyss.png';
 import dairy1 from '../images/New folder/dairy1.png';
 import dairy2 from '../images/New folder/dairy2.png';
 import dairy3 from '../images/New folder/dairy3.png';
@@ -75,6 +76,7 @@ import beverages4 from '../images/New folder/beverages4.png';
 import beverages5 from '../images/New folder/beverages5.png';
 import beverages6 from '../images/New folder/beverages6.png';
 import biscuits from '../images/New folder/biscuits.png';
+import biscuitss from '../images/New folder/biscuitss.png';
 import biscuit from '../images/New folder/biscuit.png';
 import biscuit1 from '../images/New folder/biscuit1.png';
 import biscuit2 from '../images/New folder/biscuit2.png';
@@ -83,6 +85,7 @@ import biscuit4 from '../images/New folder/biscuit4.png';
 import biscuit5 from '../images/New folder/biscuit5.png';
 import biscuit6 from '../images/New folder/biscuit6.png';
 import chip from '../images/New folder/chip.png';
+import chips from '../images/New folder/chips.png';
 import chip1 from '../images/New folder/chip1.png';
 import chip2 from '../images/New folder/chip2.png';
 import chip3 from '../images/New folder/chip3.png';
@@ -96,8 +99,10 @@ import coffee2 from '../images/New folder/coffee2.png';
 import coffee3 from '../images/New folder/coffee3.png';
 import coffee5 from '../images/New folder/coffee5.png';
 import coffee6 from '../images/New folder/coffee6.png';
+import coffeess from '../images/New folder/coffeess.png';
 import oil from '../images/New folder/oil.png';
 import oils from '../images/New folder/oils.png';
+import oilss from '../images/New folder/oilss.png';
 import oil1 from '../images/New folder/oil1.png';
 import oil2 from '../images/New folder/oil2.png';
 import oil3 from '../images/New folder/oil3.png';
@@ -179,16 +184,16 @@ export default {
   servicesHero,
   productHero,
   product1,product2,product3,product4,product5,product6,product7,product8,
-  dairys,dairy,dairy1,dairy2,dairy3,dairy4,dairy5,dairy6,
+  dairys,dairy,dairy1,dairy2,dairy3,dairy4,dairy5,dairy6,dairyss,
   vaccums,vaccum,vaccum1,vaccum2,vaccum3,vaccum4,vaccum5,vaccum6,
   personalcare,
   powdereds,powdered,powdered1,powdered2,powdered3,powdered4,powdered5,powdered6,
   seafoods,seafood,seafood1,seafood2,seafood3,seafood4,seafood5,seafood6,
   beverage,beverages,beverages1,beverages2,beverages3,beverages4,beverages5,beverages6,
-  biscuit,biscuits,biscuit1,biscuit2,biscuit3,biscuit4,biscuit5,biscuit6,
-  chip,chip1,chip2,chip3,chip4,chip5,chip6,
-  coffees,coffee,coffee1,coffee2,coffee3,coffee5,coffee6,
-  oils,oil,oil1,oil2,oil3,oil4,oil5,oil6,
+  biscuit,biscuits,biscuitss,biscuit1,biscuit2,biscuit3,biscuit4,biscuit5,biscuit6,
+  chip,chip1,chip2,chip3,chip4,chip5,chip6,chips,
+  coffees,coffee,coffee1,coffee2,coffee3,coffee5,coffee6,coffeess,
+  oils,oil,oil1,oil2,oil3,oil4,oil5,oil6,oilss,
   agricultures,agriculture,agri1,agri2,agri3,agri4,agri5,agri6,
   chemical,chemical1,chemical2,chemical3,chemical4,chemical5,chemical6,
   healthcares,healthcare,healthcare1,healthcare2,healthcare3,healthcare4,healthcare5,

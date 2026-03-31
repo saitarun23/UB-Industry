@@ -117,6 +117,7 @@ const products = [
     description: "Suitable for nitrogen flushing, good moisture & oxygen barrier with matt, gloss and metallic finishes.",
     materials: ["PET/ALU/PE", "BOPP/CPP", "Metallized PET"],
     image1: assets.coffees,
+    image2: assets.coffeess,
   },
   {
     id: 2,
@@ -125,6 +126,7 @@ const products = [
     description: "Suitable for nitrogen flushing, good moisture & oxygen barrier. Matt, gloss & metallic finishes available.",
     materials: ["BOPP", "BOPP/CPP", "Metallized BOPP"],
     image1: assets.chip,
+    image2: assets.chips,
   },
   {
     id: 3,
@@ -133,6 +135,7 @@ const products = [
     description: "Laminates and pouches maintaining hygiene, freshness and reliable distribution for dairy products.",
     materials: ["LDPE", "LLDPE", "Co-extruded PE", "Laminated Films"],
     image1: assets.dairys,
+    image2: assets.dairyss,
   },
   {
     id: 4,
@@ -141,6 +144,7 @@ const products = [
     description: "Leak-proof laminates and pouches for edible oils with good oxygen & moisture barrier properties.",
     materials: ["LDPE", "LLDPE", "PET/PE Laminates", "Metallized PET"],
     image1: assets.oils,
+    image2: assets.oilss,
   },
   {
     id: 5,
@@ -149,6 +153,7 @@ const products = [
     description: "Good moisture barrier properties. Matt, gloss, metallic & see-through combinations available.",
     materials: ["BOPP", "BOPP/CPP", "Metallized BOPP", "BOPP/PE"],
     image1: assets.biscuit,
+    image2: assets.biscuitss,
   },
   {
     id: 6,
@@ -157,6 +162,7 @@ const products = [
     description: "High-strength laminates with good moisture barrier for grain and flour products.",
     materials: ["BOPP", "BOPP/PE", "PP Woven Laminates", "Metallized Films"],
     image1: assets.powdereds,
+    image2: assets.powdered1,
   },
   {
     id: 7,
@@ -165,6 +171,7 @@ const products = [
     description: "High-strength barrier films for pasta and noodles with excellent moisture resistance and shelf stability.",
     materials: ["BOPP", "BOPP/CPP", "Metallized BOPP"],
     image1: assets.pastas,
+    image2: assets.pasta,
   },
   {
     id: 8,
@@ -173,6 +180,7 @@ const products = [
     description: "High barrier laminates for frozen seafood with excellent moisture & puncture resistance.",
     materials: ["PET/PE", "Nylon/PE", "High Barrier Laminates"],
     image1: assets.seafoods,
+    image2: assets.seafood1,
   },
 ];
 
@@ -444,16 +452,37 @@ export default function Services() {
               >
                 {/* IMAGE + OVERLAY */}
                 <div className="product-image-container">
-                  <motion.img
-                    src={product.image1}
-                    alt={product.name}
-                    className="product-image"
-                    animate={{ scale: 1 }}
-                    transition={{ duration: 0.4 }}
-                  />
+                  <AnimatePresence>
+                    {hoveredProduct === product.id ? (
+                      <motion.img
+                        key="image2"
+                        src={product.image2}
+                        alt={product.name}
+                        className="product-image"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    ) : (
+                      <motion.img
+                        key="image1"
+                        src={product.image1}
+                        alt={product.name}
+                        className="product-image"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    )}
+                  </AnimatePresence>
 
                   {/* DETAILED OVERLAY */}
-                  <div className="product-overlay">
+                  <div className="product-overlay" style={{ 
+                    opacity: hoveredProduct === product.id ? 1 : 0,
+                    transform: hoveredProduct === product.id ? 'translateY(0)' : 'translateY(20px)'
+                  }}>
 
                     <div className="overlay-section-label">Products</div>
                     <div className="overlay-chips-row">
