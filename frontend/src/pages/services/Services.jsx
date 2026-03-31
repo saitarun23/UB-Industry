@@ -162,7 +162,7 @@ const products = [
     description: "High-strength laminates with good moisture barrier for grain and flour products.",
     materials: ["BOPP", "BOPP/PE", "PP Woven Laminates", "Metallized Films"],
     image1: assets.powdereds,
-    image2: assets.powdered1,
+    image2: assets.powderedss,
   },
   {
     id: 7,
@@ -171,7 +171,7 @@ const products = [
     description: "High-strength barrier films for pasta and noodles with excellent moisture resistance and shelf stability.",
     materials: ["BOPP", "BOPP/CPP", "Metallized BOPP"],
     image1: assets.pastas,
-    image2: assets.pasta,
+    image2: assets.pastass,
   },
   {
     id: 8,
@@ -180,7 +180,7 @@ const products = [
     description: "High barrier laminates for frozen seafood with excellent moisture & puncture resistance.",
     materials: ["PET/PE", "Nylon/PE", "High Barrier Laminates"],
     image1: assets.seafoods,
-    image2: assets.seafood1,
+    image2: assets.seafoodss,
   },
 ];
 
@@ -226,12 +226,29 @@ const packagingSolutions = [
 export default function Services() {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [hoveredProduct, setHoveredProduct] = useState(null);
+  const [activeImages, setActiveImages] = useState({});
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTextIndex((prev) => (prev + 1) % textConfigurations.length);
     }, 1400);
     return () => clearInterval(interval);
+  }, []);
+
+  // Auto-transition images for each product
+  useEffect(() => {
+    const intervals = products.map((product) => {
+      return setInterval(() => {
+        setActiveImages((prev) => ({
+          ...prev,
+          [product.id]: prev[product.id] === 'image2' ? 'image1' : 'image2'
+        }));
+      }, 3000); // Change every 3 seconds
+    });
+
+    return () => {
+      intervals.forEach(interval => clearInterval(interval));
+    };
   }, []);
 
   const currentConfig = textConfigurations[currentTextIndex];
@@ -452,30 +469,17 @@ export default function Services() {
               >
                 {/* IMAGE + OVERLAY */}
                 <div className="product-image-container">
-                  <AnimatePresence>
-                    {hoveredProduct === product.id ? (
-                      <motion.img
-                        key="image2"
-                        src={product.image2}
-                        alt={product.name}
-                        className="product-image"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                      />
-                    ) : (
-                      <motion.img
-                        key="image1"
-                        src={product.image1}
-                        alt={product.name}
-                        className="product-image"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                      />
-                    )}
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={activeImages[product.id] || 'image1'}
+                      src={activeImages[product.id] === 'image2' ? product.image2 : product.image1}
+                      alt={product.name}
+                      className="product-image"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.8 }}
+                    />
                   </AnimatePresence>
 
                   {/* DETAILED OVERLAY */}

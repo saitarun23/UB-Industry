@@ -52,6 +52,7 @@ import vaccum5 from '../images/New folder/vaccum5.png';
 import vaccum6 from '../images/New folder/vaccum6.png';
 import personalcare from '../images/New folder/personalcare.png';
 import powdered from '../images/New folder/powdered.png';
+import powderedss from '../images/New folder/powderedss.png';
 import powdereds from '../images/New folder/powdereds.png';
 import powdered1 from '../images/New folder/powdered1.png';
 import powdered2 from '../images/New folder/powdered2.png';
@@ -61,6 +62,7 @@ import powdered5 from '../images/New folder/powdered5.png';
 import powdered6 from '../images/New folder/powdered6.png';
 import seafood from '../images/New folder/seafood.png';
 import seafoods from '../images/New folder/seafoods.png';
+import seafoodss from '../images/New folder/seafoodss.png';
 import seafood1 from '../images/New folder/seafood1.png';
 import seafood2 from '../images/New folder/seafood2.png';
 import seafood3 from '../images/New folder/seafood3.png';
@@ -159,7 +161,7 @@ import detergent3 from '../images/New folder/detergent3.png';
 import detergent4 from '../images/New folder/detergent4.png';
 import detergent5 from '../images/New folder/detergent5.png';
 import detergent6 from '../images/New folder/detergent6.png';
-import pasta from '../images/New folder/pasta.png';
+import pastass from '../images/New folder/pastass.png';
 import pastas from '../images/New folder/pastas.png';
 
 
@@ -187,8 +189,8 @@ export default {
   dairys,dairy,dairy1,dairy2,dairy3,dairy4,dairy5,dairy6,dairyss,
   vaccums,vaccum,vaccum1,vaccum2,vaccum3,vaccum4,vaccum5,vaccum6,
   personalcare,
-  powdereds,powdered,powdered1,powdered2,powdered3,powdered4,powdered5,powdered6,
-  seafoods,seafood,seafood1,seafood2,seafood3,seafood4,seafood5,seafood6,
+  powdereds,powdered,powdered1,powdered2,powdered3,powdered4,powdered5,powdered6,powderedss,
+  seafoods,seafoodss,seafood1,seafood2,seafood3,seafood4,seafood5,seafood6,
   beverage,beverages,beverages1,beverages2,beverages3,beverages4,beverages5,beverages6,
   biscuit,biscuits,biscuitss,biscuit1,biscuit2,biscuit3,biscuit4,biscuit5,biscuit6,
   chip,chip1,chip2,chip3,chip4,chip5,chip6,chips,
@@ -202,6 +204,6 @@ export default {
   ecommerce,ecommerce1,ecommerce2,ecommerce3,
   bodycare,bodycare1,bodycare2,bodycare3,bodycare4,bodycare5,
   detergents,detergent,detergent1,detergent2,detergent3,detergent4,detergent5,detergent6,
-  pasta,pastas,
+  pastass,pastas,
 
 }
