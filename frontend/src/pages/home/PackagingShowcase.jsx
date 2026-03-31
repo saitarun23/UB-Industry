@@ -112,12 +112,12 @@ export default function PackagingShowcase() {
               <motion.div 
                 className="card-header-3d"
                 animate={{
-                  background: material.color,
+                  background: isSelected ? material.color : 'rgba(255,255,255,0.05)',
                   borderColor: material.color,
                 }}
               >
                 <div className="card-icon-wrapper-3d">
-                  <Icon color="#ffffff" size={32} strokeWidth={1.5} />
+                  <Icon color={isSelected ? '#ffffff' : material.color} size={32} strokeWidth={1.5} />
                 </div>
                 
                 <div className="card-header-text">
