@@ -152,9 +152,18 @@ export default function Footer() {
             
             <div className="contact-info">
               <div className="contact-item">
-                <div className="contact-icon">
+                <button 
+                  className="contact-icon-btn"
+                  onClick={() => {
+                    window.open(
+                      "https://www.google.com/maps/@17.8849841,83.3784497,15z?q=R.Sy.No:146/3B,+Vemulavalasa,+Anandapuram+Mandal,+Visakhapatnam+District,+531163",
+                      "_blank"
+                    );
+                  }}
+                  title="Open location on map"
+                >
                   <MapPinIcon />
-                </div>
+                </button>
                 <div className="contact-details">
                   <h5>Visit Us</h5>
                   <p>R.Sy.No:146/3B, Vemulavalasa, Anandapuram Mandal, Visakhapatnam District, pincode - 531163</p>

@@ -1,20 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
 import assets from "../../assets/images";
 import "../../styles/contact.css";
 
+// ─────────────────────────────────────────────
+//  ⚙️  EMAILJS CONFIG  — fill these in once
+// ─────────────────────────────────────────────
+const EMAILJS_SERVICE_ID  = "service_0hl1flk";   // e.g. "service_abc123"
+const EMAILJS_TEMPLATE_ID = "template_a0ao6es";  // e.g. "template_xyz789"
+const EMAILJS_PUBLIC_KEY  = "pdC3R57p82zA7MgeR";   // e.g. "user_XXXXXXXXXX"
+// ─────────────────────────────────────────────
+
 export default function Contact() {
+  const formRef = useRef(null);
+
   const [formData, setFormData] = useState({
     firstName: "",
-    lastName: "",
-    email: "",
-    company: "",
-    phone: "",
-    country: "India",
-    message: "",
+    lastName:  "",
+    email:     "",
+    company:   "",
+    phone:     "",
+    country:   "India",
+    message:   "",
   });
 
   const [status, setStatus] = useState("idle"); // idle | sending | success | error
-  const [msg, setMsg] = useState("");
+  const [msg,    setMsg]    = useState("");
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -26,38 +37,40 @@ export default function Contact() {
     setStatus("sending");
     setMsg("");
 
+    // EmailJS sends the form fields whose `name` attributes match
+    // the template variables you set up on emailjs.com
     try {
-      const res = await fetch("http://localhost:5000/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await res.json().catch(() => ({}));
-
-      if (!res.ok) throw new Error(data?.message || "Failed to send.");
+      await emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        EMAILJS_PUBLIC_KEY
+      );
 
       setStatus("success");
-      setMsg("Thank you! We received your message. A confirmation email has been sent to you.");
-
+      setMsg(
+        "Thank you! We received your message and a confirmation has been sent to your email."
+      );
       setFormData({
         firstName: "",
-        lastName: "",
-        email: "",
-        company: "",
-        phone: "",
-        country: "India",
-        message: "",
+        lastName:  "",
+        email:     "",
+        company:   "",
+        phone:     "",
+        country:   "India",
+        message:   "",
       });
     } catch (err) {
+      console.error("EmailJS error:", err);
       setStatus("error");
-      setMsg(err?.message || "Server error. Please try again.");
+      setMsg("Something went wrong. Please try again or email us directly.");
     }
   };
 
   return (
     <main className="contact-page" id="contact">
-      {/* HERO */}
+
+      {/* ── HERO ── */}
       <header className="contact-hero">
         <div className="contact-hero-bg">
           <img src={assets.contacthero} alt="Customer support" />
@@ -72,7 +85,7 @@ export default function Contact() {
         </div>
       </header>
 
-      {/* MAIN – CENTERED FORM */}
+      {/* ── FORM ── */}
       <section className="contact-main">
         <section className="contact-form-card">
           <div className="contact-form-header scroll-effect">
@@ -83,19 +96,25 @@ export default function Contact() {
               <span className="contact-tab-icon">✉</span>
               <span className="contact-tab-label">Contact Us</span>
             </button>
-
             <p className="contact-form-text scroll-effect">
               If you&apos;re looking to start a project or just have a question
               for the team, let us know by filling out the form below.
             </p>
           </div>
 
-          <form className="contact-form" onSubmit={handleSubmit}>
+          {/* 
+            IMPORTANT: every input must have a `name` attribute that
+            matches the {{variable}} in your EmailJS template.
+            e.g. {{from_first_name}}, {{from_email}}, {{message}} …
+          */}
+          <form className="contact-form" ref={formRef} onSubmit={handleSubmit}>
+
             <div className="contact-form-row">
               <div className="contact-field">
                 <label htmlFor="firstName">First name *</label>
                 <input
                   id="firstName"
+                  name="from_first_name"     
                   type="text"
                   placeholder="First name"
                   required
@@ -103,11 +122,11 @@ export default function Contact() {
                   onChange={handleChange}
                 />
               </div>
-
               <div className="contact-field">
                 <label htmlFor="lastName">Last name *</label>
                 <input
                   id="lastName"
+                  name="from_last_name"
                   type="text"
                   placeholder="Last name"
                   required
@@ -122,6 +141,7 @@ export default function Contact() {
                 <label htmlFor="email">Email *</label>
                 <input
                   id="email"
+                  name="from_email"
                   type="email"
                   placeholder="Email"
                   required
@@ -129,11 +149,11 @@ export default function Contact() {
                   onChange={handleChange}
                 />
               </div>
-
               <div className="contact-field">
                 <label htmlFor="company">Company *</label>
                 <input
                   id="company"
+                  name="from_company"
                   type="text"
                   placeholder="Company"
                   required
@@ -148,6 +168,7 @@ export default function Contact() {
                 <label htmlFor="phone">Phone number *</label>
                 <input
                   id="phone"
+                  name="from_phone"
                   type="tel"
                   placeholder="Phone number"
                   required
@@ -155,11 +176,11 @@ export default function Contact() {
                   onChange={handleChange}
                 />
               </div>
-
               <div className="contact-field">
                 <label htmlFor="country">Country *</label>
                 <select
                   id="country"
+                  name="from_country"
                   value={formData.country}
                   onChange={handleChange}
                 >
@@ -176,6 +197,7 @@ export default function Contact() {
               <label htmlFor="message">Message *</label>
               <textarea
                 id="message"
+                name="message"
                 rows={4}
                 placeholder="Tell us about your requirement"
                 required
@@ -190,11 +212,10 @@ export default function Contact() {
                 className="contact-submit"
                 disabled={status === "sending"}
               >
-                {status === "sending" ? "Sending..." : "Send"}
+                {status === "sending" ? "Sending…" : "Send"}
               </button>
             </div>
 
-            {/* status */}
             {status !== "idle" && msg && (
               <div
                 className={`contact-status ${
@@ -212,25 +233,25 @@ export default function Contact() {
         </section>
       </section>
 
-      {/* MAP */}
+      {/* ── MAP ── */}
       <section className="contact-map-section">
         <div className="contact-map-inner">
           <h3 className="contact-map-title">Visit us</h3>
           <p className="contact-map-text">
-            You&apos;ll find our plant and office located in Visakhapatnam. Use the
-            map below to get directions.
+            You&apos;ll find our plant and office located in Visakhapatnam. Use
+            the map below to get directions.
           </p>
-
           <div className="contact-map-card">
             <iframe
               title="Company location"
               src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d792.7094235418319!2d83.37844970854543!3d17.884984074607424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDUzJzA2LjEiTiA4M8KwMjInNDIuNCJF!5e0!3m2!1sen!2sin!4v1770617613500!5m2!1sen!2sin"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
+            />
           </div>
         </div>
       </section>
+
     </main>
   );
 }
