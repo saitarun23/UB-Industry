@@ -128,7 +128,7 @@ const SplashScreen = ({ onFinish }) => {
               }}
             >
               <div className="svc-inner">
-                <span className="svc-index">0{i + 1}</span>
+                {/* <span className="svc-index">0{i + 1}</span> */}
 
                 <h2 className="svc-title">{svc.title}</h2>
 

@@ -261,8 +261,8 @@ const packagingSolutions = [
 
 export default function Services() {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
-  const [hoveredProduct, setHoveredProduct] = useState(null);
   const [activeImages, setActiveImages] = useState({});
+  const [showOverlay, setShowOverlay] = useState({});
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -271,14 +271,30 @@ export default function Services() {
     return () => clearInterval(interval);
   }, []);
 
-  // Auto-transition images for each product
+  // Auto-transition images AND overlay visibility for each product
   useEffect(() => {
     const intervals = products.map((product) => {
       return setInterval(() => {
+        // Change image
         setActiveImages((prev) => ({
           ...prev,
           [product.id]: prev[product.id] === 'image2' ? 'image1' : 'image2'
         }));
+        
+        // Show overlay when image changes
+        setShowOverlay((prev) => ({
+          ...prev,
+          [product.id]: true
+        }));
+        
+        // Hide overlay after 2 seconds (you can adjust this timing)
+        setTimeout(() => {
+          setShowOverlay((prev) => ({
+            ...prev,
+            [product.id]: false
+          }));
+        }, 2000); // Overlay visible for 2 seconds
+        
       }, 2500); // Change every 2.5 seconds
     });
 
@@ -294,7 +310,13 @@ export default function Services() {
 
       {/* ANIMATED HERO */}
       <header className="services-hero-new">
-        <div className="services-bg-pattern"></div>
+        <div className="services-hero-bg">
+          <img
+            src={assets.servicesHero}
+            alt="Services overview"
+          />
+        </div>
+        <div className="services-hero-overlay" />
         <div className="services-hero-content-new">
           <AnimatePresence mode="wait">
 
@@ -496,8 +518,6 @@ export default function Services() {
               <motion.div
                 key={product.id}
                 className="product-card"
-                onMouseEnter={() => setHoveredProduct(product.id)}
-                onMouseLeave={() => setHoveredProduct(null)}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -518,10 +538,10 @@ export default function Services() {
                     />
                   </AnimatePresence>
 
-                  {/* DETAILED OVERLAY */}
+                  {/* AUTO-SHOWING OVERLAY */}
                   <div className="product-overlay" style={{ 
-                    opacity: hoveredProduct === product.id ? 1 : 0,
-                    transform: hoveredProduct === product.id ? 'translateY(0)' : 'translateY(20px)'
+                    opacity: showOverlay[product.id] ? 1 : 0,
+                    transform: showOverlay[product.id] ? 'translateY(0)' : 'translateY(20px)'
                   }}>
 
                     <div className="overlay-section-label">Products</div>
@@ -548,7 +568,7 @@ export default function Services() {
                   </div>
                 </div>
 
-                {/* PRODUCT NAME ONLY — material tags removed */}
+                {/* PRODUCT NAME ONLY */}
                 <div className="product-info">
                   <h3 className="product-name">{product.name}</h3>
                 </div>

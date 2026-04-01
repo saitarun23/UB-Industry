@@ -34,7 +34,7 @@ export default function HomeProducts() {
     if (!container) return;
 
     let animationId;
-    const speed = 2.5; // px per frame
+    const speed = 3.0; 
 
     const step = () => {
       if (!isHovered) {
